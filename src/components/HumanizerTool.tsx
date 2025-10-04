@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Loader2, Sparkles, Copy, Check } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
@@ -11,7 +10,6 @@ const HumanizerTool = () => {
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [copied, setCopied] = useState(false);
 
   const humanizeText = async () => {
@@ -21,27 +19,12 @@ const HumanizerTool = () => {
     }
 
     setIsProcessing(true);
-    setProgress(0);
     setOutputText("");
-
-    // Simulate progress
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 90) {
-          clearInterval(interval);
-          return 90;
-        }
-        return prev + 10;
-      });
-    }, 300);
 
     try {
       const { data, error } = await supabase.functions.invoke('humanize-text', {
         body: { text: inputText }
       });
-
-      clearInterval(interval);
-      setProgress(100);
 
       if (error) {
         console.error('Error humanizing text:', error);
@@ -54,7 +37,6 @@ const HumanizerTool = () => {
       setIsProcessing(false);
       toast.success("Text successfully humanized to 100% human!");
     } catch (error) {
-      clearInterval(interval);
       console.error('Error:', error);
       toast.error("An error occurred. Please try again.");
       setIsProcessing(false);
@@ -116,10 +98,10 @@ const HumanizerTool = () => {
 
       <div className="mt-8 text-center space-y-4">
         {isProcessing && (
-          <div className="space-y-2">
-            <Progress value={progress} className="h-2" />
+          <div className="flex items-center justify-center gap-2">
+            <Loader2 className="h-5 w-5 animate-spin text-primary" />
             <p className="text-sm text-muted-foreground">
-              Processing your text... {progress}%
+              Processing your text...
             </p>
           </div>
         )}
