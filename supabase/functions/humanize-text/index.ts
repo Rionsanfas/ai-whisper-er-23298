@@ -1,7 +1,7 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const openAIApiKey = Deno.env.get('OPEN_AI_API_KEY');
+const openAIApiKey = Deno.env.get('OPENAI_API_KEY') || Deno.env.get('OPEN_AI_API_KEY');
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -17,14 +17,25 @@ serve(async (req) => {
   try {
     const { text } = await req.json();
 
+    console.log('Received request to humanize text');
+
     if (!text || !text.trim()) {
+      console.error('No text provided');
       return new Response(
         JSON.stringify({ error: 'Text is required' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    console.log('Humanizing text with OpenAI...');
+    if (!openAIApiKey) {
+      console.error('OpenAI API key not configured');
+      return new Response(
+        JSON.stringify({ error: 'OpenAI API key not configured' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    console.log('Calling OpenAI API to humanize text...');
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -59,7 +70,17 @@ serve(async (req) => {
     }
 
     const data = await response.json();
-    const humanizedText = data.choices[0].message.content;
+    console.log('OpenAI response received');
+    
+    const humanizedText = data.choices?.[0]?.message?.content;
+    
+    if (!humanizedText) {
+      console.error('No humanized text in response');
+      return new Response(
+        JSON.stringify({ error: 'Failed to generate humanized text' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
 
     console.log('Text humanized successfully');
 
