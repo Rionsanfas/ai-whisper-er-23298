@@ -1,9 +1,1 @@
-project_id = "gczrvbcemgkflhbkntro"
-
-[api]
-enabled = true
-port = 54321
-schemas = ["public", "graphql_public"]
-
-[functions.humanize-text]
-verify_jwt = false
+project_id = "gjvrdthkcrjpvfdincfn"
