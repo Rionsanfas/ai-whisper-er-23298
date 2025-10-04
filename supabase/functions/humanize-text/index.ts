@@ -1,7 +1,7 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const openAIApiKey = Deno.env.get('OPENAI_API_KEY') || Deno.env.get('OPEN_AI_API_KEY');
+const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -27,42 +27,53 @@ serve(async (req) => {
       );
     }
 
-    if (!openAIApiKey) {
-      console.error('OpenAI API key not configured');
+    if (!LOVABLE_API_KEY) {
+      console.error('LOVABLE_API_KEY not configured');
       return new Response(
-        JSON.stringify({ error: 'OpenAI API key not configured' }),
+        JSON.stringify({ error: 'AI is not configured. Please contact the site owner.' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    console.log('Calling OpenAI API to humanize text...');
+    console.log('Calling Lovable AI Gateway to humanize text...');
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${openAIApiKey}`,
+        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'google/gemini-2.5-flash',
         messages: [
-          { 
-            role: 'system', 
-            content: 'You are an expert text humanizer. Your job is to transform AI-generated text into 100% human-written text that will pass ANY AI detection tool with a 0% AI score. Make the text sound natural, conversational, and authentically human by: 1) Varying sentence structure and length naturally 2) Using contractions and casual phrasing where appropriate 3) Adding subtle imperfections that humans make 4) Including personal touches and natural flow 5) Removing robotic patterns and overly formal language 6) Making it sound like a real person wrote it spontaneously. The output MUST be indistinguishable from human writing and score 100% human on all AI detectors. Return ONLY the humanized text without any explanations or meta-commentary.' 
+          {
+            role: 'system',
+            content:
+              'You are a skilled editor. Rewrite the provided text so it reads naturally like it was written by a human. Keep the original meaning but: 1) vary sentence length and structure, 2) use contractions and conversational phrasing when appropriate, 3) remove robotic patterns and overly formal tone, 4) add gentle flow and cohesion. Return only the rewritten text, without headings or commentary.'
           },
-          { 
-            role: 'user', 
-            content: `Humanize this text to be 100% undetectable by AI detection tools:\n\n${text}` 
+          {
+            role: 'user',
+            content: `Please rewrite this text in a natural human tone, preserving meaning and key details.\n\n${text}`,
           }
         ],
-        temperature: 0.9,
-        max_tokens: 4000,
       }),
     });
 
     if (!response.ok) {
       const errorData = await response.text();
-      console.error('OpenAI API error:', response.status, errorData);
+      console.error('AI gateway error:', response.status, errorData);
+      if (response.status === 429) {
+        return new Response(
+          JSON.stringify({ error: 'Rate limits exceeded, please try again later.' }),
+          { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+      if (response.status === 402) {
+        return new Response(
+          JSON.stringify({ error: 'Payment required, please add funds to your Lovable AI workspace.' }),
+          { status: 402, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
       return new Response(
         JSON.stringify({ error: 'Failed to humanize text' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -70,7 +81,7 @@ serve(async (req) => {
     }
 
     const data = await response.json();
-    console.log('OpenAI response received');
+    console.log('AI response received');
     
     const humanizedText = data.choices?.[0]?.message?.content;
     
