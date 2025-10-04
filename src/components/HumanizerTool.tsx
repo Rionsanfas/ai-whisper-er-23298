@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Loader2, Sparkles, Copy, Check } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const HumanizerTool = () => {
   const [inputText, setInputText] = useState("");
@@ -23,37 +24,41 @@ const HumanizerTool = () => {
     setProgress(0);
     setOutputText("");
 
-    // Simulate processing with progress
+    // Simulate progress
     const interval = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) {
+        if (prev >= 90) {
           clearInterval(interval);
-          return 100;
+          return 90;
         }
         return prev + 10;
       });
-    }, 200);
+    }, 300);
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const { data, error } = await supabase.functions.invoke('humanize-text', {
+        body: { text: inputText }
+      });
+
       clearInterval(interval);
       setProgress(100);
-      
-      // Mock humanized output
-      const humanized = inputText
-        .replace(/\b(Additionally|Furthermore|Moreover|Therefore|Consequently)\b/gi, (match) => {
-          const alternatives = ["Also", "Plus", "And", "So", "As a result"];
-          return alternatives[Math.floor(Math.random() * alternatives.length)];
-        })
-        .replace(/\b(utilize|utilization)\b/gi, "use")
-        .replace(/\b(commence|initiate)\b/gi, "start")
-        .replace(/\b(terminate|conclude)\b/gi, "end")
-        .replace(/\b(demonstrate|indicate)\b/gi, "show");
-      
-      setOutputText(humanized);
+
+      if (error) {
+        console.error('Error humanizing text:', error);
+        toast.error("Failed to humanize text. Please try again.");
+        setIsProcessing(false);
+        return;
+      }
+
+      setOutputText(data.humanizedText);
       setIsProcessing(false);
-      toast.success("Text successfully humanized!");
-    }, 2200);
+      toast.success("Text successfully humanized to 100% human!");
+    } catch (error) {
+      clearInterval(interval);
+      console.error('Error:', error);
+      toast.error("An error occurred. Please try again.");
+      setIsProcessing(false);
+    }
   };
 
   const copyToClipboard = async () => {
