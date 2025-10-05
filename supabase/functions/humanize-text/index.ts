@@ -116,47 +116,76 @@ REWRITE RULES (follow carefully):
 
 3. Voice & Tone
    - Maintain ${style_level} style, but add humanizing elements:
-   - At least 5 hedging phrases across the document
+   - At least 5 hedging phrases across the document (e.g., "seems to suggest", "might indicate", "perhaps")
    - One brief first-person reflection in Methods or Conclusion (truthful)
    - Two parenthetical asides
    - One rhetorical question
    - Keep professional register overall
 
-4. Sentence Rhythm & Burstiness
-   - Ensure sentence length variation:
-   - At least 20% short sentences (≤10 words)
+4. Sentence Rhythm & Burstiness (CRITICAL FOR HUMAN FEEL)
+   - Mix sentence lengths aggressively:
+   - At least 30% short sentences (≤10 words) - humans pause often
    - At least 20% complex sentences (>25 words)
-   - Avoid monotonous mid-length sentences
+   - Include at least 3-4 very short sentences (3-5 words) scattered throughout
+   - Break up monotonous patterns - never use same structure twice in a row
+   - Example pattern: Long sentence. Short one. Medium sentence. Very short. Complex sentence.
 
-5. Controlled Imperfections (ethical)
-   - Allow mild, non-damaging imperfections:
-   - One contraction in a non-critical sentence
-   - One minor colloquial turn ("interestingly enough") in Discussion
-   - Do not introduce errors that misstate facts
+5. Natural Human Writing Patterns (ESSENTIAL)
+   - Use contractions naturally: don't, can't, won't, I'm, you're (2-3 times minimum)
+   - Include thought shifts: "Wait, that's not quite right." or "Actually, looking closer..."
+   - Show uncertainty appropriately: "I think", "probably", "it seems"
+   - Add small self-corrections or clarifications in parentheses
+   - Use simple, direct language - avoid unnecessarily complex vocabulary
+   - Include idioms when natural: "cross that bridge when we come to it"
+   - Start some sentences with "And" or "But" for natural flow
+   - Do not introduce factual errors
 
-6. Primary Material Integration
+6. Avoid AI Markers (CRITICAL)
+   - NEVER use these AI-giveaway phrases: "dive into", "delve into", "game-changing", "revolutionize", "unlock", "unleash", "cutting-edge", "robust", "leverage", "paradigm", "holistic"
+   - Avoid marketing language and hype words
+   - Don't use overly perfect grammar - minor informality is good
+   - Remove unnecessary adjectives and adverbs
+   - Be direct - get to the point quickly
+
+7. Primary Material Integration
    ${primary_source_present && primary_source_short ? 
      `- Insert the provided primary quote with inline provenance (e.g., "(Interview: ${author_name} — Location, Date)")` :
      '- Leave explicit [INSERT PRIMARY QUOTE HERE — AUTHOR TO SUPPLY WITH PROVENANCE] markers where primary quotes would strengthen the text'}
 
-7. Structural Rules
-   - Break paragraphs >120 words
-   - Add a Limitations subsection (minimum 3 short items), including one surprising limitation
+8. Structural Rules
+   - Break paragraphs >120 words into smaller chunks
+   - Vary paragraph lengths (some 2-3 sentences, some longer)
+   - Add a Limitations subsection (minimum 3 short items), including one surprising or honest limitation
    - Add a one-sentence Next Steps with a concrete small experiment or interview to validate a key claim
 
-8. Lexical & Stylistic Substitution
-   - Replace at least 8 repetitive/generic words identified in analysis with context-appropriate synonyms
-   - Avoid obscure or unnaturally rare terms
+9. Lexical & Stylistic Substitution
+   - Replace at least 10 repetitive/generic words identified in analysis with context-appropriate synonyms
+   - Avoid obscure or unnaturally rare terms that sound "thesaurus-generated"
+   - Use everyday academic language, not flowery prose
 
-9. Citations & Integrity
+10. Citations & Integrity
    - Preserve existing citation markers
    - For flagged claims, add [CITATION REQUIRED — SUGGEST: journal article / dataset / govt source]
 
+EXAMPLES OF HUMAN ACADEMIC WRITING:
+
+Example 1 (Good human rhythm):
+"The results surprised me. I expected a linear relationship, but the data showed something messier. Actually, that's probably more realistic. Real-world behavior doesn't follow neat patterns, and I think we need to accept that. The three cases I examined (n=47, n=52, n=61) all showed this variability."
+
+Example 2 (Natural uncertainty and hedging):
+"I'm not entirely sure this framework applies across all contexts. It seemed to work well in urban settings, but rural areas might be different. We'd need more data to say for certain."
+
+Example 3 (Conversational academic tone):
+"Here's what I found. The traditional model? It doesn't hold up under scrutiny. When I looked at the transcripts, three patterns emerged. First, participants didn't use the terminology we expected. Second—and this was surprising—they actively rejected the framing. Third, they proposed their own categories."
+
 Important Tone Rules:
-- Sound like a thoughtful, slightly informal researcher or academic
-- Avoid mechanical transitions like "In conclusion" or "Therefore"
-- Small imperfections (slightly uneven phrasing, occasional repetition, or rethinking) are good
-- Keep it natural, alive, and realistic — not sterile
+- Sound like a real researcher sharing findings with colleagues over coffee
+- Avoid mechanical transitions like "In conclusion", "Furthermore", "Moreover", "Therefore", "Thus"
+- Use natural connectors: "So", "And", "But", "Now", "Here's the thing"
+- Small imperfections are GOOD: slightly uneven phrasing, occasional repetition, rethinking mid-sentence
+- Show the thinking process, not just polished conclusions
+- Keep it natural, alive, and realistic — not sterile or over-edited
+- Write like you're explaining to a smart friend, not performing for a committee
 
 ═══════════════════════════════════════════════════════════════
 REQUIRED OUTPUT FORMAT
@@ -181,11 +210,16 @@ CHANGE LOG:
 
 CHECKS REPORT:
 - Burstiness Level: [low/medium/high with 3 example sentences showing variety]
+- Sentence Length Distribution: [% short (≤10 words), % medium, % long (>25 words)]
+- Contractions Used: [count and examples]
 - Hedging Count: [number and locations]
 - Voice Checks:
   • First-person reflection present? [yes/no + location]
   • Parenthetical asides present? [yes/no + locations]
   • Rhetorical question present? [yes/no + location]
+  • Thought shifts or self-corrections? [yes/no + locations]
+- AI Marker Check: [confirm zero use of banned phrases like "dive into", "leverage", etc.]
+- Natural Language Score: [assessment of how conversational vs. robotic the tone feels]
 - Provenance Inserted: [yes/no + quote locations]
 - Remaining [CITATION REQUIRED] Items: [list]
 
@@ -211,7 +245,15 @@ SUGGESTED NEXT-STEP EXPERIMENT:
 
 requires_human_review = true
 
-Goal: Your output should consistently read like it came from a human academic who did the research, reflected on it, and wrote it personally. It must be hard for AI detectors to classify as machine-written.`
+CRITICAL SUCCESS CRITERIA:
+1. The output must score BELOW 30% on AI detection tools
+2. Sentence rhythm must feel uneven and natural (not uniform)
+3. At least 3-4 very short sentences (3-5 words) must appear
+4. Contractions must be used naturally (minimum 3 times)
+5. Zero AI-giveaway phrases (no "dive into", "leverage", "robust", etc.)
+6. Tone should sound like a real researcher explaining their work
+
+Goal: Your output should consistently read like it came from a human academic who did the research, reflected on it, and wrote it personally. It must score as LOW AS POSSIBLE on AI detectors (ideally under 20% AI-written). Natural variation, imperfections, and conversational elements are ESSENTIAL.`
           },
           {
             role: 'user',
