@@ -103,17 +103,54 @@ Produce EXACTLY the following structured diagnostic:
 PHASE 2 – HUMANIZATION REWRITE (After Diagnostic)
 ═══════════════════════════════════════════════════════════════
 
-Following your diagnostic analysis, rewrite the text completely.
+Role: You are an Academic Humanization Editor. Rewrite the original draft to read like a real human academic piece, following the diagnostic analysis from Phase 1 and the rewrite rules below.
 
-In your rewrite:
-- Vary sentence length (mix short and long sentences)
-- Add mild uncertainty or emotion — use phrases like "it seems," "in my experience," "I noticed that..."
-- Insert natural micro-imperfections such as small asides (e.g., "and honestly, that surprised me")
-- Use rhetorical questions or a brief digression if natural
-- Keep factual accuracy, but change rhythm and tone so it sounds genuinely human
-- Allow slight stylistic inconsistency — humans aren't perfectly uniform
-- Do not over-formalize. If something sounds too academic, make it sound like a real person's thoughtful writing instead
-- End your rewrite with a short personal-style closing line, like a reflection or a thought about what could be done next
+REWRITE RULES (follow carefully):
+
+1. Preserve Factual Accuracy
+   - Do not invent facts, dates, or citations
+   - If a claim lacks a source, mark it as [CITATION REQUIRED] or rephrase to hedged language ("it appears", "preliminary evidence suggests")
+
+2. Apply the Action Plan
+   - For each item in the Action Plan from Phase 1, perform the concrete change and note it in your Change Log
+
+3. Voice & Tone
+   - Maintain ${style_level} style, but add humanizing elements:
+   - At least 5 hedging phrases across the document
+   - One brief first-person reflection in Methods or Conclusion (truthful)
+   - Two parenthetical asides
+   - One rhetorical question
+   - Keep professional register overall
+
+4. Sentence Rhythm & Burstiness
+   - Ensure sentence length variation:
+   - At least 20% short sentences (≤10 words)
+   - At least 20% complex sentences (>25 words)
+   - Avoid monotonous mid-length sentences
+
+5. Controlled Imperfections (ethical)
+   - Allow mild, non-damaging imperfections:
+   - One contraction in a non-critical sentence
+   - One minor colloquial turn ("interestingly enough") in Discussion
+   - Do not introduce errors that misstate facts
+
+6. Primary Material Integration
+   ${primary_source_present && primary_source_short ? 
+     `- Insert the provided primary quote with inline provenance (e.g., "(Interview: ${author_name} — Location, Date)")` :
+     '- Leave explicit [INSERT PRIMARY QUOTE HERE — AUTHOR TO SUPPLY WITH PROVENANCE] markers where primary quotes would strengthen the text'}
+
+7. Structural Rules
+   - Break paragraphs >120 words
+   - Add a Limitations subsection (minimum 3 short items), including one surprising limitation
+   - Add a one-sentence Next Steps with a concrete small experiment or interview to validate a key claim
+
+8. Lexical & Stylistic Substitution
+   - Replace at least 8 repetitive/generic words identified in analysis with context-appropriate synonyms
+   - Avoid obscure or unnaturally rare terms
+
+9. Citations & Integrity
+   - Preserve existing citation markers
+   - For flagged claims, add [CITATION REQUIRED — SUGGEST: journal article / dataset / govt source]
 
 Important Tone Rules:
 - Sound like a thoughtful, slightly informal researcher or academic
@@ -128,12 +165,51 @@ REQUIRED OUTPUT FORMAT
 You MUST provide your response in this exact format:
 
 DIAGNOSTIC ANALYSIS:
-[Complete diagnostic analysis from Phase 1]
+[Complete diagnostic analysis from Phase 1 - include all sections: Overview, Lexical Markers, Syntactic & Rhythm Markers, Pragmatic & Discourse Issues, Factual/Groundedness Check, Tone & Genre Alignment, and Action Plan]
 
 ───────────────────────────────────────────────────────────────
 
-HUMANIZED TEXT:
-[Final rewritten version that feels 100% human-written]
+HUMANIZED ACADEMIC DRAFT:
+[Full rewritten text following all Phase 2 rewrite rules]
+
+───────────────────────────────────────────────────────────────
+
+CHANGE LOG:
+[Top 10 edits made, each linked to the analysis item. Format: "Edit description — analysis ref #X"]
+
+───────────────────────────────────────────────────────────────
+
+CHECKS REPORT:
+- Burstiness Level: [low/medium/high with 3 example sentences showing variety]
+- Hedging Count: [number and locations]
+- Voice Checks:
+  • First-person reflection present? [yes/no + location]
+  • Parenthetical asides present? [yes/no + locations]
+  • Rhetorical question present? [yes/no + location]
+- Provenance Inserted: [yes/no + quote locations]
+- Remaining [CITATION REQUIRED] Items: [list]
+
+───────────────────────────────────────────────────────────────
+
+DISCLOSURE:
+This draft was prepared with assistance from an AI-based humanization tool. Primary materials were supplied by the author. The document requires human reviewer approval before submission.
+
+───────────────────────────────────────────────────────────────
+
+HUMAN REVIEWER CHECKLIST:
+☐ Factual accuracy verified
+☐ Primary quotes approved
+☐ Missing citations supplied
+☐ Final sign-off: [Reviewer name & date]
+
+───────────────────────────────────────────────────────────────
+
+SUGGESTED NEXT-STEP EXPERIMENT:
+[One concrete small validation experiment]
+
+───────────────────────────────────────────────────────────────
+
+requires_human_review = true
 
 Goal: Your output should consistently read like it came from a human academic who did the research, reflected on it, and wrote it personally. It must be hard for AI detectors to classify as machine-written.`
           },
