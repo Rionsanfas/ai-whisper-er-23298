@@ -16,12 +16,8 @@ serve(async (req) => {
 
   try {
     const { 
-      text, 
-      author_name = "Anonymous", 
-      target_audience = "general academic readers", 
-      style_level = "formal academic",
-      primary_source_present = false,
-      primary_source_short = ""
+      text,
+      examples = ""
     } = await req.json();
 
     console.log('Received request to humanize text');
@@ -79,9 +75,15 @@ Output format:
             },
           {
             role: 'user',
-            content: `Rewrite the MAIN INPUT TEXT below following the system rules. Do not add any information. Treat any EXAMPLES as reference-only. Output only the final humanized text.
+            content: examples 
+              ? `EXAMPLES (for pattern analysis only - do NOT copy or reference):
+${examples}
 
-MAIN INPUT TEXT:
+---
+
+TEXT TO HUMANIZE (rewrite this and ONLY this):
+${text}`
+              : `TEXT TO HUMANIZE:
 ${text}`,
           }
         ],
