@@ -13,12 +13,6 @@ const HumanizerTool = () => {
   const [copied, setCopied] = useState(false);
   const [examples, setExamples] = useState<{ name: string; content: string }[]>([]);
   const [isParsingFiles, setIsParsingFiles] = useState(false);
-  const [detectionResults, setDetectionResults] = useState<{
-    sapling: { score: number; provider: string } | null;
-    zerogpt: { score: number; provider: string } | null;
-    averageScore: number;
-    refinementApplied: boolean;
-  } | null>(null);
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -92,19 +86,8 @@ const HumanizerTool = () => {
       }
 
       setOutputText(data.humanizedText);
-      setDetectionResults(data.detectionResults);
       setIsProcessing(false);
-      
-      const avgScore = data.detectionResults?.averageScore || 0;
-      const refinementApplied = data.detectionResults?.refinementApplied || false;
-      
-      if (avgScore <= 8) {
-        toast.success(`Text humanized! AI detection: ${avgScore.toFixed(1)}%`);
-      } else if (refinementApplied) {
-        toast.success(`Text refined after detection (${avgScore.toFixed(1)}% AI detected)`);
-      } else {
-        toast.warning(`Text humanized but scored ${avgScore.toFixed(1)}% on AI detection`);
-      }
+      toast.success("Text humanized successfully!");
     } catch (error) {
       console.error('Error:', error);
       toast.error("An error occurred. Please try again.");
@@ -219,53 +202,6 @@ const HumanizerTool = () => {
             readOnly
             className="min-h-[400px] resize-none bg-background border-border text-foreground placeholder:text-muted-foreground"
           />
-          
-          {detectionResults && (
-            <div className="mt-4 p-4 bg-background rounded-md border border-border space-y-3">
-              <h4 className="text-sm font-semibold text-foreground">AI Detection Results</h4>
-              
-              <div className="grid grid-cols-2 gap-3">
-                {detectionResults.sapling && (
-                  <div className="space-y-1">
-                    <p className="text-xs text-muted-foreground">{detectionResults.sapling.provider}</p>
-                    <p className={`text-lg font-semibold ${
-                      detectionResults.sapling.score <= 8 ? 'text-green-500' : 'text-yellow-500'
-                    }`}>
-                      {detectionResults.sapling.score.toFixed(1)}%
-                    </p>
-                  </div>
-                )}
-                
-                {detectionResults.zerogpt && (
-                  <div className="space-y-1">
-                    <p className="text-xs text-muted-foreground">{detectionResults.zerogpt.provider}</p>
-                    <p className={`text-lg font-semibold ${
-                      detectionResults.zerogpt.score <= 8 ? 'text-green-500' : 'text-yellow-500'
-                    }`}>
-                      {detectionResults.zerogpt.score.toFixed(1)}%
-                    </p>
-                  </div>
-                )}
-              </div>
-              
-              <div className="pt-3 border-t border-border">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Average Score:</span>
-                  <span className={`text-base font-semibold ${
-                    detectionResults.averageScore <= 8 ? 'text-green-500' : 'text-yellow-500'
-                  }`}>
-                    {detectionResults.averageScore.toFixed(1)}%
-                  </span>
-                </div>
-                
-                {detectionResults.refinementApplied && (
-                  <p className="text-xs text-muted-foreground mt-2">
-                    ✓ Refinement applied to flagged sections
-                  </p>
-                )}
-              </div>
-            </div>
-          )}
         </Card>
       </div>
 

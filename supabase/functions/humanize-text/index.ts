@@ -83,12 +83,12 @@ async function detectWithZeroGPT(text: string) {
 }
 
 // Refine flagged sections using AI
-async function refineFlaggedSections(originalText: string, flaggedSections: string[]) {
+async function refineFlaggedSections(originalText: string, flaggedSections: string[], avgScore: number) {
   if (!LOVABLE_API_KEY || flaggedSections.length === 0) {
     return originalText;
   }
 
-  console.log('Refining flagged sections:', flaggedSections.length);
+  console.log(`Refining flagged sections. AI score: ${avgScore.toFixed(2)}%, Flagged sections: ${flaggedSections.length}`);
 
   try {
     const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
@@ -102,23 +102,26 @@ async function refineFlaggedSections(originalText: string, flaggedSections: stri
         messages: [
           {
             role: 'system',
-            content: `You are refining specific sections of text that were flagged as potentially AI-generated. Your goal is to make ONLY these flagged sections more human-like while preserving all facts and meaning.
+            content: `You are refining specific sections of text that were flagged by AI detectors. This text received a ${avgScore.toFixed(2)}% AI-generated score, and the following sentences were flagged as likely AI-generated.
 
-Apply these techniques ONLY to the flagged sections:
-- Vary sentence structure and length naturally
-- Add subtle human markers (light hedging, parenthetical asides)
-- Use contractions where natural
-- Include small imperfections that suggest human revision
-- Maintain the original tone and intent
+Your task is to refine ONLY these flagged sentences to make them more human-like, while keeping all meaning, tone, and facts exactly the same.
 
-Return the ENTIRE text with only the flagged sections refined. Do not change any other parts of the text.`,
+Apply these humanization techniques to the flagged sections:
+- Vary sentence length and structure naturally
+- Include subtle human markers (light hedging like "I think", "perhaps", "it seems"; parenthetical asides)
+- Use contractions naturally where appropriate
+- Add small imperfections that suggest genuine human writing and revision
+- Maintain the exact original tone, style, and intent
+- Keep all factual content unchanged
+
+Return the ENTIRE text with only the flagged sections refined. Do not modify any other parts of the text.`,
           },
           {
             role: 'user',
             content: `Original text:
 ${originalText}
 
-Flagged sections that need refinement:
+Flagged sections that need refinement (these scored high for AI detection):
 ${flaggedSections.map((s, i) => `${i + 1}. "${s}"`).join('\n')}
 
 Please return the complete text with ONLY these flagged sections refined to be more human-like.`,
@@ -370,9 +373,9 @@ ${text}`,
       const uniqueFlagged = [...new Set(flaggedSections)];
       
       if (uniqueFlagged.length > 0) {
-        finalText = await refineFlaggedSections(sanitizedText, uniqueFlagged);
+        finalText = await refineFlaggedSections(sanitizedText, uniqueFlagged, avgScore);
         refinementApplied = true;
-        console.log('Refinement complete');
+        console.log('Refinement complete. Final score should be lower.');
       }
     } else {
       console.log('Score below 8%, no refinement needed');
@@ -380,19 +383,7 @@ ${text}`,
 
     return new Response(
       JSON.stringify({ 
-        humanizedText: finalText,
-        detectionResults: {
-          sapling: saplingResult ? {
-            score: parseFloat(saplingResult.score.toFixed(2)),
-            provider: 'Sapling AI'
-          } : null,
-          zerogpt: zeroGPTResult ? {
-            score: parseFloat(zeroGPTResult.score.toFixed(2)),
-            provider: 'ZeroGPT'
-          } : null,
-          averageScore: parseFloat(avgScore.toFixed(2)),
-          refinementApplied,
-        }
+        humanizedText: finalText
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
