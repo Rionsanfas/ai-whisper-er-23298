@@ -2,11 +2,143 @@ import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
+const SAPLING_API_KEY = Deno.env.get('SAPLING_API_KEY');
+const ZEROGPT_API_KEY = Deno.env.get('ZEROGPT_API_KEY');
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
+
+// Call Sapling AI Detector
+async function detectWithSapling(text: string) {
+  if (!SAPLING_API_KEY) {
+    console.log('Sapling API key not configured, skipping Sapling detection');
+    return null;
+  }
+
+  try {
+    const response = await fetch('https://api.sapling.ai/api/v1/aidetect', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        key: SAPLING_API_KEY,
+        text,
+        sent_scores: true,
+      }),
+    });
+
+    if (!response.ok) {
+      console.error('Sapling detection failed:', response.status);
+      return null;
+    }
+
+    const data = await response.json();
+    return {
+      score: data.score * 100, // Convert to percentage
+      sentenceScores: data.sentence_scores || [],
+      tokens: data.tokens || [],
+      tokenProbs: data.token_probs || [],
+    };
+  } catch (error) {
+    console.error('Sapling detection error:', error);
+    return null;
+  }
+}
+
+// Call ZeroGPT AI Detector
+async function detectWithZeroGPT(text: string) {
+  if (!ZEROGPT_API_KEY) {
+    console.log('ZeroGPT API key not configured, skipping ZeroGPT detection');
+    return null;
+  }
+
+  try {
+    const response = await fetch('https://api.zerogpt.com/api/v1/detectText', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${ZEROGPT_API_KEY}`,
+      },
+      body: JSON.stringify({
+        input_text: text,
+      }),
+    });
+
+    if (!response.ok) {
+      console.error('ZeroGPT detection failed:', response.status);
+      return null;
+    }
+
+    const data = await response.json();
+    return {
+      score: data.data?.is_gpt_generated || 0,
+      flaggedSentences: data.data?.gpt_generated_sentences || [],
+      wordsCount: data.data?.words_count || 0,
+    };
+  } catch (error) {
+    console.error('ZeroGPT detection error:', error);
+    return null;
+  }
+}
+
+// Refine flagged sections using AI
+async function refineFlaggedSections(originalText: string, flaggedSections: string[]) {
+  if (!LOVABLE_API_KEY || flaggedSections.length === 0) {
+    return originalText;
+  }
+
+  console.log('Refining flagged sections:', flaggedSections.length);
+
+  try {
+    const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'google/gemini-2.5-flash',
+        messages: [
+          {
+            role: 'system',
+            content: `You are refining specific sections of text that were flagged as potentially AI-generated. Your goal is to make ONLY these flagged sections more human-like while preserving all facts and meaning.
+
+Apply these techniques ONLY to the flagged sections:
+- Vary sentence structure and length naturally
+- Add subtle human markers (light hedging, parenthetical asides)
+- Use contractions where natural
+- Include small imperfections that suggest human revision
+- Maintain the original tone and intent
+
+Return the ENTIRE text with only the flagged sections refined. Do not change any other parts of the text.`,
+          },
+          {
+            role: 'user',
+            content: `Original text:
+${originalText}
+
+Flagged sections that need refinement:
+${flaggedSections.map((s, i) => `${i + 1}. "${s}"`).join('\n')}
+
+Please return the complete text with ONLY these flagged sections refined to be more human-like.`,
+          }
+        ],
+      }),
+    });
+
+    if (!response.ok) {
+      console.error('Refinement failed:', response.status);
+      return originalText;
+    }
+
+    const data = await response.json();
+    return data.choices?.[0]?.message?.content || originalText;
+  } catch (error) {
+    console.error('Refinement error:', error);
+    return originalText;
+  }
+}
 
 serve(async (req) => {
   // Handle CORS preflight requests
@@ -186,10 +318,82 @@ ${text}`,
       console.log('Length guard: output much longer than input', { inputLen: text.length, outLen: sanitizedText.length });
     }
 
-    console.log('Text humanized successfully');
+    console.log('Text humanized successfully, now running AI detection...');
+
+    // Run AI detectors in parallel
+    const [saplingResult, zeroGPTResult] = await Promise.all([
+      detectWithSapling(sanitizedText),
+      detectWithZeroGPT(sanitizedText),
+    ]);
+
+    console.log('Detection results:', { 
+      sapling: saplingResult?.score, 
+      zerogpt: zeroGPTResult?.score 
+    });
+
+    // Calculate average score
+    const scores = [];
+    if (saplingResult) scores.push(saplingResult.score);
+    if (zeroGPTResult) scores.push(zeroGPTResult.score);
+    
+    const avgScore = scores.length > 0 
+      ? scores.reduce((a, b) => a + b, 0) / scores.length 
+      : 0;
+
+    console.log('Average AI detection score:', avgScore.toFixed(2) + '%');
+
+    let finalText = sanitizedText;
+    let refinementApplied = false;
+
+    // If score > 8%, refine the flagged sections
+    if (avgScore > 8) {
+      console.log('Score above 8%, refining flagged sections...');
+      
+      // Collect flagged sections from both detectors
+      const flaggedSections: string[] = [];
+      
+      // Add high-scoring sentences from Sapling
+      if (saplingResult?.sentenceScores) {
+        saplingResult.sentenceScores.forEach((sent: any) => {
+          if (sent.score > 0.8) { // High confidence AI-generated
+            flaggedSections.push(sent.sentence);
+          }
+        });
+      }
+      
+      // Add flagged sentences from ZeroGPT
+      if (zeroGPTResult?.flaggedSentences) {
+        flaggedSections.push(...zeroGPTResult.flaggedSentences);
+      }
+
+      // Remove duplicates
+      const uniqueFlagged = [...new Set(flaggedSections)];
+      
+      if (uniqueFlagged.length > 0) {
+        finalText = await refineFlaggedSections(sanitizedText, uniqueFlagged);
+        refinementApplied = true;
+        console.log('Refinement complete');
+      }
+    } else {
+      console.log('Score below 8%, no refinement needed');
+    }
 
     return new Response(
-      JSON.stringify({ humanizedText: sanitizedText }),
+      JSON.stringify({ 
+        humanizedText: finalText,
+        detectionResults: {
+          sapling: saplingResult ? {
+            score: parseFloat(saplingResult.score.toFixed(2)),
+            provider: 'Sapling AI'
+          } : null,
+          zerogpt: zeroGPTResult ? {
+            score: parseFloat(zeroGPTResult.score.toFixed(2)),
+            provider: 'ZeroGPT'
+          } : null,
+          averageScore: parseFloat(avgScore.toFixed(2)),
+          refinementApplied,
+        }
+      }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   } catch (error) {
