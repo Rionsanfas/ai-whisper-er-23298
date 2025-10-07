@@ -1,7 +1,8 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
+const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY');
+const HUMANIZER_MODEL = Deno.env.get('HUMANIZER_MODEL') || 'gpt-4o-mini';
 const SAPLING_API_KEY = Deno.env.get('SAPLING_API_KEY');
 const ZEROGPT_API_KEY = Deno.env.get('ZEROGPT_API_KEY');
 
@@ -95,9 +96,76 @@ function extractContext(text: string, sentence: string) {
   };
 }
 
+// Base system prompt for all humanization passes
+const BASE_SYSTEM_PROMPT = `You are an Advanced Humanization Model Trainer — your job is to rewrite user text so it reads like carefully edited human writing while preserving all facts and meaning exactly. Focus on rhythm, natural sentence variation, subtle hedging, and small human markers (contractions, parenthetical asides, mild hesitation) without inventing any facts or adding new claims.
+
+Rules (apply across all rewrites):
+- Preserve all factual content, numbers, names, and structure unless the user explicitly asks otherwise.
+- Vary sentence lengths. Mix short emphatic sentences with longer reflective ones.
+- Use light hedging where appropriate (e.g., "it seems", "perhaps", "one plausible reason").
+- Add small, plausible micro-imperfections (brief fragments, natural pauses) that mimic human editing.
+- Use contractions where natural, but do not overuse.
+- Avoid over-formal connectors ("furthermore", "moreover", "thus"); prefer "and", "but", "so", "still".
+- Do not insert idioms, metaphors, or local references unless present in the original.
+- Keep placeholders like {name}, [link], <placeholder> exactly as-is if they exist.
+- Output ONLY the rewritten text as plain ASCII. No headings, no commentary, no JSON, no markdown. Return only the final humanized text body.
+
+Behavioral constraints:
+- Never invent facts or add new claims. If clarification is needed, note it in logs (not in output).
+- Keep length roughly 0.8×–1.2× of input. Very short inputs -> minimal edits only.`;
+
+// Normalize detector scores to 0-100 scale
+function normalizeDetectorScores(saplingResult: any, zeroGPTResult: any): { avgScore: number, flaggedSections: Array<{sentence: string, score: number, index: number}> } {
+  const scores = [];
+  const flaggedSections: Array<{sentence: string, score: number, index: number}> = [];
+  
+  // Sapling returns score as 0-1, convert to 0-100
+  if (saplingResult?.score !== undefined) {
+    scores.push(saplingResult.score * 100);
+    
+    // Extract flagged sentences from Sapling
+    if (saplingResult.sentenceScores) {
+      saplingResult.sentenceScores.forEach((sent: any, idx: number) => {
+        if (sent.score > 0.8) { // High confidence AI-generated
+          flaggedSections.push({
+            sentence: sent.sentence,
+            score: sent.score * 100,
+            index: idx
+          });
+        }
+      });
+    }
+  }
+  
+  // ZeroGPT returns score as 0-100
+  if (zeroGPTResult?.score !== undefined) {
+    scores.push(zeroGPTResult.score);
+    
+    // Extract flagged sentences from ZeroGPT
+    if (zeroGPTResult.flaggedSentences) {
+      zeroGPTResult.flaggedSentences.forEach((sentence: string, idx: number) => {
+        // Check if not already added from Sapling
+        if (!flaggedSections.find(item => item.sentence === sentence)) {
+          flaggedSections.push({
+            sentence,
+            score: 85, // Estimated high score for ZeroGPT flagged items
+            index: idx
+          });
+        }
+      });
+    }
+  }
+  
+  const avgScore = scores.length > 0 
+    ? scores.reduce((a, b) => a + b, 0) / scores.length 
+    : 0;
+  
+  return { avgScore, flaggedSections };
+}
+
 // Refine flagged sections using AI with context
-async function refineFlaggedSections(originalText: string, flaggedSectionsData: Array<{sentence: string, score: number}>, avgScore: number) {
-  if (!LOVABLE_API_KEY || flaggedSectionsData.length === 0) {
+async function refineFlaggedSections(originalText: string, flaggedSectionsData: Array<{sentence: string, score: number, index: number}>, avgScore: number) {
+  if (!OPENAI_API_KEY || flaggedSectionsData.length === 0) {
     return originalText;
   }
 
@@ -107,35 +175,25 @@ async function refineFlaggedSections(originalText: string, flaggedSectionsData: 
   const flaggedWithContext = flaggedSectionsData.map(item => ({
     sentence: item.sentence,
     score: item.score,
+    index: item.index,
     ...extractContext(originalText, item.sentence)
   }));
 
   try {
-    const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
+        'Authorization': `Bearer ${OPENAI_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.5-flash',
+        model: HUMANIZER_MODEL,
         messages: [
           {
             role: 'system',
-            content: `You are refining specific sentences that were flagged by AI detectors (average score: ${avgScore.toFixed(2)}%).
+            content: `${BASE_SYSTEM_PROMPT}
 
-For each flagged sentence, you will receive:
-- The sentence itself
-- The AI detection score
-- Context before and after the sentence
-
-Your task is to rewrite ONLY the flagged sentence to make it more natural and human-like, while:
-- Keeping the same tone, meaning, and facts
-- Making it flow naturally with the surrounding context
-- Varying sentence length and structure
-- Including subtle human markers (light hedging, parenthetical asides)
-- Using contractions naturally where appropriate
-- Adding small imperfections that suggest genuine human writing
+REFINEMENT TASK: You are given several sentences that have been flagged as AI-generated (average score: ${avgScore.toFixed(2)}%). For each one, rewrite it to sound more natural and human-like, while keeping the same tone, meaning, and context. Use the contextBefore and contextAfter values to make the rewriting flow naturally with the rest of the text.
 
 Return a JSON array with this exact structure:
 {
@@ -177,13 +235,18 @@ Return ONLY valid JSON, no markdown formatting or extra text.`,
       return originalText;
     }
 
-    // Replace each original sentence with its improved version
-    let refinedText = originalText;
+    // Split text into sentences for precise replacement
+    const sentences = originalText.match(/[^.!?]+[.!?]+/g) || [];
+    
+    // Replace each original sentence with its improved version using index
     rewrites.rewrites.forEach((rewrite: { original: string, improved: string }) => {
-      refinedText = refinedText.replace(rewrite.original, rewrite.improved);
+      const matchingIdx = sentences.findIndex(s => s.trim().includes(rewrite.original.trim()));
+      if (matchingIdx !== -1) {
+        sentences[matchingIdx] = sentences[matchingIdx].replace(rewrite.original, rewrite.improved);
+      }
     });
 
-    return refinedText;
+    return sentences.join(' ');
   } catch (error) {
     console.error('Refinement error:', error);
     return originalText;
@@ -212,88 +275,30 @@ serve(async (req) => {
       );
     }
 
-    if (!LOVABLE_API_KEY) {
-      console.error('LOVABLE_API_KEY not configured');
+    if (!OPENAI_API_KEY) {
+      console.error('OPENAI_API_KEY not configured');
       return new Response(
         JSON.stringify({ error: 'AI is not configured. Please contact the site owner.' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    console.log('Calling Lovable AI Gateway to humanize text...');
+    console.log(`Using humanizer model: ${HUMANIZER_MODEL}`);
+    console.log('Running first humanization pass...');
 
-    const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
+        'Authorization': `Bearer ${OPENAI_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.5-flash',
+        model: HUMANIZER_MODEL,
         messages: [
           {
             role: 'system',
-            content: `You are an Advanced Humanization Model Trainer — your purpose is to transform the user’s text into something that reads fully human, nuanced, and natural, while keeping every original fact and idea intact. You must focus on rhythm, voice, and authenticity — not embellishment. Your rewritten version should sound like something carefully written and revised by a real person with genuine thought behind each line.
-
-Primary Objective:
-Rewrite only the user’s main input text so it achieves authentic human readability. Maintain factual accuracy, tone, and intent while improving fluency, rhythm, and believability. The goal is to make the final result undetectable as AI-written (≤ 1% AI detection probability) without losing clarity or precision.
-
-Core Directives:
-
-Rewrite only the user’s main text input. Do not include examples, prompts, or system instructions in the output.
-
-Treat any “EXAMPLES” provided as style references only — analyze their tone, pacing, and rhythm, then completely forget their literal content before writing.
-
-Never summarize, paraphrase, or quote from the examples. They exist purely for tonal calibration.
-
-Preserve all factual content, structure, and intent of the original text.
-
-Stylistic Behavior:
-
-Use natural rhythm: vary sentence lengths and structures. Combine short, emphatic sentences with longer reflective ones.
-
-Use contractions where natural (“we’re”, “don’t”, “it’s”) but never overuse them.
-
-Include subtle human markers: light hedging (“it seems”, “perhaps”, “it’s possible”), parenthetical asides (“this surprised me”), or small rhetorical touches (“Why does this matter?”).
-
-Avoid uniform sentence patterns. Small inconsistencies and natural pauses are good; they suggest human revision.
-
-Readability over polish — keep it warm, believable, and conversational without being casual.
-
-Remove excessive formal connectors (“furthermore”, “moreover”, “thus”) and replace them with natural transitions (“and”, “but”, “so”, “still”).
-
-Never insert idioms, analogies, or metaphors unless they already exist in the original text.
-
-Technical & Structural Rules:
-
-Output only the rewritten text — no explanations, titles, checklists, formatting marks, or extra commentary.
-
-Keep the overall length roughly similar to the input (0.8× – 1.2×). Short text → minimal editing; long text → natural restructuring where needed.
-
-Use plain ASCII characters only. No bullets, asterisks, smart quotes, em dashes, emojis, or decorative symbols.
-
-Keep placeholders (like {name}, [link], or <placeholder>) only if they appear verbatim in the original input.
-
-Do not hallucinate — never invent facts, names, dates, or details not present in the input.
-
-Never copy writing patterns that appear in the examples unless they naturally fit the input’s meaning and flow.
-
-Do not change paragraph structure unless necessary for clarity.
-
-Human Texture Requirements:
-
-Add micro-imperfections: occasional fragments, rhetorical shifts, and small tonal variations that reflect real human editing.
-
-Include minimal, subtle emotional resonance — a sense that the writer cares about the topic.
-
-Break overly perfect logic chains occasionally to mimic real thought.
-
-Maintain a human reasoning pattern: progression, reflection, and natural uncertainty where appropriate.
-
-Output Expectation:
-Return a single block of rewritten text in plain text form.
-No prefaces, no labels, no explanations — just the final humanized version.`,
-            },
+            content: BASE_SYSTEM_PROMPT,
+          },
           {
             role: 'user',
             content: examples 
@@ -368,9 +373,9 @@ ${text}`,
       console.log('Length guard: output much longer than input', { inputLen: text.length, outLen: sanitizedText.length });
     }
 
-    console.log('Text humanized successfully, now running AI detection...');
+    console.log('First pass complete, running AI detection...');
 
-    // Run AI detectors in parallel
+    // Run AI detectors in parallel on first-pass humanized text
     const [saplingResult, zeroGPTResult] = await Promise.all([
       detectWithSapling(sanitizedText),
       detectWithZeroGPT(sanitizedText),
@@ -381,71 +386,36 @@ ${text}`,
       zerogpt: zeroGPTResult?.score 
     });
 
-    // Calculate average score
-    const scores = [];
-    if (saplingResult) scores.push(saplingResult.score);
-    if (zeroGPTResult) scores.push(zeroGPTResult.score);
-    
-    const avgScore = scores.length > 0 
-      ? scores.reduce((a, b) => a + b, 0) / scores.length 
-      : 0;
+    // Normalize detector outputs to consistent 0-100 scale
+    const { avgScore, flaggedSections } = normalizeDetectorScores(saplingResult, zeroGPTResult);
 
-    console.log('Average AI detection score:', avgScore.toFixed(2) + '%');
+    console.log('Normalized average AI detection score:', avgScore.toFixed(2) + '%');
 
     let finalText = sanitizedText;
-    let refinementApplied = false;
 
-    // If score > 8%, refine the flagged sections
-    if (avgScore > 8) {
+    // If avgScore <= 8%, stop and return first-pass text
+    if (avgScore <= 8) {
+      console.log('Score at or below 8%, no refinement needed');
+      finalText = sanitizedText;
+    } else {
       console.log('Score above 8%, refining flagged sections...');
       
-      // Collect flagged sections from both detectors with scores
-      const flaggedSectionsData: Array<{sentence: string, score: number}> = [];
-      
-      // Add high-scoring sentences from Sapling
-      if (saplingResult?.sentenceScores) {
-        saplingResult.sentenceScores.forEach((sent: any) => {
-          if (sent.score > 0.8) { // High confidence AI-generated
-            flaggedSectionsData.push({
-              sentence: sent.sentence,
-              score: sent.score * 100 // Convert to percentage
-            });
-          }
-        });
-      }
-      
-      // Add flagged sentences from ZeroGPT (estimate high score for flagged items)
-      if (zeroGPTResult?.flaggedSentences) {
-        zeroGPTResult.flaggedSentences.forEach((sentence: string) => {
-          // Check if not already added from Sapling
-          if (!flaggedSectionsData.find(item => item.sentence === sentence)) {
-            flaggedSectionsData.push({
-              sentence,
-              score: 85 // Estimated high score for ZeroGPT flagged items
-            });
-          }
-        });
-      }
-      
-      if (flaggedSectionsData.length > 0) {
-        finalText = await refineFlaggedSections(sanitizedText, flaggedSectionsData, avgScore);
-        refinementApplied = true;
+      if (flaggedSections.length > 0) {
+        // Limit to top N flagged sections to avoid overwhelming the refinement
+        const topFlagged = flaggedSections
+          .sort((a, b) => b.score - a.score)
+          .slice(0, 10);
+
+        finalText = await refineFlaggedSections(sanitizedText, topFlagged, avgScore);
         console.log('Refinement complete. Running final detection check...');
 
-        // Run AI detection one more time on the refined text
+        // Run detectors one final time on finalText
         const [finalSaplingResult, finalZeroGPTResult] = await Promise.all([
           detectWithSapling(finalText),
           detectWithZeroGPT(finalText),
         ]);
 
-        // Calculate final average score
-        const finalScores = [];
-        if (finalSaplingResult) finalScores.push(finalSaplingResult.score);
-        if (finalZeroGPTResult) finalScores.push(finalZeroGPTResult.score);
-        
-        const finalAvgScore = finalScores.length > 0 
-          ? finalScores.reduce((a, b) => a + b, 0) / finalScores.length 
-          : 0;
+        const { avgScore: finalAvgScore } = normalizeDetectorScores(finalSaplingResult, finalZeroGPTResult);
 
         console.log('Final detection results after refinement:', { 
           sapling: finalSaplingResult?.score, 
@@ -459,8 +429,6 @@ ${text}`,
           console.log('SUCCESS: Final score is now below 8%');
         }
       }
-    } else {
-      console.log('Score below 8%, no refinement needed');
     }
 
     return new Response(
