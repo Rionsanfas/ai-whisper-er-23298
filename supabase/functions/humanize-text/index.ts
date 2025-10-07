@@ -82,13 +82,33 @@ async function detectWithZeroGPT(text: string) {
   }
 }
 
-// Refine flagged sections using AI
-async function refineFlaggedSections(originalText: string, flaggedSections: string[], avgScore: number) {
-  if (!LOVABLE_API_KEY || flaggedSections.length === 0) {
+// Extract context around a sentence
+function extractContext(text: string, sentence: string) {
+  const sentences = text.match(/[^.!?]+[.!?]+/g) || [];
+  const index = sentences.findIndex(s => s.trim().includes(sentence.trim()));
+  
+  if (index === -1) return { before: '', after: '' };
+  
+  return {
+    before: index > 0 ? sentences[index - 1].trim() : '',
+    after: index < sentences.length - 1 ? sentences[index + 1].trim() : ''
+  };
+}
+
+// Refine flagged sections using AI with context
+async function refineFlaggedSections(originalText: string, flaggedSectionsData: Array<{sentence: string, score: number}>, avgScore: number) {
+  if (!LOVABLE_API_KEY || flaggedSectionsData.length === 0) {
     return originalText;
   }
 
-  console.log(`Refining flagged sections. AI score: ${avgScore.toFixed(2)}%, Flagged sections: ${flaggedSections.length}`);
+  console.log(`Refining flagged sections. AI score: ${avgScore.toFixed(2)}%, Flagged sections: ${flaggedSectionsData.length}`);
+
+  // Extract context for each flagged sentence
+  const flaggedWithContext = flaggedSectionsData.map(item => ({
+    sentence: item.sentence,
+    score: item.score,
+    ...extractContext(originalText, item.sentence)
+  }));
 
   try {
     const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
@@ -102,29 +122,38 @@ async function refineFlaggedSections(originalText: string, flaggedSections: stri
         messages: [
           {
             role: 'system',
-            content: `You are refining specific sections of text that were flagged by AI detectors. This text received a ${avgScore.toFixed(2)}% AI-generated score, and the following sentences were flagged as likely AI-generated.
+            content: `You are refining specific sentences that were flagged by AI detectors (average score: ${avgScore.toFixed(2)}%).
 
-Your task is to refine ONLY these flagged sentences to make them more human-like, while keeping all meaning, tone, and facts exactly the same.
+For each flagged sentence, you will receive:
+- The sentence itself
+- The AI detection score
+- Context before and after the sentence
 
-Apply these humanization techniques to the flagged sections:
-- Vary sentence length and structure naturally
-- Include subtle human markers (light hedging like "I think", "perhaps", "it seems"; parenthetical asides)
-- Use contractions naturally where appropriate
-- Add small imperfections that suggest genuine human writing and revision
-- Maintain the exact original tone, style, and intent
-- Keep all factual content unchanged
+Your task is to rewrite ONLY the flagged sentence to make it more natural and human-like, while:
+- Keeping the same tone, meaning, and facts
+- Making it flow naturally with the surrounding context
+- Varying sentence length and structure
+- Including subtle human markers (light hedging, parenthetical asides)
+- Using contractions naturally where appropriate
+- Adding small imperfections that suggest genuine human writing
 
-Return the ENTIRE text with only the flagged sections refined. Do not modify any other parts of the text.`,
+Return a JSON array with this exact structure:
+{
+  "rewrites": [
+    {
+      "original": "the original flagged sentence",
+      "improved": "your rewritten version"
+    }
+  ]
+}
+
+Return ONLY valid JSON, no markdown formatting or extra text.`,
           },
           {
             role: 'user',
-            content: `Original text:
-${originalText}
-
-Flagged sections that need refinement (these scored high for AI detection):
-${flaggedSections.map((s, i) => `${i + 1}. "${s}"`).join('\n')}
-
-Please return the complete text with ONLY these flagged sections refined to be more human-like.`,
+            content: `Flagged sentences to refine:\n\n${flaggedWithContext.map((item, i) => 
+              `${i + 1}. Original: "${item.sentence}"\n   Score: ${item.score.toFixed(1)}%\n   Context before: "${item.before}"\n   Context after: "${item.after}"`
+            ).join('\n\n')}\n\nPlease return the JSON array with improved versions.`,
           }
         ],
       }),
@@ -136,7 +165,25 @@ Please return the complete text with ONLY these flagged sections refined to be m
     }
 
     const data = await response.json();
-    return data.choices?.[0]?.message?.content || originalText;
+    let responseText = data.choices?.[0]?.message?.content || '';
+    
+    // Clean up markdown code blocks if present
+    responseText = responseText.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
+    
+    const rewrites = JSON.parse(responseText);
+    
+    if (!rewrites.rewrites || !Array.isArray(rewrites.rewrites)) {
+      console.error('Invalid rewrite format');
+      return originalText;
+    }
+
+    // Replace each original sentence with its improved version
+    let refinedText = originalText;
+    rewrites.rewrites.forEach((rewrite: { original: string, improved: string }) => {
+      refinedText = refinedText.replace(rewrite.original, rewrite.improved);
+    });
+
+    return refinedText;
   } catch (error) {
     console.error('Refinement error:', error);
     return originalText;
@@ -352,28 +399,36 @@ ${text}`,
     if (avgScore > 8) {
       console.log('Score above 8%, refining flagged sections...');
       
-      // Collect flagged sections from both detectors
-      const flaggedSections: string[] = [];
+      // Collect flagged sections from both detectors with scores
+      const flaggedSectionsData: Array<{sentence: string, score: number}> = [];
       
       // Add high-scoring sentences from Sapling
       if (saplingResult?.sentenceScores) {
         saplingResult.sentenceScores.forEach((sent: any) => {
           if (sent.score > 0.8) { // High confidence AI-generated
-            flaggedSections.push(sent.sentence);
+            flaggedSectionsData.push({
+              sentence: sent.sentence,
+              score: sent.score * 100 // Convert to percentage
+            });
           }
         });
       }
       
-      // Add flagged sentences from ZeroGPT
+      // Add flagged sentences from ZeroGPT (estimate high score for flagged items)
       if (zeroGPTResult?.flaggedSentences) {
-        flaggedSections.push(...zeroGPTResult.flaggedSentences);
+        zeroGPTResult.flaggedSentences.forEach((sentence: string) => {
+          // Check if not already added from Sapling
+          if (!flaggedSectionsData.find(item => item.sentence === sentence)) {
+            flaggedSectionsData.push({
+              sentence,
+              score: 85 // Estimated high score for ZeroGPT flagged items
+            });
+          }
+        });
       }
-
-      // Remove duplicates
-      const uniqueFlagged = [...new Set(flaggedSections)];
       
-      if (uniqueFlagged.length > 0) {
-        finalText = await refineFlaggedSections(sanitizedText, uniqueFlagged, avgScore);
+      if (flaggedSectionsData.length > 0) {
+        finalText = await refineFlaggedSections(sanitizedText, flaggedSectionsData, avgScore);
         refinementApplied = true;
         console.log('Refinement complete. Running final detection check...');
 
