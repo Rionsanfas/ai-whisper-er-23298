@@ -375,7 +375,34 @@ ${text}`,
       if (uniqueFlagged.length > 0) {
         finalText = await refineFlaggedSections(sanitizedText, uniqueFlagged, avgScore);
         refinementApplied = true;
-        console.log('Refinement complete. Final score should be lower.');
+        console.log('Refinement complete. Running final detection check...');
+
+        // Run AI detection one more time on the refined text
+        const [finalSaplingResult, finalZeroGPTResult] = await Promise.all([
+          detectWithSapling(finalText),
+          detectWithZeroGPT(finalText),
+        ]);
+
+        // Calculate final average score
+        const finalScores = [];
+        if (finalSaplingResult) finalScores.push(finalSaplingResult.score);
+        if (finalZeroGPTResult) finalScores.push(finalZeroGPTResult.score);
+        
+        const finalAvgScore = finalScores.length > 0 
+          ? finalScores.reduce((a, b) => a + b, 0) / finalScores.length 
+          : 0;
+
+        console.log('Final detection results after refinement:', { 
+          sapling: finalSaplingResult?.score, 
+          zerogpt: finalZeroGPTResult?.score,
+          average: finalAvgScore.toFixed(2) + '%'
+        });
+
+        if (finalAvgScore > 8) {
+          console.log('WARNING: Final score still above 8% after refinement');
+        } else {
+          console.log('SUCCESS: Final score is now below 8%');
+        }
       }
     } else {
       console.log('Score below 8%, no refinement needed');
