@@ -11,14 +11,25 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-// Call Sapling AI Detector
-async function detectWithSapling(text: string) {
+// Normalized detector result structure
+interface NormalizedDetectorResult {
+  provider: 'sapling' | 'zerogpt';
+  overall: number; // 0-100
+  perSentence: Array<{ sentence: string; score: number | null }>;
+  flaggedSentences: string[];
+}
+
+// Call Sapling AI Detector and normalize
+async function detectWithSapling(text: string): Promise<NormalizedDetectorResult | null> {
   if (!SAPLING_API_KEY) {
     console.log('Sapling API key not configured, skipping Sapling detection');
     return null;
   }
 
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
     const response = await fetch('https://api.sapling.ai/api/v1/aidetect', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -27,7 +38,10 @@ async function detectWithSapling(text: string) {
         text,
         sent_scores: true,
       }),
+      signal: controller.signal,
     });
+
+    clearTimeout(timeoutId);
 
     if (!response.ok) {
       console.error('Sapling detection failed:', response.status);
@@ -35,11 +49,22 @@ async function detectWithSapling(text: string) {
     }
 
     const data = await response.json();
+    
+    // Normalize to 0-100
+    const overall = (data.score || 0) * 100;
+    const perSentence = (data.sentence_scores || []).map((sent: any) => ({
+      sentence: sent.sentence || '',
+      score: sent.score ? sent.score * 100 : null,
+    }));
+    const flaggedSentences = perSentence
+      .filter((s: any) => s.score && s.score > 80)
+      .map((s: any) => s.sentence);
+
     return {
-      score: data.score * 100, // Convert to percentage
-      sentenceScores: data.sentence_scores || [],
-      tokens: data.tokens || [],
-      tokenProbs: data.token_probs || [],
+      provider: 'sapling',
+      overall,
+      perSentence,
+      flaggedSentences,
     };
   } catch (error) {
     console.error('Sapling detection error:', error);
@@ -47,14 +72,17 @@ async function detectWithSapling(text: string) {
   }
 }
 
-// Call ZeroGPT AI Detector
-async function detectWithZeroGPT(text: string) {
+// Call ZeroGPT AI Detector and normalize
+async function detectWithZeroGPT(text: string): Promise<NormalizedDetectorResult | null> {
   if (!ZEROGPT_API_KEY) {
     console.log('ZeroGPT API key not configured, skipping ZeroGPT detection');
     return null;
   }
 
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
     const response = await fetch('https://api.zerogpt.com/api/v1/detectText', {
       method: 'POST',
       headers: {
@@ -64,7 +92,10 @@ async function detectWithZeroGPT(text: string) {
       body: JSON.stringify({
         input_text: text,
       }),
+      signal: controller.signal,
     });
+
+    clearTimeout(timeoutId);
 
     if (!response.ok) {
       console.error('ZeroGPT detection failed:', response.status);
@@ -72,10 +103,26 @@ async function detectWithZeroGPT(text: string) {
     }
 
     const data = await response.json();
+    
+    // Normalize: ZeroGPT returns is_gpt_generated as 0-100 or boolean
+    let overall = 0;
+    if (typeof data.data?.is_gpt_generated === 'boolean') {
+      overall = data.data.is_gpt_generated ? 100 : 0;
+    } else if (typeof data.data?.is_gpt_generated === 'number') {
+      overall = data.data.is_gpt_generated;
+    }
+
+    const flaggedSentences = data.data?.gpt_generated_sentences || [];
+    const perSentence = flaggedSentences.map((sentence: string) => ({
+      sentence,
+      score: 85, // Estimated high score for flagged items
+    }));
+
     return {
-      score: data.data?.is_gpt_generated || 0,
-      flaggedSentences: data.data?.gpt_generated_sentences || [],
-      wordsCount: data.data?.words_count || 0,
+      provider: 'zerogpt',
+      overall,
+      perSentence,
+      flaggedSentences,
     };
   } catch (error) {
     console.error('ZeroGPT detection error:', error);
@@ -83,17 +130,9 @@ async function detectWithZeroGPT(text: string) {
   }
 }
 
-// Extract context around a sentence
-function extractContext(text: string, sentence: string) {
-  const sentences = text.match(/[^.!?]+[.!?]+/g) || [];
-  const index = sentences.findIndex(s => s.trim().includes(sentence.trim()));
-  
-  if (index === -1) return { before: '', after: '' };
-  
-  return {
-    before: index > 0 ? sentences[index - 1].trim() : '',
-    after: index < sentences.length - 1 ? sentences[index + 1].trim() : ''
-  };
+// Split text into sentences reliably
+function splitIntoSentences(text: string): string[] {
+  return text.match(/[^.!?]+[.!?]*/g) || [];
 }
 
 // Base system prompt for all humanization passes
@@ -114,72 +153,121 @@ Behavioral constraints:
 - Never invent facts or add new claims. If clarification is needed, note it in logs (not in output).
 - Keep length roughly 0.8×–1.2× of input. Very short inputs -> minimal edits only.`;
 
-// Normalize detector scores to 0-100 scale
-function normalizeDetectorScores(saplingResult: any, zeroGPTResult: any): { avgScore: number, flaggedSections: Array<{sentence: string, score: number, index: number}> } {
-  const scores = [];
-  const flaggedSections: Array<{sentence: string, score: number, index: number}> = [];
-  
-  // Sapling returns score as 0-1, convert to 0-100
-  if (saplingResult?.score !== undefined) {
-    scores.push(saplingResult.score * 100);
-    
-    // Extract flagged sentences from Sapling
-    if (saplingResult.sentenceScores) {
-      saplingResult.sentenceScores.forEach((sent: any, idx: number) => {
-        if (sent.score > 0.8) { // High confidence AI-generated
-          flaggedSections.push({
-            sentence: sent.sentence,
-            score: sent.score * 100,
-            index: idx
-          });
-        }
-      });
-    }
-  }
-  
-  // ZeroGPT returns score as 0-100
-  if (zeroGPTResult?.score !== undefined) {
-    scores.push(zeroGPTResult.score);
-    
-    // Extract flagged sentences from ZeroGPT
-    if (zeroGPTResult.flaggedSentences) {
-      zeroGPTResult.flaggedSentences.forEach((sentence: string, idx: number) => {
-        // Check if not already added from Sapling
-        if (!flaggedSections.find(item => item.sentence === sentence)) {
-          flaggedSections.push({
-            sentence,
-            score: 85, // Estimated high score for ZeroGPT flagged items
-            index: idx
-          });
-        }
-      });
-    }
-  }
-  
-  const avgScore = scores.length > 0 
-    ? scores.reduce((a, b) => a + b, 0) / scores.length 
-    : 0;
-  
-  return { avgScore, flaggedSections };
+// Refinement instruction (prepended to base prompt for second humanizer call)
+const REFINEMENT_INSTRUCTION = `REFINEMENT INSTRUCTION:
+You will receive a structured list of flagged sentences (flaggedSections) with contextBefore/contextAfter and a detection score. Your task: rewrite ONLY each flagged sentence to be more natural and human-like while keeping meaning, tone and facts unchanged and making it flow with the given context. Return a strict JSON object only (no markdown, no commentary) with this exact shape:
+{ "rewrites": [ { "original": "...", "improved": "..." }, ... ] }
+Do not output anything else. Do NOT include detector scores in the response.
+
+`;
+
+const DEBUG_MODE = Deno.env.get('DEBUG') === 'true';
+
+// FlaggedSection structure
+interface FlaggedSection {
+  sentence: string;
+  score: number; // 0-100
+  index: number;
+  contextBefore: string;
+  contextAfter: string;
 }
 
-// Refine flagged sections using AI with context
-async function refineFlaggedSections(originalText: string, flaggedSectionsData: Array<{sentence: string, score: number, index: number}>, avgScore: number) {
-  if (!OPENAI_API_KEY || flaggedSectionsData.length === 0) {
+// Build flaggedSections from normalized detector results
+function buildFlaggedSections(
+  text: string,
+  saplingResult: NormalizedDetectorResult | null,
+  zeroGPTResult: NormalizedDetectorResult | null
+): FlaggedSection[] {
+  const sentences = splitIntoSentences(text);
+  const flaggedMap = new Map<number, FlaggedSection>();
+
+  // Helper to find sentence index
+  const findSentenceIndex = (sentence: string): number => {
+    return sentences.findIndex(s => 
+      s.trim().includes(sentence.trim()) || sentence.trim().includes(s.trim())
+    );
+  };
+
+  // Process Sapling flagged sentences
+  if (saplingResult) {
+    saplingResult.flaggedSentences.forEach(sentence => {
+      if (sentence.length > 600) return; // Skip overly long sentences
+      
+      const index = findSentenceIndex(sentence);
+      if (index === -1) return;
+
+      const scoreFromSapling = saplingResult.perSentence.find(ps => ps.sentence === sentence)?.score || 85;
+      
+      flaggedMap.set(index, {
+        sentence,
+        score: scoreFromSapling,
+        index,
+        contextBefore: index > 0 ? sentences[index - 1].trim() : '',
+        contextAfter: index < sentences.length - 1 ? sentences[index + 1].trim() : '',
+      });
+    });
+  }
+
+  // Process ZeroGPT flagged sentences
+  if (zeroGPTResult) {
+    zeroGPTResult.flaggedSentences.forEach(sentence => {
+      if (sentence.length > 600) return;
+      
+      const index = findSentenceIndex(sentence);
+      if (index === -1) return;
+
+      const existing = flaggedMap.get(index);
+      const scoreFromZeroGPT = zeroGPTResult.perSentence.find(ps => ps.sentence === sentence)?.score || 85;
+      
+      if (existing) {
+        // Merge: take higher score
+        existing.score = Math.max(existing.score, scoreFromZeroGPT);
+      } else {
+        flaggedMap.set(index, {
+          sentence,
+          score: scoreFromZeroGPT,
+          index,
+          contextBefore: index > 0 ? sentences[index - 1].trim() : '',
+          contextAfter: index < sentences.length - 1 ? sentences[index + 1].trim() : '',
+        });
+      }
+    });
+  }
+
+  // Return top 6 by score
+  return Array.from(flaggedMap.values())
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 6);
+}
+
+// Compute average score from normalized results
+function computeAvgScore(
+  saplingResult: NormalizedDetectorResult | null,
+  zeroGPTResult: NormalizedDetectorResult | null
+): number {
+  const scores: number[] = [];
+  if (saplingResult) scores.push(saplingResult.overall);
+  if (zeroGPTResult) scores.push(zeroGPTResult.overall);
+  return scores.length > 0 ? scores.reduce((a, b) => a + b, 0) / scores.length : 0;
+}
+
+// Refine flagged sections using AI with index-based replacement
+async function refineFlaggedSections(
+  originalText: string,
+  flaggedSections: FlaggedSection[],
+  avgScore: number
+): Promise<string> {
+  if (!OPENAI_API_KEY || flaggedSections.length === 0) {
     return originalText;
   }
 
-  console.log(`Refining flagged sections. AI score: ${avgScore.toFixed(2)}%, Flagged sections: ${flaggedSectionsData.length}`);
-
-  // Extract context for each flagged sentence
-  const flaggedWithContext = flaggedSectionsData.map(item => ({
-    sentence: item.sentence,
-    score: item.score,
-    index: item.index,
-    ...extractContext(originalText, item.sentence)
-  }));
+  console.log(`Refining ${flaggedSections.length} flagged sections. Avg AI score: ${avgScore.toFixed(2)}%`);
+  console.log('Top 3 flagged:', flaggedSections.slice(0, 3).map(f => f.sentence.substring(0, 100)));
 
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -191,31 +279,20 @@ async function refineFlaggedSections(originalText: string, flaggedSectionsData: 
         messages: [
           {
             role: 'system',
-            content: `${BASE_SYSTEM_PROMPT}
-
-REFINEMENT TASK: You are given several sentences that have been flagged as AI-generated (average score: ${avgScore.toFixed(2)}%). For each one, rewrite it to sound more natural and human-like, while keeping the same tone, meaning, and context. Use the contextBefore and contextAfter values to make the rewriting flow naturally with the rest of the text.
-
-Return a JSON array with this exact structure:
-{
-  "rewrites": [
-    {
-      "original": "the original flagged sentence",
-      "improved": "your rewritten version"
-    }
-  ]
-}
-
-Return ONLY valid JSON, no markdown formatting or extra text.`,
+            content: REFINEMENT_INSTRUCTION + BASE_SYSTEM_PROMPT,
           },
           {
             role: 'user',
-            content: `Flagged sentences to refine:\n\n${flaggedWithContext.map((item, i) => 
-              `${i + 1}. Original: "${item.sentence}"\n   Score: ${item.score.toFixed(1)}%\n   Context before: "${item.before}"\n   Context after: "${item.after}"`
-            ).join('\n\n')}\n\nPlease return the JSON array with improved versions.`,
+            content: `Flagged sentences to refine (avg score: ${avgScore.toFixed(1)}%):\n\n${flaggedSections.map((item, i) => 
+              `${i + 1}. Original: "${item.sentence}"\n   Score: ${item.score.toFixed(1)}%\n   Context before: "${item.contextBefore}"\n   Context after: "${item.contextAfter}"`
+            ).join('\n\n')}\n\nReturn the JSON object with rewrites.`,
           }
         ],
       }),
+      signal: controller.signal,
     });
+
+    clearTimeout(timeoutId);
 
     if (!response.ok) {
       console.error('Refinement failed:', response.status);
@@ -228,25 +305,38 @@ Return ONLY valid JSON, no markdown formatting or extra text.`,
     // Clean up markdown code blocks if present
     responseText = responseText.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
     
-    const rewrites = JSON.parse(responseText);
+    let rewrites;
+    try {
+      rewrites = JSON.parse(responseText);
+    } catch (parseError) {
+      console.error('JSON parse failed. Raw response (truncated):', responseText.substring(0, 1000));
+      return originalText;
+    }
     
     if (!rewrites.rewrites || !Array.isArray(rewrites.rewrites)) {
       console.error('Invalid rewrite format');
       return originalText;
     }
 
-    // Split text into sentences for precise replacement
-    const sentences = originalText.match(/[^.!?]+[.!?]+/g) || [];
+    // Index-based replacement
+    const sentences = splitIntoSentences(originalText);
     
-    // Replace each original sentence with its improved version using index
-    rewrites.rewrites.forEach((rewrite: { original: string, improved: string }) => {
-      const matchingIdx = sentences.findIndex(s => s.trim().includes(rewrite.original.trim()));
-      if (matchingIdx !== -1) {
-        sentences[matchingIdx] = sentences[matchingIdx].replace(rewrite.original, rewrite.improved);
+    rewrites.rewrites.forEach((rewrite: { original: string; improved: string }) => {
+      // Try to find by index from flaggedSections
+      const flagged = flaggedSections.find(f => f.sentence.trim() === rewrite.original.trim());
+      if (flagged && flagged.index >= 0 && flagged.index < sentences.length) {
+        // Replace by index
+        sentences[flagged.index] = sentences[flagged.index].replace(rewrite.original, rewrite.improved);
+      } else {
+        // Fallback: replace first occurrence in whole text (last resort)
+        const idx = sentences.findIndex(s => s.includes(rewrite.original));
+        if (idx !== -1) {
+          sentences[idx] = sentences[idx].replace(rewrite.original, rewrite.improved);
+        }
       }
     });
 
-    return sentences.join(' ');
+    return sentences.join(' ').replace(/\s+/g, ' ').trim();
   } catch (error) {
     console.error('Refinement error:', error);
     return originalText;
@@ -382,16 +472,19 @@ ${text}`,
     ]);
 
     console.log('Detection results:', { 
-      sapling: saplingResult?.score, 
-      zerogpt: zeroGPTResult?.score 
+      sapling: saplingResult?.overall, 
+      zerogpt: zeroGPTResult?.overall 
     });
 
-    // Normalize detector outputs to consistent 0-100 scale
-    const { avgScore, flaggedSections } = normalizeDetectorScores(saplingResult, zeroGPTResult);
+    // Compute average score and build flagged sections
+    const avgScore = computeAvgScore(saplingResult, zeroGPTResult);
+    const flaggedSections = buildFlaggedSections(sanitizedText, saplingResult, zeroGPTResult);
 
     console.log('Normalized average AI detection score:', avgScore.toFixed(2) + '%');
 
     let finalText = sanitizedText;
+    let refinementApplied = false;
+    let finalAvgScore = avgScore;
 
     // If avgScore <= 8%, stop and return first-pass text
     if (avgScore <= 8) {
@@ -401,12 +494,8 @@ ${text}`,
       console.log('Score above 8%, refining flagged sections...');
       
       if (flaggedSections.length > 0) {
-        // Limit to top N flagged sections to avoid overwhelming the refinement
-        const topFlagged = flaggedSections
-          .sort((a, b) => b.score - a.score)
-          .slice(0, 10);
-
-        finalText = await refineFlaggedSections(sanitizedText, topFlagged, avgScore);
+        finalText = await refineFlaggedSections(sanitizedText, flaggedSections, avgScore);
+        refinementApplied = true;
         console.log('Refinement complete. Running final detection check...');
 
         // Run detectors one final time on finalText
@@ -415,26 +504,37 @@ ${text}`,
           detectWithZeroGPT(finalText),
         ]);
 
-        const { avgScore: finalAvgScore } = normalizeDetectorScores(finalSaplingResult, finalZeroGPTResult);
+        finalAvgScore = computeAvgScore(finalSaplingResult, finalZeroGPTResult);
 
         console.log('Final detection results after refinement:', { 
-          sapling: finalSaplingResult?.score, 
-          zerogpt: finalZeroGPTResult?.score,
+          sapling: finalSaplingResult?.overall, 
+          zerogpt: finalZeroGPTResult?.overall,
           average: finalAvgScore.toFixed(2) + '%'
         });
 
         if (finalAvgScore > 8) {
-          console.log('WARNING: Final score still above 8% after refinement');
+          console.log(`WARNING: Final score still above 8% after refinement (${finalAvgScore.toFixed(2)}%)`);
         } else {
           console.log('SUCCESS: Final score is now below 8%');
         }
       }
     }
 
+    const responseData: any = {
+      humanizedText: finalText
+    };
+
+    // Add debug info if DEBUG mode is enabled
+    if (DEBUG_MODE) {
+      responseData.debug = {
+        finalAvgScore,
+        refinementApplied,
+        flaggedCount: flaggedSections.length,
+      };
+    }
+
     return new Response(
-      JSON.stringify({ 
-        humanizedText: finalText
-      }),
+      JSON.stringify(responseData),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   } catch (error) {
