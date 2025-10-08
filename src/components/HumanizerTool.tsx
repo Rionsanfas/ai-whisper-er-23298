@@ -71,10 +71,13 @@ const HumanizerTool = () => {
         ? examples.map(ex => ex.content).join('\n\n---\n\n')
         : '';
 
+      // For testing: using "pro" plan to enable detectors
+      // In production, this would come from user's actual subscription
       const { data, error } = await supabase.functions.invoke('humanize-text', {
         body: { 
           text: inputText,
-          examples: examplesText
+          examples: examplesText,
+          userPlan: "pro" // Change to "basic" to test without detectors
         }
       });
 

@@ -1,10 +1,18 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY');
+const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY') || Deno.env.get('OPEN_AI_API_KEY');
 const HUMANIZER_MODEL = Deno.env.get('HUMANIZER_MODEL') || 'gpt-4o-mini';
 const SAPLING_API_KEY = Deno.env.get('SAPLING_API_KEY');
 const ZEROGPT_API_KEY = Deno.env.get('ZEROGPT_API_KEY');
+
+// Plan-based feature gating
+const PLAN_FEATURES = {
+  basic: { humanizer: true, detectors: false },
+  pro: { humanizer: true, detectors: true },
+  premium: { humanizer: true, detectors: true },
+  ultimate: { humanizer: true, detectors: true },
+};
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -352,7 +360,8 @@ serve(async (req) => {
   try {
     const { 
       text,
-      examples = ""
+      examples = "",
+      userPlan = "basic" // Default to basic plan if not provided
     } = await req.json();
 
     console.log('Received request to humanize text');
@@ -463,13 +472,24 @@ ${text}`,
       console.log('Length guard: output much longer than input', { inputLen: text.length, outLen: sanitizedText.length });
     }
 
-    console.log('First pass complete, running AI detection...');
+    console.log('First pass complete, checking plan for detection...');
 
-    // Run AI detectors in parallel on first-pass humanized text
-    const [saplingResult, zeroGPTResult] = await Promise.all([
-      detectWithSapling(sanitizedText),
-      detectWithZeroGPT(sanitizedText),
-    ]);
+    // Check if user's plan includes detectors
+    let saplingResult = null;
+    let zeroGPTResult = null;
+    
+    const planFeatures = PLAN_FEATURES[userPlan as keyof typeof PLAN_FEATURES] || PLAN_FEATURES.basic;
+    
+    if (!planFeatures.detectors) {
+      console.log(`User plan (${userPlan}) does not include detectors. Skipping detection phase.`);
+    } else {
+      console.log(`User plan (${userPlan}) includes detectors. Running AI detection...`);
+      // Run AI detectors in parallel on first-pass humanized text
+      [saplingResult, zeroGPTResult] = await Promise.all([
+        detectWithSapling(sanitizedText),
+        detectWithZeroGPT(sanitizedText),
+      ]);
+    }
 
     console.log('Detection results:', { 
       sapling: saplingResult?.overall, 
