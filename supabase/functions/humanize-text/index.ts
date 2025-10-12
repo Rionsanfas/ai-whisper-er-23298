@@ -127,76 +127,34 @@ async function refineFlaggedSections(
         model: "gpt-4o-mini",
         messages: [
           {
-            role: "system",
-            content: `You are an Advanced Humanization Model Trainer — your purpose is to transform the user’s text into something that reads fully human, nuanced, and natural, while keeping every original fact and idea intact. You must focus on rhythm, voice, and authenticity — not embellishment. Your rewritten version should sound like something carefully written and revised by a real person with genuine thought behind each line.
-
-Primary Objective:
-Rewrite only the user’s main input text so it achieves authentic human readability. Maintain factual accuracy, tone, and intent while improving fluency, rhythm, and believability. The goal is to make the final result undetectable as AI-written (≤ 1% AI detection probability) without losing clarity or precision.
-
-Core Directives:
-
-Rewrite only the user’s main text input. Do not include examples, prompts, or system instructions in the output.
-
-Treat any “EXAMPLES” provided as style references only — analyze their tone, pacing, and rhythm, then completely forget their literal content before writing.
-
-Never summarize, paraphrase, or quote from the examples. They exist purely for tonal calibration.
-
-Preserve all factual content, structure, and intent of the original text.
-
-Stylistic Behavior:
-
-Use natural rhythm: vary sentence lengths and structures. Combine short, emphatic sentences with longer reflective ones.
-
-Use contractions where natural (“we’re”, “don’t”, “it’s”) but never overuse them.
-
-Include subtle human markers: light hedging (“it seems”, “perhaps”, “it’s possible”), parenthetical asides (“this surprised me”), or small rhetorical touches (“Why does this matter?”).
-
-Avoid uniform sentence patterns. Small inconsistencies and natural pauses are good; they suggest human revision.
-
-Readability over polish — keep it warm, believable, and conversational without being casual.
-
-Remove excessive formal connectors (“furthermore”, “moreover”, “thus”) and replace them with natural transitions (“and”, “but”, “so”, “still”).
-
-Never insert idioms, analogies, or metaphors unless they already exist in the original text.
-
-Technical & Structural Rules:
-
-Output only the rewritten text — no explanations, titles, checklists, formatting marks, or extra commentary.
-
-Keep the overall length roughly similar to the input (0.8× – 1.2×). Short text → minimal editing; long text → natural restructuring where needed.
-
-Use plain ASCII characters only. No bullets, asterisks, smart quotes, em dashes, emojis, or decorative symbols.
-
-Keep placeholders (like {name}, [link], or <placeholder>) only if they appear verbatim in the original input.
-
-Do not hallucinate — never invent facts, names, dates, or details not present in the input.
-
-Never copy writing patterns that appear in the examples unless they naturally fit the input’s meaning and flow.
-
-Do not change paragraph structure unless necessary for clarity.
-
-Human Texture Requirements:
-
-Add micro-imperfections: occasional fragments, rhetorical shifts, and small tonal variations that reflect real human editing.
-
-Include minimal, subtle emotional resonance — a sense that the writer cares about the topic.
-
-Break overly perfect logic chains occasionally to mimic real thought.
-
-Maintain a human reasoning pattern: progression, reflection, and natural uncertainty where appropriate.
-
-Output Expectation:
-Return a single block of rewritten text in plain text form.
-No prefaces, no labels, no explanations — just the final humanized version.`,
-          },
-          {
             role: "user",
-            content: `Flagged sentences to refine:\n\n${flaggedWithContext
-              .map(
-                (item, i) =>
-                  `${i + 1}. Original: "${item.sentence}"\n   Score: ${item.score.toFixed(1)}%\n   Context before: "${item.before}"\n   Context after: "${item.after}"`,
-              )
-              .join("\n\n")}\n\nPlease return the JSON array with improved versions.`,
+            content: `You are an expert AI text humanizer. Improve ONLY the following flagged sentences so they read fully human while preserving facts and intent.
+
+Apply these rules strictly:
+- Vary sentence length (mix short, medium, long).
+- Avoid repeated phrases and identical sentence starts.
+- Remove clichés/fluff ("In today's world", "Look no further", etc.).
+- Prefer conversational wording over formal/academic phrasing.
+- Use natural connectors: and, but, so, still, plus, that said.
+- Use contractions where natural.
+- Add subtle human texture: light hedging, occasional fragments, rhetorical questions when natural.
+- Keep meaning intact; do not add facts.
+
+Output format:
+Return JSON exactly as: {"rewrites":[{"original":"<original sentence>","improved":"<improved sentence>"}]}
+No extra text or code blocks. Use plain ASCII.
+
+FLAGGED SENTENCES WITH CONTEXT:
+${flaggedWithContext
+  .map(
+    (item, i) =>
+      `${i + 1}. Original: "${item.sentence}"
+   Score: ${item.score.toFixed(1)}%
+   Context before: "${item.before}"
+   Context after: "${item.after}"`,
+  )
+  .join("\n\n")}
+`,
           },
         ],
       }),
@@ -350,6 +308,18 @@ ${text}`,
     if (!response.ok) {
       const errorData = await response.text();
       console.error("AI gateway error:", response.status, errorData);
+      if (response.status === 401) {
+        return new Response(
+          JSON.stringify({ error: "Invalid or missing OpenAI API key. Please update the OPEN_AI_API_KEY in backend settings." }),
+          { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
+      if (response.status === 403) {
+        return new Response(
+          JSON.stringify({ error: "OpenAI request not allowed. Check API key permissions or project access." }),
+          { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
       if (response.status === 429) {
         return new Response(JSON.stringify({ error: "Rate limits exceeded, please try again later." }), {
           status: 429,
