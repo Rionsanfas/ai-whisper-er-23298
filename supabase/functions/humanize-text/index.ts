@@ -2,6 +2,7 @@ import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const OPEN_AI_API_KEY = Deno.env.get("OPEN_AI_API_KEY");
+const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
 const SAPLING_API_KEY = Deno.env.get("SAPLING_API_KEY");
 const ZEROGPT_API_KEY = Deno.env.get("ZEROGPT_API_KEY");
 
@@ -117,7 +118,25 @@ async function refineFlaggedSections(
   }));
 
   try {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    // Prepare messages once so we can reuse for fallback
+    const refineMessages = [
+      {
+        role: "system",
+        content: `You are refining specific sentences that were flagged by AI detectors (average score: ${avgScore.toFixed(2)}%).\n\nFor each flagged sentence, you will receive:\n- The sentence itself\n- The AI detection score\n- Context before and after the sentence\n\nYour task is to rewrite ONLY the flagged sentence to make it more natural and human-like, while:\n- Keeping the same tone, meaning, and facts\n- Making it flow naturally with the surrounding context\n- Varying sentence length and structure\n- Including subtle human markers (light hedging, parenthetical asides)\n- Using contractions naturally where appropriate\n- Adding small imperfections that suggest genuine human writing\n\nReturn a JSON array with this exact structure:\n{\n  "rewrites": [\n    {\n      "original": "the original flagged sentence",\n      "improved": "your rewritten version"\n    }\n  ]\n}\n\nReturn ONLY valid JSON, no markdown formatting or extra text.`,
+      },
+      {
+        role: "user",
+        content: `Flagged sentences to refine:\n\n${flaggedWithContext
+          .map(
+            (item, i) =>
+              `${i + 1}. Original: "${item.sentence}"\n   Score: ${item.score.toFixed(1)}%\n   Context before: "${item.before}"\n   Context after: "${item.after}"`,
+          )
+          .join("\n\n")}\n\nPlease return the JSON array with improved versions.`,
+      },
+    ];
+
+    // Try OpenAI first
+    let response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${OPEN_AI_API_KEY}`,
@@ -125,48 +144,25 @@ async function refineFlaggedSections(
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
-        messages: [
-          {
-            role: "system",
-            content: `You are refining specific sentences that were flagged by AI detectors (average score: ${avgScore.toFixed(2)}%).
-
-For each flagged sentence, you will receive:
-- The sentence itself
-- The AI detection score
-- Context before and after the sentence
-
-Your task is to rewrite ONLY the flagged sentence to make it more natural and human-like, while:
-- Keeping the same tone, meaning, and facts
-- Making it flow naturally with the surrounding context
-- Varying sentence length and structure
-- Including subtle human markers (light hedging, parenthetical asides)
-- Using contractions naturally where appropriate
-- Adding small imperfections that suggest genuine human writing
-
-Return a JSON array with this exact structure:
-{
-  "rewrites": [
-    {
-      "original": "the original flagged sentence",
-      "improved": "your rewritten version"
-    }
-  ]
-}
-
-Return ONLY valid JSON, no markdown formatting or extra text.`,
-          },
-          {
-            role: "user",
-            content: `Flagged sentences to refine:\n\n${flaggedWithContext
-              .map(
-                (item, i) =>
-                  `${i + 1}. Original: "${item.sentence}"\n   Score: ${item.score.toFixed(1)}%\n   Context before: "${item.before}"\n   Context after: "${item.after}"`,
-              )
-              .join("\n\n")}\n\nPlease return the JSON array with improved versions.`,
-          },
-        ],
+        messages: refineMessages,
       }),
     });
+
+    // Fallback to Lovable AI Gateway using OpenAI model if OpenAI key invalid
+    if (!response.ok && response.status === 401 && LOVABLE_API_KEY) {
+      console.log("OpenAI 401 in refine. Falling back to Lovable AI Gateway with openai/gpt-5-mini");
+      response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${LOVABLE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "openai/gpt-5-mini",
+          messages: refineMessages,
+        }),
+      });
+    }
 
     if (!response.ok) {
       console.error("Refinement failed:", response.status);
@@ -231,7 +227,8 @@ serve(async (req) => {
 
     console.log("Calling OpenAI API to humanize text...");
 
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    // Try OpenAI first
+    let response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${OPEN_AI_API_KEY}`,
@@ -306,19 +303,39 @@ No prefaces, no labels, no explanations — just the final humanized version.`,
           {
             role: "user",
             content: examples
-              ? `EXAMPLES (for pattern analysis only - do NOT copy or reference):
-${examples}
-
----
-
-TEXT TO HUMANIZE (rewrite this and ONLY this):
-${text}`
-              : `TEXT TO HUMANIZE:
-${text}`,
+              ? `EXAMPLES (for pattern analysis only - do NOT copy or reference):\n${examples}\n\n---\n\nTEXT TO HUMANIZE (rewrite this and ONLY this):\n${text}`
+              : `TEXT TO HUMANIZE:\n${text}`,
           },
         ],
       }),
     });
+
+    // Fallback to Lovable AI Gateway using OpenAI model if OpenAI key invalid
+    if (!response.ok && response.status === 401 && LOVABLE_API_KEY) {
+      console.log("OpenAI 401. Falling back to Lovable AI Gateway with openai/gpt-5-mini");
+      response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${LOVABLE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "openai/gpt-5-mini",
+          messages: [
+            {
+              role: "system",
+              content: `You are an Advanced Humanization Model Trainer — your purpose is to transform the user’s text into something that reads fully human, nuanced, and natural, while keeping every original fact and idea intact. You must focus on rhythm, voice, and authenticity — not embellishment. Your rewritten version should sound like something carefully written and revised by a real person with genuine thought behind each line.`,
+            },
+            {
+              role: "user",
+              content: examples
+                ? `EXAMPLES (for pattern analysis only - do NOT copy or reference):\n${examples}\n\n---\n\nTEXT TO HUMANIZE (rewrite this and ONLY this):\n${text}`
+                : `TEXT TO HUMANIZE:\n${text}`,
+            },
+          ],
+        }),
+      });
+    }
 
     if (!response.ok) {
       const errorData = await response.text();
