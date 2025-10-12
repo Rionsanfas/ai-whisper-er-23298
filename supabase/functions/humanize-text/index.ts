@@ -1,7 +1,7 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
+const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY');
 const SAPLING_API_KEY = Deno.env.get('SAPLING_API_KEY');
 const ZEROGPT_API_KEY = Deno.env.get('ZEROGPT_API_KEY');
 
@@ -97,7 +97,7 @@ function extractContext(text: string, sentence: string) {
 
 // Refine flagged sections using AI with context
 async function refineFlaggedSections(originalText: string, flaggedSectionsData: Array<{sentence: string, score: number}>, avgScore: number) {
-  if (!LOVABLE_API_KEY || flaggedSectionsData.length === 0) {
+  if (!OPENAI_API_KEY || flaggedSectionsData.length === 0) {
     return originalText;
   }
 
@@ -111,14 +111,14 @@ async function refineFlaggedSections(originalText: string, flaggedSectionsData: 
   }));
 
   try {
-    const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
+        'Authorization': `Bearer ${OPENAI_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.5-flash',
+        model: 'gpt-4o-mini',
         messages: [
           {
             role: 'system',
@@ -212,24 +212,24 @@ serve(async (req) => {
       );
     }
 
-    if (!LOVABLE_API_KEY) {
-      console.error('LOVABLE_API_KEY not configured');
+    if (!OPENAI_API_KEY) {
+      console.error('OPENAI_API_KEY not configured');
       return new Response(
         JSON.stringify({ error: 'AI is not configured. Please contact the site owner.' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    console.log('Calling Lovable AI Gateway to humanize text...');
+    console.log('Calling OpenAI API to humanize text...');
 
-    const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
+        'Authorization': `Bearer ${OPENAI_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.5-flash',
+        model: 'gpt-4o-mini',
         messages: [
           {
             role: 'system',
