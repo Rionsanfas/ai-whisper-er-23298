@@ -1,9 +1,9 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const OPEN_AI_API_KEY = Deno.env.get("OPEN_AI_API_KEY");
-const SAPLING_API_KEY = Deno.env.get("SAPLING_API_KEY");
-const ZEROGPT_API_KEY = Deno.env.get("ZEROGPT_API_KEY");
+const getOpenAIKey = () => Deno.env.get("OPEN_AI_API_KEY");
+const getSaplingKey = () => Deno.env.get("SAPLING_API_KEY");
+const getZeroGPTKey = () => Deno.env.get("ZEROGPT_API_KEY");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -12,6 +12,7 @@ const corsHeaders = {
 
 // Call Sapling AI Detector
 async function detectWithSapling(text: string) {
+  const SAPLING_API_KEY = getSaplingKey();
   if (!SAPLING_API_KEY) {
     console.log("Sapling API key not configured, skipping Sapling detection");
     return null;
@@ -44,6 +45,7 @@ async function detectWithSapling(text: string) {
 
 // Call ZeroGPT AI Detector
 async function detectWithZeroGPT(text: string) {
+  const ZEROGPT_API_KEY = getZeroGPTKey();
   if (!ZEROGPT_API_KEY) {
     console.log("ZeroGPT API key not configured, skipping ZeroGPT detection");
     return null;
@@ -93,6 +95,7 @@ async function refineFlaggedSections(
   flaggedSectionsData: Array<{ sentence: string; score: number }>,
   avgScore: number,
 ) {
+  const OPEN_AI_API_KEY = getOpenAIKey();
   if (!OPEN_AI_API_KEY || flaggedSectionsData.length === 0) return originalText;
 
   console.log(
@@ -242,6 +245,7 @@ serve(async (req) => {
       });
     }
 
+    const OPEN_AI_API_KEY = getOpenAIKey();
     if (!OPEN_AI_API_KEY) {
       console.error("OPEN_AI_API_KEY not configured");
       return new Response(
