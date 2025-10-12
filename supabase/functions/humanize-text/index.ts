@@ -2,7 +2,6 @@ import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const OPEN_AI_API_KEY = Deno.env.get("OPEN_AI_API_KEY");
-const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
 const SAPLING_API_KEY = Deno.env.get("SAPLING_API_KEY");
 const ZEROGPT_API_KEY = Deno.env.get("ZEROGPT_API_KEY");
 
@@ -22,11 +21,7 @@ async function detectWithSapling(text: string) {
     const response = await fetch("https://api.sapling.ai/api/v1/aidetect", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        key: SAPLING_API_KEY,
-        text,
-        sent_scores: true,
-      }),
+      body: JSON.stringify({ key: SAPLING_API_KEY, text, sent_scores: true }),
     });
 
     if (!response.ok) {
@@ -36,7 +31,7 @@ async function detectWithSapling(text: string) {
 
     const data = await response.json();
     return {
-      score: data.score * 100, // Convert to percentage
+      score: data.score * 100, // percentage
       sentenceScores: data.sentence_scores || [],
       tokens: data.tokens || [],
       tokenProbs: data.token_probs || [],
@@ -61,9 +56,7 @@ async function detectWithZeroGPT(text: string) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${ZEROGPT_API_KEY}`,
       },
-      body: JSON.stringify({
-        input_text: text,
-      }),
+      body: JSON.stringify({ input_text: text }),
     });
 
     if (!response.ok) {
@@ -87,9 +80,7 @@ async function detectWithZeroGPT(text: string) {
 function extractContext(text: string, sentence: string) {
   const sentences = text.match(/[^.!?]+[.!?]+/g) || [];
   const index = sentences.findIndex((s) => s.trim().includes(sentence.trim()));
-
   if (index === -1) return { before: "", after: "" };
-
   return {
     before: index > 0 ? sentences[index - 1].trim() : "",
     after: index < sentences.length - 1 ? sentences[index + 1].trim() : "",
@@ -102,15 +93,12 @@ async function refineFlaggedSections(
   flaggedSectionsData: Array<{ sentence: string; score: number }>,
   avgScore: number,
 ) {
-  if (!OPEN_AI_API_KEY || flaggedSectionsData.length === 0) {
-    return originalText;
-  }
+  if (!OPEN_AI_API_KEY || flaggedSectionsData.length === 0) return originalText;
 
   console.log(
     `Refining flagged sections. AI score: ${avgScore.toFixed(2)}%, Flagged sections: ${flaggedSectionsData.length}`,
   );
 
-  // Extract context for each flagged sentence
   const flaggedWithContext = flaggedSectionsData.map((item) => ({
     sentence: item.sentence,
     score: item.score,
@@ -118,11 +106,13 @@ async function refineFlaggedSections(
   }));
 
   try {
-    // Prepare messages once so we can reuse for fallback
     const refineMessages = [
       {
         role: "system",
-        content: `You are refining specific sentences that were flagged by AI detectors (average score: ${avgScore.toFixed(2)}%).\n\nFor each flagged sentence, you will receive:\n- The sentence itself\n- The AI detection score\n- Context before and after the sentence\n\nYour task is to rewrite ONLY the flagged sentence to make it more natural and human-like, while:\n- Keeping the same tone, meaning, and facts\n- Making it flow naturally with the surrounding context\n- Varying sentence length and structure\n- Including subtle human markers (light hedging, parenthetical asides)\n- Using contractions naturally where appropriate\n- Adding small imperfections that suggest genuine human writing\n\nReturn a JSON array with this exact structure:\n{\n  "rewrites": [\n    {\n      "original": "the original flagged sentence",\n      "improved": "your rewritten version"\n    }\n  ]\n}\n\nReturn ONLY valid JSON, no markdown formatting or extra text.`,
+        content:
+          `You are refining specific sentences that were flagged by AI detectors (average score: ${avgScore.toFixed(
+            2,
+          )}%).\n\nFor each flagged sentence, you will receive:\n- The sentence itself\n- The AI detection score\n- Context before and after the sentence\n\nYour task is to rewrite ONLY the flagged sentence to make it more natural and human-like, while:\n- Keeping the same tone, meaning, and facts\n- Making it flow naturally with the surrounding context\n- Varying sentence length and structure\n- Including subtle human markers (light hedging, parenthetical asides)\n- Using contractions naturally where appropriate\n- Adding small imperfections that suggest genuine human writing\n\nReturn a JSON array with this exact structure:\n{\n  "rewrites": [\n    {\n      "original": "the original flagged sentence",\n      "improved": "your rewritten version"\n    }\n  ]\n}\n\nReturn ONLY valid JSON, no markdown formatting or extra text.`,
       },
       {
         role: "user",
@@ -135,62 +125,36 @@ async function refineFlaggedSections(
       },
     ];
 
-    // Try OpenAI first
     let response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${OPEN_AI_API_KEY}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: refineMessages,
-      }),
+      body: JSON.stringify({ model: "gpt-4o-mini", messages: refineMessages }),
     });
 
-    // Fallback to Lovable AI Gateway using OpenAI model if OpenAI key invalid
-    if (!response.ok && response.status === 401 && LOVABLE_API_KEY) {
-      console.log("OpenAI 401 in refine. Falling back to Lovable AI Gateway with gpt-4o-mini");
-      response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${LOVABLE_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "gpt-4o-mini",
-          messages: refineMessages,
-        }),
-      });
-    }
-
     if (!response.ok) {
-      console.error("Refinement failed:", response.status);
+      if (response.status === 401) {
+        const t = await response.text();
+        console.error("OpenAI auth error (refine):", t);
+      } else {
+        console.error("Refinement failed:", response.status);
+      }
       return originalText;
     }
 
     const data = await response.json();
     let responseText = data.choices?.[0]?.message?.content || "";
-
-    // Clean up markdown code blocks if present
-    responseText = responseText
-      .replace(/```json\s*/g, "")
-      .replace(/```\s*/g, "")
-      .trim();
+    responseText = responseText.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
 
     const rewrites = JSON.parse(responseText);
+    if (!rewrites.rewrites || !Array.isArray(rewrites.rewrites)) return originalText;
 
-    if (!rewrites.rewrites || !Array.isArray(rewrites.rewrites)) {
-      console.error("Invalid rewrite format");
-      return originalText;
-    }
-
-    // Replace each original sentence with its improved version
     let refinedText = originalText;
     rewrites.rewrites.forEach((rewrite: { original: string; improved: string }) => {
       refinedText = refinedText.replace(rewrite.original, rewrite.improved);
     });
-
     return refinedText;
   } catch (error) {
     console.error("Refinement error:", error);
@@ -280,15 +244,15 @@ serve(async (req) => {
 
     if (!OPEN_AI_API_KEY) {
       console.error("OPEN_AI_API_KEY not configured");
-      return new Response(JSON.stringify({ error: "AI is not configured. Please contact the site owner." }), {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      return new Response(
+        JSON.stringify({ error: "AI is not configured. Please contact the site owner." }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+      );
     }
 
     console.log("Calling OpenAI API to humanize text...");
 
-    // Try OpenAI first
+    // Try OpenAI (only gpt-4o-mini as requested)
     let response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -298,10 +262,7 @@ serve(async (req) => {
       body: JSON.stringify({
         model: "gpt-4o-mini",
         messages: [
-          {
-            role: "system",
-            content: FULL_SYSTEM_PROMPT,
-          },
+          { role: "system", content: FULL_SYSTEM_PROMPT },
           {
             role: "user",
             content: examples
@@ -312,48 +273,17 @@ serve(async (req) => {
       }),
     });
 
-    // Fallback to Lovable AI Gateway using OpenAI model if OpenAI key invalid
-    if (!response.ok && response.status === 401 && LOVABLE_API_KEY) {
-      console.log("OpenAI 401. Falling back to Lovable AI Gateway with gpt-4o-mini");
-      response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${LOVABLE_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "gpt-4o-mini",
-          messages: [
-            {
-              role: "system",
-              content: FULL_SYSTEM_PROMPT,
-            },
-            {
-              role: "user",
-              content: examples
-                ? `EXAMPLES (for pattern analysis only - do NOT copy or reference):\n${examples}\n\n---\n\nTEXT TO HUMANIZE (rewrite this and ONLY this):\n${text}`
-                : `TEXT TO HUMANIZE:\n${text}`,
-            },
-          ],
-        }),
-      });
-    }
-
     if (!response.ok) {
-      const errorData = await response.text();
-      console.error("AI gateway error:", response.status, errorData);
-      if (response.status === 429) {
-        return new Response(JSON.stringify({ error: "Rate limits exceeded, please try again later." }), {
-          status: 429,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
-      }
-      if (response.status === 402) {
+      if (response.status === 401) {
+        const errorData = await response.text();
+        console.error("OpenAI auth error:", response.status, errorData);
         return new Response(
-          JSON.stringify({ error: "Payment required, please add funds to your Lovable AI workspace." }),
-          { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+          JSON.stringify({ error: "Unauthorized: please verify OPEN_AI_API_KEY is valid." }),
+          { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } },
         );
       }
+      const errorData = await response.text();
+      console.error("OpenAI API error:", response.status, errorData);
       return new Response(JSON.stringify({ error: "Failed to humanize text" }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -364,7 +294,6 @@ serve(async (req) => {
     console.log("AI response received");
 
     const raw = data.choices?.[0]?.message?.content;
-
     if (!raw) {
       console.error("No humanized text in response");
       return new Response(JSON.stringify({ error: "Failed to generate humanized text" }), {
@@ -373,11 +302,11 @@ serve(async (req) => {
       });
     }
 
-    // Sanitize output to remove special characters and unintended placeholders
+    // Sanitize output
     const sanitize = (s: string) =>
       s
-        .replace(/[""]/g, '"')
-        .replace(/['']/g, "'")
+        .replace(/[“”]/g, '"')
+        .replace(/[‘’]/g, "'")
         .replace(/[—–]/g, "-")
         .replace(/[•◦▪·]/g, "-")
         .replace(/\u2026/g, "...")
@@ -388,7 +317,6 @@ serve(async (req) => {
         .trim();
 
     let sanitizedText = sanitize(raw);
-    // Remove placeholder-style tokens that didn't exist in the input
     sanitizedText = sanitizedText.replace(/\{([^}]+)\}/g, (_m, inner) =>
       text && text.includes(`{${inner}}`) ? `{${inner}}` : inner,
     );
@@ -419,47 +347,34 @@ serve(async (req) => {
       zerogpt: zeroGPTResult?.score,
     });
 
-    // Calculate average score
-    const scores = [];
+    const scores: number[] = [];
     if (saplingResult) scores.push(saplingResult.score);
     if (zeroGPTResult) scores.push(zeroGPTResult.score);
-
     const avgScore = scores.length > 0 ? scores.reduce((a, b) => a + b, 0) / scores.length : 0;
 
     console.log("Average AI detection score:", avgScore.toFixed(2) + "%");
 
     let finalText = sanitizedText;
     let refinementApplied = false;
+    let flaggedSectionsData: Array<{ sentence: string; score: number }> = [];
+    let finalSaplingResult: any = null;
+    let finalZeroGPTResult: any = null;
+    let finalAvgScore = avgScore;
 
-    // If score > 8%, refine the flagged sections
     if (avgScore > 8) {
       console.log("Score above 8%, refining flagged sections...");
 
-      // Collect flagged sections from both detectors with scores
-      const flaggedSectionsData: Array<{ sentence: string; score: number }> = [];
-
-      // Add high-scoring sentences from Sapling
       if (saplingResult?.sentenceScores) {
         saplingResult.sentenceScores.forEach((sent: any) => {
           if (sent.score > 0.8) {
-            // High confidence AI-generated
-            flaggedSectionsData.push({
-              sentence: sent.sentence,
-              score: sent.score * 100, // Convert to percentage
-            });
+            flaggedSectionsData.push({ sentence: sent.sentence, score: sent.score * 100 });
           }
         });
       }
-
-      // Add flagged sentences from ZeroGPT (estimate high score for flagged items)
       if (zeroGPTResult?.flaggedSentences) {
         zeroGPTResult.flaggedSentences.forEach((sentence: string) => {
-          // Check if not already added from Sapling
           if (!flaggedSectionsData.find((item) => item.sentence === sentence)) {
-            flaggedSectionsData.push({
-              sentence,
-              score: 85, // Estimated high score for ZeroGPT flagged items
-            });
+            flaggedSectionsData.push({ sentence, score: 85 });
           }
         });
       }
@@ -469,30 +384,23 @@ serve(async (req) => {
         refinementApplied = true;
         console.log("Refinement complete. Running final detection check...");
 
-        // Run AI detection one more time on the refined text
-        const [finalSaplingResult, finalZeroGPTResult] = await Promise.all([
+        const [fs, fz] = await Promise.all([
           detectWithSapling(finalText),
           detectWithZeroGPT(finalText),
         ]);
+        finalSaplingResult = fs;
+        finalZeroGPTResult = fz;
 
-        // Calculate final average score
-        const finalScores = [];
+        const finalScores: number[] = [];
         if (finalSaplingResult) finalScores.push(finalSaplingResult.score);
         if (finalZeroGPTResult) finalScores.push(finalZeroGPTResult.score);
-
-        const finalAvgScore = finalScores.length > 0 ? finalScores.reduce((a, b) => a + b, 0) / finalScores.length : 0;
+        finalAvgScore = finalScores.length > 0 ? finalScores.reduce((a, b) => a + b, 0) / finalScores.length : 0;
 
         console.log("Final detection results after refinement:", {
           sapling: finalSaplingResult?.score,
           zerogpt: finalZeroGPTResult?.score,
           average: finalAvgScore.toFixed(2) + "%",
         });
-
-        if (finalAvgScore > 8) {
-          console.log("WARNING: Final score still above 8% after refinement");
-        } else {
-          console.log("SUCCESS: Final score is now below 8%");
-        }
       }
     } else {
       console.log("Score below 8%, no refinement needed");
@@ -501,6 +409,22 @@ serve(async (req) => {
     return new Response(
       JSON.stringify({
         humanizedText: finalText,
+        detection: {
+          refinementApplied,
+          initial: {
+            sapling: saplingResult?.score ?? null,
+            zerogpt: zeroGPTResult?.score ?? null,
+            average: avgScore,
+          },
+          refined: refinementApplied
+            ? {
+                sapling: finalSaplingResult?.score ?? null,
+                zerogpt: finalZeroGPTResult?.score ?? null,
+                average: finalAvgScore,
+              }
+            : null,
+          flaggedSections: flaggedSectionsData,
+        },
       }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
