@@ -101,7 +101,7 @@ async function refineFlaggedSections(
   flaggedSectionsData: Array<{ sentence: string; score: number }>,
   avgScore: number,
 ) {
-  if (!OPENAI_API_KEY || flaggedSectionsData.length === 0) {
+  if (!OPEN_AI_API_KEY || flaggedSectionsData.length === 0) {
     return originalText;
   }
 
