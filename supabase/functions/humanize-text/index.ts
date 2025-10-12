@@ -128,21 +128,54 @@ async function refineFlaggedSections(
         messages: [
           {
             role: "user",
-            content: `You are an expert AI text humanizer. Improve ONLY the following flagged sentences so they read fully human while preserving facts and intent.
+            content: `You are an expert AI text humanizer. This text scored ${avgScore.toFixed(2)}% AI-generated. Improve ONLY the flagged sentences below to reduce AI detection while preserving facts and intent.
 
-Apply these rules strictly:
-- Vary sentence length (mix short, medium, long).
-- Avoid repeated phrases and identical sentence starts.
-- Remove clichés/fluff ("In today's world", "Look no further", etc.).
-- Prefer conversational wording over formal/academic phrasing.
-- Use natural connectors: and, but, so, still, plus, that said.
-- Use contractions where natural.
-- Add subtle human texture: light hedging, occasional fragments, rhetorical questions when natural.
-- Keep meaning intact; do not add facts.
+CRITICAL HUMANIZATION TECHNIQUES:
 
-Output format:
+1. VARY SENTENCE LENGTH & STRUCTURE
+   - Mix short (5-8 words), medium (12-18), and long (25-35) sentences
+   - Change how sentences start and flow
+   - Avoid uniform patterns
+
+2. ELIMINATE AI MARKERS & REPETITION
+   - Remove clichés: "In today's world", "Look no further", "delving into", "landscape of", "an integral part", "woven itself into the fabric of"
+   - Never repeat phrases or sentence starters
+   - Use varied vocabulary
+
+3. USE CONVERSATIONAL LANGUAGE
+   - Replace formal phrases with everyday language:
+     * "Before delving into" → "Before we get into" / "Let's start with"
+     * "Furthermore"/"Moreover" → "So"/"Plus"/"That said"/"And"/"But"/"Here's why"
+   - Use natural connectors: and, but, so, still, plus, that said, let's break that down
+   - Use contractions: you're, don't, it's, we're, can't
+
+4. ADD HUMAN IMPERFECTIONS & PERSONALITY
+   - Light hedging: "it seems", "perhaps", "probably", "I think"
+   - Occasional fragments for emphasis
+   - Rhetorical questions when natural
+   - Parenthetical asides (like this)
+   - Natural pauses and thought shifts
+
+5. REMOVE FLUFF, BE DIRECT
+   - Cut unnecessary transitional padding
+   - Be concise and natural
+
+6. PERSONAL TOUCH (IF APPROPRIATE)
+   - Add brief personal examples or anecdotes if they fit naturally
+   - Use first-person when appropriate: "When I...", "I've noticed..."
+
+7. FACT-CHECK
+   - Never invent facts
+   - Keep meaning intact
+   - Preserve accuracy
+
+8. ENSURE NATURAL FLOW WITH CONTEXT
+   - Make improved sentence flow smoothly with contextBefore and contextAfter
+   - Maintain coherence with surrounding text
+
+OUTPUT FORMAT:
 Return JSON exactly as: {"rewrites":[{"original":"<original sentence>","improved":"<improved sentence>"}]}
-No extra text or code blocks. Use plain ASCII.
+No extra text, explanations, or code blocks. Use plain ASCII only.
 
 FLAGGED SENTENCES WITH CONTEXT:
 ${flaggedWithContext
@@ -238,52 +271,64 @@ serve(async (req) => {
 
 CRITICAL RULES TO AVOID AI DETECTION:
 
-1. SENTENCE LENGTH VARIATION (MOST IMPORTANT)
-   - AI writes sentences of similar length (usually 24-25 words)
+1. SENTENCE LENGTH & STRUCTURE VARIATION (MOST IMPORTANT)
+   - AI writes sentences of uniform length (usually 24-25 words)
    - Humans mix it up dramatically: some short (5-8 words), some medium (12-18), some long (25-35)
-   - Create natural rhythm by alternating sentence lengths
+   - Create natural rhythm by alternating sentence lengths and structures
+   - Vary how sentences start and flow
    - Example: "Social media connects people. It's everywhere now. Before we dive into the benefits of social media, it's important to understand where it all started."
 
-2. ELIMINATE REPETITIVE PHRASES
-   - AI repeats the same phrases and sentence starters
+2. ELIMINATE REPETITIVE PHRASES & AI MARKERS
    - Never start multiple sentences the same way
-   - Avoid repeating any phrase more than once
-   - Use varied vocabulary and sentence structures
+   - Avoid AI clichés: "In today's world", "Look no further", "delving into", "landscape of", "it's worth noting", "an integral part", "woven itself into the fabric of daily life"
+   - Don't repeat phrases or sentence patterns
+   - Use varied vocabulary and sentence structures throughout
 
-3. REMOVE CLICHÉS AND FLUFF
-   - Delete phrases like: "In today's world", "Look no further", "delving into", "landscape of", "it's worth noting"
-   - Cut unnecessary transitional fluff
-   - Be direct and natural
+3. USE CONVERSATIONAL, EVERYDAY LANGUAGE
+   - Replace formal/outdated phrases with natural language:
+     * "Before delving into" → "Before we get into" / "Let's start with"
+     * "it is essential to grasp" → "it's important to understand" / "you need to know"
+     * "woven itself into the fabric of" → "part of everyday life" / "become common"
+     * "Furthermore" / "Moreover" → "So" / "Plus" / "That said" / "And" / "But" / "Here's why it matters"
+   - Use contractions naturally: "you're", "don't", "it's", "we're", "can't", "won't"
+   - Sound like you're talking to a friend, not writing an academic paper
 
-4. USE CONVERSATIONAL LANGUAGE
-   - Replace formal/outdated phrases with everyday language
-   - Instead of "Before delving into" → "Before we get into"
-   - Instead of "it is essential to grasp" → "it's important to understand"
-   - Instead of "woven itself into the fabric of" → "part of everyday life"
+4. ADD HUMAN IMPERFECTIONS & PERSONALITY
+   - Include occasional sentence fragments for emphasis. Like this.
+   - Add rhetorical questions where natural (e.g., "Want to know why?")
+   - Use parenthetical asides (thoughts in parentheses)
+   - Include light hedging: "it seems", "perhaps", "probably", "I think", "maybe"
+   - Add small tonal variations showing human thought process
+   - Natural pauses and shifts in thought
 
-5. GRAMMAR AND SYNTAX
-   - Break up long sentences into shorter ones
-   - Replace robotic connectors ("Furthermore", "Moreover", "Thus") with conversational ones ("So", "Plus", "That said", "And", "But")
-   - Use contractions naturally ("you're", "don't", "it's", "we're")
-   - Vary sentence structure dramatically
+5. REMOVE FLUFF & BE DIRECT
+   - Cut unnecessary transitional padding
+   - Delete vague, fluffy language
+   - Be concise and natural
+   - Get to the point quickly
 
-6. ADD HUMAN IMPERFECTIONS
-   - Include occasional sentence fragments for emphasis
-   - Add rhetorical questions where natural
-   - Use parenthetical asides
-   - Include light hedging ("it seems", "perhaps", "probably")
-   - Small tonal variations that show human thought
+6. INCLUDE PERSONAL TOUCH (WHEN APPROPRIATE)
+   - Add personal examples, anecdotes, or brief stories if they fit the content naturally
+   - Use first-person perspective when appropriate: "When I started...", "I've noticed..."
+   - Make it feel like a human with experience is writing
 
 7. KEYWORD OPTIMIZATION
-   - Avoid keyword stuffing
+   - Avoid keyword stuffing (repeating same phrases unnaturally)
    - Use synonyms and semantic variants
-   - Fit keywords naturally into conversational flow
+   - Integrate keywords naturally into conversational flow
+   - Make keywords feel organic, not forced
 
-8. AVOID AI PATTERNS
-   - No uniform sentence patterns
-   - No perfect logical chains
-   - Add subtle emotional resonance
-   - Include natural pauses and shifts in thought
+8. FACT-CHECK & ACCURACY
+   - Never invent facts or details not in the original
+   - Preserve all accurate information
+   - Don't add false claims or made-up statistics
+   - Keep the truth intact while making it sound human
+
+9. AVOID PERFECT AI PATTERNS
+   - No uniform sentence patterns or lengths
+   - No overly perfect logical chains
+   - Add subtle emotional resonance and natural imperfections
+   - Include natural flow variations
 
 OUTPUT FORMAT:
 - Return ONLY the rewritten text
@@ -291,7 +336,7 @@ OUTPUT FORMAT:
 - Keep length similar to input (0.8x - 1.2x)
 - Use plain ASCII characters only
 - Preserve paragraph structure unless clarity requires changes
-- Never invent facts or details not in the original
+- Sound authentic, readable, and human
 
 ${examples ? `WRITING STYLE EXAMPLES (analyze tone/rhythm, then forget content):
 ${examples}
