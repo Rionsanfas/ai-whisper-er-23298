@@ -1,10 +1,9 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const getOpenAIKey = () => Deno.env.get("OPEN_AI_API_KEY");
-const getSaplingKey = () => Deno.env.get("SAPLING_API_KEY");
-const getZeroGPTKey = () => Deno.env.get("ZEROGPT_API_KEY");
-const getLovableKey = () => Deno.env.get("LOVABLE_API_KEY");
+const OPEN_AI_API_KEY = Deno.env.get("OPEN_AI_API_KEY");
+const SAPLING_API_KEY = Deno.env.get("SAPLING_API_KEY");
+const ZEROGPT_API_KEY = Deno.env.get("ZEROGPT_API_KEY");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -13,7 +12,6 @@ const corsHeaders = {
 
 // Call Sapling AI Detector
 async function detectWithSapling(text: string) {
-  const SAPLING_API_KEY = getSaplingKey();
   if (!SAPLING_API_KEY) {
     console.log("Sapling API key not configured, skipping Sapling detection");
     return null;
@@ -23,7 +21,11 @@ async function detectWithSapling(text: string) {
     const response = await fetch("https://api.sapling.ai/api/v1/aidetect", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ key: SAPLING_API_KEY, text, sent_scores: true }),
+      body: JSON.stringify({
+        key: SAPLING_API_KEY,
+        text,
+        sent_scores: true,
+      }),
     });
 
     if (!response.ok) {
@@ -33,7 +35,7 @@ async function detectWithSapling(text: string) {
 
     const data = await response.json();
     return {
-      score: data.score * 100, // percentage
+      score: data.score * 100, // Convert to percentage
       sentenceScores: data.sentence_scores || [],
       tokens: data.tokens || [],
       tokenProbs: data.token_probs || [],
@@ -46,7 +48,6 @@ async function detectWithSapling(text: string) {
 
 // Call ZeroGPT AI Detector
 async function detectWithZeroGPT(text: string) {
-  const ZEROGPT_API_KEY = getZeroGPTKey();
   if (!ZEROGPT_API_KEY) {
     console.log("ZeroGPT API key not configured, skipping ZeroGPT detection");
     return null;
@@ -59,7 +60,9 @@ async function detectWithZeroGPT(text: string) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${ZEROGPT_API_KEY}`,
       },
-      body: JSON.stringify({ input_text: text }),
+      body: JSON.stringify({
+        input_text: text,
+      }),
     });
 
     if (!response.ok) {
@@ -83,7 +86,9 @@ async function detectWithZeroGPT(text: string) {
 function extractContext(text: string, sentence: string) {
   const sentences = text.match(/[^.!?]+[.!?]+/g) || [];
   const index = sentences.findIndex((s) => s.trim().includes(sentence.trim()));
+
   if (index === -1) return { before: "", after: "" };
+
   return {
     before: index > 0 ? sentences[index - 1].trim() : "",
     after: index < sentences.length - 1 ? sentences[index + 1].trim() : "",
@@ -96,14 +101,15 @@ async function refineFlaggedSections(
   flaggedSectionsData: Array<{ sentence: string; score: number }>,
   avgScore: number,
 ) {
-const OPEN_AI_API_KEY = getOpenAIKey();
-  const LOVABLE_API_KEY = getLovableKey();
-  if ((!LOVABLE_API_KEY && !OPEN_AI_API_KEY) || flaggedSectionsData.length === 0) return originalText;
+  if (!OPEN_AI_API_KEY || flaggedSectionsData.length === 0) {
+    return originalText;
+  }
 
   console.log(
     `Refining flagged sections. AI score: ${avgScore.toFixed(2)}%, Flagged sections: ${flaggedSectionsData.length}`,
   );
 
+  // Extract context for each flagged sentence
   const flaggedWithContext = flaggedSectionsData.map((item) => ({
     sentence: item.sentence,
     score: item.score,
@@ -111,82 +117,27 @@ const OPEN_AI_API_KEY = getOpenAIKey();
   }));
 
   try {
-    const refineMessages = [
-      {
-        role: "system",
-        content:
-          `You are refining specific sentences that were flagged by AI detectors (average score: ${avgScore.toFixed(
-            2,
-          )}%).\n\nFor each flagged sentence, you will receive:\n- The sentence itself\n- The AI detection score\n- Context before and after the sentence\n\nYour task is to rewrite ONLY the flagged sentence to make it more natural and human-like, while:\n- Keeping the same tone, meaning, and facts\n- Making it flow naturally with the surrounding context\n- Varying sentence length and structure\n- Including subtle human markers (light hedging, parenthetical asides)\n- Using contractions naturally where appropriate\n- Adding small imperfections that suggest genuine human writing\n\nReturn a JSON array with this exact structure:\n{\n  "rewrites": [\n    {\n      "original": "the original flagged sentence",\n      "improved": "your rewritten version"\n    }\n  ]\n}\n\nReturn ONLY valid JSON, no markdown formatting or extra text.`,
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${OPEN_AI_API_KEY}`,
+        "Content-Type": "application/json",
       },
-      {
-        role: "user",
-        content: `Flagged sentences to refine:\n\n${flaggedWithContext
-          .map(
-            (item, i) =>
-              `${i + 1}. Original: "${item.sentence}"\n   Score: ${item.score.toFixed(1)}%\n   Context before: "${item.before}"\n   Context after: "${item.after}"`,
-          )
-          .join("\n\n")}\n\nPlease return the JSON array with improved versions.`,
-      },
-    ];
-
-const LOVABLE_API_KEY = getLovableKey();
-const useLovable = !!LOVABLE_API_KEY;
-const url = useLovable
-  ? "https://ai.gateway.lovable.dev/v1/chat/completions"
-  : "https://api.openai.com/v1/chat/completions";
-const authKey = useLovable ? LOVABLE_API_KEY! : OPEN_AI_API_KEY;
-
-let response = await fetch(url, {
-  method: "POST",
-  headers: {
-    Authorization: `Bearer ${authKey}`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    model: useLovable ? "google/gemini-2.5-flash" : "gpt-4o-mini",
-    messages: refineMessages,
-  }),
-});
-
-    if (!response.ok) {
-      if (response.status === 401) {
-        const t = await response.text();
-        console.error("OpenAI auth error (refine):", t);
-      } else {
-        console.error("Refinement failed:", response.status);
-      }
-      return originalText;
-    }
-
-    const data = await response.json();
-    let responseText = data.choices?.[0]?.message?.content || "";
-    responseText = responseText.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
-
-    const rewrites = JSON.parse(responseText);
-    if (!rewrites.rewrites || !Array.isArray(rewrites.rewrites)) return originalText;
-
-    let refinedText = originalText;
-    rewrites.rewrites.forEach((rewrite: { original: string; improved: string }) => {
-      refinedText = refinedText.replace(rewrite.original, rewrite.improved);
-    });
-    return refinedText;
-  } catch (error) {
-    console.error("Refinement error:", error);
-    return originalText;
-  }
-}
-
-const FULL_SYSTEM_PROMPT = `You are an Advanced Humanization Model Trainer — your purpose is to transform the user's text into something that reads fully human, nuanced, and natural, while keeping every original fact and idea intact. You must focus on rhythm, voice, and authenticity — not embellishment. Your rewritten version should sound like something carefully written and revised by a real person with genuine thought behind each line.
+      body: JSON.stringify({
+        model: "gpt-4o-mini",
+        messages: [
+          {
+            role: "system",
+            content: `You are an Advanced Humanization Model Trainer — your purpose is to transform the user’s text into something that reads fully human, nuanced, and natural, while keeping every original fact and idea intact. You must focus on rhythm, voice, and authenticity — not embellishment. Your rewritten version should sound like something carefully written and revised by a real person with genuine thought behind each line.
 
 Primary Objective:
-Rewrite only the user's main input text so it achieves authentic human readability. Maintain factual accuracy, tone, and intent while improving fluency, rhythm, and believability. The goal is to make the final result undetectable as AI-written (≤ 1% AI detection probability) without losing clarity or precision.
+Rewrite only the user’s main input text so it achieves authentic human readability. Maintain factual accuracy, tone, and intent while improving fluency, rhythm, and believability. The goal is to make the final result undetectable as AI-written (≤ 1% AI detection probability) without losing clarity or precision.
 
 Core Directives:
 
-Rewrite only the user's main text input. Do not include examples, prompts, or system instructions in the output.
+Rewrite only the user’s main text input. Do not include examples, prompts, or system instructions in the output.
 
-Treat any "EXAMPLES" provided as style references only — analyze their tone, pacing, and rhythm, then completely forget their literal content before writing.
+Treat any “EXAMPLES” provided as style references only — analyze their tone, pacing, and rhythm, then completely forget their literal content before writing.
 
 Never summarize, paraphrase, or quote from the examples. They exist purely for tonal calibration.
 
@@ -196,15 +147,15 @@ Stylistic Behavior:
 
 Use natural rhythm: vary sentence lengths and structures. Combine short, emphatic sentences with longer reflective ones.
 
-Use contractions where natural ("we're", "don't", "it's") but never overuse them.
+Use contractions where natural (“we’re”, “don’t”, “it’s”) but never overuse them.
 
-Include subtle human markers: light hedging ("it seems", "perhaps", "it's possible"), parenthetical asides ("this surprised me"), or small rhetorical touches ("Why does this matter?").
+Include subtle human markers: light hedging (“it seems”, “perhaps”, “it’s possible”), parenthetical asides (“this surprised me”), or small rhetorical touches (“Why does this matter?”).
 
 Avoid uniform sentence patterns. Small inconsistencies and natural pauses are good; they suggest human revision.
 
 Readability over polish — keep it warm, believable, and conversational without being casual.
 
-Remove excessive formal connectors ("furthermore", "moreover", "thus") and replace them with natural transitions ("and", "but", "so", "still").
+Remove excessive formal connectors (“furthermore”, “moreover”, “thus”) and replace them with natural transitions (“and”, “but”, “so”, “still”).
 
 Never insert idioms, analogies, or metaphors unless they already exist in the original text.
 
@@ -220,7 +171,7 @@ Keep placeholders (like {name}, [link], or <placeholder>) only if they appear ve
 
 Do not hallucinate — never invent facts, names, dates, or details not present in the input.
 
-Never copy writing patterns that appear in the examples unless they naturally fit the input's meaning and flow.
+Never copy writing patterns that appear in the examples unless they naturally fit the input’s meaning and flow.
 
 Do not change paragraph structure unless necessary for clarity.
 
@@ -236,7 +187,54 @@ Maintain a human reasoning pattern: progression, reflection, and natural uncerta
 
 Output Expectation:
 Return a single block of rewritten text in plain text form.
-No prefaces, no labels, no explanations — just the final humanized version.`;
+No prefaces, no labels, no explanations — just the final humanized version.`,
+          },
+          {
+            role: "user",
+            content: `Flagged sentences to refine:\n\n${flaggedWithContext
+              .map(
+                (item, i) =>
+                  `${i + 1}. Original: "${item.sentence}"\n   Score: ${item.score.toFixed(1)}%\n   Context before: "${item.before}"\n   Context after: "${item.after}"`,
+              )
+              .join("\n\n")}\n\nPlease return the JSON array with improved versions.`,
+          },
+        ],
+      }),
+    });
+
+    if (!response.ok) {
+      console.error("Refinement failed:", response.status);
+      return originalText;
+    }
+
+    const data = await response.json();
+    let responseText = data.choices?.[0]?.message?.content || "";
+
+    // Clean up markdown code blocks if present
+    responseText = responseText
+      .replace(/```json\s*/g, "")
+      .replace(/```\s*/g, "")
+      .trim();
+
+    const rewrites = JSON.parse(responseText);
+
+    if (!rewrites.rewrites || !Array.isArray(rewrites.rewrites)) {
+      console.error("Invalid rewrite format");
+      return originalText;
+    }
+
+    // Replace each original sentence with its improved version
+    let refinedText = originalText;
+    rewrites.rewrites.forEach((rewrite: { original: string; improved: string }) => {
+      refinedText = refinedText.replace(rewrite.original, rewrite.improved);
+    });
+
+    return refinedText;
+  } catch (error) {
+    console.error("Refinement error:", error);
+    return originalText;
+  }
+}
 
 serve(async (req) => {
   // Handle CORS preflight requests
@@ -257,81 +255,131 @@ serve(async (req) => {
       });
     }
 
-const OPEN_AI_API_KEY = getOpenAIKey();
-const LOVABLE_API_KEY = getLovableKey();
-if (!LOVABLE_API_KEY && !OPEN_AI_API_KEY) {
-  console.error("No AI provider configured (missing LOVABLE_API_KEY and OPEN_AI_API_KEY)");
-  return new Response(
-    JSON.stringify({ error: "AI is not configured. Please contact the site owner." }),
-    { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-  );
-}
+    if (!OPEN_AI_API_KEY) {
+      console.error("OPEN_AI_API_KEY not configured");
+      return new Response(JSON.stringify({ error: "AI is not configured. Please contact the site owner." }), {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
 
     console.log("Calling OpenAI API to humanize text...");
 
-// Prefer Lovable AI Gateway; fallback to OpenAI if LOVABLE_API_KEY is not set
-const LOVABLE_API_KEY_INVOKE = getLovableKey();
-const useLovableGateway = !!LOVABLE_API_KEY_INVOKE;
-const aiUrl = useLovableGateway
-  ? "https://ai.gateway.lovable.dev/v1/chat/completions"
-  : "https://api.openai.com/v1/chat/completions";
-const aiAuthKey = useLovableGateway ? LOVABLE_API_KEY_INVOKE! : OPEN_AI_API_KEY!;
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${OPEN_AI_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "gpt-4o-mini",
+        messages: [
+          {
+            role: "system",
+            content: `You are an Advanced Humanization Model Trainer — your purpose is to transform the user’s text into something that reads fully human, nuanced, and natural, while keeping every original fact and idea intact. You must focus on rhythm, voice, and authenticity — not embellishment. Your rewritten version should sound like something carefully written and revised by a real person with genuine thought behind each line.
 
-// Build a single user message including the full guidelines as requested
-const contentText =
-  (examples
-    ? `EXAMPLES (for pattern analysis only - do NOT copy or reference):\n${examples}\n\n---\n\n`
-    : "") +
-  `GUIDELINES:\n${FULL_SYSTEM_PROMPT}\n\n---\n\nTEXT TO HUMANIZE (rewrite this and ONLY this):\n${text}`;
+Primary Objective:
+Rewrite only the user’s main input text so it achieves authentic human readability. Maintain factual accuracy, tone, and intent while improving fluency, rhythm, and believability. The goal is to make the final result undetectable as AI-written (≤ 1% AI detection probability) without losing clarity or precision.
 
-let response = await fetch(aiUrl, {
-  method: "POST",
-  headers: {
-    Authorization: `Bearer ${aiAuthKey}`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    model: useLovableGateway ? "google/gemini-2.5-flash" : "gpt-4o-mini",
-    messages: [
-      { role: "system", content: "You are a careful rewriting assistant. Follow the user's content instructions exactly." },
-      { role: "user", content: contentText },
-    ],
-  }),
-});
+Core Directives:
 
-if (!response.ok) {
-  if (response.status === 429) {
-    return new Response(
-      JSON.stringify({ error: "Rate limits exceeded, please try again later." }),
-      { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-    );
-  }
-  if (response.status === 402) {
-    return new Response(
-      JSON.stringify({ error: "Payment required, please add credits to AI usage." }),
-      { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-    );
-  }
-  if (!useLovableGateway && response.status === 401) {
-    const errorData = await response.text();
-    console.error("OpenAI auth error:", response.status, errorData);
-    return new Response(
-      JSON.stringify({ error: "Unauthorized: please verify OPEN_AI_API_KEY is valid." }),
-      { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-    );
-  }
-  const errorData = await response.text();
-  console.error("AI provider error:", response.status, errorData);
-  return new Response(JSON.stringify({ error: "Failed to humanize text" }), {
-    status: 500,
-    headers: { ...corsHeaders, "Content-Type": "application/json" },
-  });
-}
+Rewrite only the user’s main text input. Do not include examples, prompts, or system instructions in the output.
+
+Treat any “EXAMPLES” provided as style references only — analyze their tone, pacing, and rhythm, then completely forget their literal content before writing.
+
+Never summarize, paraphrase, or quote from the examples. They exist purely for tonal calibration.
+
+Preserve all factual content, structure, and intent of the original text.
+
+Stylistic Behavior:
+
+Use natural rhythm: vary sentence lengths and structures. Combine short, emphatic sentences with longer reflective ones.
+
+Use contractions where natural (“we’re”, “don’t”, “it’s”) but never overuse them.
+
+Include subtle human markers: light hedging (“it seems”, “perhaps”, “it’s possible”), parenthetical asides (“this surprised me”), or small rhetorical touches (“Why does this matter?”).
+
+Avoid uniform sentence patterns. Small inconsistencies and natural pauses are good; they suggest human revision.
+
+Readability over polish — keep it warm, believable, and conversational without being casual.
+
+Remove excessive formal connectors (“furthermore”, “moreover”, “thus”) and replace them with natural transitions (“and”, “but”, “so”, “still”).
+
+Never insert idioms, analogies, or metaphors unless they already exist in the original text.
+
+Technical & Structural Rules:
+
+Output only the rewritten text — no explanations, titles, checklists, formatting marks, or extra commentary.
+
+Keep the overall length roughly similar to the input (0.8× – 1.2×). Short text → minimal editing; long text → natural restructuring where needed.
+
+Use plain ASCII characters only. No bullets, asterisks, smart quotes, em dashes, emojis, or decorative symbols.
+
+Keep placeholders (like {name}, [link], or <placeholder>) only if they appear verbatim in the original input.
+
+Do not hallucinate — never invent facts, names, dates, or details not present in the input.
+
+Never copy writing patterns that appear in the examples unless they naturally fit the input’s meaning and flow.
+
+Do not change paragraph structure unless necessary for clarity.
+
+Human Texture Requirements:
+
+Add micro-imperfections: occasional fragments, rhetorical shifts, and small tonal variations that reflect real human editing.
+
+Include minimal, subtle emotional resonance — a sense that the writer cares about the topic.
+
+Break overly perfect logic chains occasionally to mimic real thought.
+
+Maintain a human reasoning pattern: progression, reflection, and natural uncertainty where appropriate.
+
+Output Expectation:
+Return a single block of rewritten text in plain text form.
+No prefaces, no labels, no explanations — just the final humanized version.`,
+          },
+          {
+            role: "user",
+            content: examples
+              ? `EXAMPLES (for pattern analysis only - do NOT copy or reference):
+${examples}
+
+---
+
+TEXT TO HUMANIZE (rewrite this and ONLY this):
+${text}`
+              : `TEXT TO HUMANIZE:
+${text}`,
+          },
+        ],
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.text();
+      console.error("AI gateway error:", response.status, errorData);
+      if (response.status === 429) {
+        return new Response(JSON.stringify({ error: "Rate limits exceeded, please try again later." }), {
+          status: 429,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      if (response.status === 402) {
+        return new Response(
+          JSON.stringify({ error: "Payment required, please add funds to your Lovable AI workspace." }),
+          { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
+      return new Response(JSON.stringify({ error: "Failed to humanize text" }), {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
 
     const data = await response.json();
     console.log("AI response received");
 
     const raw = data.choices?.[0]?.message?.content;
+
     if (!raw) {
       console.error("No humanized text in response");
       return new Response(JSON.stringify({ error: "Failed to generate humanized text" }), {
@@ -340,7 +388,7 @@ if (!response.ok) {
       });
     }
 
-    // Sanitize output
+    // Sanitize output to remove special characters and unintended placeholders
     const sanitize = (s: string) =>
       s
         .replace(/[“”]/g, '"')
@@ -355,6 +403,7 @@ if (!response.ok) {
         .trim();
 
     let sanitizedText = sanitize(raw);
+    // Remove placeholder-style tokens that didn't exist in the input
     sanitizedText = sanitizedText.replace(/\{([^}]+)\}/g, (_m, inner) =>
       text && text.includes(`{${inner}}`) ? `{${inner}}` : inner,
     );
@@ -385,34 +434,47 @@ if (!response.ok) {
       zerogpt: zeroGPTResult?.score,
     });
 
-    const scores: number[] = [];
+    // Calculate average score
+    const scores = [];
     if (saplingResult) scores.push(saplingResult.score);
     if (zeroGPTResult) scores.push(zeroGPTResult.score);
+
     const avgScore = scores.length > 0 ? scores.reduce((a, b) => a + b, 0) / scores.length : 0;
 
     console.log("Average AI detection score:", avgScore.toFixed(2) + "%");
 
     let finalText = sanitizedText;
     let refinementApplied = false;
-    let flaggedSectionsData: Array<{ sentence: string; score: number }> = [];
-    let finalSaplingResult: any = null;
-    let finalZeroGPTResult: any = null;
-    let finalAvgScore = avgScore;
 
+    // If score > 8%, refine the flagged sections
     if (avgScore > 8) {
       console.log("Score above 8%, refining flagged sections...");
 
+      // Collect flagged sections from both detectors with scores
+      const flaggedSectionsData: Array<{ sentence: string; score: number }> = [];
+
+      // Add high-scoring sentences from Sapling
       if (saplingResult?.sentenceScores) {
         saplingResult.sentenceScores.forEach((sent: any) => {
           if (sent.score > 0.8) {
-            flaggedSectionsData.push({ sentence: sent.sentence, score: sent.score * 100 });
+            // High confidence AI-generated
+            flaggedSectionsData.push({
+              sentence: sent.sentence,
+              score: sent.score * 100, // Convert to percentage
+            });
           }
         });
       }
+
+      // Add flagged sentences from ZeroGPT (estimate high score for flagged items)
       if (zeroGPTResult?.flaggedSentences) {
         zeroGPTResult.flaggedSentences.forEach((sentence: string) => {
+          // Check if not already added from Sapling
           if (!flaggedSectionsData.find((item) => item.sentence === sentence)) {
-            flaggedSectionsData.push({ sentence, score: 85 });
+            flaggedSectionsData.push({
+              sentence,
+              score: 85, // Estimated high score for ZeroGPT flagged items
+            });
           }
         });
       }
@@ -422,23 +484,30 @@ if (!response.ok) {
         refinementApplied = true;
         console.log("Refinement complete. Running final detection check...");
 
-        const [fs, fz] = await Promise.all([
+        // Run AI detection one more time on the refined text
+        const [finalSaplingResult, finalZeroGPTResult] = await Promise.all([
           detectWithSapling(finalText),
           detectWithZeroGPT(finalText),
         ]);
-        finalSaplingResult = fs;
-        finalZeroGPTResult = fz;
 
-        const finalScores: number[] = [];
+        // Calculate final average score
+        const finalScores = [];
         if (finalSaplingResult) finalScores.push(finalSaplingResult.score);
         if (finalZeroGPTResult) finalScores.push(finalZeroGPTResult.score);
-        finalAvgScore = finalScores.length > 0 ? finalScores.reduce((a, b) => a + b, 0) / finalScores.length : 0;
+
+        const finalAvgScore = finalScores.length > 0 ? finalScores.reduce((a, b) => a + b, 0) / finalScores.length : 0;
 
         console.log("Final detection results after refinement:", {
           sapling: finalSaplingResult?.score,
           zerogpt: finalZeroGPTResult?.score,
           average: finalAvgScore.toFixed(2) + "%",
         });
+
+        if (finalAvgScore > 8) {
+          console.log("WARNING: Final score still above 8% after refinement");
+        } else {
+          console.log("SUCCESS: Final score is now below 8%");
+        }
       }
     } else {
       console.log("Score below 8%, no refinement needed");
@@ -447,22 +516,6 @@ if (!response.ok) {
     return new Response(
       JSON.stringify({
         humanizedText: finalText,
-        detection: {
-          refinementApplied,
-          initial: {
-            sapling: saplingResult?.score ?? null,
-            zerogpt: zeroGPTResult?.score ?? null,
-            average: avgScore,
-          },
-          refined: refinementApplied
-            ? {
-                sapling: finalSaplingResult?.score ?? null,
-                zerogpt: finalZeroGPTResult?.score ?? null,
-                average: finalAvgScore,
-              }
-            : null,
-          flaggedSections: flaggedSectionsData,
-        },
       }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
