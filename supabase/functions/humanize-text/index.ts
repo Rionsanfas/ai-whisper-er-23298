@@ -4,6 +4,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 const getOpenAIKey = () => Deno.env.get("OPEN_AI_API_KEY");
 const getSaplingKey = () => Deno.env.get("SAPLING_API_KEY");
 const getZeroGPTKey = () => Deno.env.get("ZEROGPT_API_KEY");
+const getLovableKey = () => Deno.env.get("LOVABLE_API_KEY");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -95,8 +96,9 @@ async function refineFlaggedSections(
   flaggedSectionsData: Array<{ sentence: string; score: number }>,
   avgScore: number,
 ) {
-  const OPEN_AI_API_KEY = getOpenAIKey();
-  if (!OPEN_AI_API_KEY || flaggedSectionsData.length === 0) return originalText;
+const OPEN_AI_API_KEY = getOpenAIKey();
+  const LOVABLE_API_KEY = getLovableKey();
+  if ((!LOVABLE_API_KEY && !OPEN_AI_API_KEY) || flaggedSectionsData.length === 0) return originalText;
 
   console.log(
     `Refining flagged sections. AI score: ${avgScore.toFixed(2)}%, Flagged sections: ${flaggedSectionsData.length}`,
@@ -128,14 +130,24 @@ async function refineFlaggedSections(
       },
     ];
 
-    let response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${OPEN_AI_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ model: "gpt-4o-mini", messages: refineMessages }),
-    });
+const LOVABLE_API_KEY = getLovableKey();
+const useLovable = !!LOVABLE_API_KEY;
+const url = useLovable
+  ? "https://ai.gateway.lovable.dev/v1/chat/completions"
+  : "https://api.openai.com/v1/chat/completions";
+const authKey = useLovable ? LOVABLE_API_KEY! : OPEN_AI_API_KEY;
+
+let response = await fetch(url, {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${authKey}`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    model: useLovable ? "google/gemini-2.5-flash" : "gpt-4o-mini",
+    messages: refineMessages,
+  }),
+});
 
     if (!response.ok) {
       if (response.status === 401) {
@@ -245,54 +257,76 @@ serve(async (req) => {
       });
     }
 
-    const OPEN_AI_API_KEY = getOpenAIKey();
-    if (!OPEN_AI_API_KEY) {
-      console.error("OPEN_AI_API_KEY not configured");
-      return new Response(
-        JSON.stringify({ error: "AI is not configured. Please contact the site owner." }),
-        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
-    }
+const OPEN_AI_API_KEY = getOpenAIKey();
+const LOVABLE_API_KEY = getLovableKey();
+if (!LOVABLE_API_KEY && !OPEN_AI_API_KEY) {
+  console.error("No AI provider configured (missing LOVABLE_API_KEY and OPEN_AI_API_KEY)");
+  return new Response(
+    JSON.stringify({ error: "AI is not configured. Please contact the site owner." }),
+    { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+  );
+}
 
     console.log("Calling OpenAI API to humanize text...");
 
-    // Try OpenAI (only gpt-4o-mini as requested)
-    let response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${OPEN_AI_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [
-          { role: "system", content: FULL_SYSTEM_PROMPT },
-          {
-            role: "user",
-            content: examples
-              ? `EXAMPLES (for pattern analysis only - do NOT copy or reference):\n${examples}\n\n---\n\nTEXT TO HUMANIZE (rewrite this and ONLY this):\n${text}`
-              : `TEXT TO HUMANIZE:\n${text}`,
-          },
-        ],
-      }),
-    });
+// Prefer Lovable AI Gateway; fallback to OpenAI if LOVABLE_API_KEY is not set
+const LOVABLE_API_KEY_INVOKE = getLovableKey();
+const useLovableGateway = !!LOVABLE_API_KEY_INVOKE;
+const aiUrl = useLovableGateway
+  ? "https://ai.gateway.lovable.dev/v1/chat/completions"
+  : "https://api.openai.com/v1/chat/completions";
+const aiAuthKey = useLovableGateway ? LOVABLE_API_KEY_INVOKE! : OPEN_AI_API_KEY!;
 
-    if (!response.ok) {
-      if (response.status === 401) {
-        const errorData = await response.text();
-        console.error("OpenAI auth error:", response.status, errorData);
-        return new Response(
-          JSON.stringify({ error: "Unauthorized: please verify OPEN_AI_API_KEY is valid." }),
-          { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-        );
-      }
-      const errorData = await response.text();
-      console.error("OpenAI API error:", response.status, errorData);
-      return new Response(JSON.stringify({ error: "Failed to humanize text" }), {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
+// Build a single user message including the full guidelines as requested
+const contentText =
+  (examples
+    ? `EXAMPLES (for pattern analysis only - do NOT copy or reference):\n${examples}\n\n---\n\n`
+    : "") +
+  `GUIDELINES:\n${FULL_SYSTEM_PROMPT}\n\n---\n\nTEXT TO HUMANIZE (rewrite this and ONLY this):\n${text}`;
+
+let response = await fetch(aiUrl, {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${aiAuthKey}`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    model: useLovableGateway ? "google/gemini-2.5-flash" : "gpt-4o-mini",
+    messages: [
+      { role: "system", content: "You are a careful rewriting assistant. Follow the user's content instructions exactly." },
+      { role: "user", content: contentText },
+    ],
+  }),
+});
+
+if (!response.ok) {
+  if (response.status === 429) {
+    return new Response(
+      JSON.stringify({ error: "Rate limits exceeded, please try again later." }),
+      { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+    );
+  }
+  if (response.status === 402) {
+    return new Response(
+      JSON.stringify({ error: "Payment required, please add credits to AI usage." }),
+      { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+    );
+  }
+  if (!useLovableGateway && response.status === 401) {
+    const errorData = await response.text();
+    console.error("OpenAI auth error:", response.status, errorData);
+    return new Response(
+      JSON.stringify({ error: "Unauthorized: please verify OPEN_AI_API_KEY is valid." }),
+      { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+    );
+  }
+  const errorData = await response.text();
+  console.error("AI provider error:", response.status, errorData);
+  return new Response(JSON.stringify({ error: "Failed to humanize text" }), {
+    status: 500,
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
+}
 
     const data = await response.json();
     console.log("AI response received");
