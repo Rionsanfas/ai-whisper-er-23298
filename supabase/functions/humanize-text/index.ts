@@ -128,9 +128,16 @@ async function refineFlaggedSections(
         messages: [
           {
             role: "user",
-            content: `You are an expert AI text humanizer. This text scored ${avgScore.toFixed(2)}% AI-generated. Improve ONLY the flagged sentences below to reduce AI detection while preserving facts and intent.
+            content: `You are an expert AI text humanizer. This text scored ${avgScore.toFixed(2)}% AI-generated. 
 
-CRITICAL HUMANIZATION TECHNIQUES:
+FULL GENERATED TEXT (from first humanization):
+"""
+${originalText}
+"""
+
+Your task: Improve ONLY the flagged sentences below to reduce AI detection while preserving facts and intent. The flagged sentences are parts of the text above that were detected as likely AI-generated.
+
+CRITICAL HUMANIZATION TECHNIQUES (same as the first humanization):
 
 1. VARY SENTENCE LENGTH & STRUCTURE
    - Mix short (5-8 words), medium (12-18), and long (25-35) sentences
@@ -171,18 +178,18 @@ CRITICAL HUMANIZATION TECHNIQUES:
 
 8. ENSURE NATURAL FLOW WITH CONTEXT
    - Make improved sentence flow smoothly with contextBefore and contextAfter
-   - Maintain coherence with surrounding text
+   - Maintain coherence with the full text above
 
 OUTPUT FORMAT:
 Return JSON exactly as: {"rewrites":[{"original":"<original sentence>","improved":"<improved sentence>"}]}
 No extra text, explanations, or code blocks. Use plain ASCII only.
 
-FLAGGED SENTENCES WITH CONTEXT:
+FLAGGED SENTENCES TO IMPROVE (with surrounding context for flow):
 ${flaggedWithContext
   .map(
     (item, i) =>
       `${i + 1}. Original: "${item.sentence}"
-   Score: ${item.score.toFixed(1)}%
+   AI Detection Score: ${item.score.toFixed(1)}%
    Context before: "${item.before}"
    Context after: "${item.after}"`,
   )
