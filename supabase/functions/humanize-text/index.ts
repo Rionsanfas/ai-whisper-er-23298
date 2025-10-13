@@ -139,44 +139,56 @@ Your task: Improve ONLY the flagged sentences below to reduce AI detection while
 
 CRITICAL HUMANIZATION TECHNIQUES (same as the first humanization):
 
-1. VARY SENTENCE LENGTH & STRUCTURE
+1. VARY SENTENCE LENGTH & STRUCTURE (MOST IMPORTANT)
    - Mix short (5-8 words), medium (12-18), and long (25-35) sentences
    - Change how sentences start and flow
    - Avoid uniform patterns
 
-2. ELIMINATE AI MARKERS & REPETITION
+2. ELIMINATE REPETITIVE PHRASES & AI MARKERS
    - Remove clichés: "In today's world", "Look no further", "delving into", "landscape of", "an integral part", "woven itself into the fabric of"
    - Never repeat phrases or sentence starters
    - Use varied vocabulary
 
-3. USE CONVERSATIONAL LANGUAGE
-   - Replace formal phrases with everyday language:
+3. USE CONVERSATIONAL, EVERYDAY LANGUAGE
+   - Replace formal/outdated phrases with natural language:
      * "Before delving into" → "Before we get into" / "Let's start with"
      * "Furthermore"/"Moreover" → "So"/"Plus"/"That said"/"And"/"But"/"Here's why"
    - Use natural connectors: and, but, so, still, plus, that said, let's break that down
    - Use contractions: you're, don't, it's, we're, can't
 
 4. ADD HUMAN IMPERFECTIONS & PERSONALITY
-   - Light hedging: "it seems", "perhaps", "probably", "I think"
+   - Light hedging: "it seems", "perhaps", "probably", "I think", "maybe"
    - Occasional fragments for emphasis
    - Rhetorical questions when natural
    - Parenthetical asides (like this)
    - Natural pauses and thought shifts
 
-5. REMOVE FLUFF, BE DIRECT
+5. REMOVE FLUFF & BE DIRECT
    - Cut unnecessary transitional padding
+   - Delete vague, fluffy language like "unlock the power of", "look no further", "game-changer"
    - Be concise and natural
 
-6. PERSONAL TOUCH (IF APPROPRIATE)
+6. INCLUDE PERSONAL TOUCH (WHEN APPROPRIATE)
    - Add brief personal examples or anecdotes if they fit naturally
-   - Use first-person when appropriate: "When I...", "I've noticed..."
+   - Use first-person when appropriate: "When I...", "I've noticed...", "A client once told me..."
+   - Add relatable touches: "for example", context markers
 
-7. FACT-CHECK
+7. FACT-CHECK & ACCURACY
    - Never invent facts
    - Keep meaning intact
    - Preserve accuracy
 
-8. ENSURE NATURAL FLOW WITH CONTEXT
+8. REFINE GRAMMAR, SYNTAX, TONE & STYLE
+   - Match the tone and style (formal, business, or casual)
+   - Keep the voice consistent
+   - Add emotional and logical balance
+
+9. KEYWORD OPTIMIZATION
+   - Use synonyms and semantic variants
+   - Integrate keywords naturally into conversational flow
+   - Avoid keyword stuffing
+
+10. ENSURE NATURAL FLOW WITH CONTEXT
    - Make improved sentence flow smoothly with contextBefore and contextAfter
    - Maintain coherence with the full text above
 
@@ -276,9 +288,9 @@ serve(async (req) => {
             role: "user",
             content: `You are an expert AI text humanizer. Transform the following text to sound completely human-written while preserving all facts and meaning.
 
-CRITICAL RULES TO AVOID AI DETECTION:
+CRITICAL HUMANIZATION TECHNIQUES TO AVOID AI DETECTION:
 
-1. SENTENCE LENGTH & STRUCTURE VARIATION (MOST IMPORTANT)
+1. VARY SENTENCE LENGTH & STRUCTURE (MOST IMPORTANT)
    - AI writes sentences of uniform length (usually 24-25 words)
    - Humans mix it up dramatically: some short (5-8 words), some medium (12-18), some long (25-35)
    - Create natural rhythm by alternating sentence lengths and structures
@@ -310,13 +322,14 @@ CRITICAL RULES TO AVOID AI DETECTION:
 
 5. REMOVE FLUFF & BE DIRECT
    - Cut unnecessary transitional padding
-   - Delete vague, fluffy language
+   - Delete vague, fluffy language like "unlock the power of", "look no further", "game-changer"
    - Be concise and natural
    - Get to the point quickly
 
 6. INCLUDE PERSONAL TOUCH (WHEN APPROPRIATE)
    - Add personal examples, anecdotes, or brief stories if they fit the content naturally
-   - Use first-person perspective when appropriate: "When I started...", "I've noticed..."
+   - Use first-person perspective when appropriate: "When I started...", "I've noticed...", "A client once told me..."
+   - Add relatable touches: "for example", context markers
    - Make it feel like a human with experience is writing
 
 7. KEYWORD OPTIMIZATION
@@ -331,7 +344,13 @@ CRITICAL RULES TO AVOID AI DETECTION:
    - Don't add false claims or made-up statistics
    - Keep the truth intact while making it sound human
 
-9. AVOID PERFECT AI PATTERNS
+9. REFINE GRAMMAR, SYNTAX, TONE & STYLE
+   - Match the tone and style of the input (formal, business, or casual)
+   - Keep the voice consistent throughout
+   - Add emotional and logical balance
+   - Use a tone that feels genuine — neither too robotic nor overly dramatic
+
+10. AVOID PERFECT AI PATTERNS
    - No uniform sentence patterns or lengths
    - No overly perfect logical chains
    - Add subtle emotional resonance and natural imperfections
