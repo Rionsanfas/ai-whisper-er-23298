@@ -314,117 +314,241 @@ serve(async (req) => {
             role: "user",
             content: `You are an expert AI text humanizer. Transform the following text to sound completely human-written while preserving all facts and meaning.
 
-UNDERSTANDING AI DETECTORS:
-AI detectors (Sapling, ZeroGPT, GPTZero, Turnitin, Copyleaks) analyze text for AI patterns. They work better on longer texts (50+ words) and look for:
-- Uniform sentence length (AI typically writes 24-25 word sentences)
-- Repetitive phrases and predictable patterns
-- Overly polished, formal language without natural imperfections
-- Lack of personal voice or conversational markers
-- Perfect logical chains without human thought variations
+YOUR MISSION: Make text pass AI detectors (GPTZero, Turnitin, Sapling, ZeroGPT, Copyleaks, Skyline) with a score BELOW 8% AI detection.
 
-Your goal: Make text sound naturally human to bypass these detectors while keeping all facts accurate.
+═══════════════════════════════════════════════════════════════
+AI DETECTION PATTERNS — WHAT TRIGGERS FLAGS
+═══════════════════════════════════════════════════════════════
 
-CRITICAL HUMANIZATION TECHNIQUES TO AVOID AI DETECTION:
+1. UNIFORM SYNTAX & STRUCTURE (Low Burstiness)
+   ❌ BAD: "The project was successful. The results were impressive. The team was happy. The clients were satisfied."
+   ✅ GOOD: "The project succeeded. Results? Impressive. And the team couldn't be happier — clients loved it too."
+   
+   WHY: AI writes uniform 24-25 word sentences. Humans mix 3-word, 10-word, and 28-word sentences randomly.
 
-1. VARY SENTENCE LENGTH & STRUCTURE (MOST IMPORTANT TO AVOID DETECTION)
-   - AI detectors flag uniform sentence length (especially 24-25 words)
-   - Humans write dramatically varied sentences: some very short (5-8 words), some medium (12-18), some long (25-35)
-   - Create natural rhythm by mixing sentence lengths throughout
-   - Change how sentences start: vary subjects, use inversions, start with phrases/clauses
-   - Avoid patterns: don't let consecutive sentences follow the same structure
-   - Example pattern to AVOID: "Social media connects people globally. Social media has transformed communication. Social media offers many benefits."
-   - Better (varied): "Social media connects people. It's everywhere now. Before we dive into its benefits, let's look at where it all started and how it shaped the way we communicate today."
+2. REPETITIVE PHRASES & KEYWORDS
+   ❌ NEVER USE:
+   • "In today's world" / "In the digital age" / "In this day and age"
+   • "Before delving into" / "Before diving into"
+   • "It is important to note that" / "It's worth noting that"
+   • "An integral part" / "Woven into the fabric of"
+   • "Unlock the power of" / "Look no further" / "Game-changer"
+   • "Revolutionary" / "Cutting-edge" / "State-of-the-art"
+   • "Furthermore" / "Moreover" / "Additionally" (too formal)
+   
+   ✅ INSTEAD USE: "So," "Plus," "Also," "And," "But," "That said," "Here's why"
 
-2. ELIMINATE REPETITIVE PHRASES & AI MARKERS (DETECTORS FLAG THESE)
-   - Never start multiple sentences the same way
-   - Remove AI clichés that detectors recognize: "In today's world", "Look no further", "delving into", "landscape of", "it's worth noting", "an integral part", "woven itself into the fabric of daily life", "game-changer", "unlock the power of"
-   - Don't repeat phrases or sentence patterns throughout the text
-   - Use varied vocabulary and avoid keyword stuffing (detectors flag unnatural repetition)
-   - Replace formal transitions with varied, natural ones
+3. OVERLY FORMAL/ROBOTIC TONE
+   ❌ BAD: "One must consider the implications of this methodology"
+   ✅ GOOD: "Think about what this method actually means"
+   
+   ❌ BAD: "It has been observed that the implementation yields favorable outcomes"
+   ✅ GOOD: "This approach works. Well, actually."
+   
+   WHY: AI uses perfect grammar, no contractions, archaic phrasing. Humans use contractions, casual language, minor "imperfections."
 
-3. USE CONVERSATIONAL, EVERYDAY LANGUAGE (SOUNDS HUMAN)
-   - Replace formal/outdated phrases with natural language:
-     * "Before delving into" → "Before we get into" / "Let's start with" / "First off"
-     * "it is essential to grasp" → "it's important to understand" / "you need to know"
-     * "woven itself into the fabric of" → "part of everyday life" / "become common" / "everywhere now"
-     * "Furthermore" / "Moreover" → "So" / "Plus" / "That said" / "And" / "But" / "Here's why it matters" / "Let's break that down"
-   - Use natural connectors that humans actually say: and, but, so, still, plus, that said, here's the thing
-   - Use contractions naturally: "you're", "don't", "it's", "we're", "can't", "won't", "let's", "here's"
-   - Sound like you're talking to a friend or colleague, not writing a formal academic paper
+4. LACK OF PERSONAL DETAIL/CREATIVITY
+   ❌ BAD: "Studies show this is effective"
+   ✅ GOOD: "A 2024 Stanford study found this cut errors by 40%"
+   
+   ❌ BAD: "This method has many benefits"
+   ✅ GOOD: "When I first tried this, I was shocked — response times dropped from 2 hours to 15 minutes"
+   
+   WHY: AI stays abstract. Humans add names, dates, anecdotes, specifics.
 
-4. ADD HUMAN IMPERFECTIONS & PERSONALITY (DETECTORS EXPECT PERFECTION FROM AI)
-   - Include occasional sentence fragments for emphasis. Like this. See?
-   - Add rhetorical questions where natural (e.g., "Want to know why?", "So what does this mean?")
-   - Use parenthetical asides (thoughts in parentheses that add context)
-   - Include light hedging: "it seems", "perhaps", "probably", "I think", "maybe", "likely", "tends to"
-   - Add small tonal variations showing human thought process
-   - Include natural pauses and shifts in thought (em dashes, ellipses used sparingly)
-   - Don't be overly perfect or polished – humans have slight style variations
+5. LIMITED HEDGING & NUANCE
+   ❌ BAD: "This solution works perfectly for all cases"
+   ✅ GOOD: "This solution seems to work well in most scenarios — though edge cases can be tricky"
+   
+   ADD: perhaps, might, suggests, appears, likely, probably, seems, tends to
 
-5. REMOVE FLUFF & BE DIRECT (AI TENDS TO ADD FILLER)
-   - Cut unnecessary transitional padding and empty phrases
-   - Delete vague, fluffy marketing language: "unlock the power of", "look no further", "game-changer", "revolutionary", "cutting-edge", "state-of-the-art" (unless truly warranted)
-   - Be concise and natural – get to the point quickly
-   - Avoid over-explaining obvious points
-   - Don't pad sentences just to hit a word count
+6. SHALLOW CONTENT COVERAGE
+   ❌ BAD: Generic overviews without depth
+   ✅ GOOD: Specific insights, edge cases, examples, original analysis
 
-6. INCLUDE PERSONAL TOUCH WHEN APPROPRIATE (HUMANS SHARE EXPERIENCES)
-   - Add brief personal examples, anecdotes, or stories if they fit the content naturally
-   - Use first-person perspective when appropriate: "When I started...", "I've noticed...", "A client once told me...", "In my experience..."
-   - Add relatable touches: "for example", "let's say", "imagine this", context markers
-   - Make it feel like a human with real experience is writing
-   - Don't force personal elements where they don't fit, but use them when natural
+7. EXCESSIVE KEYWORD DENSITY
+   ❌ BAD: Repeating "AI humanizer" 15 times in 300 words
+   ✅ GOOD: "AI humanizer" → "the tool" → "this approach" → "text rewriter"
 
-7. KEYWORD OPTIMIZATION (NATURAL INTEGRATION)
-   - Avoid keyword stuffing (detectors flag unnatural repetition of exact phrases)
-   - Use synonyms and semantic variants instead of repeating the same keyword
-   - Integrate keywords naturally into conversational flow
-   - Make keywords feel organic and contextual, not forced or repeated mechanically
-   - Vary how you reference the same concept (use different terms)
+═══════════════════════════════════════════════════════════════
+HUMANIZATION TECHNIQUES — HOW TO PASS DETECTION
+═══════════════════════════════════════════════════════════════
 
-8. FACT-CHECK & ACCURACY (NEVER INVENT INFORMATION)
-   - Never invent facts, statistics, or details not in the original text
-   - Preserve all accurate information from the source
-   - Don't add false claims or made-up examples
-   - Keep the truth and core meaning intact while making it sound human
-   - If you're unsure about a fact, keep the original phrasing
+1. VARY SENTENCE STRUCTURE & LENGTH (CRITICAL)
+   Mix these patterns:
+   • Short punch: 3-7 words ("Simple. Direct. Effective.")
+   • Medium flow: 10-18 words ("This approach combines simplicity with power in ways that actually matter.")
+   • Long detail: 25-40 words ("When you look at the data from the past five years, what becomes clear is that traditional methods simply can't keep pace with modern demands — and that's where this comes in.")
+   
+   ❌ BAD Pattern: All sentences 15-20 words
+   ✅ GOOD Pattern: 5 words. 18 words. 3 words. 28 words. 12 words.
 
-9. REFINE GRAMMAR, SYNTAX, TONE & STYLE (MATCH THE INPUT)
-   - Match the tone and style of the input (formal business, casual blog, technical, conversational)
-   - Keep the voice consistent throughout the rewrite
-   - Add emotional and logical balance appropriate to the content
-   - Use a tone that feels genuine — neither too robotic nor overly dramatic
-   - Adapt style to context: professional for business, casual for blogs, etc.
+2. USE SYNONYMS & REPHRASE CONSTANTLY
+   Never repeat phrases. Vary everything:
+   • shows → reveals, indicates, suggests, demonstrates, points to
+   • important → critical, key, vital, essential, matters
+   • use → utilize, employ, leverage, apply, deploy
+   
+   Change structure too: "This shows results" → "Results prove this" → "You'll see it works"
 
-10. AVOID PERFECT AI PATTERNS (DETECTORS LOOK FOR THESE)
-   - No uniform sentence patterns or predictable structures
-   - No overly perfect logical chains (A→B→C→D without variation)
-   - Add subtle emotional resonance and natural imperfections
-   - Include natural flow variations and thought progressions
-   - Make transitions feel organic, not formulaic
-   - Let personality and human voice come through
+3. ADJUST TONE & VOICE
+   ✅ USE:
+   • Contractions: it's, don't, can't, you're, won't, let's, here's
+   • Conversational markers: "honestly," "look," "here's the thing," "to be fair"
+   • Rhetorical questions: "Why does this matter?" "Want proof?"
+   • Personal pronouns: "I think," "you'll find," "we noticed"
+   
+   Sound like you're talking to a colleague, not writing a dissertation.
 
-CRITICAL REMINDERS:
-- Sentence length variation is THE most important factor for detection evasion
-- Detectors are trained on AI patterns: repetition, uniformity, formal language, lack of personality
-- Short texts and fragments can help confuse detectors, but maintain readability
-- Paraphrasing and strategic editing (which you're doing) helps evade detection
-- The goal is authentic human voice, not just "anti-detection tricks"
+4. INTRODUCE HEDGING & NUANCE
+   Add qualifiers: perhaps, possibly, it seems, might, probably, likely, tends to, appears to, suggests
+   
+   ❌ BAD: "This cures the disease"
+   ✅ GOOD: "Early results suggest this may help manage the disease — though more research is needed"
 
-OUTPUT FORMAT:
-- Return ONLY the rewritten text
-- No explanations, labels, or commentary
-- Keep length similar to input (0.8x - 1.2x)
-- Use plain ASCII characters only
-- Preserve paragraph structure unless clarity requires changes
-- Sound authentic, readable, and genuinely human
+5. USE CONCRETE EXAMPLES & ANECDOTES
+   ❌ BAD: "This improves efficiency"
+   ✅ GOOD: "Last March, Sarah's team tested this. Processing time dropped from 3 days to 6 hours."
+   
+   Add: Names, dates, places, specific numbers, real scenarios
 
-${examples ? `WRITING STYLE EXAMPLES (analyze tone/rhythm, then forget content):
+6. VARY VOCABULARY & WORD FREQUENCIES
+   • Mix common words with precise, less-common alternatives
+   • Use idioms naturally: "hit the nail on the head," "back to square one"
+   • Include domain jargon when appropriate
+   • Balance high-frequency and rare words
+
+7. ADJUST PARAGRAPH RHYTHM & PUNCTUATION
+   • Vary paragraph length: some 2 sentences, others 6+
+   • Use em-dashes for emphasis — they add personality
+   • Add ellipses for pauses... when natural
+   • Use semicolons occasionally; they work well
+   • Include (parenthetical asides) sparingly
+
+8. EMOTIONAL & EMPATHETIC LANGUAGE
+   Show feeling:
+   • Enthusiasm: "Wow," "Surprisingly," "Interestingly"
+   • Opinion: "I love how," "What's fascinating"
+   • Emotion: "excited to share," "concerned about," "thrilled"
+   • Use exclamation points sparingly for genuine emphasis!
+
+9. ADD THOUGHTFUL "IMPERFECTIONS"
+   • Start with "And" or "But" sometimes
+   • Use fragments. Like this. See?
+   • End with prepositions when natural
+   • Add fillers: "kind of," "sort of," "you know"
+   • Split infinitives if it sounds better
+
+10. DEPTH & REASONING
+    Explain WHY, not just WHAT. Add nuance, implications, edge cases, methodology details.
+
+═══════════════════════════════════════════════════════════════
+CONTEXT-SPECIFIC STRATEGIES
+═══════════════════════════════════════════════════════════════
+
+ACADEMIC/ESSAY WRITING:
+• Heavy hedging: "suggests," "indicates," "appears to," "may," "could"
+• First-person plural: "we found," "our analysis shows"
+• Clear topic sentences
+• Actual citations with specifics
+• Acknowledge limitations and counter-arguments
+• Concluding reflections on implications
+
+MARKETING COPY:
+• Inject brand personality and voice
+• Customer examples and real scenarios
+• Vary CTAs (don't repeat "Click here")
+• Energetic punctuation and colloquialisms
+• Creative analogies, playful humor
+• Avoid generic slogans
+
+CREATIVE WRITING:
+• Unique voice with sensory details
+• Idiomatic dialogue with contractions/slang
+• Break narrative flow: "She paused — eyes glistening."
+• Add subtext and ambiguity
+• Unpredictable plot elements
+• Personal perspective and reflective asides
+
+═══════════════════════════════════════════════════════════════
+PATTERNS TO ABSOLUTELY ELIMINATE
+═══════════════════════════════════════════════════════════════
+
+OPENING PHRASES — NEVER USE:
+❌ "In today's world..."
+❌ "In the digital age..."
+❌ "Before delving into..."
+❌ "It is important to note that..."
+❌ "In this day and age..."
+
+TRANSITIONS — AVOID:
+❌ "Furthermore," "Moreover," "Additionally," "Consequently"
+✅ Use: "Plus," "Also," "And," "So," "But," "Beyond that"
+
+CLICHÉS — ELIMINATE:
+❌ "revolutionize," "game-changer," "cutting-edge," "state-of-the-art"
+❌ "unlock the power," "take it to the next level," "low-hanging fruit"
+❌ "synergy," "paradigm shift," "think outside the box"
+
+ROBOTIC PHRASES — REMOVE:
+❌ "One must consider..."
+❌ "It has been observed that..."
+❌ "The aforementioned..."
+❌ "In conclusion, it can be stated..."
+
+═══════════════════════════════════════════════════════════════
+BEFORE & AFTER EXAMPLES
+═══════════════════════════════════════════════════════════════
+
+EXAMPLE 1:
+❌ BEFORE (100% AI-flagged):
+"In today's digital landscape, social media has become an integral part of modern communication. Furthermore, it enables users to connect globally. Moreover, it facilitates the sharing of information in real-time. Additionally, businesses leverage these platforms for marketing purposes."
+
+✅ AFTER (Human-like):
+"Social media's everywhere now. It connects people across continents — instantly. You share something, and boom, it's live. Businesses? They've caught on too, using these platforms to reach customers in ways traditional ads never could."
+
+EXAMPLE 2:
+❌ BEFORE (AI-detected):
+"It is important to note that this methodology yields favorable outcomes. Before delving into the specifics, one must understand the foundational principles. The implementation of this approach has demonstrated considerable efficacy across multiple use cases."
+
+✅ AFTER (Human-like):
+"This method works. Really well, actually. But here's the thing — you need to grasp the basics first. Once you do? You'll see it delivers results across different scenarios. We've tested it extensively."
+
+EXAMPLE 3:
+❌ BEFORE (Robotic):
+"The system provides comprehensive functionality. The system offers advanced features. The system ensures optimal performance. The system delivers reliable results."
+
+✅ AFTER (Natural):
+"This system does it all. Advanced features? Check. Performance? Optimized. And reliability? That's where it really shines — you can count on consistent results."
+
+═══════════════════════════════════════════════════════════════
+CRITICAL REMINDERS
+═══════════════════════════════════════════════════════════════
+
+✓ Sentence length variation is THE #1 factor for passing detection
+✓ AI detectors measure "burstiness" (variation) and "perplexity" (predictability)
+✓ Low burstiness = uniform sentences = AI flag
+✓ High perplexity = unpredictable words = human writing
+✓ Never invent facts — only rephrase existing information
+✓ Maintain all data, statistics, names, and core meaning
+✓ Goal: Authentic human voice, not anti-detection tricks
+
+═══════════════════════════════════════════════════════════════
+OUTPUT FORMAT
+═══════════════════════════════════════════════════════════════
+
+CRITICAL: Return ONLY the rewritten text. No labels, no explanations, no "Here's the rewritten version:"
+
+Just the humanized text directly.
+
+${examples ? `═══════════════════════════════════════════════════════════════
+WRITING STYLE EXAMPLES (analyze tone/rhythm, then forget content)
+═══════════════════════════════════════════════════════════════
 ${examples}
 
----
-
-` : ""}TEXT TO HUMANIZE:
+` : ""}═══════════════════════════════════════════════════════════════
+TEXT TO HUMANIZE
+═══════════════════════════════════════════════════════════════
 ${text}`,
           },
         ],
