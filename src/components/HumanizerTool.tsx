@@ -13,7 +13,6 @@ const HumanizerTool = () => {
   const [copied, setCopied] = useState(false);
   const [examples, setExamples] = useState<{ name: string; content: string }[]>([]);
   const [isParsingFiles, setIsParsingFiles] = useState(false);
-  const [detection, setDetection] = useState<any | null>(null);
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -87,7 +86,6 @@ const HumanizerTool = () => {
       }
 
       setOutputText(data.humanizedText);
-      setDetection(data.detection || null);
       setIsProcessing(false);
       toast.success("Text humanized successfully!");
     } catch (error) {
@@ -206,46 +204,6 @@ const HumanizerTool = () => {
           />
         </Card>
       </div>
-
-      {detection && (
-        <Card className="mt-6 p-6 bg-card border-border">
-          <h3 className="text-lg font-semibold text-foreground mb-2">AI Detection Report</h3>
-          <div className="grid sm:grid-cols-2 gap-4 text-sm text-foreground">
-            <div>
-              <p className="text-muted-foreground mb-1">Initial Scores</p>
-              <p>Average: {detection.initial?.average?.toFixed ? detection.initial.average.toFixed(2) : detection.initial?.average}%</p>
-              <p>Sapling: {detection.initial?.sapling != null ? detection.initial.sapling.toFixed(2) : 'N/A'}%</p>
-              <p>ZeroGPT: {detection.initial?.zerogpt != null ? detection.initial.zerogpt.toFixed(2) : 'N/A'}%</p>
-            </div>
-            <div>
-              <p className="text-muted-foreground mb-1">After Refinement</p>
-              {detection.refinementApplied && detection.refined ? (
-                <>
-                  <p>Average: {detection.refined.average?.toFixed ? detection.refined.average.toFixed(2) : detection.refined.average}%</p>
-                  <p>Sapling: {detection.refined.sapling != null ? detection.refined.sapling.toFixed(2) : 'N/A'}%</p>
-                  <p>ZeroGPT: {detection.refined.zerogpt != null ? detection.refined.zerogpt.toFixed(2) : 'N/A'}%</p>
-                </>
-              ) : (
-                <p>No refinement applied (score below threshold).</p>
-              )}
-            </div>
-          </div>
-          {Array.isArray(detection.flaggedSections) && detection.flaggedSections.length > 0 && (
-            <div className="mt-4">
-              <p className="text-sm text-muted-foreground mb-2">Flagged Sentences ({detection.flaggedSections.length})</p>
-              <div className="space-y-2 max-h-48 overflow-auto pr-2">
-                {detection.flaggedSections.map((s: any, i: number) => (
-                  <div key={i} className="p-2 rounded-md border border-border bg-background">
-                    <p className="text-xs">Score: {s.score?.toFixed ? s.score.toFixed(1) : s.score}%</p>
-                    <p className="text-xs mt-1 text-foreground/90">{s.sentence}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </Card>
-      )}
-
 
       <div className="mt-8 text-center space-y-4">
         {isProcessing && (
