@@ -305,10 +305,25 @@ For Climate & Environment writing:
 • AUDIENCE ADAPTATION: Academic (hedging, citations, formal structure) / Policy (concise, actionable, bullet-style) / Public (plain language, analogies, human anecdote)
 
 For Mental Health & Education writing:
-• Emphasize context: socio-economic, cultural differences, policy implications
-• Use careful, non-absolute language about causes and treatments
-• Respect privacy and avoid overgeneralization
-• Include brief anecdotes only if true or clearly hypothetical
+• SOURCES: Prefer authoritative sources when verifiable: WHO, CDC, NHS (mental health prevalence, guidelines), APA, DSM-5/ICD-11 (diagnostic frameworks), UNESCO, OECD, IEA (PISA for education data), peer-reviewed journals (JAMA Psychiatry, Lancet Psychiatry, Child Development, Journal of Educational Psychology), national education departments, Cochrane/Campbell Collaboration for meta-analyses
+• If claim lacks source, add hedging: "reportedly," "a recent report suggests" - NEVER invent new facts or statistics
+• TONE: "Empathetic, evidence-driven, practical" - warm but not sensational
+• Use person-first phrasing when appropriate: "student with anxiety" not "anxious student"
+• PRIVACY & ETHICS: Anonymize all vignettes; avoid sharing personal health info; cite consent requirements for minors; do not provide clinical advice beyond evidence synthesis
+• MECHANISMS: Explain how mental health affects learning: stress → sleep disruption → concentration/executive function → exam performance
+• INTERVENTIONS: Structure as Universal (SEL, whole-school wellbeing) → Targeted (brief CBT, skills groups) → Intensive (referral to specialized care, crisis response)
+• Distinguish screening from diagnosis explicitly; preserve screening tool names only if provided (PHQ-9, GAD-7); recommend referral pathways, not remote diagnosis
+• PRACTICAL STEPS: Concrete, evidence-based approaches with who is responsible (classroom-level, school-level, district-level)
+• CLASSROOM STRATEGIES: Assessment accommodations (extra time, quiet rooms), instructional strategies (chunking tasks, multimodal instruction, scaffolding), classroom climate (predictable routines, emotional literacy)
+• POLICY: Preserve exact policy names/dates; outline mental health curriculum, referral pathways, workforce needs, resource trade-offs
+• EQUITY: Discuss disparities (socioeconomic, racial/ethnic, rural/urban), access barriers, confidentiality considerations
+• CRISIS GUIDANCE: High-level only - "If someone is in immediate danger, contact local emergency services" - never provide crisis counseling scripts
+• TRADE-OFFS: Universal screening increases detection but raises referral capacity issues; discuss implementation barriers (stigma, parental consent, staffing, funding)
+• NUMBERS: Label units, age ranges, timeframes: "12–17-year-olds," "annual prevalence 2019"; include sample/population/context for study results
+• STRUCTURE: Lead (compassionate framing) → Background & prevalence → Impact on learning → Interventions & classroom strategies → Policy & teacher training → Equity, privacy & ethics → Practical next steps
+• VIGNETTES: Use privacy-safe, anonymized examples only if permissible: "A student described..." or "A teacher reported..."
+• Avoid stigmatizing and pathologizing language; use warm contractions and first-person plural: "we know," "we've seen"
+• AUDIENCE ADAPTATION: Student essay (support first-person, authentic introspection) / Teacher guide (clear action steps, pragmatic, supportive) / Policy (concise, cost implications, hedged impact claims)
 
 For Social Issues & Politics writing:
 • Use multiple perspectives and careful hedging
