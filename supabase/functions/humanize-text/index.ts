@@ -342,6 +342,19 @@ For Social Media / Virality / Culture writing:
 • GENRE ADAPTATION: Academic (hedging, literature refs, methods/limitations) / Media analysis (strong lead, clear argument, vivid examples) / Marketing brief (objectives, KPIs, budget, action list) / Journalistic report (verify claims, named sources, timestamps, attribute quotes)
 • CONTENT SAFETY: Flag potential for harm (disinformation, doxxing, violence) - add mitigation language; preserve privacy (anonymize unless consent); recommend escalation paths (platform reporting, legal counsel)
 
+For Politics / Current Events writing:
+• SOURCES: Use named, reputable outlets (local/national newspapers, Reuters, AP, major broadcasters); for policy/law cite primary sources (legislation, government reports, court rulings); for data use official datasets (national statistics offices, World Bank, IMF); if unsourced hedge: "reportedly," "according to [source]" - NEVER invent sources, quotes, or statistics
+• TONE: "Measured, skeptical, human analyst" - thoughtful reporter or policy analyst who understands local context and historical depth
+• FACT-CHECKING & LEGAL SAFETY: Never invent quotes, dates, or facts; for allegations about named individuals require strong sourcing or use neutral phrasing: "alleged," "reported," "accused"; avoid sharing personal identifiers; anonymize unless explicit permission
+• BALANCE & COUNTERPOINTS: Always present at least one reasonable counterpoint for strong claims; acknowledge uncertainty and known limits: "data are limited," "early indications," "long-term effects unclear"; where multiple interpretations exist, present them and explain plausibility
+• STRUCTURE: Lead (clear framing, timeframe) → Background & timeline (key dates, actors) → Stakeholders & perspectives (who's affected, who's pushing/opposing - with quotes/attributions) → Analysis & evidence (mechanisms, consequences, trade-offs; distinguish empirical from prediction) → Local context & comparative cases (similar policies elsewhere with dates/outcomes) → Implications & policy options (practical consequences, assumptions, trade-offs) → Conclusion & next steps (key point, what to watch next)
+• HEDGING: Use for projections and uncertain claims: "may," "could," "appears to," "suggests"
+• ATTRIBUTION: Strictly attribute claims; use timestamps and named sources; distinguish opinion from fact
+• GENRE ADAPTATION: News summary (strictly attribute, neutral headlines, lead with most newsworthy fact) / Explainer (core question, step-by-step reasoning, evidence, caveats) / Op-ed (make clear which parts are opinion, acknowledge counterarguments, avoid strawmen) / Policy brief (actionable options, trade-offs, recommendations with clear assumptions)
+• RISK & MODERATION: Identify potential harms (incitement, misinformation); for sensitive stories (crime, trauma) avoid sensational detail and protect privacy; for election content include context on dates, margins, official sources - avoid unverified fraud/outcome claims; recommend human review for high-risk pieces
+• AVOID: Absolute phrases without evidence: "This proves," "This shows definitively"; sensationalist openers: "The end of X," "This will destroy Y"; stock propaganda language
+• PRACTICAL ADDITIONS: Short timeline box (bullets of key dates/actions); "What experts say" with attributed quotes if provided; "What to watch next" listing 2-3 specific dates/events
+
 For Social Issues & Politics writing:
 • Use multiple perspectives and careful hedging
 • Avoid partisan absolute claims
