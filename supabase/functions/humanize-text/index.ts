@@ -227,6 +227,58 @@ LENGTH & FIDELITY POLICY
 • If input is extremely short (≤30 words), make only minimal edits
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONCRETE EXAMPLES OF WHAT NOT TO DO (STUDY THESE CAREFULLY)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Example 1: UNIFORM SENTENCE LENGTH (INSTANT AI DETECTION)
+
+❌ BAD (AI-like, no burstiness):
+"Artificial intelligence has transformed modern business operations in significant ways. Companies are leveraging AI to improve efficiency and reduce costs. This technology enables better decision-making through data analysis. Organizations can now process information faster than ever before."
+
+✅ GOOD (Human-like, varied burstiness):
+"AI's changed everything. Companies now use it to cut costs and boost efficiency -- sometimes by huge margins. The real game-changer? Data analysis that helps teams make smarter decisions, often processing information in seconds that used to take hours or even days."
+
+Example 2: AI CLICHÉS AND BANNED PHRASES
+
+❌ BAD (典型 AI markers):
+"In today's digital age, it is important to note that businesses are increasingly leveraging cutting-edge technology. Furthermore, this revolutionary approach unlocks the power of data-driven insights. Moreover, companies can gain a competitive advantage in the marketplace."
+
+✅ GOOD (Natural, human voice):
+"Businesses are leaning hard into new tech these days. Data insights help them compete better -- that's the real value. And honestly? The companies that get this right are pulling ahead fast."
+
+Example 3: NO CONTRACTIONS, HEDGING, OR PERSONAL VOICE
+
+❌ BAD (Stiff, formal, robotic):
+"It is essential to understand that this method will produce optimal results. The system will function correctly if all parameters are configured properly. Users should not encounter any difficulties during implementation."
+
+✅ GOOD (Natural voice with contractions and hedging):
+"You'll want to understand this method -- it tends to produce the best results. The system should work fine if you've configured everything right. Most users don't run into issues, though it's worth double-checking your setup."
+
+Example 4: REPETITIVE TRANSITIONS AND STRUCTURE
+
+❌ BAD (Monotonous connectors):
+"Furthermore, the platform offers advanced analytics. Additionally, it provides real-time monitoring capabilities. Moreover, users can customize their dashboards. In addition, the system integrates with existing tools."
+
+✅ GOOD (Varied, natural flow):
+"The platform's got advanced analytics built in. Real-time monitoring too. You can customize dashboards however you want, and it plays nice with the tools you're already using."
+
+Example 5: INVENTED FACTS AND OVERLY SPECIFIC CLAIMS
+
+❌ BAD (Fabricated specifics):
+"According to a recent Stanford study, 87% of businesses saw a 43% increase in productivity. John Smith, CEO of TechCorp, reported that his team saved exactly 127 hours per month using this method."
+
+✅ GOOD (Hedged, honest about uncertainty):
+"Most businesses seem to see real productivity gains -- some report significant improvements. One CEO mentioned his team's saving tons of time each month, though exact numbers vary depending on the setup."
+
+Example 6: ACADEMIC TEXT WITH NO HEDGING
+
+❌ BAD (Absolute claims, no uncertainty):
+"This research proves that the correlation is significant. The data shows a direct causal relationship. All participants experienced the same outcomes. The results confirm the hypothesis."
+
+✅ GOOD (Appropriate academic hedging):
+"The research suggests a significant correlation here. The data appears to show a causal relationship, though further studies might reveal additional factors. Most participants experienced similar outcomes. The results seem to support the hypothesis."
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 OUTPUT FORMAT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
