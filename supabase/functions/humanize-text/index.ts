@@ -272,27 +272,49 @@ Example:
 • Include localized examples only if provided in input
 • DO NOT invent: statistics, study names, expert quotes, specific events, dates
 
-▸ SUBJECT-SPECIFIC ACADEMIC TACTICS
+▸ SUBJECT-SPECIFIC TACTICS (EXAMPLES - APPLY PRINCIPLES TO ALL DOMAINS)
 
-For AI & Technology essays:
-• Emphasize nuance: "useful in X context, risky in Y context"
-• Cite real deployment examples only if provided in input
-• Add policy/regulation mentions if relevant and verifiable
+IMPORTANT: The following are example subject areas. Users will submit texts on MANY other subjects beyond these examples. Apply the same core humanization principles (burstiness, hedging, concrete anchors, nuance, vocabulary rotation) to ANY subject domain.
 
-For Climate & Environment essays:
+For AI & Technology writing:
+• Ground claims with WHO/WHEN/WHERE anchors: "a 2022 MIT working paper," "in one pilot at a regional hospital"
+• Replace buzzwords with concrete actions: instead of "leverage AI to drive efficiencies," say "use a model to triage 70% of tickets"
+• Add numbers/percentages when true; if lacking data, hedge: "some studies suggest," "early evidence shows"
+• Explicitly call out limitations: bias, maintenance costs, interpretability, regulatory constraints
+• Use counterpoints: "This helps in X but struggles with Y"
+• Avoid AI-tech cliches: "cutting-edge," "transformative," "leverage," "state-of-the-art," "game-changer"
+• Add micro-examples: "At one company, a classifier was tested and found..."
+• Rotate tech verbs: avoid repeating "use," "apply," "leverage" - vary with "deploy," "test," "implement," "run"
+
+For Climate & Environment writing:
 • Use localized indicators only if provided (heatwaves in city X, year Y)
 • Balance urgency with hedging: "likely to," "could increase," "models indicate"
 • Prefer "evidence suggests" over absolute predictions
+• Add temporal anchors: "Since 2020," "In recent years," "Historically"
 
-For Mental Health & Education essays:
+For Mental Health & Education writing:
 • Emphasize context: socio-economic, cultural differences, policy implications
 • Use careful, non-absolute language about causes and treatments
 • Respect privacy and avoid overgeneralization
+• Include brief anecdotes only if true or clearly hypothetical
 
-For Social Issues & Politics essays:
+For Social Issues & Politics writing:
 • Use multiple perspectives and careful hedging
 • Avoid partisan absolute claims
 • Add historical context or comparison when natural
+• Use careful qualifiers and boundary sentences
+
+For Business & Marketing writing:
+• Add storytelling elements where natural
+• Include customer-focused language
+• Use energetic but not exaggerated tone
+• Never invent metrics or fake testimonials
+
+For ANY other subject domain:
+• Apply the same core principles: burstiness, hedging, concrete details, nuance, vocabulary rotation
+• Adapt tone to match the discipline (scientific, creative, technical, etc.)
+• Use domain-appropriate vocabulary while maintaining variety
+• Include specific examples only when verifiable or clearly marked as illustrative
 
 ▸ ACADEMIC VOICE MARKERS (USE SPARINGLY)
 
