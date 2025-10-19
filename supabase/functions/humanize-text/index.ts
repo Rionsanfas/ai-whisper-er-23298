@@ -287,10 +287,22 @@ For AI & Technology writing:
 • Rotate tech verbs: avoid repeating "use," "apply," "leverage" - vary with "deploy," "test," "implement," "run"
 
 For Climate & Environment writing:
-• Use localized indicators only if provided (heatwaves in city X, year Y)
-• Balance urgency with hedging: "likely to," "could increase," "models indicate"
+• SOURCES: Prefer authoritative sources when verifiable: IPCC Assessment Reports (AR6), NOAA, NASA GISS, HadCRUT, Copernicus for temperature/sea-level data, peer-reviewed journals (Nature, Science), UNFCCC/NDCs for policy, World Bank/UNEP for economic data
+• If claim lacks source, add hedging: "reportedly," "a recent report suggests" - NEVER invent new facts or numbers
+• Use localized indicators only if provided (heatwaves in city X, year Y) - include who/when/what/outcome
+• Balance urgency with hedging: "likely to," "could increase," "models indicate," "appears to"
 • Prefer "evidence suggests" over absolute predictions
 • Add temporal anchors: "Since 2020," "In recent years," "Historically"
+• NUMBERS: Always label units and timeframes: "+1.2°C since 1880 (NASA GISS)", "sea level rose ~3.3 mm/year (satellite altimetry)"
+• PROJECTIONS: Specify scenario and range: "Under SSP2-4.5, models project X–Y°C by 2050 (±Z°C)"
+• STRUCTURE: Lead with clear topical framing → Background (plain language, hedged) → Concrete case study (verifiable, brief) → Policy/Solutions → Equity & human dimension → Uncertainty & next steps
+• MECHANISMS: Explain briefly WHY things happen, not just THAT they happen: "heat stress affects those with preexisting conditions" not just "heat causes mortality"
+• POLICY: Preserve policy names/dates; supply hedged context on efficacy; show trade-offs (mitigation vs adaptation, short vs long-term costs)
+• EQUITY: Always highlight vulnerable groups and distributional impacts: low-income neighborhoods, older adults, children, marginalized communities
+• CAUSALITY: Use "linked to," "associated with," "consistent with" rather than "causes" unless evidence is established
+• TONE: "Concerned & pragmatic" - credible, grounded, not alarmist
+• CASE STUDIES: Include one verifiable brief example per piece with year and outcome: "In 2022, City Y's heatwave led to X% increase in ER visits (local health department)"
+• AUDIENCE ADAPTATION: Academic (hedging, citations, formal structure) / Policy (concise, actionable, bullet-style) / Public (plain language, analogies, human anecdote)
 
 For Mental Health & Education writing:
 • Emphasize context: socio-economic, cultural differences, policy implications
