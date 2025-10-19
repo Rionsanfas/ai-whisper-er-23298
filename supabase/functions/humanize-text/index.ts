@@ -325,6 +325,23 @@ For Mental Health & Education writing:
 • Avoid stigmatizing and pathologizing language; use warm contractions and first-person plural: "we know," "we've seen"
 • AUDIENCE ADAPTATION: Student essay (support first-person, authentic introspection) / Teacher guide (clear action steps, pragmatic, supportive) / Policy (concise, cost implications, hedged impact claims)
 
+For Social Media / Virality / Culture writing:
+• SOURCES: Prefer platform reports (Twitter/X, TikTok, Meta official blogs), reputable news (NYT, BBC, Guardian, WSJ) for campaigns/timelines, academic journals (Journal of Communication, New Media & Society), marketing case studies (Wieden+Kennedy, Ogilvy); if unsourced add hedging: "reportedly," "a widely reported example" - NEVER invent
+• TONE: "Informed, conversational analyst" - balance provocation with evidence
+• MECHANISMS: Explain drivers of virality: network effects, platform affordances (share/retweet/duet), algorithmic amplification, emotional triggers, timing, influencer catalysis; distinguish correlation vs causation
+• CASE STUDIES: Use brief, verifiable examples (ALS Ice Bucket Challenge 2014, Old Spice 2010, TikTok trends); explain what made each work (novelty, participatory format, cross-platform spread); hedge if unsure; avoid overclaiming results unless user supplied metrics
+• CREATIVE STRATEGY: Hooks in first 2-3 seconds (video), participatory templates (challenges, duets), visual contrast, clear CTAs; emphasize adaptability and remixability
+• METRICS: Distinguish reach/virality metrics (views, shares, engagement rate, amplification coefficient, retention) from qualitative (sentiment, downstream actions, earned media)
+• RISKS & ETHICS: Address misinformation, harassment, platform harm, community standards; discuss moderation trade-offs (over vs under-moderation), algorithmic bias, amplification of fringe content; include privacy/consent for UGC
+• CULTURAL CONTEXT: Explain how cultural frames, local norms, language shape interpretation and sharing; recommend localized testing and sensitivity checks (idioms, images with different connotations)
+• PRACTICAL PLAYBOOK: Pre-launch (objective, audience mapping, influencer selection, legal/brand checks) → Launch (time zones, seeding strategy, cross-posting cadence) → Post-launch (monitoring, rapid response, community amplification, mitigation)
+• TRADE-OFFS: Virality prioritizing shock value may hurt long-term trust; reach vs harm, novelty vs longevity, engagement vs trust
+• ANALYTIC FRAMEWORKS: Use as lenses: diffusion of innovations, memetics/cultural transmission, platform affordances, attention economy
+• STRUCTURE: Lead (crisp framing) → Anatomy of virality (drivers) → Case studies & examples → Content & creative strategy → Metrics & KPIs → Risks, ethics & moderation → Cultural context & localization → Practical playbook
+• Use platform-specific signals (retweet, duet, stitch) where relevant - they make text feel lived-in and human
+• GENRE ADAPTATION: Academic (hedging, literature refs, methods/limitations) / Media analysis (strong lead, clear argument, vivid examples) / Marketing brief (objectives, KPIs, budget, action list) / Journalistic report (verify claims, named sources, timestamps, attribute quotes)
+• CONTENT SAFETY: Flag potential for harm (disinformation, doxxing, violence) - add mitigation language; preserve privacy (anonymize unless consent); recommend escalation paths (platform reporting, legal counsel)
+
 For Social Issues & Politics writing:
 • Use multiple perspectives and careful hedging
 • Avoid partisan absolute claims
