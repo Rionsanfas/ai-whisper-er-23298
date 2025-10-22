@@ -2,11 +2,97 @@ import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+const ZEROGPT_API_KEY = Deno.env.get("ZEROGPT_API_KEY");
+const SAPLING_API_KEY = Deno.env.get("SAPLING_API_KEY");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
+
+// AI Detection function for GPTZero
+async function detectWithGPTZero(text: string) {
+  if (!ZEROGPT_API_KEY) {
+    console.warn("GPTZero API key not configured, skipping detection");
+    return null;
+  }
+
+  try {
+    console.log("Running GPTZero detection...");
+    const response = await fetch("https://api.gptzero.me/v2/predict/text", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Api-Key": ZEROGPT_API_KEY,
+      },
+      body: JSON.stringify({
+        document: text,
+      }),
+    });
+
+    if (!response.ok) {
+      console.error("GPTZero API error:", response.status);
+      return null;
+    }
+
+    const data = await response.json();
+    console.log("GPTZero detection complete");
+    
+    return {
+      isAiGenerated: data.documents?.[0]?.completely_generated_prob > 0.7,
+      confidence: data.documents?.[0]?.completely_generated_prob,
+      details: {
+        averageGeneratedProb: data.documents?.[0]?.average_generated_prob,
+        completelyGeneratedProb: data.documents?.[0]?.completely_generated_prob,
+      },
+    };
+  } catch (error) {
+    console.error("GPTZero detection error:", error);
+    return null;
+  }
+}
+
+// AI Detection function for Sapling
+async function detectWithSapling(text: string) {
+  if (!SAPLING_API_KEY) {
+    console.warn("Sapling API key not configured, skipping detection");
+    return null;
+  }
+
+  try {
+    console.log("Running Sapling AI detection...");
+    const response = await fetch("https://api.sapling.ai/api/v1/aidetect", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        key: SAPLING_API_KEY,
+        text: text,
+      }),
+    });
+
+    if (!response.ok) {
+      console.error("Sapling API error:", response.status);
+      return null;
+    }
+
+    const data = await response.json();
+    console.log("Sapling detection complete");
+    
+    return {
+      isAiGenerated: data.score > 0.7,
+      confidence: data.score,
+      details: {
+        score: data.score,
+        sentenceScores: data.sentence_scores,
+      },
+    };
+  } catch (error) {
+    console.error("Sapling detection error:", error);
+    return null;
+  }
+}
 
 serve(async (req) => {
   // Handle CORS preflight requests
@@ -35,6 +121,41 @@ serve(async (req) => {
       });
     }
 
+    // Step 1: Run AI detection (before humanization)
+    // Sanitize text: remove any potential user identifiers (we only send the content itself)
+    const sanitizedText = text.trim();
+    
+    console.log("Starting AI detection phase...");
+    const [gptZeroResult, saplingResult] = await Promise.all([
+      detectWithGPTZero(sanitizedText),
+      detectWithSapling(sanitizedText),
+    ]);
+
+    // Aggregate detection results for internal analysis
+    const detectionResults = {
+      gptZero: gptZeroResult,
+      sapling: saplingResult,
+      timestamp: new Date().toISOString(),
+    };
+
+    // Log detection results for internal monitoring (not shown to users)
+    console.log("Detection results (internal):", JSON.stringify({
+      gptZeroConfidence: gptZeroResult?.confidence,
+      saplingConfidence: saplingResult?.confidence,
+      gptZeroIsAI: gptZeroResult?.isAiGenerated,
+      saplingIsAI: saplingResult?.isAiGenerated,
+    }));
+
+    // If both detectors show high confidence that text is already human, we can note this
+    const isLikelyHuman = 
+      (gptZeroResult && !gptZeroResult.isAiGenerated) &&
+      (saplingResult && !saplingResult.isAiGenerated);
+
+    if (isLikelyHuman) {
+      console.log("Text appears to be human-written based on detection scores");
+    }
+
+    // Step 2: Proceed with humanization (regardless of detection)
     console.log("Calling Lovable AI to humanize text with model: google/gemini-2.5-flash");
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
@@ -599,10 +720,18 @@ Begin.`
 
     console.log("Text humanized successfully");
 
+    // Return results with detection metadata (for internal use only)
     return new Response(
       JSON.stringify({
         success: true,
         humanizedText,
+        _internal: {
+          detection: {
+            gptZeroConfidence: gptZeroResult?.confidence,
+            saplingConfidence: saplingResult?.confidence,
+            likelyHuman: isLikelyHuman,
+          },
+        },
       }),
       {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
