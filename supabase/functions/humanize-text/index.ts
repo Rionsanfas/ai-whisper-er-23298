@@ -35,7 +35,7 @@ serve(async (req) => {
       });
     }
 
-    console.log("Calling Lovable AI to humanize text...");
+    console.log("Calling Lovable AI to humanize text with model: google/gemini-2.5-flash");
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -44,7 +44,7 @@ serve(async (req) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "openai/gpt-5-mini",
+        model: "google/gemini-2.5-flash",
         messages: [
           {
             role: "system",
@@ -556,8 +556,7 @@ Begin.`
             content: `TEXT TO HUMANIZE:\n\n${text}`
           }
         ],
-        temperature: 0.9,
-        max_tokens: 4000,
+        
       }),
     });
 
