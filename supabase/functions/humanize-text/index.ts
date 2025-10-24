@@ -255,11 +255,86 @@ Return ONLY the final humanized text.`
 
     console.log("Text humanized successfully");
 
+    // Step 3: Run second AI call to detect AI patterns in humanized text
+    console.log("Running second AI call to analyze humanized text for AI patterns...");
+    
+    const analysisResponse = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${LOVABLE_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "google/gemini-2.5-flash",
+        messages: [
+          {
+            role: "system",
+            content: `You are an AI text pattern analyzer. Your task is to analyze the provided text and identify sentences or phrases that still contain AI-like patterns, markers, or unnatural phrasing.
+
+Return a JSON object with this exact structure:
+{
+  "flaggedSentences": [
+    {
+      "sentence": "the exact sentence or phrase",
+      "reason": "why it seems AI-generated (e.g., 'formal connector', 'repetitive structure', 'unnatural phrasing')",
+      "suggestion": "a more natural alternative"
+    }
+  ],
+  "overallScore": 0-100 (where 100 is perfectly human, 0 is obviously AI),
+  "summary": "brief assessment of the text's naturalness"
+}
+
+Focus on detecting:
+- Formal connectors (Furthermore, Moreover, Additionally, etc.)
+- Repetitive sentence structures
+- Overly formal or stiff phrasing
+- Lack of sentence length variation
+- Generic or vague statements
+- Unnatural transitions
+
+Return ONLY valid JSON, no additional text.`
+          },
+          {
+            role: "user",
+            content: `Analyze this text for AI patterns:\n\n${humanizedText}`
+          }
+        ],
+      }),
+    });
+
+    let analysisData = null;
+    if (analysisResponse.ok) {
+      const analysisResult = await analysisResponse.json();
+      const analysisContent = analysisResult.choices?.[0]?.message?.content || "{}";
+      
+      try {
+        // Try to parse the JSON response
+        analysisData = JSON.parse(analysisContent);
+        console.log("AI pattern analysis complete");
+      } catch (parseError) {
+        console.error("Failed to parse analysis response:", parseError);
+        // Provide a fallback structure
+        analysisData = {
+          flaggedSentences: [],
+          overallScore: 85,
+          summary: "Analysis completed but results could not be parsed"
+        };
+      }
+    } else {
+      console.error("Analysis API error:", analysisResponse.status);
+      analysisData = {
+        flaggedSentences: [],
+        overallScore: 85,
+        summary: "Analysis could not be completed"
+      };
+    }
+
     // Return results with detection metadata (for internal use only)
     return new Response(
       JSON.stringify({
         success: true,
         humanizedText,
+        analysis: analysisData,
         _internal: {
           detection: {
             gptZeroConfidence: gptZeroResult?.confidence,
