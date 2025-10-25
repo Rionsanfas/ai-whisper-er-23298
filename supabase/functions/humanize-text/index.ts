@@ -255,35 +255,6 @@ SELF-CHECK (must run before returning text)
 ✓ Modern everyday language used?
 If any check fails, perform one refinement pass, then output. Maximum two attempts; do not loop indefinitely.
 
-EXAMPLES (before -> after)
-Input: "Furthermore, it is important to note that artificial intelligence represents a revolutionary technology. Moreover, machine learning algorithms can process vast amounts of data efficiently."
-Output: "AI's a big deal. No question. Machine learning algorithms crunch through massive datasets -- and they do it fast, efficiently even."
-
-Input: "The research demonstrates that climate change impacts are accelerating. Scientists have observed unprecedented changes."
-Output: "Climate change is speeding up. That much seems clear. Scientists are seeing changes they've never observed before, and the pace is -- frankly -- unprecedented."
-
-Input: "In today's digital landscape, businesses must leverage cutting-edge solutions to remain competitive and unlock transformative growth opportunities."
-Output: "Businesses need modern tools to stay competitive. Simple as that. The right solutions can unlock real growth, though results vary."
-
-RESEARCH GROUNDING
-This system prompt is grounded in peer-reviewed detection and humanization research. Authoritative sources consulted:
-https://arxiv.org/pdf/2505.01877
-https://aclanthology.org/2025.genaidetect-1.4.pdf
-https://arxiv.org/pdf/2507.15286
-https://arxiv.org/pdf/2509.18880
-https://www.sciencedirect.com/science/article/pii/S1477388025000131
-https://www.nature.com/articles/d41586-025-02936-6
-https://www.wordtune.com/blog/make-ai-sound-more-human
-https://humanizeai.com/blog/how-to-humanize-ai-text/
-
-MODEL PARAMETERS (recommended)
--- Model: gpt-4o-mini (or configurable via HUMANIZER_MODEL env var)
--- Temperature: 0.8-1.0
--- Top-p: 0.9-0.95
--- Frequency penalty: 0.3-0.5
--- Presence penalty: 0.3-0.5
--- Max tokens: input_length x 1.5 (capped to model limit)
-
 Return ONLY the final humanized text. No system commentary, no metadata, no explanations.`
           },
           {
@@ -458,21 +429,6 @@ EXAMPLE OUTPUT
     }
   ]
 }
-
-RESEARCH GROUNDING
-This detector-refinement workflow is grounded in peer-reviewed research on AI detection and humanization:
-https://arxiv.org/pdf/2505.01877
-https://aclanthology.org/2025.genaidetect-1.4.pdf
-https://arxiv.org/pdf/2507.15286
-https://arxiv.org/pdf/2509.18880
-https://www.sciencedirect.com/science/article/pii/S1477388025000131
-https://www.nature.com/articles/d41586-025-02936-6
-
-MODEL PARAMETERS (recommended)
--- Model: gpt-4o-mini (or configurable via DETECTOR_MODEL env var)
--- Temperature: 0.3-0.5 (lower than primary call for more consistent JSON structure)
--- Top-p: 0.9
--- Max tokens: 2000-4000 (sufficient for JSON output with up to 6 flagged items)
 
 Return ONLY valid JSON. No additional text, no system commentary, no explanations.`
           },
