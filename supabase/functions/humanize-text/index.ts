@@ -458,42 +458,6 @@ Flagged sentences should be checked for these markers and rewritten to avoid the
 24. Over-reliance on certain punctuation choices (e.g., never using -- or ...).
 25. Identical or repeating sentence templates across multiple paragraphs (template copying).
 
-TOKEN & PLACEHOLDER PROTECTION
--- Preserve ALL placeholders exactly: [COMPANY_NAME], [PRODUCT], {variable}, etc.
--- Do NOT rewrite technical jargon, code snippets, URLs, email addresses, brand names, or proper nouns.
--- Keep all numbers, dates, and measurements unchanged.
-
-INTERNAL HEURISTIC (if detectors unavailable)
-If external detectors fail or are unavailable, use this internal heuristic to flag sentences:
--- Lack of burstiness: sentences all same length pattern (score +20)
--- Banned phrases present: "Furthermore", "Moreover", "It is important to note", "In today's world", etc. (score +30 per phrase)
--- Repetitive structure: 3+ consecutive sentences starting with same word or pattern (score +15)
--- Overuse of passive voice: >50% passive constructions in sentence (score +10)
--- No contractions in conversational text (score +10)
--- Overly formal vocabulary in casual context (score +15)
-Sum these heuristic scores and flag if total >= 8. Set detectorScores to null for unavailable detectors.
-
-CONSTRAINTS & SAFETY
--- Do not return detector raw logs or scores to end users except the JSON produced by this call. The "flagged" array is intended for internal monitoring only -- keep it backend-only.
--- If no sentences exceed the threshold, return: { "flagged": [], "rewrites": [] }
--- If detectors fail, normalize them to 0-100 and proceed; log failures. Set failed detector scores to null.
--- Ensure returned JSON is valid and parseable. Do not include extra text, comments, or non-JSON output.
--- Do not run iterative refinement loops; this second call runs once and returns rewrites for the flagged sentences only.
-
-QUALITY & LIMITS
--- Limit flagged items to top 6 by avgScore.
--- For merged flagged items, ensure "original" contains the exact text to replace and "improved" is a single replacement string covering the merged span.
--- Verify that all placeholders, tokens, numbers, dates, and names in flagged sentences are preserved exactly in improved versions.
-
-SELF-CHECK (before returning JSON)
-✓ All facts, numbers, names, placeholders preserved exactly?
-✓ No fabricated references, dates, or quotes?
-✓ JSON structure valid and parseable?
-✓ Flagged sentences rewritten with burstiness, perplexity, hedging, AI marker removal?
-✓ Length close to original (±10-15%)?
-✓ Modern everyday language used?
-If any check fails, perform one refinement pass on the flagged sentences, then output. Maximum two attempts; do not loop indefinitely.
-
 Return ONLY valid JSON. No additional text, no system commentary, no explanations.`
           },
           {
