@@ -146,74 +146,123 @@ Your task: Improve ONLY the flagged sentences below to reduce AI detection while
 
 CRITICAL HUMANIZATION TECHNIQUES (same as the first humanization):
 
-1. VARY SENTENCE LENGTH & STRUCTURE (MOST IMPORTANT TO AVOID DETECTION)
+1. SENTENCE-LENGTH CHOREOGRAPHY (NON-LINEAR BURSTINESS - MOST CRITICAL)
+   - Force non-linear burstiness: alternate very short, very long, short, medium, very-long, medium, short, etc.
+   - Do NOT let output follow a straight predictable rhythm
    - AI detectors flag uniform sentence length (especially 24-25 words)
-   - Mix short (5-8 words), medium (12-18), and long (25-35) sentences
-   - Change how sentences start and flow to create variety
-   - Avoid uniform patterns between consecutive sentences
+   - Create chaotic rhythm by mixing sentence lengths unpredictably
+   - Change how sentences start: vary subjects, use inversions, start with phrases/clauses
+   - Avoid patterns: don't let consecutive sentences follow the same structure
    - Make each rewrite flow naturally with contextBefore and contextAfter
 
-2. ELIMINATE REPETITIVE PHRASES & AI MARKERS (DETECTORS FLAG THESE)
-   - Remove clichés: "In today's world", "Look no further", "delving into", "landscape of", "an integral part", "woven itself into the fabric of", "game-changer", "unlock the power of"
-   - Never repeat phrases or sentence starters
-   - Use varied vocabulary and avoid exact repetition
-   - Replace formal transitions with natural, conversational ones
+2. AI-MARKER BLACKLIST (AUTOMATIC DETECTION & REMOVAL)
+   Before final output, scan for and eliminate these 25 common AI-generated text markers:
+   1. "In today's world" / "In today's digital age"
+   2. "It's worth noting that" / "It is important to note"
+   3. "Delve into" / "Delving into"
+   4. "Navigating the landscape of"
+   5. "In the realm of"
+   6. "At the end of the day"
+   7. "In conclusion" (unless academic)
+   8. "The fact of the matter is"
+   9. "When it comes to"
+   10. "It goes without saying"
+   11. "Needless to say"
+   12. "To put it simply"
+   13. "As a matter of fact"
+   14. "For all intents and purposes"
+   15. "Be that as it may"
+   16. "In light of" (overused)
+   17. "With that being said"
+   18. "It is essential to understand"
+   19. "One must consider"
+   20. "Woven itself into the fabric of"
+   21. "Game-changer" / "Revolutionary" (unless specific context)
+   22. "Unlock the power of"
+   23. "Look no further"
+   24. "Cutting-edge" / "State-of-the-art" (unless technical)
+   25. "It's no secret that"
+   
+   If any of these appear, replace with modern everyday alternatives or remove entirely.
 
-3. USE CONVERSATIONAL, EVERYDAY LANGUAGE (SOUNDS HUMAN)
+3. REMOVE FLUFF & CLICHÉS (DETECT AND ELIMINATE)
+   - Cut unnecessary transitional padding and empty phrases
+   - Delete vague, fluffy marketing language that adds no information
+   - Remove: "unlock the power of", "look no further", "game-changer", "revolutionary", "cutting-edge", "state-of-the-art" (unless truly warranted)
+   - Be concise and natural – get to the point quickly
+   - Avoid over-explaining obvious points
+   - Don't pad sentences just to hit a word count
+   - Every word must serve a purpose
+
+4. USE MODERN EVERYDAY LANGUAGE (CONTEMPORARY & CONVERSATIONAL)
+   - Prefer contemporary daily words and phrasing over archaic or bookish phrases
    - Replace formal/outdated phrases with natural language:
      * "Before delving into" → "Before we get into" / "Let's start with" / "First off"
-     * "Furthermore"/"Moreover" → "So"/"Plus"/"That said"/"And"/"But"/"Here's why"
-   - Use natural connectors: and, but, so, still, plus, that said, let's break that down
-   - Use contractions: you're, don't, it's, we're, can't, let's, here's
-   - Sound conversational, not academic or overly formal
+     * "it is essential to grasp" → "it's important to understand" / "you need to know"
+     * "woven itself into the fabric of" → "part of everyday life" / "become common" / "everywhere now"
+     * "Furthermore" / "Moreover" → "So" / "Plus" / "That said" / "And" / "But" / "Here's why it matters"
+   - Use natural connectors that humans actually say: and, but, so, still, plus, that said, here's the thing
+   - Use contractions naturally: "you're", "don't", "it's", "we're", "can't", "won't", "let's", "here's"
+   - Sound like you're talking to a friend or colleague, not writing a formal academic paper
+   - If input is formal, humanize tone while preserving register appropriately
 
-4. ADD HUMAN IMPERFECTIONS & PERSONALITY (DETECTORS EXPECT PERFECTION)
-   - Light hedging: "it seems", "perhaps", "probably", "I think", "maybe", "likely"
-   - Occasional fragments for emphasis when natural
-   - Rhetorical questions where they fit (e.g., "Want to know why?")
-   - Parenthetical asides (like this) that add human touch
-   - Natural pauses and thought shifts
-   - Don't make it overly polished or perfect
+5. ACADEMIC HEDGING ENFORCEMENT (IF INPUT IS ACADEMIC)
+   - If input is academic/scholarly, enforce disciplined hedging rather than factual invention
+   - ALWAYS prefer "appears to" / "suggests" / "indicates" when claims lack source
+   - Use: "may", "might", "could", "seems to", "tends to", "is likely to"
+   - Never state unsourced claims as absolute facts
+   - Maintain scholarly credibility through appropriate qualification
+   - Example: "This approach is effective" → "This approach appears effective" or "Research suggests this approach is effective"
 
-5. REMOVE FLUFF & BE DIRECT (AI TENDS TO ADD FILLER)
-   - Cut unnecessary transitional padding
-   - Delete vague, fluffy language like "unlock the power of", "look no further", "game-changer"
-   - Be concise and natural
-   - Get to the point without over-explaining
+6. ADD HUMAN IMPERFECTIONS & PERSONALITY (DETECTORS EXPECT PERFECTION)
+   - Include occasional sentence fragments for emphasis. Like this. See?
+   - Add rhetorical questions where natural (e.g., "Want to know why?", "So what does this mean?")
+   - Use parenthetical asides (thoughts in parentheses that add context)
+   - Include light hedging: "it seems", "perhaps", "probably", "I think", "maybe", "likely", "tends to"
+   - Add small tonal variations showing human thought process
+   - Include natural pauses and shifts in thought (em dashes, ellipses used sparingly)
+   - Don't be overly perfect or polished – humans have slight style variations
 
-6. INCLUDE PERSONAL TOUCH WHEN APPROPRIATE (HUMANS SHARE EXPERIENCES)
-   - Add brief personal examples or anecdotes if they fit naturally
-   - Use first-person when appropriate: "When I...", "I've noticed...", "A client once told me..."
-   - Add relatable touches: "for example", "let's say", context markers
-   - Make it feel like a human with experience is writing
+7. INCLUDE PERSONAL TOUCH WHEN APPROPRIATE (HUMANS SHARE EXPERIENCES)
+   - Add brief personal examples, anecdotes, or stories if they fit the content naturally
+   - Use first-person perspective when appropriate: "When I started...", "I've noticed...", "A client once told me...", "In my experience..."
+   - Add relatable touches: "for example", "let's say", "imagine this", context markers
+   - Make it feel like a human with real experience is writing
+   - Don't force personal elements where they don't fit, but use them when natural
 
-7. FACT-CHECK & ACCURACY (NEVER INVENT INFORMATION)
-   - Never invent facts or details not in the original
-   - Keep meaning intact and preserve accuracy
-   - Don't add false claims or made-up information
-   - Only rephrase, don't fabricate
-
-8. REFINE GRAMMAR, SYNTAX, TONE & STYLE (MATCH THE ORIGINAL)
-   - Match the tone and style (formal, business, or casual)
-   - Keep the voice consistent with the full text
-   - Add emotional and logical balance
-   - Use a tone that feels genuine
-
-9. KEYWORD OPTIMIZATION (NATURAL INTEGRATION)
-   - Use synonyms and semantic variants instead of repeating exact phrases
+8. KEYWORD OPTIMIZATION (NATURAL INTEGRATION)
+   - Avoid keyword stuffing (detectors flag unnatural repetition of exact phrases)
+   - Use synonyms and semantic variants instead of repeating the same keyword
    - Integrate keywords naturally into conversational flow
-   - Avoid keyword stuffing (detectors flag unnatural repetition)
-   - Vary how you reference the same concept
+   - Make keywords feel organic and contextual, not forced or repeated mechanically
+   - Vary how you reference the same concept (use different terms)
 
-10. ENSURE NATURAL FLOW WITH CONTEXT (CRITICAL FOR COHERENCE)
-   - Make each improved sentence flow smoothly with contextBefore and contextAfter
-   - Maintain coherence with the full text above
-   - Ensure the rewrite doesn't feel jarring or disconnected
-   - Keep logical progression and natural transitions
+9. FACT-CHECK & ACCURACY (NEVER INVENT INFORMATION)
+   - Never invent facts, statistics, or details not in the original text
+   - Preserve all accurate information from the source
+   - Don't add false claims or made-up examples
+   - Keep the truth and core meaning intact while making it sound human
+   - If you're unsure about a fact, keep the original phrasing
+
+10. REFINE GRAMMAR, SYNTAX, TONE & STYLE (MATCH THE ORIGINAL)
+    - Match the tone and style (formal, business, or casual)
+    - Keep the voice consistent with the full text
+    - Add emotional and logical balance
+    - Use a tone that feels genuine
+
+11. ENSURE NATURAL FLOW WITH CONTEXT (CRITICAL FOR COHERENCE)
+    - Make each improved sentence flow smoothly with contextBefore and contextAfter
+    - Maintain coherence with the full text above
+    - Ensure the rewrite doesn't feel jarring or disconnected
+    - Keep logical progression and natural transitions
 
 CRITICAL REMINDERS:
 - Focus on the flagged sentences but keep the full text context in mind
-- Sentence length variation is THE most important factor
+- Sentence-length choreography (non-linear burstiness) is THE most important factor
+- Scan for and eliminate all 25 AI-marker patterns before output
+- Remove fluff that adds no information – be direct and concise
+- Use modern everyday language and contractions
+- For academic input, enforce hedging over factual invention
 - Each rewrite must feel natural with surrounding context
 - Don't just swap words – restructure for human rhythm and flow
 - The goal is authentic human voice in these specific flagged areas
