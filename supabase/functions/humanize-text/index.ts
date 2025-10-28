@@ -10,62 +10,6 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-// Banned AI phrase patterns
-const BANNED_PHRASES = [
-  /\bin today'?s (?:world|digital age)\b/i,
-  /\bit'?s worth noting (?:that)?\b/i,
-  /\bit is important to note\b/i,
-  /\bdelv(?:e|ing) into\b/i,
-  /\bnavigat(?:e|ing) the landscape of\b/i,
-  /\bin the realm of\b/i,
-  /\bat the end of the day\b/i,
-  /\bin conclusion\b/i,
-  /\bthe fact of the matter is\b/i,
-  /\bwhen it comes to\b/i,
-  /\bit goes without saying\b/i,
-  /\bneedless to say\b/i,
-  /\bto put it simply\b/i,
-  /\bas a matter of fact\b/i,
-  /\bfor all intents and purposes\b/i,
-  /\bbe that as it may\b/i,
-  /\bin light of\b/i,
-  /\bwith that being said\b/i,
-  /\bit is essential to understand\b/i,
-  /\bone must consider\b/i,
-  /\bwoven (?:itself )?into the fabric of\b/i,
-  /\bgame-changer\b/i,
-  /\brevolutionary\b/i,
-  /\bunlock the power of\b/i,
-  /\blook no further\b/i,
-  /\bcutting-edge\b/i,
-  /\bstate-of-the-art\b/i,
-  /\bit'?s no secret that\b/i,
-];
-
-// Scan text for banned phrases
-function scanBannedPhrases(text: string): { found: boolean; matches: string[] } {
-  const matches: string[] = [];
-  BANNED_PHRASES.forEach((pattern) => {
-    const match = text.match(pattern);
-    if (match) matches.push(match[0]);
-  });
-  return { found: matches.length > 0, matches };
-}
-
-// Calculate burstiness histogram (sentence length variance)
-function calculateBurstiness(text: string): { passed: boolean; variance: number; lengths: number[] } {
-  const sentences = text.match(/[^.!?]+[.!?]+/g) || [];
-  const lengths = sentences.map(s => s.trim().split(/\s+/).length);
-  
-  if (lengths.length < 3) return { passed: true, variance: 0, lengths };
-  
-  const mean = lengths.reduce((a, b) => a + b, 0) / lengths.length;
-  const variance = lengths.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / lengths.length;
-  
-  // Good burstiness: variance > 30 (high variety in sentence lengths)
-  return { passed: variance > 30, variance, lengths };
-}
-
 // Call Sapling AI Detector
 async function detectWithSapling(text: string) {
   if (!SAPLING_API_KEY) {
@@ -172,73 +116,6 @@ async function refineFlaggedSections(
     ...extractContext(originalText, item.sentence),
   }));
 
-  // Replace placeholders in prompt template
-  const refinementPrompt = `You are an expert AI text humanizer performing detector-driven refinement.
-
-CONTEXT: This text scored {{avg_score}}% AI-generated after initial humanization.
-
-ORIGINAL TEXT:
-"""
-{{original_text}}
-"""
-
-TASK: Apply TWO-PASS humanization to flagged sentences only.
-
-PASS 1 - ANALYZE:
-- Identify AI patterns in each flagged sentence
-- Note violations of rigid rules below
-- Plan restructuring strategy
-
-PASS 2 - REWRITE:
-- Apply the humanization to produce improved versions
-- Ensure compliance with all rigid rules
-
-=== RIGID RULES (MANDATORY) ===
-
-A. PRESERVE FACTS & PROTECTED TOKENS
-   - Never change: URLs, citations, numbers, code blocks, {{placeholders}}
-   - Preserve all factual claims exactly as stated
-   - If change would alter meaning or data → leave original and mark: "needs_review": true
-
-B. REMOVE BANNED PHRASES (unless inside quotation marks)
-   - "In today's world/digital age", "It's worth noting", "Delve into"
-   - "Navigating the landscape", "In the realm of", "At the end of the day"
-   - "Game-changer", "Revolutionary", "Unlock the power", "Look no further"
-   - "Cutting-edge", "State-of-the-art", "It's no secret that"
-   - Full list: see 25-pattern blacklist in guidelines
-
-C. APPLY BURSTINESS (per paragraph)
-   - Mix sentence lengths: short (5-8 words), medium (12-18), long (25-35+)
-   - Each paragraph must have visible variance, not uniform rhythm
-   - Alternate structure: don't repeat sentence patterns
-
-D. RETURN JSON WITH PAIRS
-   - Format: {"rewrites":[{"original":"...","improved":"...","needs_review":false}]}
-   - ASCII-only output, escape " as \"
-   - No markdown code blocks, no explanations
-
-=== GUIDELINES (APPLY AS APPROPRIATE) ===
-
-- Modern everyday language: use contractions, conversational connectors
-- Remove fluff: delete phrases that add no information
-- Add micro-imperfections: fragments, rhetorical questions, parenthetical asides
-- Academic hedging: "appears to", "suggests", "may" (if academic tone)
-- Personal touch: first-person perspective if natural
-- Keyword optimization: vary terms, avoid repetition
-- Match original tone/style
-
-FLAGGED SENTENCES (with context):
-{{flagged_list}}
-
-OUTPUT: Return only valid JSON as specified in rule D.`.replace('{{avg_score}}', avgScore.toFixed(2))
-    .replace('{{original_text}}', originalText)
-    .replace('{{flagged_list}}', flaggedWithContext
-      .map((item, i) => `${i + 1}. Original: "${item.sentence}"
-   Score: ${item.score.toFixed(1)}%
-   Before: "${item.before}"
-   After: "${item.after}"`)
-      .join('\n\n'));
-
   try {
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -251,7 +128,160 @@ OUTPUT: Return only valid JSON as specified in rule D.`.replace('{{avg_score}}',
         messages: [
           {
             role: "user",
-            content: refinementPrompt,
+            content: `You are an expert AI text humanizer. This text scored ${avgScore.toFixed(2)}% AI-generated. 
+
+UNDERSTANDING AI DETECTORS:
+AI detectors (Sapling, ZeroGPT, GPTZero, Turnitin, Copyleaks) flagged parts of this text. They look for:
+- Uniform sentence length (AI typically writes 24-25 word sentences)
+- Repetitive phrases and predictable patterns
+- Overly polished language without natural imperfections
+- Lack of conversational markers or personal voice
+
+FULL GENERATED TEXT (from first humanization):
+"""
+${originalText}
+"""
+
+Your task: Improve ONLY the flagged sentences below to reduce AI detection while preserving facts and intent. The flagged sentences are parts of the text above that were detected as likely AI-generated.
+
+CRITICAL HUMANIZATION TECHNIQUES (same as the first humanization):
+
+1. SENTENCE-LENGTH CHOREOGRAPHY (NON-LINEAR BURSTINESS - MOST CRITICAL)
+   - Force non-linear burstiness: alternate very short, very long, short, medium, very-long, medium, short, etc.
+   - Do NOT let output follow a straight predictable rhythm
+   - AI detectors flag uniform sentence length (especially 24-25 words)
+   - Create chaotic rhythm by mixing sentence lengths unpredictably
+   - Change how sentences start: vary subjects, use inversions, start with phrases/clauses
+   - Avoid patterns: don't let consecutive sentences follow the same structure
+   - Make each rewrite flow naturally with contextBefore and contextAfter
+
+2. AI-MARKER BLACKLIST (AUTOMATIC DETECTION & REMOVAL)
+   Before final output, scan for and eliminate these 25 common AI-generated text markers:
+   1. "In today's world" / "In today's digital age"
+   2. "It's worth noting that" / "It is important to note"
+   3. "Delve into" / "Delving into"
+   4. "Navigating the landscape of"
+   5. "In the realm of"
+   6. "At the end of the day"
+   7. "In conclusion" (unless academic)
+   8. "The fact of the matter is"
+   9. "When it comes to"
+   10. "It goes without saying"
+   11. "Needless to say"
+   12. "To put it simply"
+   13. "As a matter of fact"
+   14. "For all intents and purposes"
+   15. "Be that as it may"
+   16. "In light of" (overused)
+   17. "With that being said"
+   18. "It is essential to understand"
+   19. "One must consider"
+   20. "Woven itself into the fabric of"
+   21. "Game-changer" / "Revolutionary" (unless specific context)
+   22. "Unlock the power of"
+   23. "Look no further"
+   24. "Cutting-edge" / "State-of-the-art" (unless technical)
+   25. "It's no secret that"
+   
+   If any of these appear, replace with modern everyday alternatives or remove entirely.
+
+3. REMOVE FLUFF & CLICHÉS (DETECT AND ELIMINATE)
+   - Cut unnecessary transitional padding and empty phrases
+   - Delete vague, fluffy marketing language that adds no information
+   - Remove: "unlock the power of", "look no further", "game-changer", "revolutionary", "cutting-edge", "state-of-the-art" (unless truly warranted)
+   - Be concise and natural – get to the point quickly
+   - Avoid over-explaining obvious points
+   - Don't pad sentences just to hit a word count
+   - Every word must serve a purpose
+
+4. USE MODERN EVERYDAY LANGUAGE (CONTEMPORARY & CONVERSATIONAL)
+   - Prefer contemporary daily words and phrasing over archaic or bookish phrases
+   - Replace formal/outdated phrases with natural language:
+     * "Before delving into" → "Before we get into" / "Let's start with" / "First off"
+     * "it is essential to grasp" → "it's important to understand" / "you need to know"
+     * "woven itself into the fabric of" → "part of everyday life" / "become common" / "everywhere now"
+     * "Furthermore" / "Moreover" → "So" / "Plus" / "That said" / "And" / "But" / "Here's why it matters"
+   - Use natural connectors that humans actually say: and, but, so, still, plus, that said, here's the thing
+   - Use contractions naturally: "you're", "don't", "it's", "we're", "can't", "won't", "let's", "here's"
+   - Sound like you're talking to a friend or colleague, not writing a formal academic paper
+   - If input is formal, humanize tone while preserving register appropriately
+
+5. ACADEMIC HEDGING ENFORCEMENT (IF INPUT IS ACADEMIC)
+   - If input is academic/scholarly, enforce disciplined hedging rather than factual invention
+   - ALWAYS prefer "appears to" / "suggests" / "indicates" when claims lack source
+   - Use: "may", "might", "could", "seems to", "tends to", "is likely to"
+   - Never state unsourced claims as absolute facts
+   - Maintain scholarly credibility through appropriate qualification
+   - Example: "This approach is effective" → "This approach appears effective" or "Research suggests this approach is effective"
+
+6. ADD HUMAN IMPERFECTIONS & PERSONALITY (DETECTORS EXPECT PERFECTION)
+   - Include occasional sentence fragments for emphasis. Like this. See?
+   - Add rhetorical questions where natural (e.g., "Want to know why?", "So what does this mean?")
+   - Use parenthetical asides (thoughts in parentheses that add context)
+   - Include light hedging: "it seems", "perhaps", "probably", "I think", "maybe", "likely", "tends to"
+   - Add small tonal variations showing human thought process
+   - Include natural pauses and shifts in thought (em dashes, ellipses used sparingly)
+   - Don't be overly perfect or polished – humans have slight style variations
+
+7. INCLUDE PERSONAL TOUCH WHEN APPROPRIATE (HUMANS SHARE EXPERIENCES)
+   - Add brief personal examples, anecdotes, or stories if they fit the content naturally
+   - Use first-person perspective when appropriate: "When I started...", "I've noticed...", "A client once told me...", "In my experience..."
+   - Add relatable touches: "for example", "let's say", "imagine this", context markers
+   - Make it feel like a human with real experience is writing
+   - Don't force personal elements where they don't fit, but use them when natural
+
+8. KEYWORD OPTIMIZATION (NATURAL INTEGRATION)
+   - Avoid keyword stuffing (detectors flag unnatural repetition of exact phrases)
+   - Use synonyms and semantic variants instead of repeating the same keyword
+   - Integrate keywords naturally into conversational flow
+   - Make keywords feel organic and contextual, not forced or repeated mechanically
+   - Vary how you reference the same concept (use different terms)
+
+9. FACT-CHECK & ACCURACY (NEVER INVENT INFORMATION)
+   - Never invent facts, statistics, or details not in the original text
+   - Preserve all accurate information from the source
+   - Don't add false claims or made-up examples
+   - Keep the truth and core meaning intact while making it sound human
+   - If you're unsure about a fact, keep the original phrasing
+
+10. REFINE GRAMMAR, SYNTAX, TONE & STYLE (MATCH THE ORIGINAL)
+    - Match the tone and style (formal, business, or casual)
+    - Keep the voice consistent with the full text
+    - Add emotional and logical balance
+    - Use a tone that feels genuine
+
+11. ENSURE NATURAL FLOW WITH CONTEXT (CRITICAL FOR COHERENCE)
+    - Make each improved sentence flow smoothly with contextBefore and contextAfter
+    - Maintain coherence with the full text above
+    - Ensure the rewrite doesn't feel jarring or disconnected
+    - Keep logical progression and natural transitions
+
+CRITICAL REMINDERS:
+- Focus on the flagged sentences but keep the full text context in mind
+- Sentence-length choreography (non-linear burstiness) is THE most important factor
+- Scan for and eliminate all 25 AI-marker patterns before output
+- Remove fluff that adds no information – be direct and concise
+- Use modern everyday language and contractions
+- For academic input, enforce hedging over factual invention
+- Each rewrite must feel natural with surrounding context
+- Don't just swap words – restructure for human rhythm and flow
+- The goal is authentic human voice in these specific flagged areas
+
+OUTPUT FORMAT:
+Return JSON exactly as: {"rewrites":[{"original":"<original sentence>","improved":"<improved sentence>"}]}
+No extra text, explanations, or code blocks. Use plain ASCII only.
+
+FLAGGED SENTENCES TO IMPROVE (with surrounding context for flow):
+${flaggedWithContext
+  .map(
+    (item, i) =>
+      `${i + 1}. Original: "${item.sentence}"
+   AI Detection Score: ${item.score.toFixed(1)}%
+   Context before: "${item.before}"
+   Context after: "${item.after}"`,
+  )
+  .join("\n\n")}
+`,
           },
         ],
       }),
@@ -320,67 +350,6 @@ serve(async (req) => {
 
     console.log("Calling Lovable AI to humanize text...");
 
-    // Replace placeholders in prompt template
-    const humanizePrompt = `You are an expert AI text humanizer. Perform TWO-PASS humanization.
-
-PASS 1 - ANALYZE:
-- Identify AI patterns in input (uniform sentences, banned phrases, lack of personality)
-- Note protected tokens (URLs, citations, numbers, code, {{placeholders}})
-- Plan restructuring for maximum burstiness and natural voice
-
-PASS 2 - REWRITE:
-- Apply humanization techniques while preserving protected tokens
-- Ensure compliance with all rigid rules
-
-=== RIGID RULES (MANDATORY) ===
-
-A. PRESERVE FACTS & PROTECTED TOKENS
-   - Never change: URLs, citations, numbers, code blocks, {{placeholders}}
-   - Preserve all factual claims exactly as stated
-   - If change would alter meaning or data → leave original segment unchanged
-
-B. REMOVE BANNED PHRASES (unless inside quotation marks)
-   - "In today's world/digital age", "It's worth noting", "Delve into"
-   - "Navigating the landscape", "In the realm of", "At the end of the day"
-   - "Game-changer", "Revolutionary", "Unlock the power", "Look no further"
-   - "Cutting-edge", "State-of-the-art", "It's no secret that"
-   - "When it comes to", "It goes without saying", "To put it simply"
-   - "As a matter of fact", "For all intents and purposes", "One must consider"
-   - "Woven into the fabric of", "It is essential to understand"
-   - Plus 10+ more (see full 25-pattern blacklist in AI training)
-
-C. APPLY BURSTINESS (per paragraph)
-   - Mix sentence lengths: short (5-8 words), medium (12-18), long (25-35+)
-   - Each paragraph must have visible variance, not uniform rhythm
-   - Alternate sentence structure: vary subjects, inversions, clauses
-   - Example BAD: "AI is powerful. AI is useful. AI is everywhere."
-   - Example GOOD: "AI is powerful. Everywhere you look. Before diving into its uses, let's examine how it reshaped communication."
-
-D. OUTPUT FORMAT
-   - Return ONLY the rewritten text (no JSON, no explanations)
-   - ASCII-only characters, escape special chars properly
-   - Keep length 0.8x-1.2x of input
-   - Preserve paragraph structure
-
-=== GUIDELINES (APPLY AS APPROPRIATE) ===
-
-- Modern everyday language: use contractions, conversational connectors ("and", "but", "so", "here's")
-- Remove fluff: delete phrases that add no information
-- Add micro-imperfections: occasional fragments, rhetorical questions, parenthetical asides
-- Academic hedging: "appears to", "suggests", "may" (if input is academic)
-- Personal touch: first-person perspective if natural ("I've noticed", "In my experience")
-- Keyword optimization: vary terms, avoid exact repetition
-- Match original tone/style (formal business, casual blog, technical, conversational)
-
-{{style_examples}}TEXT TO HUMANIZE:
-{{input_text}}`.replace('{{style_examples}}', examples ? `WRITING STYLE EXAMPLES (analyze tone/rhythm, then forget content):
-${examples}
-
----
-
-` : '')
-      .replace('{{input_text}}', text);
-
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -392,7 +361,152 @@ ${examples}
         messages: [
           {
             role: "user",
-            content: humanizePrompt,
+            content: `You are an expert AI text humanizer. Transform the following text to sound completely human-written while preserving all facts and meaning.
+
+UNDERSTANDING AI DETECTORS:
+AI detectors (Sapling, ZeroGPT, GPTZero, Turnitin, Copyleaks) analyze text for AI patterns. They work better on longer texts (50+ words) and look for:
+- Uniform sentence length (AI typically writes 24-25 word sentences)
+- Repetitive phrases and predictable patterns
+- Overly polished, formal language without natural imperfections
+- Lack of personal voice or conversational markers
+- Perfect logical chains without human thought variations
+
+Your goal: Make text sound naturally human to bypass these detectors while keeping all facts accurate.
+
+CRITICAL HUMANIZATION TECHNIQUES TO AVOID AI DETECTION:
+
+1. SENTENCE-LENGTH CHOREOGRAPHY (NON-LINEAR BURSTINESS - MOST CRITICAL)
+   - Force non-linear burstiness: alternate very short, very long, short, medium, very-long, medium, short, etc.
+   - Do NOT let output follow a straight predictable rhythm
+   - AI detectors flag uniform sentence length (especially 24-25 words)
+   - Humans write dramatically varied sentences: some very short (5-8 words), some medium (12-18), some long (25-35+)
+   - Create chaotic rhythm by mixing sentence lengths unpredictably throughout
+   - Change how sentences start: vary subjects, use inversions, start with phrases/clauses
+   - Avoid patterns: don't let consecutive sentences follow the same structure
+   - Example pattern to AVOID: "Social media connects people globally. Social media has transformed communication. Social media offers many benefits."
+   - Better (varied): "Social media connects people. It's everywhere now. Before we dive into its benefits, let's look at where it all started and how it shaped the way we communicate today."
+
+2. AI-MARKER BLACKLIST (AUTOMATIC DETECTION & REMOVAL)
+   Before final output, scan for and eliminate these 25 common AI-generated text markers:
+   1. "In today's world" / "In today's digital age"
+   2. "It's worth noting that" / "It is important to note"
+   3. "Delve into" / "Delving into"
+   4. "Navigating the landscape of"
+   5. "In the realm of"
+   6. "At the end of the day"
+   7. "In conclusion" (unless academic)
+   8. "The fact of the matter is"
+   9. "When it comes to"
+   10. "It goes without saying"
+   11. "Needless to say"
+   12. "To put it simply"
+   13. "As a matter of fact"
+   14. "For all intents and purposes"
+   15. "Be that as it may"
+   16. "In light of" (overused)
+   17. "With that being said"
+   18. "It is essential to understand"
+   19. "One must consider"
+   20. "Woven itself into the fabric of"
+   21. "Game-changer" / "Revolutionary" (unless specific context)
+   22. "Unlock the power of"
+   23. "Look no further"
+   24. "Cutting-edge" / "State-of-the-art" (unless technical)
+   25. "It's no secret that"
+   
+   If any of these appear, replace with modern everyday alternatives or remove entirely.
+
+3. REMOVE FLUFF & CLICHÉS (DETECT AND ELIMINATE)
+   - Cut unnecessary transitional padding and empty phrases
+   - Delete vague, fluffy marketing language that adds no information
+   - Remove: "unlock the power of", "look no further", "game-changer", "revolutionary", "cutting-edge", "state-of-the-art" (unless truly warranted)
+   - Be concise and natural – get to the point quickly
+   - Avoid over-explaining obvious points
+   - Don't pad sentences just to hit a word count
+   - Every word must serve a purpose
+
+4. USE MODERN EVERYDAY LANGUAGE (CONTEMPORARY & CONVERSATIONAL)
+   - Prefer contemporary daily words and phrasing over archaic or bookish phrases
+   - Replace formal/outdated phrases with natural language:
+     * "Before delving into" → "Before we get into" / "Let's start with" / "First off"
+     * "it is essential to grasp" → "it's important to understand" / "you need to know"
+     * "woven itself into the fabric of" → "part of everyday life" / "become common" / "everywhere now"
+     * "Furthermore" / "Moreover" → "So" / "Plus" / "That said" / "And" / "But" / "Here's why it matters"
+   - Use natural connectors that humans actually say: and, but, so, still, plus, that said, here's the thing
+   - Use contractions naturally: "you're", "don't", "it's", "we're", "can't", "won't", "let's", "here's"
+   - Sound like you're talking to a friend or colleague, not writing a formal academic paper
+   - If input is formal, humanize tone while preserving register appropriately
+
+5. ACADEMIC HEDGING ENFORCEMENT (IF INPUT IS ACADEMIC)
+   - If input is academic/scholarly, enforce disciplined hedging rather than factual invention
+   - ALWAYS prefer "appears to" / "suggests" / "indicates" when claims lack source
+   - Use: "may", "might", "could", "seems to", "tends to", "is likely to"
+   - Never state unsourced claims as absolute facts
+   - Maintain scholarly credibility through appropriate qualification
+   - Example: "This approach is effective" → "This approach appears effective" or "Research suggests this approach is effective"
+
+6. ADD HUMAN IMPERFECTIONS & PERSONALITY (DETECTORS EXPECT PERFECTION FROM AI)
+   - Include occasional sentence fragments for emphasis. Like this. See?
+   - Add rhetorical questions where natural (e.g., "Want to know why?", "So what does this mean?")
+   - Use parenthetical asides (thoughts in parentheses that add context)
+   - Include light hedging: "it seems", "perhaps", "probably", "I think", "maybe", "likely", "tends to"
+   - Add small tonal variations showing human thought process
+   - Include natural pauses and shifts in thought (em dashes, ellipses used sparingly)
+   - Don't be overly perfect or polished – humans have slight style variations
+
+7. INCLUDE PERSONAL TOUCH WHEN APPROPRIATE (HUMANS SHARE EXPERIENCES)
+   - Add brief personal examples, anecdotes, or stories if they fit the content naturally
+   - Use first-person perspective when appropriate: "When I started...", "I've noticed...", "A client once told me...", "In my experience..."
+   - Add relatable touches: "for example", "let's say", "imagine this", context markers
+   - Make it feel like a human with real experience is writing
+   - Don't force personal elements where they don't fit, but use them when natural
+
+8. KEYWORD OPTIMIZATION (NATURAL INTEGRATION)
+   - Avoid keyword stuffing (detectors flag unnatural repetition of exact phrases)
+   - Use synonyms and semantic variants instead of repeating the same keyword
+   - Integrate keywords naturally into conversational flow
+   - Make keywords feel organic and contextual, not forced or repeated mechanically
+   - Vary how you reference the same concept (use different terms)
+
+9. FACT-CHECK & ACCURACY (NEVER INVENT INFORMATION)
+   - Never invent facts, statistics, or details not in the original text
+   - Preserve all accurate information from the source
+   - Don't add false claims or made-up examples
+   - Keep the truth and core meaning intact while making it sound human
+   - If you're unsure about a fact, keep the original phrasing
+
+10. REFINE GRAMMAR, SYNTAX, TONE & STYLE (MATCH THE INPUT)
+    - Match the tone and style of the input (formal business, casual blog, technical, conversational)
+    - Keep the voice consistent throughout the rewrite
+    - Add emotional and logical balance appropriate to the content
+    - Use a tone that feels genuine — neither too robotic nor overly dramatic
+    - Adapt style to context: professional for business, casual for blogs, etc.
+
+CRITICAL REMINDERS:
+- Sentence-length choreography (non-linear burstiness) is THE most important factor for detection evasion
+- Scan for and eliminate all 25 AI-marker patterns before output
+- Remove fluff that adds no information – be direct and concise
+- Use modern everyday language and contractions
+- For academic input, enforce hedging over factual invention
+- Detectors are trained on AI patterns: repetition, uniformity, formal language, lack of personality
+- Short texts and fragments can help confuse detectors, but maintain readability
+- The goal is authentic human voice, not just "anti-detection tricks"
+
+OUTPUT FORMAT:
+- Return ONLY the rewritten text
+- No explanations, labels, or commentary
+- Keep length similar to input (0.8x - 1.2x)
+- Use plain ASCII characters only
+- Preserve paragraph structure unless clarity requires changes
+- Sound authentic, readable, and genuinely human
+
+${examples ? `WRITING STYLE EXAMPLES (analyze tone/rhythm, then forget content):
+${examples}
+
+---
+
+` : ""}TEXT TO HUMANIZE:
+${text}`,
           },
         ],
       }),
@@ -501,100 +615,72 @@ ${examples}
 
     let finalText = sanitizedText;
     let refinementApplied = false;
-    let retryCount = 0;
-    const MAX_RETRIES = 1;
 
-    // Backend validation loop with retry
-    while (retryCount <= MAX_RETRIES) {
-      // Run backend tests
-      const bannedCheck = scanBannedPhrases(finalText);
-      const burstinessCheck = calculateBurstiness(finalText);
+    // If score > 8%, refine the flagged sections
+    if (avgScore > 8) {
+      console.log("Score above 8%, refining flagged sections...");
 
-      console.log("Backend validation:", {
-        attempt: retryCount + 1,
-        bannedPhrases: bannedCheck.matches.length,
-        burstinessVariance: burstinessCheck.variance.toFixed(2),
-        burstinessPassed: burstinessCheck.passed,
-      });
+      // Collect flagged sections from both detectors with scores
+      const flaggedSectionsData: Array<{ sentence: string; score: number }> = [];
 
-      // If both checks pass or we've exhausted retries, break
-      if ((!bannedCheck.found || retryCount > 0) && (burstinessCheck.passed || retryCount > 0)) {
-        if (retryCount > 0) {
-          console.log("Validation passed on retry", retryCount);
-        }
-        break;
-      }
-
-      // If score > 8%, refine the flagged sections
-      if (avgScore > 8 && retryCount === 0) {
-        console.log("Score above 8%, refining flagged sections...");
-
-        // Collect flagged sections from both detectors with scores
-        const flaggedSectionsData: Array<{ sentence: string; score: number }> = [];
-
-        // Add high-scoring sentences from Sapling
-        if (saplingResult?.sentenceScores) {
-          saplingResult.sentenceScores.forEach((sent: any) => {
-            if (sent.score > 0.8) {
-              // High confidence AI-generated
-              flaggedSectionsData.push({
-                sentence: sent.sentence,
-                score: sent.score * 100, // Convert to percentage
-              });
-            }
-          });
-        }
-
-        // Add flagged sentences from ZeroGPT (estimate high score for flagged items)
-        if (zeroGPTResult?.flaggedSentences) {
-          zeroGPTResult.flaggedSentences.forEach((sentence: string) => {
-            // Check if not already added from Sapling
-            if (!flaggedSectionsData.find((item) => item.sentence === sentence)) {
-              flaggedSectionsData.push({
-                sentence,
-                score: 85, // Estimated high score for ZeroGPT flagged items
-              });
-            }
-          });
-        }
-
-        if (flaggedSectionsData.length > 0) {
-          finalText = await refineFlaggedSections(sanitizedText, flaggedSectionsData, avgScore);
-          refinementApplied = true;
-          console.log("Refinement complete. Running final detection check...");
-
-          // Run AI detection one more time on the refined text
-          const [finalSaplingResult, finalZeroGPTResult] = await Promise.all([
-            detectWithSapling(finalText),
-            detectWithZeroGPT(finalText),
-          ]);
-
-          // Calculate final average score
-          const finalScores = [];
-          if (finalSaplingResult) finalScores.push(finalSaplingResult.score);
-          if (finalZeroGPTResult) finalScores.push(finalZeroGPTResult.score);
-
-          const finalAvgScore = finalScores.length > 0 ? finalScores.reduce((a, b) => a + b, 0) / finalScores.length : 0;
-
-          console.log("Final detection results after refinement:", {
-            sapling: finalSaplingResult?.score,
-            zerogpt: finalZeroGPTResult?.score,
-            average: finalAvgScore.toFixed(2) + "%",
-          });
-
-          if (finalAvgScore > 8) {
-            console.log("WARNING: Final score still above 8% after refinement");
-          } else {
-            console.log("SUCCESS: Final score is now below 8%");
+      // Add high-scoring sentences from Sapling
+      if (saplingResult?.sentenceScores) {
+        saplingResult.sentenceScores.forEach((sent: any) => {
+          if (sent.score > 0.8) {
+            // High confidence AI-generated
+            flaggedSectionsData.push({
+              sentence: sent.sentence,
+              score: sent.score * 100, // Convert to percentage
+            });
           }
-        }
+        });
       }
 
-      retryCount++;
-      if (retryCount > MAX_RETRIES) {
-        console.log("Max retries reached, proceeding with current result");
-        break;
+      // Add flagged sentences from ZeroGPT (estimate high score for flagged items)
+      if (zeroGPTResult?.flaggedSentences) {
+        zeroGPTResult.flaggedSentences.forEach((sentence: string) => {
+          // Check if not already added from Sapling
+          if (!flaggedSectionsData.find((item) => item.sentence === sentence)) {
+            flaggedSectionsData.push({
+              sentence,
+              score: 85, // Estimated high score for ZeroGPT flagged items
+            });
+          }
+        });
       }
+
+      if (flaggedSectionsData.length > 0) {
+        finalText = await refineFlaggedSections(sanitizedText, flaggedSectionsData, avgScore);
+        refinementApplied = true;
+        console.log("Refinement complete. Running final detection check...");
+
+        // Run AI detection one more time on the refined text
+        const [finalSaplingResult, finalZeroGPTResult] = await Promise.all([
+          detectWithSapling(finalText),
+          detectWithZeroGPT(finalText),
+        ]);
+
+        // Calculate final average score
+        const finalScores = [];
+        if (finalSaplingResult) finalScores.push(finalSaplingResult.score);
+        if (finalZeroGPTResult) finalScores.push(finalZeroGPTResult.score);
+
+        const finalAvgScore = finalScores.length > 0 ? finalScores.reduce((a, b) => a + b, 0) / finalScores.length : 0;
+
+        console.log("Final detection results after refinement:", {
+          sapling: finalSaplingResult?.score,
+          zerogpt: finalZeroGPTResult?.score,
+          average: finalAvgScore.toFixed(2) + "%",
+        });
+
+        if (finalAvgScore > 8) {
+          console.log("WARNING: Final score still above 8% after refinement");
+        } else {
+          console.log("SUCCESS: Final score is now below 8%");
+        }
+      }
+    } else {
+      console.log("Score below 8%, no refinement needed");
     }
 
     return new Response(
