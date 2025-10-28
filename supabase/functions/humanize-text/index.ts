@@ -227,6 +227,41 @@ D. RETURN JSON WITH PAIRS
 - Keyword optimization: vary terms, avoid repetition
 - Match original tone/style
 
+=== ADVANCED HUMANIZATION MEASURES ===
+
+1. SENTENCE CHOREOGRAPHY (per paragraph):
+   - Aim for at least one sentence ≤ 6 words, one 10-18 words, one 25-40 words
+   - Prevent >2 consecutive sentences with length within ±3 words of each other
+   - Mark sentences to shorten/lengthen or split/merge for burstiness goals
+
+2. PARAPHRASE PASSES (two-stage):
+   - PASS A (structure): change sentence openings, split/merge clauses, reorder phrases
+   - PASS B (lexical): apply synonym rotation, small idiomatic substitutions
+   - Always validate protected tokens unchanged after each pass
+
+3. HUMAN IMPERFECTIONS (controlled injection):
+   - Insert sparingly: rhetorical question, 1-3 word fragment, parenthetical aside, mild filler ("you know", "honestly")
+   - Max 1 imperfection per 150-200 words; none in quoted/technical content
+
+4. HEDGING & NUANCE (for unsourced claims):
+   - Auto-detect absolute causal claims without citations
+   - Convert: "X causes Y" → "Evidence suggests X may contribute to Y"
+   - Keep verified numeric statements intact
+
+5. SYNONYM ROTATION:
+   - Maintain in-session synonym bank to avoid repeating descriptors within 120-word window
+   - Prioritize common synonyms; limit elevated vocabulary to ≤20%
+
+6. DETECTOR-AWARE SANITIZATION:
+   - Replace banned phrases and their close paraphrases with natural alternatives
+   - Ensure no AI-detector trigger patterns remain
+
+7. QUALITY TARGETS (internal):
+   - Sentence-length std dev ≥7 words across document
+   - Short-sentence ratio ≥10% (sentences ≤6 words)
+   - Each paragraph passes short/medium/long requirement
+   - No descriptor repeated >2 times within 120 words
+
 FLAGGED SENTENCES (with context):
 {{flagged_list}}
 
@@ -371,6 +406,41 @@ D. OUTPUT FORMAT
 - Personal touch: first-person perspective if natural ("I've noticed", "In my experience")
 - Keyword optimization: vary terms, avoid exact repetition
 - Match original tone/style (formal business, casual blog, technical, conversational)
+
+=== ADVANCED HUMANIZATION MEASURES ===
+
+1. SENTENCE CHOREOGRAPHY (per paragraph):
+   - Aim for at least one sentence ≤ 6 words, one 10-18 words, one 25-40 words
+   - Prevent >2 consecutive sentences with length within ±3 words of each other
+   - Mark sentences to shorten/lengthen or split/merge for burstiness goals
+
+2. PARAPHRASE PASSES (two-stage):
+   - PASS A (structure): change sentence openings, split/merge clauses, reorder phrases
+   - PASS B (lexical): apply synonym rotation, small idiomatic substitutions
+   - Always validate protected tokens unchanged after each pass
+
+3. HUMAN IMPERFECTIONS (controlled injection):
+   - Insert sparingly: rhetorical question, 1-3 word fragment, parenthetical aside, mild filler ("you know", "honestly")
+   - Max 1 imperfection per 150-200 words; none in quoted/technical content
+
+4. HEDGING & NUANCE (for unsourced claims):
+   - Auto-detect absolute causal claims without citations
+   - Convert: "X causes Y" → "Evidence suggests X may contribute to Y"
+   - Keep verified numeric statements intact
+
+5. SYNONYM ROTATION:
+   - Maintain in-session synonym bank to avoid repeating descriptors within 120-word window
+   - Prioritize common synonyms; limit elevated vocabulary to ≤20%
+
+6. DETECTOR-AWARE SANITIZATION:
+   - Replace banned phrases and their close paraphrases with natural alternatives
+   - Ensure no AI-detector trigger patterns remain
+
+7. QUALITY TARGETS (internal):
+   - Sentence-length std dev ≥7 words across document
+   - Short-sentence ratio ≥10% (sentences ≤6 words)
+   - Each paragraph passes short/medium/long requirement
+   - No descriptor repeated >2 times within 120 words
 
 {{style_examples}}TEXT TO HUMANIZE:
 {{input_text}}`.replace('{{style_examples}}', examples ? `WRITING STYLE EXAMPLES (analyze tone/rhythm, then forget content):
