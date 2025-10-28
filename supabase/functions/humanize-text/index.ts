@@ -262,61 +262,6 @@ D. RETURN JSON WITH PAIRS
    - Each paragraph passes short/medium/long requirement
    - No descriptor repeated >2 times within 120 words
 
-=== EXPANDED AI-PATTERN BLACKLIST (25+ patterns to remove/rework) ===
-
-• Repetitive sentence openers ("This study…", "This shows…", "This method…")
-• Uniform sentence length across paragraph (variance <5 words)
-• Overuse of formal connectors ("Furthermore", "Moreover", "Additionally")
-• Filler phrases: "it is important to note", "it should be noted that"
-• "In today's world", "In the digital age" and paraphrases
-• "Before delving into", "Before diving into" and variants
-• Over-explanatory padding ("It should be understood that…")
-• Marketing fluff: "unlock the power", "game-changer", "revolutionary"
-• Empty generalizations ("Studies show" with no specifics)
-• Repetitive synonyms used back-to-back ("important…important")
-• Excessive passive voice in multiple consecutive sentences
-• Too-perfect grammar with no contractions in casual text
-• Serial listing with exact parallel structure three+ times
-• Repeated use of same hedging word (e.g., "suggests" x3)
-• Long-run noun phrases with no variation
-• Overuse of "In conclusion", "To sum up", "In summary"
-• Canned metaphors: "paradigm shift", "synergy", "holistic approach"
-• Robotic numeric rounding (always "about X%", "approximately")
-• Overly formal modal verbs ("shall", "ought to" outside legal writing)
-• Identical punctuation patterns (no em dash or ellipsis variety)
-• No parenthetical asides anywhere in text
-• No rhetorical moves (no questions or fragments)
-• Repetition of same transition in many sentences ("also" x3, "however" x4)
-• Overreliance on dictionary-thesaurus substitutions without restructuring
-• Predictable collocations repeated across paragraphs
-
-=== TRANSFORMATION MICRO-RULES (apply automatically where safe) ===
-
-• If sentence >28 words with multiple clauses → split into two but keep causal connectors
-• If three consecutive sentences begin with same word → rewrite second to start with clause/question
-• If paragraph has 0 short sentences → convert one medium sentence into 2-4 word punchline
-• If 3+ passive sentences in row → convert at least one to active voice
-• If no contractions in casual/blog content → add 2-3 natural contractions per 200 words
-
-=== SAFETY & ETHICAL GUARDRAILS ===
-
-• NEVER fabricate sources, statistics, citations, or URLs
-• NEVER invent personalized anecdotes or experiences not in original
-• NEVER alter factual tokens (numbers, names, dates, technical terms)
-• If content requires fabrication → refuse and mark for human input
-• Log any automated attempt that would alter factual tokens
-
-=== EXAMPLE TRANSFORMATIONS ===
-
-Before: "This method is effective and provides robust results across many cases."
-After: "This method seems effective. In many cases it produces robust results — though edge cases still pop up."
-
-Before: "In today's digital age, it is important to note that companies must adapt."
-After: "Companies must adapt — especially now. The digital shift makes it clear."
-
-Before: "The research demonstrates that the approach is viable and scalable."
-After: "The approach looks viable. Scalable too, based on what the research shows."
-
 FLAGGED SENTENCES (with context):
 {{flagged_list}}
 
@@ -344,10 +289,6 @@ OUTPUT: Return only valid JSON as specified in rule D.`.replace('{{avg_score}}',
             content: refinementPrompt,
           },
         ],
-        temperature: 0.85,
-        top_p: 0.9,
-        presence_penalty: 0.3,
-        frequency_penalty: 0.3,
       }),
     });
 
@@ -501,61 +442,6 @@ D. OUTPUT FORMAT
    - Each paragraph passes short/medium/long requirement
    - No descriptor repeated >2 times within 120 words
 
-=== EXPANDED AI-PATTERN BLACKLIST (25+ patterns to remove/rework) ===
-
-• Repetitive sentence openers ("This study…", "This shows…", "This method…")
-• Uniform sentence length across paragraph (variance <5 words)
-• Overuse of formal connectors ("Furthermore", "Moreover", "Additionally")
-• Filler phrases: "it is important to note", "it should be noted that"
-• "In today's world", "In the digital age" and paraphrases
-• "Before delving into", "Before diving into" and variants
-• Over-explanatory padding ("It should be understood that…")
-• Marketing fluff: "unlock the power", "game-changer", "revolutionary"
-• Empty generalizations ("Studies show" with no specifics)
-• Repetitive synonyms used back-to-back ("important…important")
-• Excessive passive voice in multiple consecutive sentences
-• Too-perfect grammar with no contractions in casual text
-• Serial listing with exact parallel structure three+ times
-• Repeated use of same hedging word (e.g., "suggests" x3)
-• Long-run noun phrases with no variation
-• Overuse of "In conclusion", "To sum up", "In summary"
-• Canned metaphors: "paradigm shift", "synergy", "holistic approach"
-• Robotic numeric rounding (always "about X%", "approximately")
-• Overly formal modal verbs ("shall", "ought to" outside legal writing)
-• Identical punctuation patterns (no em dash or ellipsis variety)
-• No parenthetical asides anywhere in text
-• No rhetorical moves (no questions or fragments)
-• Repetition of same transition in many sentences ("also" x3, "however" x4)
-• Overreliance on dictionary-thesaurus substitutions without restructuring
-• Predictable collocations repeated across paragraphs
-
-=== TRANSFORMATION MICRO-RULES (apply automatically where safe) ===
-
-• If sentence >28 words with multiple clauses → split into two but keep causal connectors
-• If three consecutive sentences begin with same word → rewrite second to start with clause/question
-• If paragraph has 0 short sentences → convert one medium sentence into 2-4 word punchline
-• If 3+ passive sentences in row → convert at least one to active voice
-• If no contractions in casual/blog content → add 2-3 natural contractions per 200 words
-
-=== SAFETY & ETHICAL GUARDRAILS ===
-
-• NEVER fabricate sources, statistics, citations, or URLs
-• NEVER invent personalized anecdotes or experiences not in original
-• NEVER alter factual tokens (numbers, names, dates, technical terms)
-• If content requires fabrication → refuse and mark for human input
-• Log any automated attempt that would alter factual tokens
-
-=== EXAMPLE TRANSFORMATIONS ===
-
-Before: "This method is effective and provides robust results across many cases."
-After: "This method seems effective. In many cases it produces robust results — though edge cases still pop up."
-
-Before: "In today's digital age, it is important to note that companies must adapt."
-After: "Companies must adapt — especially now. The digital shift makes it clear."
-
-Before: "The research demonstrates that the approach is viable and scalable."
-After: "The approach looks viable. Scalable too, based on what the research shows."
-
 {{style_examples}}TEXT TO HUMANIZE:
 {{input_text}}`.replace('{{style_examples}}', examples ? `WRITING STYLE EXAMPLES (analyze tone/rhythm, then forget content):
 ${examples}
@@ -579,10 +465,6 @@ ${examples}
             content: humanizePrompt,
           },
         ],
-        temperature: 0.85,
-        top_p: 0.9,
-        presence_penalty: 0.3,
-        frequency_penalty: 0.3,
       }),
     });
 
