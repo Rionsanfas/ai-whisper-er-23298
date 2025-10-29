@@ -128,148 +128,119 @@ async function refineFlaggedSections(
         messages: [
           {
             role: "user",
-            content: `You are an expert AI text humanizer. This text scored ${avgScore.toFixed(2)}% AI-generated. 
+            content: `You are a professional text humanizer. The content below scored ${avgScore.toFixed(2)}% AI-generated.
 
-UNDERSTANDING AI DETECTORS:
-AI detectors (Sapling, ZeroGPT, GPTZero, Turnitin, Copyleaks) flagged parts of this text. They look for:
-- Uniform sentence length (AI typically writes 24-25 word sentences)
-- Repetitive phrases and predictable patterns
-- Overly polished language without natural imperfections
-- Lack of conversational markers or personal voice
+DETECTOR CONTEXT:
+AI detectors (Sapling, ZeroGPT, GPTZero, Turnitin, Copyleaks) identify predictable structure, uniform rhythm, overly refined language, and absence of natural human variation.  
+Goal: Rewrite flagged sections to reduce detection signals while maintaining seamless flow with surrounding context.
 
-FULL GENERATED TEXT (from first humanization):
+FULL TEXT (for reference):
 """
 ${originalText}
 """
 
-Your task: Improve ONLY the flagged sentences below to reduce AI detection while preserving facts and intent. The flagged sentences are parts of the text above that were detected as likely AI-generated.
+Task: Enhance ONLY the flagged sentences listed below. Each revision must integrate naturally with contextBefore and contextAfter while reducing AI detectability.
 
-CRITICAL HUMANIZATION TECHNIQUES (same as the first humanization):
+──────────────────────────────────────────────
+1️⃣ SENTENCE RHYTHM VARIANCE (TOP PRIORITY)
+──────────────────────────────────────────────
+- Create unpredictable rhythm: brief, extended, brief, moderate, complex, moderate, brief
+- Escape uniform length patterns (AI typically writes 22–26 words)
+- Vary sentence openings: questions, clauses, direct statements, fragments
+- Maintain smooth organic transitions
+- Integrate naturally with surrounding sentences
 
-1. SENTENCE-LENGTH CHOREOGRAPHY (NON-LINEAR BURSTINESS - MOST CRITICAL)
-   - Force non-linear burstiness: alternate very short, very long, short, medium, very-long, medium, short, etc.
-   - Do NOT let output follow a straight predictable rhythm
-   - AI detectors flag uniform sentence length (especially 24-25 words)
-   - Create chaotic rhythm by mixing sentence lengths unpredictably
-   - Change how sentences start: vary subjects, use inversions, start with phrases/clauses
-   - Avoid patterns: don't let consecutive sentences follow the same structure
-   - Make each rewrite flow naturally with contextBefore and contextAfter
+──────────────────────────────────────────────
+2️⃣ AI SIGNATURE PHRASE BLACKLIST
+──────────────────────────────────────────────
+Scan for and eliminate these overused AI patterns:
+"In today's world", "It is important to note", "Delve into", "At the end of the day",  
+"In the realm of", "Game-changer", "Revolutionary", "Unlock the power of",  
+"Cutting-edge", "With that being said", "Needless to say", "In conclusion".  
+Replace with modern everyday phrasing or remove.
 
-2. AI-MARKER BLACKLIST (AUTOMATIC DETECTION & REMOVAL)
-   Before final output, scan for and eliminate these 25 common AI-generated text markers:
-   1. "In today's world" / "In today's digital age"
-   2. "It's worth noting that" / "It is important to note"
-   3. "Delve into" / "Delving into"
-   4. "Navigating the landscape of"
-   5. "In the realm of"
-   6. "At the end of the day"
-   7. "In conclusion" (unless academic)
-   8. "The fact of the matter is"
-   9. "When it comes to"
-   10. "It goes without saying"
-   11. "Needless to say"
-   12. "To put it simply"
-   13. "As a matter of fact"
-   14. "For all intents and purposes"
-   15. "Be that as it may"
-   16. "In light of" (overused)
-   17. "With that being said"
-   18. "It is essential to understand"
-   19. "One must consider"
-   20. "Woven itself into the fabric of"
-   21. "Game-changer" / "Revolutionary" (unless specific context)
-   22. "Unlock the power of"
-   23. "Look no further"
-   24. "Cutting-edge" / "State-of-the-art" (unless technical)
-   25. "It's no secret that"
-   
-   If any of these appear, replace with modern everyday alternatives or remove entirely.
+──────────────────────────────────────────────
+3️⃣ ELIMINATE FILLER & CLICHÉS
+──────────────────────────────────────────────
+- Cut transitional padding with zero information value
+- Remove vague promotional language
+- Skip obvious over-explanations
+- Every sentence should deliver new insight or perspective
+- Be direct and purposeful
 
-3. REMOVE FLUFF & CLICHÉS (DETECT AND ELIMINATE)
-   - Cut unnecessary transitional padding and empty phrases
-   - Delete vague, fluffy marketing language that adds no information
-   - Remove: "unlock the power of", "look no further", "game-changer", "revolutionary", "cutting-edge", "state-of-the-art" (unless truly warranted)
-   - Be concise and natural – get to the point quickly
-   - Avoid over-explaining obvious points
-   - Don't pad sentences just to hit a word count
-   - Every word must serve a purpose
+──────────────────────────────────────────────
+4️⃣ CONTEMPORARY NATURAL LANGUAGE
+──────────────────────────────────────────────
+- Use modern conversational phrasing (today's everyday vocabulary)
+- Replace archaic expressions:
+  * "Before delving into" → "Before exploring"
+  * "It is essential to grasp" → "It's crucial to understand"
+  * "Woven into the fabric of" → "Part of daily life"
+- Apply contractions: it's, you're, we're, can't, don't, let's
+- Stay professional but approachable
 
-4. USE MODERN EVERYDAY LANGUAGE (CONTEMPORARY & CONVERSATIONAL)
-   - Prefer contemporary daily words and phrasing over archaic or bookish phrases
-   - Replace formal/outdated phrases with natural language:
-     * "Before delving into" → "Before we get into" / "Let's start with" / "First off"
-     * "it is essential to grasp" → "it's important to understand" / "you need to know"
-     * "woven itself into the fabric of" → "part of everyday life" / "become common" / "everywhere now"
-     * "Furthermore" / "Moreover" → "So" / "Plus" / "That said" / "And" / "But" / "Here's why it matters"
-   - Use natural connectors that humans actually say: and, but, so, still, plus, that said, here's the thing
-   - Use contractions naturally: "you're", "don't", "it's", "we're", "can't", "won't", "let's", "here's"
-   - Sound like you're talking to a friend or colleague, not writing a formal academic paper
-   - If input is formal, humanize tone while preserving register appropriately
+──────────────────────────────────────────────
+5️⃣ ACADEMIC HEDGING (FOR SCHOLARLY CONTENT)
+──────────────────────────────────────────────
+- Never invent facts or citations
+- When claims lack evidence, soften with: *may, might, appears to, suggests, tends to, could*
+- Preserve all explicit numbers, dates, and sources exactly
 
-5. ACADEMIC HEDGING ENFORCEMENT (IF INPUT IS ACADEMIC)
-   - If input is academic/scholarly, enforce disciplined hedging rather than factual invention
-   - ALWAYS prefer "appears to" / "suggests" / "indicates" when claims lack source
-   - Use: "may", "might", "could", "seems to", "tends to", "is likely to"
-   - Never state unsourced claims as absolute facts
-   - Maintain scholarly credibility through appropriate qualification
-   - Example: "This approach is effective" → "This approach appears effective" or "Research suggests this approach is effective"
+──────────────────────────────────────────────
+6️⃣ HUMAN IRREGULARITIES
+──────────────────────────────────────────────
+- Add mild natural imperfections:
+  * Brief fragments ("Like this.")
+  * Rhetorical questions ("Why does this matter?")
+  * Parenthetical thoughts (when natural)
+- Keep flow coherent; don't overuse stylistic quirks
 
-6. ADD HUMAN IMPERFECTIONS & PERSONALITY (DETECTORS EXPECT PERFECTION)
-   - Include occasional sentence fragments for emphasis. Like this. See?
-   - Add rhetorical questions where natural (e.g., "Want to know why?", "So what does this mean?")
-   - Use parenthetical asides (thoughts in parentheses that add context)
-   - Include light hedging: "it seems", "perhaps", "probably", "I think", "maybe", "likely", "tends to"
-   - Add small tonal variations showing human thought process
-   - Include natural pauses and shifts in thought (em dashes, ellipses used sparingly)
-   - Don't be overly perfect or polished – humans have slight style variations
+──────────────────────────────────────────────
+7️⃣ RELATABLE PERSONAL TOUCH
+──────────────────────────────────────────────
+- If suitable, add brief relatable signals:
+  "For example", "I've found", "Let's say", "Imagine this"
+- Avoid forced anecdotes or fabricated experiences
 
-7. INCLUDE PERSONAL TOUCH WHEN APPROPRIATE (HUMANS SHARE EXPERIENCES)
-   - Add brief personal examples, anecdotes, or stories if they fit the content naturally
-   - Use first-person perspective when appropriate: "When I started...", "I've noticed...", "A client once told me...", "In my experience..."
-   - Add relatable touches: "for example", "let's say", "imagine this", context markers
-   - Make it feel like a human with real experience is writing
-   - Don't force personal elements where they don't fit, but use them when natural
+──────────────────────────────────────────────
+8️⃣ VOCABULARY BALANCE & KEYWORDS
+──────────────────────────────────────────────
+- Avoid keyword repetition
+- Rotate synonyms naturally
+- Keep language 80% accessible + 20% varied precision terms
 
-8. KEYWORD OPTIMIZATION (NATURAL INTEGRATION)
-   - Avoid keyword stuffing (detectors flag unnatural repetition of exact phrases)
-   - Use synonyms and semantic variants instead of repeating the same keyword
-   - Integrate keywords naturally into conversational flow
-   - Make keywords feel organic and contextual, not forced or repeated mechanically
-   - Vary how you reference the same concept (use different terms)
+──────────────────────────────────────────────
+9️⃣ MAINTAIN ACCURACY & CONTEXT
+──────────────────────────────────────────────
+- Never alter factual information
+- Keep logic consistent with nearby content
+- Preserve same tone and subject focus
 
-9. FACT-CHECK & ACCURACY (NEVER INVENT INFORMATION)
-   - Never invent facts, statistics, or details not in the original text
-   - Preserve all accurate information from the source
-   - Don't add false claims or made-up examples
-   - Keep the truth and core meaning intact while making it sound human
-   - If you're unsure about a fact, keep the original phrasing
+──────────────────────────────────────────────
+🔟 OUTPUT FORMAT
+──────────────────────────────────────────────
+Return JSON only:
+{"rewrites":[{"original":"<original>","improved":"<improved>"}]}
+- No commentary or code blocks
+- Plain ASCII only
+- Keep sentence length within 0.8×–1.2× of original
 
-10. REFINE GRAMMAR, SYNTAX, TONE & STYLE (MATCH THE ORIGINAL)
-    - Match the tone and style (formal, business, or casual)
-    - Keep the voice consistent with the full text
-    - Add emotional and logical balance
-    - Use a tone that feels genuine
+FLAGGED SENTENCES TO IMPROVE:
+${flaggedWithContext
+  .map(
+    (item, i) =>
+      `${i + 1}. Original: "${item.sentence}"
+AI Detection Score: ${item.score.toFixed(1)}%
+Context before: "${item.before}"
+Context after: "${item.after}"`,
+  )
+  .join("\n\n")}
 
-11. ENSURE NATURAL FLOW WITH CONTEXT (CRITICAL FOR COHERENCE)
-    - Make each improved sentence flow smoothly with contextBefore and contextAfter
-    - Maintain coherence with the full text above
-    - Ensure the rewrite doesn't feel jarring or disconnected
-    - Keep logical progression and natural transitions
-
-CRITICAL REMINDERS:
-- Focus on the flagged sentences but keep the full text context in mind
-- Sentence-length choreography (non-linear burstiness) is THE most important factor
-- Scan for and eliminate all 25 AI-marker patterns before output
-- Remove fluff that adds no information – be direct and concise
-- Use modern everyday language and contractions
-- For academic input, enforce hedging over factual invention
-- Each rewrite must feel natural with surrounding context
-- Don't just swap words – restructure for human rhythm and flow
-- The goal is authentic human voice in these specific flagged areas
-
-OUTPUT FORMAT:
-Return JSON exactly as: {"rewrites":[{"original":"<original sentence>","improved":"<improved sentence>"}]}
-No extra text, explanations, or code blocks. Use plain ASCII only.
+FINAL REMINDERS:
+- Edit conservatively; avoid rewriting entire paragraphs
+- Sentence rhythm and tone variation are most powerful signals
+- Preserve all facts intact
+- Output JSON only—no explanation, no markdown, no code fences
 
 FLAGGED SENTENCES TO IMPROVE (with surrounding context for flow):
 ${flaggedWithContext
@@ -361,144 +332,156 @@ serve(async (req) => {
         messages: [
           {
             role: "user",
-            content: `You are an expert AI text humanizer. Transform the following text to sound completely human-written while preserving all facts and meaning.
+            content: `You are a professional text humanizer. Rewrite the following content to eliminate AI detection patterns while keeping every fact intact.
 
-UNDERSTANDING AI DETECTORS:
-AI detectors (Sapling, ZeroGPT, GPTZero, Turnitin, Copyleaks) analyze text for AI patterns. They work better on longer texts (50+ words) and look for:
-- Uniform sentence length (AI typically writes 24-25 word sentences)
-- Repetitive phrases and predictable patterns
-- Overly polished, formal language without natural imperfections
-- Lack of personal voice or conversational markers
-- Perfect logical chains without human thought variations
+DETECTOR PATTERNS TO AVOID:
+Modern AI detectors (Sapling, ZeroGPT, GPTZero, Turnitin, Copyleaks) flag content based on:
+- Consistent sentence rhythm (especially 22–26 word sentences)
+- Predictable phrasing and structural repetition
+- Excessively polished writing lacking organic variation
+- Absence of conversational tone or personal markers
+- Robotic logical flow without natural thought shifts
 
-Your goal: Make text sound naturally human to bypass these detectors while keeping all facts accurate.
+Objective: Produce text that reads as authentically human while maintaining factual accuracy.
 
-CRITICAL HUMANIZATION TECHNIQUES TO AVOID AI DETECTION:
+CORE HUMANIZATION STRATEGY:
 
-1. SENTENCE-LENGTH CHOREOGRAPHY (NON-LINEAR BURSTINESS - MOST CRITICAL)
-   - Force non-linear burstiness: alternate very short, very long, short, medium, very-long, medium, short, etc.
-   - Do NOT let output follow a straight predictable rhythm
-   - AI detectors flag uniform sentence length (especially 24-25 words)
-   - Humans write dramatically varied sentences: some very short (5-8 words), some medium (12-18), some long (25-35+)
-   - Create chaotic rhythm by mixing sentence lengths unpredictably throughout
-   - Change how sentences start: vary subjects, use inversions, start with phrases/clauses
-   - Avoid patterns: don't let consecutive sentences follow the same structure
-   - Example pattern to AVOID: "Social media connects people globally. Social media has transformed communication. Social media offers many benefits."
-   - Better (varied): "Social media connects people. It's everywhere now. Before we dive into its benefits, let's look at where it all started and how it shaped the way we communicate today."
+──────────────────────────────────────────────
+1️⃣ SENTENCE RHYTHM VARIANCE (HIGHEST PRIORITY)
+──────────────────────────────────────────────
+- Break uniform patterns: alternate short, extended, brief, moderate, complex, moderate, brief
+- Escape predictable structure (AI defaults to 22–26 words repeatedly)
+- Mix opening styles: direct statements, inversions, questions, clauses, fragments
+- Change rhythm unpredictably rather than following set patterns
+- Example to AVOID: "Content marketing drives engagement. Content marketing builds trust. Content marketing generates leads."
+- Better approach: "Content marketing drives engagement. It's powerful. Before exploring lead generation, consider how trust develops over time through consistent value delivery."
 
-2. AI-MARKER BLACKLIST (AUTOMATIC DETECTION & REMOVAL)
-   Before final output, scan for and eliminate these 25 common AI-generated text markers:
-   1. "In today's world" / "In today's digital age"
-   2. "It's worth noting that" / "It is important to note"
-   3. "Delve into" / "Delving into"
-   4. "Navigating the landscape of"
-   5. "In the realm of"
-   6. "At the end of the day"
-   7. "In conclusion" (unless academic)
-   8. "The fact of the matter is"
-   9. "When it comes to"
-   10. "It goes without saying"
-   11. "Needless to say"
-   12. "To put it simply"
-   13. "As a matter of fact"
-   14. "For all intents and purposes"
-   15. "Be that as it may"
-   16. "In light of" (overused)
-   17. "With that being said"
-   18. "It is essential to understand"
-   19. "One must consider"
-   20. "Woven itself into the fabric of"
-   21. "Game-changer" / "Revolutionary" (unless specific context)
-   22. "Unlock the power of"
-   23. "Look no further"
-   24. "Cutting-edge" / "State-of-the-art" (unless technical)
-   25. "It's no secret that"
-   
-   If any of these appear, replace with modern everyday alternatives or remove entirely.
+──────────────────────────────────────────────
+2️⃣ ELIMINATE AI SIGNATURE PHRASES
+──────────────────────────────────────────────
+Identify and replace these 25 common AI tells:
+1. "In today's world" / "In today's digital landscape"
+2. "It's worth noting that" / "It is important to note"
+3. "Delve into" / "Delving into"
+4. "Navigating the landscape of"
+5. "In the realm of"
+6. "At the end of the day"
+7. "In conclusion" (unless academic context)
+8. "The fact of the matter is"
+9. "When it comes to"
+10. "It goes without saying"
+11. "Needless to say"
+12. "To put it simply"
+13. "As a matter of fact"
+14. "For all intents and purposes"
+15. "Be that as it may"
+16. "In light of" (overused connector)
+17. "With that being said"
+18. "It is essential to understand"
+19. "One must consider"
+20. "Woven itself into the fabric of"
+21. "Game-changer" / "Revolutionary" (unless genuinely applicable)
+22. "Unlock the power of"
+23. "Look no further"
+24. "Cutting-edge" / "State-of-the-art" (unless technical)
+25. "It's no secret that"
 
-3. REMOVE FLUFF & CLICHÉS (DETECT AND ELIMINATE)
-   - Cut unnecessary transitional padding and empty phrases
-   - Delete vague, fluffy marketing language that adds no information
-   - Remove: "unlock the power of", "look no further", "game-changer", "revolutionary", "cutting-edge", "state-of-the-art" (unless truly warranted)
-   - Be concise and natural – get to the point quickly
-   - Avoid over-explaining obvious points
-   - Don't pad sentences just to hit a word count
-   - Every word must serve a purpose
+Replace with contemporary natural alternatives or eliminate entirely.
 
-4. USE MODERN EVERYDAY LANGUAGE (CONTEMPORARY & CONVERSATIONAL)
-   - Prefer contemporary daily words and phrasing over archaic or bookish phrases
-   - Replace formal/outdated phrases with natural language:
-     * "Before delving into" → "Before we get into" / "Let's start with" / "First off"
-     * "it is essential to grasp" → "it's important to understand" / "you need to know"
-     * "woven itself into the fabric of" → "part of everyday life" / "become common" / "everywhere now"
-     * "Furthermore" / "Moreover" → "So" / "Plus" / "That said" / "And" / "But" / "Here's why it matters"
-   - Use natural connectors that humans actually say: and, but, so, still, plus, that said, here's the thing
-   - Use contractions naturally: "you're", "don't", "it's", "we're", "can't", "won't", "let's", "here's"
-   - Sound like you're talking to a friend or colleague, not writing a formal academic paper
-   - If input is formal, humanize tone while preserving register appropriately
+──────────────────────────────────────────────
+3️⃣ CUT EMPTY LANGUAGE
+──────────────────────────────────────────────
+- Remove transitional padding that adds zero value
+- Delete marketing fluff and vague descriptors
+- Strip out: "unlock the power", "look no further", "game-changer", "revolutionary", "cutting-edge" (unless truly warranted)
+- Get to the point directly
+- Skip obvious explanations
+- Every word should earn its place
 
-5. ACADEMIC HEDGING ENFORCEMENT (IF INPUT IS ACADEMIC)
-   - If input is academic/scholarly, enforce disciplined hedging rather than factual invention
-   - ALWAYS prefer "appears to" / "suggests" / "indicates" when claims lack source
-   - Use: "may", "might", "could", "seems to", "tends to", "is likely to"
-   - Never state unsourced claims as absolute facts
-   - Maintain scholarly credibility through appropriate qualification
-   - Example: "This approach is effective" → "This approach appears effective" or "Research suggests this approach is effective"
+──────────────────────────────────────────────
+4️⃣ CONTEMPORARY CONVERSATIONAL TONE
+──────────────────────────────────────────────
+- Choose modern everyday phrasing over formal bookish language:
+  * "Before delving into" → "Before we explore" / "Let's start with" / "First"
+  * "It is essential to grasp" → "You need to understand" / "Here's what matters"
+  * "Woven itself into the fabric of" → "Become common" / "Part of daily life"
+  * "Furthermore" / "Moreover" → "Plus" / "Also" / "Here's the thing" / "And"
+- Use natural connectors: and, but, so, still, plus, that said
+- Apply contractions: it's, you're, don't, we're, can't, let's, here's
+- Write like you're explaining to a colleague, not submitting a thesis
+- Match register to content while humanizing tone
 
-6. ADD HUMAN IMPERFECTIONS & PERSONALITY (DETECTORS EXPECT PERFECTION FROM AI)
-   - Include occasional sentence fragments for emphasis. Like this. See?
-   - Add rhetorical questions where natural (e.g., "Want to know why?", "So what does this mean?")
-   - Use parenthetical asides (thoughts in parentheses that add context)
-   - Include light hedging: "it seems", "perhaps", "probably", "I think", "maybe", "likely", "tends to"
-   - Add small tonal variations showing human thought process
-   - Include natural pauses and shifts in thought (em dashes, ellipses used sparingly)
-   - Don't be overly perfect or polished – humans have slight style variations
+──────────────────────────────────────────────
+5️⃣ ACADEMIC CONTENT: USE HEDGING
+──────────────────────────────────────────────
+- For scholarly/research content, soften unsourced claims
+- Prefer: "appears to" / "suggests" / "indicates" / "may" / "might" / "could" / "seems to" / "tends to" / "likely"
+- Never assert unsourced statements as definitive facts
+- Maintain academic credibility through appropriate qualification
+- Transform: "This method is effective" → "This method appears effective" or "Evidence suggests this method is effective"
 
-7. INCLUDE PERSONAL TOUCH WHEN APPROPRIATE (HUMANS SHARE EXPERIENCES)
-   - Add brief personal examples, anecdotes, or stories if they fit the content naturally
-   - Use first-person perspective when appropriate: "When I started...", "I've noticed...", "A client once told me...", "In my experience..."
-   - Add relatable touches: "for example", "let's say", "imagine this", context markers
-   - Make it feel like a human with real experience is writing
-   - Don't force personal elements where they don't fit, but use them when natural
+──────────────────────────────────────────────
+6️⃣ INJECT HUMAN IRREGULARITIES
+──────────────────────────────────────────────
+- Add occasional fragments for punch. Like this.
+- Include rhetorical questions where natural ("Why does this work?", "What's the benefit?")
+- Use parenthetical thoughts (natural asides that add context)
+- Apply light hedging: "it seems", "perhaps", "probably", "maybe", "likely"
+- Show human thought patterns through slight tonal shifts
+- Add natural pauses (em dashes, ellipses—used sparingly)
+- Avoid excessive polish; humans have natural style variation
 
-8. KEYWORD OPTIMIZATION (NATURAL INTEGRATION)
-   - Avoid keyword stuffing (detectors flag unnatural repetition of exact phrases)
-   - Use synonyms and semantic variants instead of repeating the same keyword
-   - Integrate keywords naturally into conversational flow
-   - Make keywords feel organic and contextual, not forced or repeated mechanically
-   - Vary how you reference the same concept (use different terms)
+──────────────────────────────────────────────
+7️⃣ PERSONAL PERSPECTIVE WHEN FITTING
+──────────────────────────────────────────────
+- Include brief personal elements if contextually appropriate
+- Use first-person when suitable: "When I first...", "I've seen...", "In my experience..."
+- Add relatable cues: "for example", "let's say", "imagine", "consider this"
+- Make it feel like real experience rather than generic output
+- Don't force personal elements; only use when natural
 
-9. FACT-CHECK & ACCURACY (NEVER INVENT INFORMATION)
-   - Never invent facts, statistics, or details not in the original text
-   - Preserve all accurate information from the source
-   - Don't add false claims or made-up examples
-   - Keep the truth and core meaning intact while making it sound human
-   - If you're unsure about a fact, keep the original phrasing
+──────────────────────────────────────────────
+8️⃣ NATURAL KEYWORD INTEGRATION
+──────────────────────────────────────────────
+- Avoid mechanical keyword repetition (detectors flag this)
+- Use synonyms and semantic variations
+- Integrate terms organically into natural flow
+- Vary how concepts are referenced
+- Make keywords feel contextual, not forced
 
-10. REFINE GRAMMAR, SYNTAX, TONE & STYLE (MATCH THE INPUT)
-    - Match the tone and style of the input (formal business, casual blog, technical, conversational)
-    - Keep the voice consistent throughout the rewrite
-    - Add emotional and logical balance appropriate to the content
-    - Use a tone that feels genuine — neither too robotic nor overly dramatic
-    - Adapt style to context: professional for business, casual for blogs, etc.
+──────────────────────────────────────────────
+9️⃣ PRESERVE FACTUAL ACCURACY
+──────────────────────────────────────────────
+- Never fabricate statistics, facts, or details
+- Keep all accurate source information intact
+- Don't add false examples or made-up claims
+- Maintain truth and core meaning while humanizing
+- When uncertain, preserve original phrasing
 
-CRITICAL REMINDERS:
-- Sentence-length choreography (non-linear burstiness) is THE most important factor for detection evasion
-- Scan for and eliminate all 25 AI-marker patterns before output
-- Remove fluff that adds no information – be direct and concise
-- Use modern everyday language and contractions
-- For academic input, enforce hedging over factual invention
-- Detectors are trained on AI patterns: repetition, uniformity, formal language, lack of personality
-- Short texts and fragments can help confuse detectors, but maintain readability
-- The goal is authentic human voice, not just "anti-detection tricks"
+──────────────────────────────────────────────
+🔟 MATCH TONE & STYLE
+──────────────────────────────────────────────
+- Align with input style (formal business, casual blog, technical)
+- Keep voice consistent throughout
+- Balance emotion and logic appropriately
+- Sound genuine—neither robotic nor overdramatic
+- Adapt to context: professional for business, relaxed for blogs
 
-OUTPUT FORMAT:
+FINAL CHECKS:
+- Sentence rhythm variation is your strongest weapon
+- Eliminate all 25 AI signature phrases
+- Cut meaningless filler—be direct
+- Use modern language and contractions
+- Academic content needs hedging, not invention
+- Aim for authentic human voice, not just evasion tactics
+
+OUTPUT REQUIREMENTS:
 - Return ONLY the rewritten text
 - No explanations, labels, or commentary
-- Keep length similar to input (0.8x - 1.2x)
-- Use plain ASCII characters only
-- Preserve paragraph structure unless clarity requires changes
-- Sound authentic, readable, and genuinely human
+- Keep length within 0.8×–1.2× of input
+- Plain ASCII characters only
+- Preserve paragraph structure unless clarity demands change
+- Sound natural, readable, genuinely human
 
 ${examples ? `WRITING STYLE EXAMPLES (analyze tone/rhythm, then forget content):
 ${examples}
