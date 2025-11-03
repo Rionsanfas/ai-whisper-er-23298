@@ -130,9 +130,17 @@ async function refineFlaggedSections(
             role: "user",
             content: `You are a professional text humanizer. The content below scored ${avgScore.toFixed(2)}% AI-generated.
 
+WHO USES TEXT HUMANIZERS:
+Understand your audience to adapt tone appropriately:
+• Students – Need text matching authentic student voice to pass academic integrity checks
+• Content Creators – Want engaging, trustworthy content that performs well with readers and search engines
+• Social Media Managers – Require personality and relatability, not robotic brand voice
+• Non-Native Writers – Seek natural, idiomatic phrasing that flows like native English
+• Professionals – Need credible business writing that avoids spam filters and AI-detection skepticism
+
 DETECTOR CONTEXT:
 AI detectors (Sapling, ZeroGPT, GPTZero, Turnitin, Copyleaks) identify predictable structure, uniform rhythm, overly refined language, and absence of natural human variation.  
-Goal: Rewrite flagged sections to reduce detection signals while maintaining seamless flow with surrounding context.
+Goal: Rewrite flagged sections to reduce detection signals while maintaining seamless flow with surrounding context and adapting for likely user scenario.
 
 FULL TEXT (for reference):
 """
@@ -334,6 +342,21 @@ serve(async (req) => {
             role: "user",
             content: `You are a professional text humanizer. Rewrite the following content to eliminate AI detection patterns while keeping every fact intact.
 
+WHO USES TEXT HUMANIZERS AND WHY:
+Understanding your audience helps you adapt tone and authenticity appropriately:
+
+• Students (Academic Papers, Essays) – Writing assignments with AI assistance, then refining to match their authentic voice and avoid triggering plagiarism detectors like Turnitin or GPTZero. They need text that sounds like a real student wrote it—thoughtful but not overly polished, with natural flow and occasional minor imperfections.
+
+• Content Creators & Marketers (Blog Posts, Landing Pages, SEO Content) – Using AI to draft articles and copy, then humanizing to build reader trust and avoid search engine penalties for robotic content. They want engaging, authentic writing that aligns with their brand voice and passes as genuinely helpful content (not generic AI output that hurts rankings).
+
+• Social Media Managers (Posts, Captions, Ads) – Generating social content quickly but needing it to feel personal and relatable, not bot-like. They humanize captions to add personality, humor, or warmth—making followers feel they're connecting with a real person behind the brand.
+
+• Non-Native English Writers (Emails, Reports, General Writing) – Leveraging AI to compose in English, then polishing the tone to sound natural and idiomatic. They want writing that flows smoothly for native readers—free of awkward formality or simplistic phrasing that could trigger AI detectors or read as non-native.
+
+• Professionals (Press Releases, Cover Letters, Corporate Docs) – Crafting business communications with AI help but needing to avoid the formulaic tone that triggers spam filters or recruiter skepticism. Press releases that sound too uniform get filtered out; resumes flagged as AI-written may be rejected. Humanization ensures their content reads organically and professionally.
+
+Each user group benefits from authenticity: Students need believable voice matching, marketers need reader engagement and SEO safety, social managers need personality, non-native speakers need fluency, and professionals need credibility without detection red flags.
+
 DETECTOR PATTERNS TO AVOID:
 Modern AI detectors (Sapling, ZeroGPT, GPTZero, Turnitin, Copyleaks) flag content based on:
 - Consistent sentence rhythm (especially 22–26 word sentences)
@@ -342,7 +365,7 @@ Modern AI detectors (Sapling, ZeroGPT, GPTZero, Turnitin, Copyleaks) flag conten
 - Absence of conversational tone or personal markers
 - Robotic logical flow without natural thought shifts
 
-Objective: Produce text that reads as authentically human while maintaining factual accuracy.
+Objective: Produce text that reads as authentically human while maintaining factual accuracy and adapting tone for the likely user scenario.
 
 CORE HUMANIZATION STRATEGY:
 
