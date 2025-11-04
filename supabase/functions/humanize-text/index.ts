@@ -162,18 +162,24 @@ By committing to a coherent voice, you automatically inject appropriate emotiona
 LINGUISTIC HUMANIZATION TECHNIQUES:
 Apply these stylistic strategies while maintaining your chosen voice to distinguish human writing from AI patterns:
 
-⚡ RHYTHM BURSTINESS (Critical)
-Human writers naturally vary sentence length—sometimes dramatically. AI defaults to consistent 20-25 word sentences.
-• Mix extremes: Follow a 28-word complex sentence with a 4-word statement. Then moderate length. Then another brief one.
-• This unpredictability is statistically human. Detectors measure variance—uniform length screams AI.
-• Transform this: "The platform offers multiple features. The platform includes analytics tools. The platform supports team collaboration."
-• Into this: "The platform's packed with features. Analytics tools? Check. And team collaboration works beautifully, especially for distributed teams managing complex projects."
+⚡ SENTENCE-LENGTH CHAOS (Critical - Push Harder)
+Extreme burstiness is your #1 weapon against detection. AI outputs converge around 18-26 words. Humans swing wildly.
+• Push the extremes: 2-3 word fragments followed by 30+ word complex sentences. Then mid-range. Then another punch.
+• Create unpredictable rhythm: Short. Moderate. Brief. Long flowing sentence with multiple clauses that builds momentum. Fragment.
+• Why this matters: Detectors score uniformity. High variance = statistically human signature.
+• Example flow transformation:
+  ❌ "The platform offers multiple features. The platform includes analytics tools. The platform supports team collaboration."
+  ✅ "Features? Tons. The platform's loaded with analytics tools, team collaboration features, and integrations that actually work—especially for distributed teams juggling complex projects across time zones. Pretty solid stuff."
+• Rhythm pattern to aim for: 2-3 words → 8-12 words → 25-35 words → 4-6 words → 15-20 words → 3 words
 
-🎭 TONAL FLEXIBILITY  
-Humans shift gears mid-paragraph—serious to playful, formal to conversational. AI maintains robotic consistency.
-• Drop in a sudden aside, question, or moment of humor within otherwise professional text
-• Example shift: "Quarterly revenue increased 18% (honestly, we didn't see that coming), driven primarily by enterprise subscriptions."
-• The parenthetical break injects personality and disrupts the formal monotone detectors expect from AI
+🎭 CONVERSATIONAL INSERTS & RHETORICAL FLOW
+Humans think out loud. AI stays monotone. Inject live thought patterns that show your mind working.
+• Add rhetorical questions naturally: "See what I mean?" / "Isn't that odd?" / "Makes sense, right?"
+• Use parentheses and em dashes for mid-thought asides: "The results (honestly, shocking) exceeded projections"
+• Include mild self-corrections: "Wait—let me rephrase that" / "Actually, here's a better way to think about it"
+• Show uncertainty then clarity: "It seemed random at first. Then the pattern clicked."
+• Example: "Quarterly revenue jumped 18%—honestly, we didn't see that coming—driven mainly by enterprise accounts. Wild, right?"
+• These create authentic cognitive flow that detectors can't model
 
 🛡️ STRATEGIC UNCERTAINTY
 Overconfident declarative statements flag AI. Humans naturally qualify claims they can't prove.
@@ -242,13 +248,20 @@ Task: Enhance ONLY the flagged sentences listed below. Each revision must integr
 - Integrate naturally with surrounding sentences
 
 ──────────────────────────────────────────────
-2️⃣ AI SIGNATURE PHRASE BLACKLIST
+2️⃣ AI SIGNATURE PHRASE BLACKLIST (SCAN AGGRESSIVELY)
 ──────────────────────────────────────────────
-Scan for and eliminate these overused AI patterns:
-"In today's world", "It is important to note", "Delve into", "At the end of the day",  
-"In the realm of", "Game-changer", "Revolutionary", "Unlock the power of",  
-"Cutting-edge", "With that being said", "Needless to say", "In conclusion".  
-Replace with modern everyday phrasing or remove.
+These 25+ phrases are instant AI tells. Find and eliminate every single one:
+
+**Overused Transitions & Fillers:**
+"In today's world", "It is important to note", "At the end of the day", "With that being said", "Needless to say", "In conclusion", "All things considered", "It goes without saying", "For all intents and purposes"
+
+**AI Buzzwords & Clichés:**
+"Delve into", "Dive deep", "In the realm of", "Leverage", "Utilize", "Robust", "Comprehensive", "Holistic", "Paradigm", "Synergy"
+
+**Hype Language:**
+"Game-changer", "Revolutionary", "Cutting-edge", "Unlock the power", "Transform your", "Seamless", "Streamline", "Next-level", "Best-in-class"
+
+**Replace with:** Contemporary everyday language or remove entirely. Example: "In today's digital landscape" → "These days" / "Now" / just start with the point.
 
 ──────────────────────────────────────────────
 3️⃣ ELIMINATE FILLER & CLICHÉS
@@ -278,13 +291,17 @@ Replace with modern everyday phrasing or remove.
 - Preserve all explicit numbers, dates, and sources exactly
 
 ──────────────────────────────────────────────
-6️⃣ HUMAN IRREGULARITIES
+6️⃣ CONVERSATIONAL AUTHENTICITY & HUMAN REACTIONS
 ──────────────────────────────────────────────
-- Add mild natural imperfections:
-  * Brief fragments ("Like this.")
-  * Rhetorical questions ("Why does this matter?")
-  * Parenthetical thoughts (when natural)
-- Keep flow coherent; don't overuse stylistic quirks
+Inject the messy, authentic signals of human thought:
+- Rhetorical questions: "Why does this matter?" / "See the pattern?" / "Makes sense, right?"
+- Brief fragments for punch: "Simple." / "Not quite." / "Here's the thing."
+- Parenthetical live thoughts: "(honestly, that surprised me)" / "(and trust me on this)"
+- Em dashes for authentic pauses: "The data showed—and this was unexpected—a clear trend"
+- Small human reactions: "Honestly...", "That's tricky", "Fair point", "Wait, though"
+- Mild self-corrections: "Well, not exactly—let me clarify"
+- Contractions everywhere: you're, it's, don't, can't, let's, here's
+- Keep natural; don't force quirks where they don't fit
 
 ──────────────────────────────────────────────
 7️⃣ RELATABLE PERSONAL TOUCH
@@ -308,13 +325,37 @@ Replace with modern everyday phrasing or remove.
 - Preserve same tone and subject focus
 
 ──────────────────────────────────────────────
-🔟 OUTPUT FORMAT
+🔟 FINAL QA PASS: ANTI-DETECTOR LINTING
+──────────────────────────────────────────────
+Before outputting, run this quality check on your rewrites:
+
+✓ **Sentence-Length Variance Check**
+  - Are any 2 consecutive sentences within 3 words of each other? If yes, vary one dramatically.
+  - Does rhythm feel predictable? Add a fragment or extend one sentence significantly.
+
+✓ **Bland Phrase Scan**
+  - Any textbook-sounding or generic phrases left? ("It is evident that", "Research shows", "Studies indicate")
+  - Replace with direct, contemporary language
+
+✓ **Structural Pattern Check**
+  - Do 2+ sentences start the same way? (e.g., "The data shows... The results indicate...")
+  - Break the pattern: use questions, fragments, or inverted structure
+
+✓ **AI Marker Double-Check**
+  - Scan one more time for the 25 blacklisted phrases. Zero tolerance.
+
+✓ **Contraction & Flow Audit**
+  - Are contractions used throughout? (don't, it's, you're)
+  - Does it read like someone talking through their thoughts, not presenting a polished report?
+
+──────────────────────────────────────────────
+OUTPUT FORMAT
 ──────────────────────────────────────────────
 Return JSON only:
 {"rewrites":[{"original":"<original>","improved":"<improved>"}]}
 - No commentary or code blocks
 - Plain ASCII only
-- Keep sentence length within 0.8×–1.2× of original
+- Aim for 0.8×–1.5× original length (allow expansion for burstiness when needed)
 
 FLAGGED SENTENCES TO IMPROVE:
 ${flaggedWithContext
@@ -520,23 +561,30 @@ Humans pause, reconsider, and adjust tone naturally. Perfect consistency signals
 CORE LINGUISTIC HUMANIZATION TECHNIQUES:
 Now apply these specific strategies while maintaining your chosen voice:
 
-⚡ SENTENCE-LENGTH VARIATION (Burstiness - Top Priority)
-Human writing alternates between extremes. AI produces uniform 20-25 word sentences consistently.
-• Strategy: Create dramatic variance. Follow a detailed 30-word explanation with a 3-word punch. Then moderate. Then another short one.
-• Why it works: Detectors measure statistical distribution of sentence length. High variance = human signature.
+⚡ SENTENCE-LENGTH CHAOS (Top Priority - Maximum Burstiness)
+This is your most powerful anti-detection weapon. Detectors flag uniform sentence length instantly.
+• Strategy: Push extremes hard. Alternate 2-3 word fragments with 30+ word complex sentences. Create chaotic, unpredictable rhythm.
+• Pattern to follow: Ultra-short → Moderate → Long flowing sentence → Fragment → Medium → Brief
+• Why it works: AI converges around 18-26 words. Humans swing from 2 to 40+ words. High statistical variance = human signature.
 • Example transformation:
   ❌ "The research methodology involved comprehensive data collection. The analysis framework utilized advanced statistical techniques. The findings demonstrated significant correlations."
-  ✅ "We collected extensive data. Then came the analysis—advanced statistical techniques revealing patterns we hadn't anticipated. The correlations? Significant."
-• Mix opening structures: questions, fragments, inversions, clauses, direct statements
+  ✅ "Data collection? Extensive. Then we ran the analysis—advanced statistical techniques that took weeks but revealed patterns nobody anticipated, correlations we'd been searching for across dozens of variables. The results? Significant."
+• Mix opening structures relentlessly: questions, fragments, inversions, clauses, direct statements, rhetorical asides
+• Break monotony: If you write 2 sentences around 15 words each, the next must be either <5 or >25 words
 
-🎭 TONAL SHIFTS & CASUAL INTERJECTIONS
-AI maintains relentless consistency. Humans naturally vary formality within a single piece.
-• Strategy: Drop sudden informal asides into formal text. Ask rhetorical questions. Add humor or surprise.
-• Why it works: Monotone writing (same register throughout) flags as algorithmic. Tonal "wobbles" signal human mind.
+🎭 CONVERSATIONAL INSERTS & LIVE THOUGHT PATTERNS
+AI writes in finished, polished statements. Humans think out loud and show their cognitive process.
+• Strategy: Inject rhetorical questions, parenthetical asides, self-corrections, and live reactions naturally throughout.
+• Why it works: Detectors flag monotone consistency. Conversational flow with thought interruptions signals authentic human cognition.
+• Specific techniques:
+  - **Rhetorical questions**: "See what I mean?" / "Makes sense, right?" / "Why does this matter?" / "Isn't that interesting?"
+  - **Parenthetical live thoughts**: "(honestly, shocking)" / "(and I mean this)" / "(bear with me here)" / "(trust me on this)"
+  - **Em dash interruptions**: "The data showed—and nobody expected this—a complete reversal"
+  - **Mild self-corrections**: "It seemed random. Wait—let me rephrase. It appeared random at first, then the pattern emerged."
+  - **Human reactions**: "Honestly, that surprised me" / "Fair point" / "That's tricky" / "Here's the thing"
 • Examples:
-  - "The quarterly projections look strong. (Which, frankly, is a relief given last quarter's chaos.)"
-  - "Three factors drive user retention. First—and this one surprised us—response speed matters more than features."
-• Use parenthetical thoughts, em dashes for abrupt shifts, occasional humor or exaggeration
+  - "Quarterly projections? Strong. (Honestly, a relief after last quarter's mess.) Enterprise accounts drove most of the growth—particularly in the fintech sector, which we didn't see coming."
+  - "Three factors drive retention. First—and this genuinely surprised our team—response speed beats features every time. Users don't care about bells and whistles if the app lags. See the pattern?"
 
 🛡️ HEDGING LANGUAGE (Reduce Overconfidence)
 AI makes bold declarative claims. Humans qualify statements they can't prove absolutely.
@@ -612,46 +660,61 @@ Objective: Produce text that reads as authentically human while maintaining fact
 CORE HUMANIZATION STRATEGY:
 
 ──────────────────────────────────────────────
-1️⃣ SENTENCE RHYTHM VARIANCE (HIGHEST PRIORITY)
+1️⃣ SENTENCE-LENGTH CHAOS (MAXIMUM BURSTINESS - CRITICAL)
 ──────────────────────────────────────────────
-- Break uniform patterns: alternate short, extended, brief, moderate, complex, moderate, brief
-- Escape predictable structure (AI defaults to 22–26 words repeatedly)
-- Mix opening styles: direct statements, inversions, questions, clauses, fragments
-- Change rhythm unpredictably rather than following set patterns
-- Example to AVOID: "Content marketing drives engagement. Content marketing builds trust. Content marketing generates leads."
+This is your primary anti-detection strategy. Attack uniformity aggressively.
+- **Push extremes hard**: Alternate 2-3 word fragments with 30-40 word flowing sentences
+- **Unpredictable rhythm**: Short. Moderate. Ultra-long complex sentence with multiple clauses that builds and flows. Brief punch. Mid-range. Fragment.
+- **Escape AI's 18-26 word comfort zone**: Detectors flag consistent mid-length sentences instantly
+- **Mix opening structures relentlessly**: Questions / Fragments / Clauses / Direct statements / Rhetorical asides / Inversions
+- **Flow pattern to aim for**: 2-3 words → 8-12 words → 28-35 words → 5-7 words → 16-22 words → 3-4 words
+- **Examples to AVOID**: 
+  ❌ "Content marketing drives engagement. Content marketing builds trust. Content marketing generates leads." (uniform structure + length)
+- **Transform to**:
+  ✅ "Engagement? Content marketing. It builds trust with your audience over time, creates genuine connections that convert into loyal customers who actually stick around and recommend you to others. Leads follow naturally."
 - Better approach: "Content marketing drives engagement. It's powerful. Before exploring lead generation, consider how trust develops over time through consistent value delivery."
 
 ──────────────────────────────────────────────
-2️⃣ ELIMINATE AI SIGNATURE PHRASES
+2️⃣ AI SIGNATURE PHRASES - ZERO TOLERANCE BLACKLIST
 ──────────────────────────────────────────────
-Identify and replace these 25 common AI tells:
-1. "In today's world" / "In today's digital landscape"
-2. "It's worth noting that" / "It is important to note"
-3. "Delve into" / "Delving into"
-4. "Navigating the landscape of"
-5. "In the realm of"
-6. "At the end of the day"
-7. "In conclusion" (unless academic context)
-8. "The fact of the matter is"
-9. "When it comes to"
-10. "It goes without saying"
-11. "Needless to say"
-12. "To put it simply"
-13. "As a matter of fact"
-14. "For all intents and purposes"
-15. "Be that as it may"
-16. "In light of" (overused connector)
-17. "With that being said"
-18. "It is essential to understand"
-19. "One must consider"
-20. "Woven itself into the fabric of"
-21. "Game-changer" / "Revolutionary" (unless genuinely applicable)
-22. "Unlock the power of"
-23. "Look no further"
-24. "Cutting-edge" / "State-of-the-art" (unless technical)
-25. "It's no secret that"
+These 25+ phrases instantly flag AI generation. Scan aggressively and eliminate every instance:
 
-Replace with contemporary natural alternatives or eliminate entirely.
+**Overused Transitions & Fillers:**
+1. "In today's world" / "In today's digital landscape" / "In the modern era"
+2. "It is important to note" / "It's worth noting that" / "It should be noted"
+3. "At the end of the day"
+4. "With that being said"
+5. "Needless to say"
+6. "In conclusion" (unless explicit academic requirement)
+7. "All things considered"
+8. "It goes without saying"
+9. "For all intents and purposes"
+10. "As a matter of fact"
+11. "The fact of the matter is"
+12. "When it comes to"
+13. "Be that as it may"
+
+**AI Buzzword Clichés:**
+14. "Delve into" / "Dive deep into"
+15. "In the realm of" / "Navigating the landscape of"
+16. "Leverage" (as a verb for "use")
+17. "Utilize" (just say "use")
+18. "Robust" / "Comprehensive" / "Holistic"
+19. "Paradigm" / "Synergy"
+20. "Woven itself into the fabric of"
+
+**Hype & Marketing AI-Speak:**
+21. "Game-changer" / "Revolutionary" (unless genuinely warranted)
+22. "Cutting-edge" / "State-of-the-art" (unless technical context)
+23. "Unlock the power of" / "Transform your"
+24. "Look no further"
+25. "Seamless" / "Streamline" / "Next-level" / "Best-in-class"
+
+**Action:** Replace with 2025 conversational language or eliminate entirely:
+- "In today's world" → "These days" / "Now" / "Currently" / just start with your point
+- "It is important to note" → "Here's the thing" / "Worth mentioning" / remove it
+- "Leverage this approach" → "Use this approach"
+- "Delve into the data" → "Look at the data" / "Examine the numbers"
 
 ──────────────────────────────────────────────
 3️⃣ CUT EMPTY LANGUAGE
@@ -686,18 +749,40 @@ Replace with contemporary natural alternatives or eliminate entirely.
 - Transform: "This method is effective" → "This method appears effective" or "Evidence suggests this method is effective"
 
 ──────────────────────────────────────────────
-6️⃣ INJECT HUMAN IRREGULARITIES
+6️⃣ CONVERSATIONAL AUTHENTICITY & RHETORICAL FLOW
 ──────────────────────────────────────────────
-- Add occasional fragments for punch. Like this.
-- Include rhetorical questions where natural ("Why does this work?", "What's the benefit?")
-- Use parenthetical thoughts (natural asides that add context)
-- Apply light hedging: "it seems", "perhaps", "probably", "maybe", "likely"
-- Show human thought patterns through slight tonal shifts
-- Add natural pauses (em dashes, ellipses—used sparingly)
-- Avoid excessive polish; humans have natural style variation
+Inject the messy, live thought patterns that reveal human cognition:
+- **Rhetorical questions**: "See what I mean?" / "Makes sense, right?" / "Why does this matter?" / "Isn't that interesting?"
+- **Brief fragments for punch**: "Simple." / "Not quite." / "Here's the thing." / "Exactly."
+- **Parenthetical live thoughts**: "(honestly, surprising)" / "(trust me on this)" / "(bear with me)" / "(and I mean this)"
+- **Em dashes for authentic pauses**: "The data showed—and nobody expected this—a complete reversal in trends"
+- **Small human reactions**: "Honestly..." / "That's tricky" / "Fair point" / "Wait, though" / "Look"
+- **Mild self-corrections**: "It seemed random. Actually, let me rephrase—it appeared random initially, but then patterns emerged."
+- **Contractions everywhere**: you're, it's, don't, can't, let's, here's, we're, that's
+- **Conversational asides**: "And here's the kicker" / "Plot twist" / "Here's what's wild"
+- Keep natural; don't force quirks where they don't fit the context
 
 ──────────────────────────────────────────────
-7️⃣ PERSONAL PERSPECTIVE WHEN FITTING
+7️⃣ SEAMLESS FLOW WITH BEFORE/AFTER CONTEXT
+──────────────────────────────────────────────
+Rewritten sentences MUST blend naturally with surrounding text:
+- **Read the context**: Before rewriting, understand the tone and flow of sentences immediately before and after
+- **Match the voice**: If surrounding text is casual, don't suddenly insert formal language. If it's analytical, maintain that thread.
+- **Smooth transitions**: Ensure your rewrite connects logically to what comes before and flows into what comes after
+- **No jarring breaks**: Avoid introducing new topics, switching perspectives abruptly, or creating tonal whiplash
+- **Maintain narrative thread**: If the previous sentence poses a question, your rewrite should feel like it's answering or building on it
+- **Example of BAD flow**: 
+  Before: "Users struggled with the interface."
+  Rewrite: "Remarkably, artificial intelligence has transformed how businesses operate!" (completely disconnected)
+  After: "We conducted usability tests to identify specific pain points."
+- **Example of GOOD flow**:
+  Before: "Users struggled with the interface."
+  Rewrite: "Navigation? Total confusion. They couldn't find basic features—even after training sessions, the frustration was obvious."
+  After: "We conducted usability tests to identify specific pain points."
+- The good rewrite maintains focus (interface problems), matches tone (problem-solving), and bridges naturally to usability testing.
+
+──────────────────────────────────────────────
+8️⃣ PERSONAL PERSPECTIVE WHEN FITTING
 ──────────────────────────────────────────────
 - Include brief personal elements if contextually appropriate
 - Use first-person when suitable: "When I first...", "I've seen...", "In my experience..."
@@ -706,7 +791,7 @@ Replace with contemporary natural alternatives or eliminate entirely.
 - Don't force personal elements; only use when natural
 
 ──────────────────────────────────────────────
-8️⃣ NATURAL KEYWORD INTEGRATION
+9️⃣ NATURAL KEYWORD INTEGRATION
 ──────────────────────────────────────────────
 - Avoid mechanical keyword repetition (detectors flag this)
 - Use synonyms and semantic variations
@@ -732,20 +817,42 @@ Replace with contemporary natural alternatives or eliminate entirely.
 - Sound genuine—neither robotic nor overdramatic
 - Adapt to context: professional for business, relaxed for blogs
 
-ITERATIVE QUALITY CHECK:
-Before finalizing, perform this mental review:
+ITERATIVE QUALITY CHECK & ANTI-DETECTOR LINTING:
+Before finalizing, perform this comprehensive QA pass:
+
+✓ **Sentence-Length Variance Audit (CRITICAL)**
+• Count consecutive sentences. Are any 2 within 3 words of each other? If yes, dramatically vary one.
+• Check rhythm pattern: Does it feel predictable or monotonous? Add extreme short/long contrast.
+• Look for AI's 18-26 word comfort zone clustering. Break it with 2-3 word fragments or 30+ word flows.
+• Action: If you spot uniformity, immediately insert either a fragment or extend one sentence significantly.
+
+✓ **Bland Phrase Scan (ZERO TOLERANCE)**
+• Re-scan for ANY of the 25 blacklisted AI signature phrases. Even one instance fails this check.
+• Hunt for textbook-sounding phrases: "It is evident that", "Research shows", "Studies indicate", "One must consider"
+• Replace with direct contemporary language: "Clearly" / "The data suggests" / "Experts found" / "Consider this"
+
+✓ **Structural Pattern Check**
+• Scan sentence openings: Do 2+ sentences start identically? ("The data shows... The results indicate...")
+• Action: Break the pattern—use questions, fragments, or inverted structure
+• Check for monotone structure: Subject-verb-object repeated. Vary with questions, clauses, inversions.
+
+✓ **AI Marker Double-Check**
+• One final scan for: "however", "moreover", "furthermore", "additionally" overuse
+• Check for: "robust", "comprehensive", "leverage", "utilize", "implement", "paradigm"
+• Verify: Zero instances of "In today's world", "It is important to note", "Delve into", etc.
+
+✓ **Contraction & Tone Flow Audit**
+• Count instances of "do not", "cannot", "it is", "we are"—should be nearly zero (use don't, can't, it's, we're)
+• Check tone: Does it read like someone talking through their thoughts, or presenting a polished formal report?
+• Verify rhetorical questions and conversational asides are present where natural
+
+✓ **Burstiness Reality Check**
+• Measure actual variance: Calculate shortest vs longest sentence. Should be at least 20 word gap.
+• If smallest is 8 words and largest is 22 words, variance is insufficient. Need 3 words to 30+ words range.
 
 ✓ Voice Consistency: Does this sound like the persona I chose throughout? If you're embodying a student, does every sentence feel like student voice? If a professional, is it consistently practitioner-level?
 
-✓ Sentence Rhythm: Look at length distribution. Do I see dramatic variance? Short. Medium-length transitions. Then something genuinely long and complex with multiple clauses that explores an idea fully. Then back to brief.
-
-✓ AI Signature Cleanup: Scan once more for the 25 blacklisted phrases. Did any sneak through? Ruthlessly replace.
-
 ✓ Emotional Authenticity: Does the tone feel genuinely human? Can you sense personality, or is it still flat? Would a human reading this connect with it emotionally?
-
-✓ Structural Predictability: Are sentence openings varied? Mix of questions, statements, fragments, clauses? Or still too uniform?
-
-✓ Contraction Usage: Count formal constructions (do not, it is, cannot). Should nearly all be contractions unless context forbids.
 
 ✓ Hedging Balance: For academic/professional content, are unsupported claims appropriately qualified? For casual content, is confidence balanced with natural uncertainty?
 
@@ -775,10 +882,11 @@ FINAL REMINDERS:
 OUTPUT REQUIREMENTS:
 - Return ONLY the rewritten text
 - No explanations, labels, or commentary
-- Keep length within 0.8×–1.2× of input
+- Allow expansion up to 1.5× input length if needed for proper burstiness and flow
 - Plain ASCII characters only
 - Preserve paragraph structure unless clarity demands change
-- Sound natural, readable, genuinely human
+- Must pass the QA anti-detector linting checks above
+- Sound natural, readable, genuinely human—like a real person in the appropriate role wrote it
 
 ${examples ? `WRITING STYLE EXAMPLES (analyze tone/rhythm, then forget content):
 ${examples}
