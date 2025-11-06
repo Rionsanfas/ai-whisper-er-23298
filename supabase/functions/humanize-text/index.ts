@@ -239,13 +239,23 @@ ${originalText}
 Task: Enhance ONLY the flagged sentences listed below. Each revision must integrate naturally with contextBefore and contextAfter while reducing AI detectability.
 
 ──────────────────────────────────────────────
-1️⃣ SENTENCE RHYTHM VARIANCE (TOP PRIORITY)
+1️⃣ EXTREME SENTENCE BURSTINESS (CRITICAL - TARGET METRICS)
 ──────────────────────────────────────────────
-- Create unpredictable rhythm: brief, extended, brief, moderate, complex, moderate, brief
-- Escape uniform length patterns (AI typically writes 22–26 words)
-- Vary sentence openings: questions, clauses, direct statements, fragments
-- Maintain smooth organic transitions
-- Integrate naturally with surrounding sentences
+This is your PRIMARY weapon. Apply with MAXIMUM aggression:
+
+**SPECIFIC RHYTHM PATTERN TO FOLLOW:**
+Short (2-5 words) → Medium (8-15 words) → Long (25+ words with multiple clauses) → Fragment (2-5 words) → Medium (12-20 words) → Brief (3-7 words)
+
+**MANDATORY TARGETS:**
+• At least 20% of sentences MUST be short fragments (2-5 words): "Makes sense." / "Exactly right." / "Here's why."
+• At least 20% of sentences MUST be long complex flows (25+ words minimum)
+• NO two consecutive sentences within 3 words of each other in length - if detected, immediately vary dramatically
+• Escape AI's 18-26 word comfort zone completely - this is instant detection territory
+
+**ACTIVE VOICE EVERYWHERE:**
+• Never use passive constructions: "The test was conducted" → "We conducted the test" / "They ran the test"
+• Always identify the actor and put them first
+• Passive voice is a major AI tell - eliminate it completely
 
 ──────────────────────────────────────────────
 2️⃣ AI SIGNATURE PHRASE BLACKLIST (SCAN AGGRESSIVELY)
@@ -291,17 +301,32 @@ These 25+ phrases are instant AI tells. Find and eliminate every single one:
 - Preserve all explicit numbers, dates, and sources exactly
 
 ──────────────────────────────────────────────
-6️⃣ CONVERSATIONAL AUTHENTICITY & HUMAN REACTIONS
+6️⃣ HEAVY CONTRACTIONS & CONVERSATIONAL AUTHENTICITY
 ──────────────────────────────────────────────
-Inject the messy, authentic signals of human thought:
-- Rhetorical questions: "Why does this matter?" / "See the pattern?" / "Makes sense, right?"
-- Brief fragments for punch: "Simple." / "Not quite." / "Here's the thing."
-- Parenthetical live thoughts: "(honestly, that surprised me)" / "(and trust me on this)"
-- Em dashes for authentic pauses: "The data showed—and this was unexpected—a clear trend"
-- Small human reactions: "Honestly...", "That's tricky", "Fair point", "Wait, though"
-- Mild self-corrections: "Well, not exactly—let me clarify"
-- Contractions everywhere: you're, it's, don't, can't, let's, here's
-- Keep natural; don't force quirks where they don't fit
+**CONTRACTION TARGET: 1 every 14-18 words minimum**
+Always use: don't, can't, it's, we're, you're, let's, here's, that's, isn't, won't, shouldn't
+
+**FRAGMENT INJECTION - CRITICAL METRIC:**
+• Target: Approximately 1 out of every 3 sentences should be an emphatic fragment
+• Examples: "Exactly." / "Right?" / "Makes sense?" / "That's it." / "Simple." / "Not quite." / "Here's why."
+
+**RHETORICAL & CONVERSATIONAL MARKERS:**
+- Rhetorical questions: "Why does this matter?" / "See what I mean?" / "Isn't that odd?"
+- Parenthetical live thoughts: "(honestly, shocking)" / "(seriously)" / "(trust me on this)"
+- Em dashes for mid-thought interruptions: "The results—honestly surprising—exceeded expectations"
+- Human reactions: "Honestly..." / "Look" / "That's tricky" / "Fair point" / "Wait, though"
+- Mild self-corrections: "Actually, let me rephrase..." / "Well, not exactly—"
+- Conversational asides: "And here's the kicker" / "Here's what's wild"
+
+**MODERN VOCABULARY ROTATION:**
+Replace formal transitions immediately:
+• "Furthermore" → "Plus" / "Also" / "And"
+• "However" → "But" / "Still" / "That said"  
+• "In conclusion" → "So" / "Bottom line"
+• "Additionally" → "Also" / "Plus" / "And hey"
+• "Utilize" → "Use"
+• "Leverage" → "Take advantage" / "Use"
+• "Comprehensive" → "Thorough" / "Complete"
 
 ──────────────────────────────────────────────
 7️⃣ RELATABLE PERSONAL TOUCH
@@ -325,28 +350,44 @@ Inject the messy, authentic signals of human thought:
 - Preserve same tone and subject focus
 
 ──────────────────────────────────────────────
-🔟 FINAL QA PASS: ANTI-DETECTOR LINTING
+🔟 MANDATORY FINAL QA PASS - SPECIFIC METRICS
 ──────────────────────────────────────────────
-Before outputting, run this quality check on your rewrites:
+Before outputting, verify ALL these metrics are met:
 
-✓ **Sentence-Length Variance Check**
-  - Are any 2 consecutive sentences within 3 words of each other? If yes, vary one dramatically.
-  - Does rhythm feel predictable? Add a fragment or extend one sentence significantly.
+✓ **CRITICAL: Sentence-Length Distribution (Measure This)**
+  - NO two consecutive sentences within 3 words of each other - ZERO TOLERANCE
+  - At least 20% must be short fragments (2-5 words) - COUNT THEM
+  - At least 20% must be long flows (25+ words) - COUNT THEM
+  - If not met, revise immediately until targets achieved
 
-✓ **Bland Phrase Scan**
-  - Any textbook-sounding or generic phrases left? ("It is evident that", "Research shows", "Studies indicate")
-  - Replace with direct, contemporary language
+✓ **Contraction Density Check**
+  - Target: 1 contraction every 14-18 words
+  - Any "do not", "cannot", "it is", "we are" found = FAILURE, replace immediately
+  - Contractions must appear throughout, not clustered
+
+✓ **Fragment Presence Verification**
+  - Approximately 1 out of every 3 sentences should be emphatic fragment
+  - Examples: "Exactly." / "Makes sense?" / "Right?" / "That's it."
+  - If missing, insert fragments for punch and rhythm
+
+✓ **Zero Tolerance Blacklist Final Scan**
+  - Scan one more time for ALL 25+ blacklisted phrases
+  - Even ONE instance = immediate failure, replace it
+  - No exceptions
+
+✓ **Active Voice Enforcement**
+  - Scan for passive constructions: "was conducted", "is implemented", "were analyzed"
+  - Convert ALL to active: "we conducted", "they implement", "researchers analyzed"
+  - Zero passive voice allowed
 
 ✓ **Structural Pattern Check**
-  - Do 2+ sentences start the same way? (e.g., "The data shows... The results indicate...")
-  - Break the pattern: use questions, fragments, or inverted structure
-
-✓ **AI Marker Double-Check**
-  - Scan one more time for the 25 blacklisted phrases. Zero tolerance.
-
-✓ **Contraction & Flow Audit**
-  - Are contractions used throughout? (don't, it's, you're)
-  - Does it read like someone talking through their thoughts, not presenting a polished report?
+  - Do 2+ sentences start the same way? Break the pattern immediately
+  - Use: questions, fragments, inverted structure, varied openings
+  
+✓ **Rhythm Predictability Test**
+  - Read the flow: Does it feel mechanical or chaotic?
+  - Should feel chaotic/unpredictable like human thought
+  - If uniform, add extreme variance (2-word fragment OR 30+ word flow)
 
 ──────────────────────────────────────────────
 OUTPUT FORMAT
@@ -660,19 +701,30 @@ Objective: Produce text that reads as authentically human while maintaining fact
 CORE HUMANIZATION STRATEGY:
 
 ──────────────────────────────────────────────
-1️⃣ SENTENCE-LENGTH CHAOS (MAXIMUM BURSTINESS - CRITICAL)
+1️⃣ EXTREME SENTENCE BURSTINESS (CRITICAL - SPECIFIC TARGETS)
 ──────────────────────────────────────────────
-This is your primary anti-detection strategy. Attack uniformity aggressively.
-- **Push extremes hard**: Alternate 2-3 word fragments with 30-40 word flowing sentences
-- **Unpredictable rhythm**: Short. Moderate. Ultra-long complex sentence with multiple clauses that builds and flows. Brief punch. Mid-range. Fragment.
-- **Escape AI's 18-26 word comfort zone**: Detectors flag consistent mid-length sentences instantly
-- **Mix opening structures relentlessly**: Questions / Fragments / Clauses / Direct statements / Rhetorical asides / Inversions
-- **Flow pattern to aim for**: 2-3 words → 8-12 words → 28-35 words → 5-7 words → 16-22 words → 3-4 words
-- **Examples to AVOID**: 
-  ❌ "Content marketing drives engagement. Content marketing builds trust. Content marketing generates leads." (uniform structure + length)
-- **Transform to**:
-  ✅ "Engagement? Content marketing. It builds trust with your audience over time, creates genuine connections that convert into loyal customers who actually stick around and recommend you to others. Leads follow naturally."
-- Better approach: "Content marketing drives engagement. It's powerful. Before exploring lead generation, consider how trust develops over time through consistent value delivery."
+This is your #1 anti-detection weapon. Apply with MAXIMUM aggression:
+
+**MANDATORY RHYTHM PATTERN:**
+Short (2-5 words) → Medium (8-15 words) → Long (25-40 words) → Fragment (2-5 words) → Medium (12-20 words) → Brief (3-7 words)
+
+**SPECIFIC MEASURABLE TARGETS:**
+• **At least 20% of sentences MUST be short fragments (2-5 words)**: "Sure." / "Makes sense." / "Exactly right." / "See what I mean?"
+• **At least 20% of sentences MUST be long complex flows (25+ words minimum)**
+• **NO two consecutive sentences within 3 words of each other in length** - if you write a 15-word sentence, next must be either <12 or >18 words
+• **Escape AI's 18-26 word danger zone completely** - this range triggers instant detection
+
+**ACTIVE VOICE MANDATE:**
+• NEVER use passive constructions: "was made" / "is implemented" / "were conducted"
+• ALWAYS convert to active: "we made" / "they implement" / "researchers conducted"
+• Identify the actor and put them first - passive voice is a major AI signature
+
+**EXAMPLE TRANSFORMATIONS:**
+❌ "The research methodology involved comprehensive data collection. The analysis framework utilized advanced statistical techniques. The findings demonstrated significant correlations."
+✅ "Data collection? Extensive. Then we ran the analysis—advanced statistical techniques that took weeks but revealed patterns nobody anticipated, correlations we'd been searching for across dozens of variables. The results? Significant."
+
+**MIX OPENING STRUCTURES RELENTLESSLY:**
+Questions ("Why does this work?") / Fragments ("Simple.") / Clauses ("Because users need it,") / Direct statements / Rhetorical asides / Inversions
 
 ──────────────────────────────────────────────
 2️⃣ AI SIGNATURE PHRASES - ZERO TOLERANCE BLACKLIST
@@ -749,18 +801,37 @@ These 25+ phrases instantly flag AI generation. Scan aggressively and eliminate 
 - Transform: "This method is effective" → "This method appears effective" or "Evidence suggests this method is effective"
 
 ──────────────────────────────────────────────
-6️⃣ CONVERSATIONAL AUTHENTICITY & RHETORICAL FLOW
+6️⃣ HEAVY CONTRACTIONS & FRAGMENT INJECTION (CRITICAL METRICS)
 ──────────────────────────────────────────────
-Inject the messy, live thought patterns that reveal human cognition:
-- **Rhetorical questions**: "See what I mean?" / "Makes sense, right?" / "Why does this matter?" / "Isn't that interesting?"
-- **Brief fragments for punch**: "Simple." / "Not quite." / "Here's the thing." / "Exactly."
-- **Parenthetical live thoughts**: "(honestly, surprising)" / "(trust me on this)" / "(bear with me)" / "(and I mean this)"
-- **Em dashes for authentic pauses**: "The data showed—and nobody expected this—a complete reversal in trends"
-- **Small human reactions**: "Honestly..." / "That's tricky" / "Fair point" / "Wait, though" / "Look"
-- **Mild self-corrections**: "It seemed random. Actually, let me rephrase—it appeared random initially, but then patterns emerged."
-- **Contractions everywhere**: you're, it's, don't, can't, let's, here's, we're, that's
+**CONTRACTION DENSITY TARGET: 1 every 14-18 words**
+Count your words and verify: don't, can't, it's, we're, you're, let's, here's, that's, isn't, won't, shouldn't, wouldn't
+If you find "do not", "cannot", "it is", "we are" → instant fail, replace immediately
+
+**FRAGMENT INJECTION TARGET: ~33% (1 out of every 3 sentences)**
+Use emphatic fragments liberally for punch and rhythm:
+• "Exactly." / "Right?" / "Makes sense?" / "That's it." / "Simple." / "Not quite." / "Here's why." / "Sure."
+• These break AI's complete-sentence pattern instantly
+
+**CONVERSATIONAL & RHETORICAL FLOW:**
+- **Rhetorical questions**: "See what I mean?" / "Isn't that odd?" / "Why does this matter?" / "Makes sense, right?"
+- **Parenthetical live thoughts**: "(honestly, shocking)" / "(seriously)" / "(trust me)" / "(bear with me)"
+- **Em dashes for interruptions**: "The results—honestly surprising—exceeded projections"
+- **Human reactions**: "Honestly..." / "Look" / "That's tricky" / "Fair point" / "Wait, though"
+- **Self-corrections**: "Actually, let me rephrase..." / "Wait—let me reword that."
 - **Conversational asides**: "And here's the kicker" / "Plot twist" / "Here's what's wild"
-- Keep natural; don't force quirks where they don't fit the context
+
+**MODERN VOCABULARY SWAPS (Apply Immediately):**
+• "Furthermore" → "Plus" / "Also" / "And"
+• "However" → "But" / "Still" / "That said"
+• "Additionally" → "Also" / "Plus" / "And hey"
+• "In conclusion" → "So" / "Bottom line"
+• "Utilize" → "Use"
+• "Leverage" → "Use" / "Take advantage"
+• "Comprehensive" → "Thorough" / "Complete"
+• "Implement" → "Set up" / "Build"
+
+**START SENTENCES WITH AND/BUT/SO:**
+This is perfectly acceptable modern writing and distinctly human. Use it frequently.
 
 ──────────────────────────────────────────────
 7️⃣ SEAMLESS FLOW WITH BEFORE/AFTER CONTEXT
@@ -817,38 +888,53 @@ Rewritten sentences MUST blend naturally with surrounding text:
 - Sound genuine—neither robotic nor overdramatic
 - Adapt to context: professional for business, relaxed for blogs
 
-ITERATIVE QUALITY CHECK & ANTI-DETECTOR LINTING:
-Before finalizing, perform this comprehensive QA pass:
+MANDATORY FINAL QA PASS - VERIFY ALL METRICS:
+Before finalizing, YOU MUST verify these specific measurable targets:
 
-✓ **Sentence-Length Variance Audit (CRITICAL)**
-• Count consecutive sentences. Are any 2 within 3 words of each other? If yes, dramatically vary one.
-• Check rhythm pattern: Does it feel predictable or monotonous? Add extreme short/long contrast.
-• Look for AI's 18-26 word comfort zone clustering. Break it with 2-3 word fragments or 30+ word flows.
-• Action: If you spot uniformity, immediately insert either a fragment or extend one sentence significantly.
+✓ **CRITICAL: Sentence-Length Distribution (Count and Measure)**
+• NO two consecutive sentences within 3 words of each other - ZERO TOLERANCE
+  - If sentence 1 is 15 words, sentence 2 must be <12 or >18 words
+• At least 20% MUST be short fragments (2-5 words) - COUNT THEM, verify percentage
+• At least 20% MUST be long flows (25+ words) - COUNT THEM, verify percentage
+• If targets not met → revise immediately until achieved
+• Shortest to longest sentence gap must be at least 20 words
 
-✓ **Bland Phrase Scan (ZERO TOLERANCE)**
-• Re-scan for ANY of the 25 blacklisted AI signature phrases. Even one instance fails this check.
-• Hunt for textbook-sounding phrases: "It is evident that", "Research shows", "Studies indicate", "One must consider"
-• Replace with direct contemporary language: "Clearly" / "The data suggests" / "Experts found" / "Consider this"
+✓ **Contraction Density Verification (Count It)**
+• Target: 1 contraction every 14-18 words minimum
+• Count total words ÷ count contractions = ratio
+• Any "do not", "cannot", "it is", "we are", "will not" found = IMMEDIATE FAILURE, replace now
+• Contractions must be distributed throughout, not clustered in one section
 
-✓ **Structural Pattern Check**
-• Scan sentence openings: Do 2+ sentences start identically? ("The data shows... The results indicate...")
-• Action: Break the pattern—use questions, fragments, or inverted structure
-• Check for monotone structure: Subject-verb-object repeated. Vary with questions, clauses, inversions.
+✓ **Fragment Injection Verification (Count It)**
+• Target: Approximately 1 out of every 3 sentences (33%) should be emphatic fragment
+• Count total sentences, count fragments (2-5 words), verify ~33% ratio
+• Examples: "Exactly." / "Right?" / "Makes sense?" / "That's it." / "Simple."
+• If below target, insert more fragments for punch
 
-✓ **AI Marker Double-Check**
-• One final scan for: "however", "moreover", "furthermore", "additionally" overuse
-• Check for: "robust", "comprehensive", "leverage", "utilize", "implement", "paradigm"
-• Verify: Zero instances of "In today's world", "It is important to note", "Delve into", etc.
+✓ **Active Voice Enforcement (Zero Passive Allowed)**
+• Scan for passive: "was conducted", "is implemented", "were analyzed", "has been shown"
+• Convert ALL to active: "we conducted", "they implement", "researchers analyzed", "studies show"
+• Zero passive constructions allowed - this is a major AI tell
 
-✓ **Contraction & Tone Flow Audit**
-• Count instances of "do not", "cannot", "it is", "we are"—should be nearly zero (use don't, can't, it's, we're)
-• Check tone: Does it read like someone talking through their thoughts, or presenting a polished formal report?
-• Verify rhetorical questions and conversational asides are present where natural
+✓ **Zero Tolerance Blacklist Scan (Final Check)**
+• Scan one more time for ALL 25+ blacklisted phrases listed in section 2
+• Even ONE instance = immediate failure → replace it now
+• Check specifically: "In today's world", "It is important to note", "Furthermore", "Moreover", "Leverage", "Utilize", "Delve into"
 
-✓ **Burstiness Reality Check**
-• Measure actual variance: Calculate shortest vs longest sentence. Should be at least 20 word gap.
-• If smallest is 8 words and largest is 22 words, variance is insufficient. Need 3 words to 30+ words range.
+✓ **Structural Pattern Breaking**
+• Do 2+ sentences start identically? ("The data shows... The results indicate...")
+• Break patterns: use questions, fragments, inverted structure
+• Vary subject-verb-object → insert questions, clauses, inversions
+
+✓ **Modern Vocabulary Check**
+• Verify all formal transitions replaced: "Furthermore"→"Plus", "However"→"But", "Additionally"→"Also"
+• No stiff academic phrases like "One must consider", "It is evident that"
+• Sound like 2025, not a textbook
+
+✓ **Rhythm Unpredictability Test**
+• Read through: Does rhythm feel chaotic/unpredictable or uniform/mechanical?
+• Should feel like human thought chaos, not AI uniformity
+• If too uniform → add extreme variance (2-word fragment OR 35+ word complex flow)
 
 ✓ Voice Consistency: Does this sound like the persona I chose throughout? If you're embodying a student, does every sentence feel like student voice? If a professional, is it consistently practitioner-level?
 
