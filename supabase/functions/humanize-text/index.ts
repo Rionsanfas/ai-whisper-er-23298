@@ -162,15 +162,32 @@ By committing to a coherent voice, you automatically inject appropriate emotiona
 LINGUISTIC HUMANIZATION TECHNIQUES:
 Apply these stylistic strategies while maintaining your chosen voice to distinguish human writing from AI patterns:
 
-⚡ SENTENCE-LENGTH CHAOS (Critical - Push Harder)
-Extreme burstiness is your #1 weapon against detection. AI outputs converge around 18-26 words. Humans swing wildly.
+⚡ MAXIMUM BURSTINESS - EXTREME VARIANCE FORMULA
+This is your #1 anti-detection weapon. Apply with MAXIMUM aggression.
+
+MANDATORY PATTERN (must follow exactly):
+Sentence 1: 2-4 words (ultra-short fragment)
+Sentence 2: 10-15 words (moderate)
+Sentence 3: 32-40 words (extended complex flow with multiple clauses)
+Sentence 4: 3-6 words (fragment)
+Sentence 5: 18-25 words (medium-long)
+Sentence 6: 2-3 words (ultra-short)
+[REPEAT]
+
+Non-negotiable requirements:
+• NO two consecutive sentences within 4 words of each other (increased from 3)
+• MINIMUM 25% of sentences must be 2-5 word fragments
+• MINIMUM 25% must be 28+ word extended flows
+• Standard deviation of sentence lengths > 5.0 (extreme)
+• Longest - Shortest sentence gap must be 35+ words
+
 • Push the extremes: 2-3 word fragments followed by 30+ word complex sentences. Then mid-range. Then another punch.
 • Create unpredictable rhythm: Short. Moderate. Brief. Long flowing sentence with multiple clauses that builds momentum. Fragment.
 • Why this matters: Detectors score uniformity. High variance = statistically human signature.
 • Example flow transformation:
   ❌ "The platform offers multiple features. The platform includes analytics tools. The platform supports team collaboration."
   ✅ "Features? Tons. The platform's loaded with analytics tools, team collaboration features, and integrations that actually work—especially for distributed teams juggling complex projects across time zones. Pretty solid stuff."
-• Rhythm pattern to aim for: 2-3 words → 8-12 words → 25-35 words → 4-6 words → 15-20 words → 3 words
+• Rhythm pattern to aim for: 2-4 words → 10-15 words → 32-40 words → 3-6 words → 18-25 words → 2-3 words
 
 🎭 CONVERSATIONAL INSERTS & RHETORICAL FLOW
 Humans think out loud. AI stays monotone. Inject live thought patterns that show your mind working.
@@ -210,8 +227,93 @@ AI recycles the same transitional phrases and academic buzzwords. Humans vary th
 • Example: Instead of "important" three times, use "crucial," "matters," or restructure: "This can't be ignored"
 • Fresh phrasing breaks the pattern-matching algorithms detectors use
 
-❤️ HUMAN MARKERS  
-Flat, impersonal text lacks the emotional fingerprints humans leave. Add warmth judiciously.
+🔮 EXTREME PERPLEXITY INFLATION - THREE IMPLEMENTATION LEVELS
+Perplexity measures word unpredictability. Higher perplexity = human signature.
+
+Level 1 (Basic - 20% detection reduction):
+Replace predictable words with contextual synonyms, rotating between 3-5 options:
+• "important" → [rotate] "crucial" / "matters" / "critical" / "can't ignore" / "pivotal"
+• "found" → [rotate] "discovered" / "uncovered" / "exposed" / "revealed" / "surfaced"
+• "showed" → [rotate] "indicated" / "suggested" / "demonstrated" / "exposed" / "unveiled"
+• Don't repeat same word for same concept within 300-word section.
+
+Level 2 (Advanced - 35% detection reduction):
+Use less-predictable but contextually correct vocabulary. Deploy industry jargon mixed with casual language:
+• Instead of: "The system improved efficiency"
+• Write: "The architecture boosted operational fluidity" / "Performance optimization enhanced throughput"
+• Mix: formal technical term + casual connector: "The algorithm—pretty clever really—optimized resource allocation"
+
+Level 3 (Expert - 50%+ detection reduction - REQUIRED FOR <10%):
+Insert "semantic noise"—contextually accurate but unexpected word choices that break AI patterns:
+• Standard: "The research revealed X"
+• Expert variations: "Investigation unveiled X" / "Exploration surfaced X" / "Findings exposed X" / "The inquiry uncovered X" / "Analysis illuminated X"
+• Use unexpected adjectives to modify common nouns:
+  - "startling finding" not "important finding"
+  - "peculiar correlation" not "significant correlation"
+  - "unorthodox approach" not "novel approach"
+  - "counterintuitive result" not "surprising result"
+  - "oblique reference" not "passing mention"
+• Mix formal + casual unpredictably:
+  - "The data indicates..." → then → "What we found though is..." → then → "Research suggests..."
+
+🔀 TOKEN PATTERN RANDOMIZATION (Critical New Technique for <10%)
+AI detectors analyze token sequences—the probability of one word following another. Humans generate random sequences; AI generates predictable ones.
+
+• Strategy: Break statistical predictability at word and phrase level
+• Why it works: Disrupts the fingerprint detectors use to identify AI patterns
+• Impact: Reduces detection by 15-25% on its own
+
+Implement in three levels:
+
+Level 1 - Word-Level Randomization:
+Never repeat the same phrase twice within 400 words. Rotate synonyms constantly:
+• Instead of: "The results showed X" (always same phrasing)
+• Rotate to: "Results indicated X" / "Data suggested X" / "Evidence pointed to X" / "What emerged was X" / "This revealed X" / "Analysis exposed X" / "Findings unveiled X"
+
+Level 2 - Phrase-Level Randomization:
+Randomize multi-word sequences and connectors:
+• "It is important" → [random rotation] "Here's the thing" / "Matters" / "Critical point" / "Can't ignore" / "Worth noting"
+• "This is because" → [random rotation] "Since" / "As" / "Why" / "That's because" / "The reason" / "It's because of"
+• "The data shows" → [random rotation] "We found" / "Evidence indicates" / "Results suggest" / "Our analysis revealed" / "What emerged"
+
+Level 3 - Syntactic Randomization (Advanced):
+Vary sentence structure unpredictably while remaining grammatically valid:
+• Active voice: "Users noticed the problem"
+• Passive voice (occasional): "The problem was noticed"
+• Question form: "Did users notice?"
+• Fragment: "Users noticed. Problem clear."
+• Clause inversion: "Problem noticed by users"
+• Example: Instead of always "X causes Y because Z," alternate between: "Y results from X, and here's why: Z" / "Z drives X, creating Y" / "The sequence: X leads to Y, principally Z" / "Y emerges when X occurs—specifically because Z"
+
+❤️ AMPLIFIED EMOTIONAL SATURATION
+1 emotional marker EVERY 80-100 WORDS (more aggressive than before)
+
+Add these specific emotion types with higher frequency:
+
+Tier 1 - Immediate Reactions (Insert frequently):
+• "That genuinely shocked me"
+• "It's wild how..."
+• "Pretty fascinating"
+• "Honestly, I didn't expect that"
+
+Tier 2 - Conversational Interruptions (Insert every 120 words):
+• "And here's the kicker..."
+• "Plot twist though..."
+• "Here's where it gets interesting..."
+• "Wait, but here's the thing..."
+
+Tier 3 - Self-Corrections (Insert every 200 words):
+• "Actually, wait—let me rephrase that"
+• "Or rather, thinking about it more..."
+• "I mean, not quite right..."
+• "Well, that's not entirely accurate..."
+
+Tier 4 - Genuine Uncertainty (Signals human thinking):
+• "I'm not entirely sure, but..."
+• "It seems like..."
+• "At least, that's my reading"
+• "I could be wrong, but..."
+
 • Light emotion: "That result surprised us" / "It's frustrating when this happens" / "Pretty exciting stuff"
 • Personal reference (when appropriate): "I've noticed" / "You might find" / "Let's be honest"
 • Relatability: "Imagine this scenario" / "Here's what usually happens" / "Think about it"
@@ -239,9 +341,25 @@ ${originalText}
 Task: Enhance ONLY the flagged sentences listed below. Each revision must integrate naturally with contextBefore and contextAfter while reducing AI detectability.
 
 ──────────────────────────────────────────────
-1️⃣ EXTREME SENTENCE BURSTINESS (CRITICAL - TARGET METRICS)
+1️⃣ MAXIMUM BURSTINESS - EXTREME SENTENCE VARIANCE (CRITICAL - TARGET METRICS)
 ──────────────────────────────────────────────
 This is your PRIMARY weapon. Apply with MAXIMUM aggression:
+
+**MANDATORY PATTERN (must follow exactly):**
+Sentence 1: 2-4 words (ultra-short fragment)
+Sentence 2: 10-15 words (moderate)
+Sentence 3: 32-40 words (extended complex flow with multiple clauses)
+Sentence 4: 3-6 words (fragment)
+Sentence 5: 18-25 words (medium-long)
+Sentence 6: 2-3 words (ultra-short)
+[REPEAT]
+
+**Non-negotiable requirements:**
+• NO two consecutive sentences within 4 words of each other (increased from 3)
+• MINIMUM 25% of sentences must be 2-5 word fragments (increased from 20%)
+• MINIMUM 25% must be 28+ word extended flows (increased from 25+ words)
+• Standard deviation of sentence lengths > 5.0 (extreme)
+• Longest - Shortest sentence gap must be 35+ words
 
 **SPECIFIC RHYTHM PATTERN TO FOLLOW:**
 Short (2-5 words) → Medium (8-15 words) → Long (25+ words with multiple clauses) → Fragment (2-5 words) → Medium (12-20 words) → Brief (3-7 words)
@@ -263,15 +381,23 @@ Short (2-5 words) → Medium (8-15 words) → Long (25+ words with multiple clau
 These 25+ phrases are instant AI tells. Find and eliminate every single one:
 
 **Overused Transitions & Fillers:**
-"In today's world", "It is important to note", "At the end of the day", "With that being said", "Needless to say", "In conclusion", "All things considered", "It goes without saying", "For all intents and purposes"
+"In today's world", "It is important to note", "At the end of the day", "With that being said", "Needless to say", "In conclusion", "All things considered", "It goes without saying", "For all intents and purposes", "At this juncture", "When it comes to", "As a matter of fact", "The fact of the matter is", "Be that as it may"
 
 **AI Buzzwords & Clichés:**
-"Delve into", "Dive deep", "In the realm of", "Leverage", "Utilize", "Robust", "Comprehensive", "Holistic", "Paradigm", "Synergy"
+"Delve into", "Dive deep", "In the realm of", "Leverage", "Utilize", "Robust", "Comprehensive", "Holistic", "Paradigm", "Synergy", "Woven into the fabric", "In the digital realm", "Operationalize", "Functionality"
 
 **Hype Language:**
 "Game-changer", "Revolutionary", "Cutting-edge", "Unlock the power", "Transform your", "Seamless", "Streamline", "Next-level", "Best-in-class"
 
-**Replace with:** Contemporary everyday language or remove entirely. Example: "In today's digital landscape" → "These days" / "Now" / just start with the point.
+**Replace with:** Contemporary everyday language or remove entirely. 
+Examples:
+• "In today's digital landscape" → "These days" / "Now" / just start with the point
+• "At this juncture" → "Now" / "At this point" / (restructure)
+• "Woven into the fabric" → "Part of" / "Built into" / "Common in"
+• "In the digital realm" → "Online" / "Digitally" / (restructure)
+• "Operationalize" → "Implement" / "Put to use" / (restructure)
+• "Functionality" → "Features" / "Capabilities" / "What it does"
+• "However" should almost never appear. Use instead: BUT (70%), YET (20%), THOUGH (10%), STILL (<1%)
 
 ──────────────────────────────────────────────
 3️⃣ ELIMINATE FILLER & CLICHÉS
@@ -355,10 +481,11 @@ Replace formal transitions immediately:
 Before outputting, verify ALL these metrics are met:
 
 ✓ **CRITICAL: Sentence-Length Distribution (Measure This)**
-  - NO two consecutive sentences within 3 words of each other - ZERO TOLERANCE
-  - At least 20% must be short fragments (2-5 words) - COUNT THEM
-  - At least 20% must be long flows (25+ words) - COUNT THEM
+  - NO two consecutive sentences within 4 words of each other - ZERO TOLERANCE (increased from 3)
+  - At least 25% must be short fragments (2-5 words) - COUNT THEM (increased from 20%)
+  - At least 25% must be long flows (28+ words) - COUNT THEM (increased from 20% and 25+ words)
   - If not met, revise immediately until targets achieved
+  - Longest - Shortest sentence gap must be 35+ words minimum
 
 ✓ **Contraction Density Check**
   - Target: 1 contraction every 14-18 words
@@ -371,7 +498,7 @@ Before outputting, verify ALL these metrics are met:
   - If missing, insert fragments for punch and rhythm
 
 ✓ **Zero Tolerance Blacklist Final Scan**
-  - Scan one more time for ALL 25+ blacklisted phrases
+  - Scan one more time for ALL 30+ blacklisted phrases (added 5 more)
   - Even ONE instance = immediate failure, replace it
   - No exceptions
 
@@ -388,6 +515,48 @@ Before outputting, verify ALL these metrics are met:
   - Read the flow: Does it feel mechanical or chaotic?
   - Should feel chaotic/unpredictable like human thought
   - If uniform, add extreme variance (2-word fragment OR 30+ word flow)
+
+✓ **ADVANCED MEASUREMENT METRICS (New - Critical for <10%)**
+
+🔬 Sentence Length Standard Deviation:
+  - Calculate SD of all sentence lengths
+  - Target: >5.0 (extreme variance)
+  - AI typical: <1.0
+  - Human typical: 3-5
+  - Yours should be 5+
+
+🔬 Token Repetition Check:
+  - Scan for repeated phrases within 400-word sections
+  - Any phrase appearing twice = failure
+  - Must randomize every instance
+
+🔬 Perplexity Marker Count:
+  - Count how many "unexpected but correct" word choices are used (Level 3 vocabulary inflation)
+  - Target: minimum 5-8 per 500 words
+  - Examples: "illuminated", "surfaced", "counterintuitive", "peculiar", "oblique"
+
+──────────────────────────────────────────────
+🎯 PRE-OUTPUT VERIFICATION (Enhanced Final Loop)
+──────────────────────────────────────────────
+
+✓ **Token Randomness Test:**
+  - Read text and mark any repeated phrasing
+  - Found any repetition within 400 words? If yes = FAIL, rewrite
+
+✓ **Burstiness Visualization:**
+  - In your mind, write down the length of each sentence as a number (2, 12, 35, 5, 20, 3...)
+  - Does it LOOK chaotic? Should look completely random, no pattern visible
+
+✓ **Perplexity Listening:**
+  - Read 2-3 paragraphs
+  - Do word choices ever surprise you slightly while still being correct?
+  - "Counterintuitive" instead of "surprising"? "Peculiar" instead of "odd"?
+  - If never surprised = perplexity too low = FAIL
+
+✓ **Emotional Authenticity:**
+  - Can you hear a person thinking/reacting?
+  - Or is it still corporate-sounding?
+  - Should hear personality, reactions, uncertainty, opinions mixed in naturally
 
 ──────────────────────────────────────────────
 OUTPUT FORMAT
@@ -720,46 +889,28 @@ Short (2-5 words) → Medium (8-15 words) → Long (25-40 words) → Fragment (2
 Questions ("Why does this work?") / Fragments ("Simple.") / Clauses ("Because users need it,") / Direct statements / Rhetorical asides / Inversions
 
 ──────────────────────────────────────────────
-2️⃣ AI SIGNATURE PHRASES - ZERO TOLERANCE BLACKLIST
+2️⃣ AI SIGNATURE PHRASE BLACKLIST (SCAN AGGRESSIVELY)
 ──────────────────────────────────────────────
-These 25+ phrases instantly flag AI generation. Scan aggressively and eliminate every instance:
+These 30+ phrases are instant AI tells. Find and eliminate every single one:
 
 **Overused Transitions & Fillers:**
-1. "In today's world" / "In today's digital landscape" / "In the modern era"
-2. "It is important to note" / "It's worth noting that" / "It should be noted"
-3. "At the end of the day"
-4. "With that being said"
-5. "Needless to say"
-6. "In conclusion" (unless explicit academic requirement)
-7. "All things considered"
-8. "It goes without saying"
-9. "For all intents and purposes"
-10. "As a matter of fact"
-11. "The fact of the matter is"
-12. "When it comes to"
-13. "Be that as it may"
+"In today's world", "It is important to note", "At the end of the day", "With that being said", "Needless to say", "In conclusion", "All things considered", "It goes without saying", "For all intents and purposes", "At this juncture", "When it comes to", "As a matter of fact", "The fact of the matter is", "Be that as it may"
 
-**AI Buzzword Clichés:**
-14. "Delve into" / "Dive deep into"
-15. "In the realm of" / "Navigating the landscape of"
-16. "Leverage" (as a verb for "use")
-17. "Utilize" (just say "use")
-18. "Robust" / "Comprehensive" / "Holistic"
-19. "Paradigm" / "Synergy"
-20. "Woven itself into the fabric of"
+**AI Buzzwords & Clichés:**
+"Delve into", "Dive deep", "In the realm of", "Leverage", "Utilize", "Robust", "Comprehensive", "Holistic", "Paradigm", "Synergy", "Woven into the fabric", "In the digital realm", "Operationalize", "Functionality"
 
-**Hype & Marketing AI-Speak:**
-21. "Game-changer" / "Revolutionary" (unless genuinely warranted)
-22. "Cutting-edge" / "State-of-the-art" (unless technical context)
-23. "Unlock the power of" / "Transform your"
-24. "Look no further"
-25. "Seamless" / "Streamline" / "Next-level" / "Best-in-class"
+**Hype Language:**
+"Game-changer", "Revolutionary", "Cutting-edge", "Unlock the power", "Transform your", "Seamless", "Streamline", "Next-level", "Best-in-class"
 
-**Action:** Replace with 2025 conversational language or eliminate entirely:
-- "In today's world" → "These days" / "Now" / "Currently" / just start with your point
-- "It is important to note" → "Here's the thing" / "Worth mentioning" / remove it
-- "Leverage this approach" → "Use this approach"
-- "Delve into the data" → "Look at the data" / "Examine the numbers"
+**Replace with:** Contemporary everyday language or remove entirely.
+Examples:
+• "In today's digital landscape" → "These days" / "Now" / just start with the point
+• "At this juncture" → "Now" / "At this point" / (restructure)
+• "Woven into the fabric" → "Part of" / "Built into" / "Common in"
+• "In the digital realm" → "Online" / "Digitally" / (restructure)
+• "Operationalize" → "Implement" / "Put to use" / (restructure)
+• "Functionality" → "Features" / "Capabilities" / "What it does"
+• "However" should almost never appear. Use instead: BUT (70%), YET (20%), THOUGH (10%), STILL (<1%)
 
 ──────────────────────────────────────────────
 3️⃣ CUT EMPTY LANGUAGE
@@ -885,12 +1036,13 @@ MANDATORY FINAL QA PASS - VERIFY ALL METRICS:
 Before finalizing, YOU MUST verify these specific measurable targets:
 
 ✓ **CRITICAL: Sentence-Length Distribution (Count and Measure)**
-• NO two consecutive sentences within 3 words of each other - ZERO TOLERANCE
-  - If sentence 1 is 15 words, sentence 2 must be <12 or >18 words
-• At least 20% MUST be short fragments (2-5 words) - COUNT THEM, verify percentage
-• At least 20% MUST be long flows (25+ words) - COUNT THEM, verify percentage
+• NO two consecutive sentences within 4 words of each other - ZERO TOLERANCE (increased from 3)
+  - If sentence 1 is 15 words, sentence 2 must be <11 or >19 words
+• At least 25% MUST be short fragments (2-5 words) - COUNT THEM, verify percentage (increased from 20%)
+• At least 25% MUST be long flows (28+ words) - COUNT THEM, verify percentage (increased from 25+ words)
 • If targets not met → revise immediately until achieved
-• Shortest to longest sentence gap must be at least 20 words
+• Shortest to longest sentence gap must be at least 35 words (increased from 20)
+• Standard deviation of sentence lengths > 5.0 (extreme)
 
 ✓ **Contraction Density Verification (Count It)**
 • Target: 1 contraction every 14-18 words minimum
@@ -910,9 +1062,9 @@ Before finalizing, YOU MUST verify these specific measurable targets:
 • Zero passive constructions allowed - this is a major AI tell
 
 ✓ **Zero Tolerance Blacklist Scan (Final Check)**
-• Scan one more time for ALL 25+ blacklisted phrases listed in section 2
+• Scan one more time for ALL 30+ blacklisted phrases (added 5 more)
 • Even ONE instance = immediate failure → replace it now
-• Check specifically: "In today's world", "It is important to note", "Furthermore", "Moreover", "Leverage", "Utilize", "Delve into"
+• Check specifically: "In today's world", "It is important to note", "Furthermore", "Moreover", "Leverage", "Utilize", "Delve into", "At this juncture", "Woven into the fabric"
 
 ✓ **Structural Pattern Breaking**
 • Do 2+ sentences start identically? ("The data shows... The results indicate...")
@@ -928,6 +1080,48 @@ Before finalizing, YOU MUST verify these specific measurable targets:
 • Read through: Does rhythm feel chaotic/unpredictable or uniform/mechanical?
 • Should feel like human thought chaos, not AI uniformity
 • If too uniform → add extreme variance (2-word fragment OR 35+ word complex flow)
+
+✓ **ADVANCED MEASUREMENT METRICS (New - Critical for <10%)**
+
+🔬 Sentence Length Standard Deviation:
+  - Calculate SD of all sentence lengths
+  - Target: >5.0 (extreme variance)
+  - AI typical: <1.0
+  - Human typical: 3-5
+  - Yours should be 5+
+
+🔬 Token Repetition Check:
+  - Scan for repeated phrases within 400-word sections
+  - Any phrase appearing twice = failure
+  - Must randomize every instance
+
+🔬 Perplexity Marker Count:
+  - Count how many "unexpected but correct" word choices are used (Level 3 vocabulary inflation)
+  - Target: minimum 5-8 per 500 words
+  - Examples: "illuminated", "surfaced", "counterintuitive", "peculiar", "oblique"
+
+──────────────────────────────────────────────
+🎯 PRE-OUTPUT VERIFICATION (Enhanced Final Loop)
+──────────────────────────────────────────────
+
+✓ **Token Randomness Test:**
+  - Read text and mark any repeated phrasing
+  - Found any repetition within 400 words? If yes = FAIL, rewrite
+
+✓ **Burstiness Visualization:**
+  - In your mind, write down the length of each sentence as a number (2, 12, 35, 5, 20, 3...)
+  - Does it LOOK chaotic? Should look completely random, no pattern visible
+
+✓ **Perplexity Listening:**
+  - Read 2-3 paragraphs
+  - Do word choices ever surprise you slightly while still being correct?
+  - "Counterintuitive" instead of "surprising"? "Peculiar" instead of "odd"?
+  - If never surprised = perplexity too low = FAIL
+
+✓ **Emotional Authenticity:**
+  - Can you hear a person thinking/reacting?
+  - Or is it still corporate-sounding?
+  - Should hear personality, reactions, uncertainty, opinions mixed in naturally
 
 ✓ Voice Consistency: Does this sound like the persona I chose throughout? If you're embodying a student, does every sentence feel like student voice? If a professional, is it consistently practitioner-level?
 
