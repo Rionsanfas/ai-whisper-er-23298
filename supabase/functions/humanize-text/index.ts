@@ -688,15 +688,8 @@ TRANSFORMATION EXAMPLE:
 
 Changes applied: contractions (sustainability's, here's), varied sentence length (short/medium/short), removed AI markers (Moreover, Furthermore, significantly), colloquial tone (no longer optional, here's a bonus), natural connectors (And), question for variety (Green initiatives?).
 
-DETECTOR PATTERNS TO AVOID:
-Modern AI detectors (Sapling, ZeroGPT, GPTZero, Turnitin, Copyleaks) flag content based on:
-- Consistent sentence rhythm (especially 22–26 word sentences)
-- Predictable phrasing and structural repetition
-- Excessively polished writing lacking organic variation
-- Absence of conversational tone or personal markers
-- Robotic logical flow without natural thought shifts
-
-Objective: Produce text that reads as authentically human while maintaining factual accuracy and adapting tone for the likely user scenario.
+WHY THESE TECHNIQUES MATTER:
+These strategies restore natural human writing patterns. Your goal is to produce text that reads authentically while maintaining factual accuracy and adapting tone for the likely user scenario.
 
 CORE HUMANIZATION STRATEGY:
 
