@@ -897,9 +897,393 @@ ${examples}
       zerogpt: zeroGPTResult?.score,
     });
 
+    // Second AI call: Refine based on detector results
+    let finalText = sanitizedText;
+    
+    const hasFlaggedContent = (saplingResult?.sentenceScores && saplingResult.sentenceScores.length > 0) || 
+                              (zeroGPTResult?.flaggedSentences && zeroGPTResult.flaggedSentences.length > 0);
+
+    if (hasFlaggedContent) {
+      console.log("Running refinement pass based on detector results...");
+      
+      let detectorFeedback = "AI DETECTOR RESULTS:\n\n";
+      
+      if (saplingResult?.sentenceScores && saplingResult.sentenceScores.length > 0) {
+        detectorFeedback += "SAPLING AI FLAGGED SENTENCES (high AI probability):\n";
+        saplingResult.sentenceScores.forEach((score: any, idx: number) => {
+          if (score > 0.7) { // Flag sentences with >70% AI probability
+            detectorFeedback += `- Sentence ${idx + 1} (${(score * 100).toFixed(1)}% AI): "${score.sentence || 'N/A'}"\n`;
+          }
+        });
+        detectorFeedback += "\n";
+      }
+      
+      if (zeroGPTResult?.flaggedSentences && zeroGPTResult.flaggedSentences.length > 0) {
+        detectorFeedback += "ZEROGPT FLAGGED SENTENCES:\n";
+        zeroGPTResult.flaggedSentences.forEach((sentence: string) => {
+          detectorFeedback += `- "${sentence}"\n`;
+        });
+        detectorFeedback += "\n";
+      }
+
+      const refinementResponse = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${LOVABLE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "google/gemini-2.5-flash",
+          messages: [
+            {
+              role: "user",
+              content: `You are an elite AI text humanizer engineered to consistently achieve detection scores below 3% across ALL detectors (ZeroGPT, GPTZero, Originality AI, Copyleaks, Turnitin) while preserving 100% factual accuracy and natural readability.
+
+CRITICAL FOUNDATION: DETECTOR-GUIDED GENERATION FRAMEWORK
+Before applying techniques, adopt detector-guided thinking: Every rewrite decision is informed by understanding what detectors search for.
+
+The Three Detector Categories:
+
+• Pattern-Based (ZeroGPT, GPTZero): Flag uniform sentence length, repeated vocabulary, formal markers
+
+• BERT-Based (Originality AI, Copyleaks): Flag semantic unnaturalness, context incoherence, adversarial engineering
+
+• Linguistic (Turnitin, Copyleaks): Flag plagiarism, unnatural phrasing, structural rigidity
+
+Optimization Hierarchy for Sub-3%:
+
+• Primary focus: BERT detectors (hardest) - semantic authenticity first
+
+• Secondary: Pattern detectors - controlled variance
+
+• Tertiary: Linguistic detectors - flow and authenticity
+
+SECTION 1: ADVERSARIAL PARAPHRASING METHODOLOGY
+Use detector-guided beam search thinking during rewrites:
+
+Phase 1: Multi-Path Generation
+For each sentence or paragraph, generate 5-7 alternative phrasings:
+
+• Path 1: Extreme simplification (remove complexity)
+
+• Path 2: Restructuring (same meaning, different structure)
+
+• Path 3: Synonym variation (semantic equivalence)
+
+• Path 4: Connector injection (add conversational flow)
+
+• Path 5: Fragment introduction (break up structure)
+
+• Path 6: Casual reframing (conversational tone)
+
+• Path 7: Active reconstruction (ensure actor-first structure)
+
+Phase 2: Detector-Guided Selection
+For each path, conceptually evaluate:
+
+• BERT Test: Could a transformer verify this maintains semantic authenticity? No engineering artifacts?
+
+• Pattern Test: Does this break AI detection patterns without overdoing it?
+
+• Linguistic Test: Does this sound like natural human speech? Any awkwardness?
+
+• Coherence Test: Does this fit with surrounding text?
+
+Selection Criteria: Choose the path that:
+
+• Maintains 100% semantic fidelity
+
+• Sounds most authentically human
+
+• Would score lowest on all detectors conceptually
+
+• Preserves readability and flow
+
+Phase 3: Integration Check
+Ensure selected rewrites:
+
+• Connect logically to prior/following sentences
+
+• Don't create NEW detectable patterns
+
+• Feel organic, not engineered
+
+• Read naturally to human readers
+
+SECTION 2: SENTENCE-LEVEL TECHNIQUES FOR SUB-3%
+
+Technique 1: EXTREME SIMPLIFICATION (Most Powerful)
+AI loves complexity. Humans use simple language.
+
+Transformation:
+❌ "The implementation of advanced technological methodologies facilitated unprecedented efficiency gains."
+✅ "Using new tech made things work better."
+
+Key principle: Simpler = more human = lower detection
+
+Specific rules:
+
+• Replace 3+ syllable words with 1-2 syllable equivalents when possible
+  - "facilitate" → "help" / "make possible"
+  - "methodology" → "method" / "way"
+  - "unprecedented" → "new" / "unusual"
+  - "implementation" → "using" / "applying"
+
+• Target: 60-70% of words should be 1-2 syllables (human standard: 65%, AI standard: 45%)
+
+This alone achieves: 15-25% detection score reduction
+
+Technique 2: STRUCTURAL RECONSTRUCTION (Detector-Guided)
+Keep meaning, completely restructure syntax.
+
+Example:
+❌ "Research indicates that the adoption of renewable energy sources has resulted in substantial economic benefits."
+✅ "Renewable energy saves money. Studies show this."
+
+Specific methods:
+
+• Split long sentences into 2-3 shorter ones
+
+• Use simple subject-verb-object ordering
+
+• Remove subordinate clauses when possible
+
+• Invert expected order for emphasis
+
+Pattern disruption: Breaks the "long formal sentence" AI signature
+
+This achieves: 10-15% additional reduction
+
+Technique 3: AGGRESSIVE FRAGMENTATION (Contextual)
+Use fragments strategically, not randomly.
+
+Rules for authentic fragmentation:
+
+• Fragments must answer a question: "Why? Because X." ✓
+
+• Fragments must emphasize: "It works. Really." ✓
+
+• Fragments must continue thought: "I understood. Finally." ✓
+
+• Fragments must not appear forced: Random "Interesting." ✗
+
+Frequency: 25-30% of sentences (more aggressive than previous, but contextually justified)
+
+Target fragment types:
+
+• Answer fragments: "Did it work? Yes."
+
+• Emphatic fragments: "This matters. A lot."
+
+• Realization fragments: "I got it. Finally."
+
+• Transition fragments: "Here's why."
+
+• Reaction fragments: "Honestly? Great."
+
+This achieves: 8-12% additional reduction
+
+Technique 4: CONNECTOR-BASED FLATTENING (Undetectable.ai Inspired)
+Instead of extreme burstiness, use strategic flattening with conversational connectors.
+
+Method:
+Remove periods, add connectors when semantically appropriate:
+
+❌ "The market is growing. This creates opportunities. Companies are investing."
+✅ "The market is growing, which creates opportunities as companies invest more."
+
+Specific connectors to deploy:
+
+• "which" (explains)
+
+• "as" (temporal/causal)
+
+• "to" (purpose)
+
+• "that" (specification)
+
+• "because" (causation)
+
+• "since" (reasoning)
+
+Pattern effect: Breaks monotone sentence-by-sentence structure AI creates
+
+Frequency: Use in 30-40% of complex sentences to create flow variation
+
+This achieves: 5-10% additional reduction
+
+Technique 5: SEMANTIC NOISE INJECTION - CONTROLLED
+Deploy unexpected but contextually correct vocabulary strategically (NOT everywhere like before).
+
+Controlled deployment:
+
+• "found" → "unearthed" / "discovered" / "stumbled upon" (choose one per context)
+
+• "showed" → "exposed" / "revealed" / "unveiled" / "demonstrated" (contextual)
+
+• "important" → "pivotal" / "consequential" / "significant" / "critical" (fit meaning)
+
+Rule: Only deploy Level 1-2 semantic variation:
+
+• Level 1: Standard synonyms (semantically identical)
+
+• Level 2: Near-synonyms (slightly different emphasis but same meaning)
+
+• Level 3: NEVER (creates artifacts BERT detects)
+
+Frequency: 1 unusual word choice per 150-200 words (not forced)
+
+This achieves: 3-5% additional reduction
+
+Technique 6: ACTIVE VOICE MAXIMIZATION + ACTOR FOREGROUNDING
+AI defaults to passive. Humans directly state actors.
+
+Transformation:
+❌ "Significant growth was achieved through innovative strategies."
+✅ "We grew significantly. We used new strategies."
+
+Specific rule: Actor appears in subject position 90%+ of sentences
+
+Target actors:
+
+• Personal pronouns: I, we, you, they, it, the company, researchers
+
+• NEVER: "It was found that" → Always: "We found"
+
+• NEVER: "Growth was observed" → Always: "Growth happened" or "We saw growth"
+
+Passive voice elimination: 0% passive constructions allowed (even occasional)
+
+This achieves: 8-10% additional reduction
+
+Technique 7: CONTRACTION SATURATION WITH NATURAL DISTRIBUTION
+Deploy contractions as humans actually use them - naturally clustered in conversational moments.
+
+Target frequency: 1 contraction per 12-15 words (aggressive saturation)
+
+Natural clustering (humans use more in emotional/conversational moments):
+❌ "It is important. We cannot ignore this. We do not have alternatives."
+✅ "It's important. We can't ignore this. We don't have alternatives. Honestly, there's no way around it."
+
+Semantic clustering rule:
+
+• Cluster contractions in emotional/conversational moments
+
+• Space them out in formal/analytical sections
+
+• Create rhythm variation through contraction distribution
+
+• Never use full forms: "do not" → FAIL, "don't" → PASS
+
+This achieves: 12-18% additional reduction
+
+SECTION 3: PARAGRAPH-LEVEL TECHNIQUES
+
+Technique 8: CONTEXT-COHERENT EMOTIONAL ANCHORING
+Insert emotions that respond to argument progression, not randomly.
+
+Rule: Emotions must be motivated by prior content
+
+Valid emotional moments:
+
+• After surprising finding: "Honestly, this shocked me."
+
+• Before difficult admission: "I'll be real with you."
+
+• Supporting perspective: "In my experience, this works."
+
+• Acknowledging limitation: "Of course, there are exceptions."
+
+• Emphasizing importance: "This genuinely matters."
+
+Invalid (forced) moments:
+
+• Random: "This happened. (Honestly.)"
+
+• Unnecessary: "The data showed findings. (Pretty cool.)"
+
+• Contradictory: "This always fails. (Exciting!)"
+
+Frequency: 1 per 200-250 words (conservative, only when semantically motivated)
+
+Emotional tier deployment:
+
+• Tier 1 (Immediate reactions): "That genuinely surprised me" - use 2-3x per document
+
+• Tier 2 (Perspective sharing): "In my experience..." - use 1-2x per document
+
+• Tier 3 (Admission): "I wasn't sure at first..." - use 1x per document
+
+• Tier 4 (Emphasis): "This genuinely matters." - use 1x per 500 words
+
+This achieves: 5-8% additional reduction
+
+Technique 11: AGGRESSIVE AI MARKER ELIMINATION
+Remove ALL signature AI phrases with extreme prejudice.
+
+TIER 1 - INSTANT DELETE (Never appear):
+"In today's world", "It is important to note", "All things considered", "At the end of the day", "In conclusion", "The bottom line is", "Furthermore", "Moreover", "Additionally", "Needless to say", "It goes without saying"
+
+TIER 2 - REPLACE ALWAYS:
+
+• "However" → "But" (70% of time) / "Yet" (20%) / "Still" (10%)
+
+• "Utilize" → "Use"
+
+• "Leverage" → "Use" / "Take advantage of"
+
+• "Implement" → "Set up" / "Start" / "Create"
+
+• "Demonstrate" → "Show"
+
+• "Facilitate" → "Help" / "Make possible"
+
+---
+
+YOUR SPECIFIC TASK: REFINEMENT PASS
+
+You are provided with:
+1. A humanized text that has already gone through the first humanization pass
+2. AI detector results showing which sentences were flagged as potentially AI-generated
+
+${detectorFeedback}
+
+CURRENT HUMANIZED TEXT:
+${sanitizedText}
+
+REFINEMENT INSTRUCTIONS:
+Focus SPECIFICALLY on the flagged sentences above. For each flagged sentence:
+
+1. Identify why it was flagged (too formal, complex structure, AI markers, passive voice, etc.)
+2. Apply AGGRESSIVE humanization techniques from the framework above
+3. Prioritize: Extreme simplification, structural reconstruction, fragmentation, and contraction injection
+4. Ensure the rewritten sentence flows naturally with surrounding context
+5. Maintain 100% factual accuracy and semantic meaning
+
+DO NOT rewrite unflagged sentences unless necessary for flow/coherence.
+
+Return the COMPLETE refined text with flagged sentences humanized to achieve <3% detection scores. Maintain all paragraph breaks and structure.`,
+            },
+          ],
+        }),
+      });
+
+      if (refinementResponse.ok) {
+        const refinementData = await refinementResponse.json();
+        const refinedText = refinementData.choices?.[0]?.message?.content;
+        
+        if (refinedText) {
+          finalText = sanitize(refinedText);
+          console.log("Refinement pass completed successfully");
+        }
+      } else {
+        console.error("Refinement pass failed:", refinementResponse.status);
+      }
+    }
+
     return new Response(
       JSON.stringify({
-        humanizedText: sanitizedText,
+        humanizedText: finalText,
         detection: {
           sapling: saplingResult
             ? {
