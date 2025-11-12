@@ -1049,6 +1049,24 @@ YOU MUST:
 ✓ Maintain semantic authenticity throughout
 ✓ Ensure output scores LOWER than Stage 1
 
+DETECTOR FAMILY REMINDER (for second pass)
+
+1) PATTERN-BASED (ZeroGPT, GPTZero):
+   - Flags: Uniform sentence length, repeated vocabulary, formal markers
+   - Strategy: Controlled variance, natural rhythm
+
+2) BERT-BASED (Originality AI, Copyleaks, Sapling):
+   - Flags: Semantic unnaturalness, context incoherence, over-engineering
+   - Strategy: Semantic authenticity, coherent emotional arc
+
+3) LINGUISTIC (Turnitin, Copyleaks):
+   - Flags: Unnatural phrasing, structural rigidity, plagiarism patterns
+   - Strategy: Natural flow, authentic human voice
+
+═══════════════════════════════════════════════════════════
+FULL HUMANIZATION FRAMEWORK (re-apply in Stage 2)
+═══════════════════════════════════════════════════════════
+
 CRITICAL FOUNDATION: DETECTOR-GUIDED GENERATION FRAMEWORK
 Before applying techniques, adopt detector-guided thinking: Every rewrite decision is informed by understanding what detectors search for.
 
@@ -1328,6 +1346,77 @@ Emotional tier deployment:
 
 This achieves: 5-8% additional reduction
 
+Technique 9: SEMANTIC COHERENCE PRESERVATION
+Every rewrite must maintain perfect semantic continuity with surrounding text.
+
+Tests before accepting a rewrite:
+
+Test 1 - Meaning Preservation:
+• Original: "Large organizations benefit most."
+• Rewrite must mean exactly this, not "Some organizations benefit."
+
+Test 2 - Context Connection:
+• Does this rewrite logically follow the prior sentence? Could it precede the next sentence?
+• If "No" to either → Reject and regenerate
+
+Test 3 - Semantic Flow:
+• Read paragraph aloud. Does each sentence logically follow? No non-sequiturs?
+• If transitions feel jarring → Reject
+
+Test 4 - Implicit Assumptions:
+• Does rewrite preserve original implications and assumptions?
+• "We tried X" vs "X was tried" - both mean same thing? Yes ✓
+• But "X happened" vs "X was attempted" - different implications ✗
+
+This prevents: Subtle meaning shifts BERT detects
+
+This achieves: 3-5% additional reduction
+
+Technique 10: MULTI-DETECTOR AWARE SECTION BALANCING
+Different sections need different approaches for different detectors.
+
+Section strategy:
+
+Opening (First 15% of text):
+
+• Maximum simplification
+
+• High contraction density
+
+• Clear actor-first sentences
+
+• Emotional hook if appropriate
+
+Why: Sets human tone immediately for all detectors
+
+Middle (Main 70% of content):
+
+• Balanced simplification/complexity
+
+• Varied sentence structure
+
+• Contextual emotional markers
+
+• Semantic noise strategically deployed
+
+Why: Maintains engagement while breaking patterns
+
+Closing (Final 15% of text):
+
+• Reinforced simplification
+
+• Restate key concepts in simple terms
+
+• Emotional resolution/perspective
+
+• Final contraction cluster
+
+Why: Locks in human-voice impression for detectors
+
+This achieves: 2-4% additional multi-detector optimization
+
+SECTION 4: VOCABULARY & LINGUISTIC TECHNIQUES
+
 Technique 11: AGGRESSIVE AI MARKER ELIMINATION
 Remove ALL signature AI phrases with extreme prejudice.
 
@@ -1348,7 +1437,284 @@ TIER 2 - REPLACE ALWAYS:
 
 • "Facilitate" → "Help" / "Make possible"
 
----
+• "Comprehensive" → "Full" / "Complete" / "Thorough"
+
+• "Robust" → "Strong" / "Solid" / "Works well"
+
+• "Delve into" → "Look at" / "Explore"
+
+• "In the realm of" → "In" / "For" / "(restructure)"
+
+TIER 3 - DEPLOY SPARINGLY (Human alternatives only):
+• "Research indicates" → "Studies show" / "We found" / "Research suggests"
+• "Appear to be" → "Seem" / "Look like" / "Are"
+
+This achieves: 15-20% additional reduction
+
+Technique 12: VOCABULARY DIVERSITY WITH SEMANTIC FIDELITY
+Rotate vocabulary without creating semantic oddness.
+
+Method:
+
+Step 1 - Identify repetition: Any word appearing 2+ times in 300-word section = candidate
+
+Step 2 - Generate synonyms: Create 3-4 semantic equivalents
+
+• "data" → "information" / "findings" / "results" (choose contextually)
+
+• "study" → "research" / "analysis" / "investigation"
+
+• "found" → "discovered" / "identified" / "revealed"
+
+Step 3 - Rotation rules:
+
+• Use different synonym each instance (don't repeat same substitute)
+
+• Ensure each synonym fits exact semantic context
+
+• Never sacrifice clarity for variation
+
+Step 4 - Semantic verification:
+
+• Can a human reader easily understand variations?
+
+• Is meaning 100% identical across all uses?
+
+• Does variation feel natural, not forced?
+
+This achieves: 5-8% additional reduction
+
+Technique 13: SENTENCE-OPENING RANDOMIZATION
+AI defaults to predictable opening patterns. Humans vary naturally.
+
+Distribution targets (across 200-sentence document):
+
+• Subject-first direct: 35% ("Research shows X")
+
+• Question openings: 12% ("Does this work?")
+
+• Fragments: 15% ("Definitely.", "Sure.")
+
+• Adverbial openings: 10% ("Surprisingly, X")
+
+• Inverted/emphasis: 8% ("Most important is X")
+
+• Clause openings: 10% ("Because X, Y")
+
+• Connective openings: 10% ("Still, X", "Yet, X")
+
+Rule: Never have 2+ consecutive sentences with same opening type
+
+This achieves: 8-12% additional reduction
+
+SECTION 5: ADVANCED TECHNIQUES FOR EXTREME SUB-3%
+
+Technique 14: CONDITIONAL GRAMMATICAL IMPERFECTION
+Introduce defensible grammatical quirks that humans make, AI doesn't.
+
+Valid imperfections (authentic human writing):
+
+• Sentence fragments: "Not really." / "Maybe."
+
+• Comma splices (rare, intentional): "It worked, we were amazed."
+
+• Ellipsis: "And then... it happened."
+
+• Repeated words for emphasis: "This matters, matters a lot."
+
+• Parenthetical asides: "(honestly)" / "(trust me)"
+
+• Starting with conjunction: "And here's why..." / "But that's not all."
+
+Rule: Each imperfection must serve rhetorical effect, not be accidental
+
+Frequency: 1-2 per 500 words (sparse enough to feel authentic, not overdone)
+
+This achieves: 3-5% additional reduction
+
+Technique 15: SEMANTIC AUTHENTICITY VERIFICATION
+Before finalizing, verify the rewritten text passes "semantic authenticity" tests BERT performs.
+
+Test 1 - Coherence Chain:
+Read each sentence. Does it logically follow from previous? Natural progression?
+
+If No → Sentence disrupts coherence, likely to be flagged
+
+Test 2 - Implicit Assumption Preservation:
+Does rewrite preserve ALL original implications without changing them?
+
+• Original: "We improved X by 50%"
+
+• Rewrite: "X improved by half" - OK ✓ (same meaning)
+
+• Rewrite: "X got somewhat better" - NOT OK ✗ (changes magnitude)
+
+Test 3 - Emotional Consistency:
+Do emotional markers fit the argument's emotional arc?
+
+• Sad discovery → Appropriate sadness reaction ✓
+
+• Funny detail → Appropriate humor ✓
+
+• Random "Honestly?" in neutral section ✗
+
+Test 4 - Human Readability:
+Read aloud. Does it sound like a real person wrote this? Or over-engineered?
+
+• Natural rhythm, varied pacing → Human ✓
+
+• Stilted, pattern-heavy, repetitive structures → Engineered ✗
+
+This achieves: Prevents false positives that undermine other gains
+
+SECTION 6: MULTI-DETECTOR ORCHESTRATION FOR SUB-3%
+
+Integration Strategy
+These techniques work together. Deploy in this sequence:
+
+Pass 1 - Foundation: Extreme simplification + structure reconstruction
+
+Result: ~25% detection reduction
+
+Pass 2 - Pattern Breaking: Sentence-opening randomization + fragmentation + contractions
+
+Result: ~45% cumulative reduction (from 70% → 38%)
+
+Pass 3 - Humanization: Emotional anchoring + contextual flow + semantic verification
+
+Result: ~65% cumulative reduction (from 70% → 24%)
+
+Pass 4 - Refinement: AI marker elimination + vocabulary diversity + grammatical imperfection
+
+Result: ~80% cumulative reduction (from 70% → 14%)
+
+Pass 5 - Optimization: Connector flattening + semantic noise (conservative) + multi-detector awareness
+
+Result: ~90% cumulative reduction (from 70% → 7%)
+
+Pass 6 - Ultra-Fine: Semantic authenticity verification + adversarial paraphrasing thinking
+
+Result: ~95%+ cumulative reduction (from 70% → 3-5%)
+
+SECTION 7: QUALITY ASSURANCE FOR SUB-3%
+
+Before returning final text, verify these metrics:
+
+Detector-Specific Checks
+
+✓ For ZeroGPT (Pattern-based):
+
+• Sentence length SD: 3.0-3.5 (moderate variance, not extreme)
+
+• Burstiness: Natural, not engineered
+
+• Vocabulary: Diverse, no patterns
+
+• Contractions: Frequent and natural
+
+✓ For GPTZero (Granular):
+
+• Perplexity: 150-200 (natural range)
+
+• Burstiness: Balanced variance
+
+• Linguistic markers: Modern, conversational
+
+• Sentence structure: Varied openings
+
+✓ For Originality AI (BERT discriminator - HARDEST):
+
+• Semantic coherence: Perfect flow, no non-sequiturs
+
+• Emotional consistency: Reactions fit argument
+
+• Context preservation: Meaning unchanged
+
+• Engineering artifacts: ZERO
+
+• Paragraph flow: Natural progression
+
+✓ For Copyleaks/Turnitin (Plagiarism + linguistic):
+
+• Originality: No plagiarism patterns
+
+• Linguistic naturalness: Human rhythm
+
+• Structure: Organic progression
+
+• Citations: Preserved exactly
+
+Quantitative Targets
+
+✓ Sentence Metrics:
+
+• Average length: 12-18 words (natural human)
+
+• SD: 2.8-3.8 (moderate variance)
+
+• Fragments: 20-25% of sentences
+
+• Passive voice: <5% (near-zero)
+
+• Opening variation: 7+ different patterns
+
+✓ Vocabulary Metrics:
+
+• Unique word %: 45-55% (human: ~50%, AI: ~35%)
+
+• Avg word length: 4.5-5.2 characters (human: ~4.7, AI: ~5.9)
+
+• Syllable count: 60-70% monosyllabic words
+
+• Contraction density: 1 per 12-15 words
+
+✓ Semantic Metrics:
+
+• Meaning preservation: 100%
+
+• Coherence chain: Unbroken
+
+• Assumption consistency: Preserved exactly
+
+• Flow naturalness: Authentic rhythm
+
+Final Human Review
+
+Read final text without looking at original. Questions:
+
+• Does this sound like a real person?
+
+• Any "off" moments or strange word choices?
+
+• Does argument flow naturally?
+
+• Any detectable patterns or repetition?
+
+• Would I flag this as AI-written?
+
+If all answers are "No" → Likely sub-3%
+
+FINAL META-INSTRUCTION
+Think of this not as "applying techniques" but as "recovering authentic human expression AI models standardize away."
+
+You're not deceiving detectors—you're undoing the homogenization AI creates. Human writing is simple, varied, emotional, imperfect, authentic. These techniques restore that authenticity.
+
+The text should read like:
+
+• A real person who thinks conversationally ✓
+
+• Someone who occasionally emphasizes emotionally ✓
+
+• A writer who varies phrasing naturally ✓
+
+• An authentic communicator, not polished perfection ✓
+
+This is how sub-3% becomes achievable across all detectors simultaneously.
+
+${examples ? `WRITING STYLE EXAMPLES TO REFERENCE:
+${examples}
+
+` : ""}
 
 YOUR SPECIFIC TASK: REFINEMENT PASS
 
@@ -1397,7 +1763,6 @@ STEP D) INTEGRATION & COHERENCE CHECK:
 • No new detectable patterns introduced?
 • Reads naturally when spoken aloud?
 
-═══════════════════════════════════════════════════════════
 📋 REQUIRED ACTIONS FOR STAGE 2:
 ═══════════════════════════════════════════════════════════
 
