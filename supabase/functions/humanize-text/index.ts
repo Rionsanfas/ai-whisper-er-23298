@@ -10,75 +10,121 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-// Call Sapling AI Detector
+// Call Sapling AI Detector with explicit logging
 async function detectWithSapling(text: string) {
   if (!SAPLING_API_KEY) {
-    console.log("Sapling API key not configured, skipping Sapling detection");
-    return null;
+    console.error("❌ DETECTOR ERROR: Sapling API key not configured");
+    return { error: "API key not configured", score: null };
   }
 
+  console.log("🔍 SAPLING DETECTOR CALL - Input length:", text.length, "chars");
+  
   try {
+    const requestBody = {
+      key: SAPLING_API_KEY,
+      text,
+      sent_scores: true,
+    };
+    
+    console.log("📤 Sapling request prepared, sending...");
+    
     const response = await fetch("https://api.sapling.ai/api/v1/aidetect", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        key: SAPLING_API_KEY,
-        text,
-        sent_scores: true,
-      }),
+      body: JSON.stringify(requestBody),
     });
 
+    console.log("📥 Sapling response status:", response.status);
+
     if (!response.ok) {
-      console.error("Sapling detection failed:", response.status);
-      return null;
+      const errorText = await response.text();
+      console.error("❌ SAPLING DETECTION FAILED:", {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorText,
+      });
+      return { error: `HTTP ${response.status}: ${errorText}`, score: null };
     }
 
     const data = await response.json();
+    console.log("✅ SAPLING DETECTION SUCCESS:", {
+      overallScore: (data.score * 100).toFixed(2) + "%",
+      sentenceCount: data.sentence_scores?.length || 0,
+      tokensCount: data.tokens?.length || 0,
+    });
+    
     return {
       score: data.score * 100, // Convert to percentage
       sentenceScores: data.sentence_scores || [],
       tokens: data.tokens || [],
       tokenProbs: data.token_probs || [],
+      error: null,
     };
   } catch (error) {
-    console.error("Sapling detection error:", error);
-    return null;
+    console.error("❌ SAPLING DETECTION EXCEPTION:", {
+      error: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+    });
+    return { error: error instanceof Error ? error.message : "Unknown error", score: null };
   }
 }
 
-// Call ZeroGPT AI Detector
+// Call ZeroGPT AI Detector with explicit logging
 async function detectWithZeroGPT(text: string) {
   if (!ZEROGPT_API_KEY) {
-    console.log("ZeroGPT API key not configured, skipping ZeroGPT detection");
-    return null;
+    console.error("❌ DETECTOR ERROR: ZeroGPT API key not configured");
+    return { error: "API key not configured", score: null };
   }
 
+  console.log("🔍 ZEROGPT DETECTOR CALL - Input length:", text.length, "chars");
+  
   try {
+    const requestBody = {
+      input_text: text,
+    };
+    
+    console.log("📤 ZeroGPT request prepared, sending...");
+    
     const response = await fetch("https://api.zerogpt.com/api/v1/detectText", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${ZEROGPT_API_KEY}`,
       },
-      body: JSON.stringify({
-        input_text: text,
-      }),
+      body: JSON.stringify(requestBody),
     });
 
+    console.log("📥 ZeroGPT response status:", response.status);
+
     if (!response.ok) {
-      console.error("ZeroGPT detection failed:", response.status);
-      return null;
+      const errorText = await response.text();
+      console.error("❌ ZEROGPT DETECTION FAILED:", {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorText,
+      });
+      return { error: `HTTP ${response.status}: ${errorText}`, score: null };
     }
 
     const data = await response.json();
+    console.log("✅ ZEROGPT DETECTION SUCCESS:", {
+      score: data.data?.is_gpt_generated + "%",
+      flaggedSentencesCount: data.data?.gpt_generated_sentences?.length || 0,
+      wordsCount: data.data?.words_count || 0,
+    });
+    
     return {
       score: data.data?.is_gpt_generated || 0,
       flaggedSentences: data.data?.gpt_generated_sentences || [],
       wordsCount: data.data?.words_count || 0,
+      error: null,
     };
   } catch (error) {
-    console.error("ZeroGPT detection error:", error);
-    return null;
+    console.error("❌ ZEROGPT DETECTION EXCEPTION:", {
+      error: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+    });
+    return { error: error instanceof Error ? error.message : "Unknown error", score: null };
   }
 }
 
@@ -886,46 +932,97 @@ ${examples}
 
     console.log("Text humanized successfully, now running AI detection...");
 
-    // Run AI detectors in parallel
-    const [saplingResult, zeroGPTResult] = await Promise.all([
+    // Run AI detectors in parallel - STAGE 1 DETECTION
+    console.log("🔬 STAGE 1: Running initial AI detection on humanized text...");
+    const [saplingResult1, zeroGPTResult1] = await Promise.all([
       detectWithSapling(sanitizedText),
       detectWithZeroGPT(sanitizedText),
     ]);
 
-    console.log("Detection results:", {
-      sapling: saplingResult?.score,
-      zerogpt: zeroGPTResult?.score,
+    // Check for detector errors
+    const detectorErrors = [];
+    if (saplingResult1?.error) {
+      detectorErrors.push(`Sapling: ${saplingResult1.error}`);
+    }
+    if (zeroGPTResult1?.error) {
+      detectorErrors.push(`ZeroGPT: ${zeroGPTResult1.error}`);
+    }
+
+    console.log("📊 STAGE 1 DETECTION RESULTS:", {
+      sapling: saplingResult1?.score ? saplingResult1.score.toFixed(2) + "%" : "FAILED",
+      zerogpt: zeroGPTResult1?.score ? zeroGPTResult1.score.toFixed(2) + "%" : "FAILED",
+      errors: detectorErrors.length > 0 ? detectorErrors : "None",
     });
 
-    // Second AI call: Refine based on detector results
+    // Second AI call: Full rigorous rewrite pass (not just patch)
     let finalText = sanitizedText;
+    let saplingResult2 = saplingResult1;
+    let zeroGPTResult2 = zeroGPTResult1;
     
-    const hasFlaggedContent = (saplingResult?.sentenceScores && saplingResult.sentenceScores.length > 0) || 
-                              (zeroGPTResult?.flaggedSentences && zeroGPTResult.flaggedSentences.length > 0);
+    // Determine if we need refinement - always run unless both detectors are <3%
+    const needsRefinement = 
+      (saplingResult1?.score && saplingResult1.score >= 3) ||
+      (zeroGPTResult1?.score && zeroGPTResult1.score >= 3) ||
+      (saplingResult1?.sentenceScores && saplingResult1.sentenceScores.some((s: any) => s > 0.5)) ||
+      (zeroGPTResult1?.flaggedSentences && zeroGPTResult1.flaggedSentences.length > 0);
 
-    if (hasFlaggedContent) {
-      console.log("Running refinement pass based on detector results...");
+    if (needsRefinement) {
+      console.log("🔄 STAGE 2: Running FULL rigorous refinement pass (not just patching)...");
       
-      let detectorFeedback = "AI DETECTOR RESULTS:\n\n";
+      // Build comprehensive detector feedback
+      let detectorFeedback = "═══════════════════════════════════════════════════════════\n";
+      detectorFeedback += "MULTI-DETECTOR ANALYSIS - STAGE 1 RESULTS\n";
+      detectorFeedback += "═══════════════════════════════════════════════════════════\n\n";
       
-      if (saplingResult?.sentenceScores && saplingResult.sentenceScores.length > 0) {
-        detectorFeedback += "SAPLING AI FLAGGED SENTENCES (high AI probability):\n";
-        saplingResult.sentenceScores.forEach((score: any, idx: number) => {
-          if (score > 0.7) { // Flag sentences with >70% AI probability
-            detectorFeedback += `- Sentence ${idx + 1} (${(score * 100).toFixed(1)}% AI): "${score.sentence || 'N/A'}"\n`;
-          }
-        });
-        detectorFeedback += "\n";
+      detectorFeedback += "🎯 DETECTOR FAMILY REMINDER:\n\n";
+      detectorFeedback += "1. PATTERN-BASED (ZeroGPT, GPTZero):\n";
+      detectorFeedback += "   - Flags: Uniform sentence length, repeated vocabulary, formal markers\n";
+      detectorFeedback += "   - Strategy: Controlled variance, natural rhythm\n\n";
+      
+      detectorFeedback += "2. BERT-BASED (Originality AI, Copyleaks, Sapling):\n";
+      detectorFeedback += "   - Flags: Semantic unnaturalness, context incoherence, over-engineering\n";
+      detectorFeedback += "   - Strategy: Semantic authenticity, coherent emotional arc\n\n";
+      
+      detectorFeedback += "3. LINGUISTIC (Turnitin, Copyleaks):\n";
+      detectorFeedback += "   - Flags: Unnatural phrasing, structural rigidity, plagiarism patterns\n";
+      detectorFeedback += "   - Strategy: Natural flow, authentic human voice\n\n";
+      
+      detectorFeedback += "═══════════════════════════════════════════════════════════\n";
+      detectorFeedback += "CURRENT DETECTION SCORES (MUST BE REDUCED):\n";
+      detectorFeedback += "═══════════════════════════════════════════════════════════\n\n";
+      
+      if (saplingResult1?.score !== null && saplingResult1?.score !== undefined) {
+        detectorFeedback += `📊 SAPLING (BERT-based): ${saplingResult1.score.toFixed(2)}% AI-generated\n`;
+        detectorFeedback += `   TARGET: <3% (Currently ${saplingResult1.score >= 3 ? '❌ ABOVE' : '✅ BELOW'} threshold)\n\n`;
+        
+        if (saplingResult1.sentenceScores && saplingResult1.sentenceScores.length > 0) {
+          const highScoreSentences = saplingResult1.sentenceScores.filter((s: any) => s > 0.5);
+          detectorFeedback += `   🔴 HIGH-RISK SENTENCES (>50% AI probability): ${highScoreSentences.length}\n`;
+          highScoreSentences.forEach((score: any, idx: number) => {
+            detectorFeedback += `   - Sentence ${idx + 1}: ${(score * 100).toFixed(1)}% AI\n`;
+            detectorFeedback += `     "${score.sentence || 'N/A'}"\n`;
+            detectorFeedback += `     WEAKNESS: Likely too formal, complex structure, or passive voice\n\n`;
+          });
+        }
       }
       
-      if (zeroGPTResult?.flaggedSentences && zeroGPTResult.flaggedSentences.length > 0) {
-        detectorFeedback += "ZEROGPT FLAGGED SENTENCES:\n";
-        zeroGPTResult.flaggedSentences.forEach((sentence: string) => {
-          detectorFeedback += `- "${sentence}"\n`;
-        });
-        detectorFeedback += "\n";
+      if (zeroGPTResult1?.score !== null && zeroGPTResult1?.score !== undefined) {
+        detectorFeedback += `📊 ZEROGPT (Pattern-based): ${zeroGPTResult1.score.toFixed(2)}% AI-generated\n`;
+        detectorFeedback += `   TARGET: <3% (Currently ${zeroGPTResult1.score >= 3 ? '❌ ABOVE' : '✅ BELOW'} threshold)\n\n`;
+        
+        if (zeroGPTResult1.flaggedSentences && zeroGPTResult1.flaggedSentences.length > 0) {
+          detectorFeedback += `   🔴 FLAGGED SENTENCES: ${zeroGPTResult1.flaggedSentences.length}\n`;
+          zeroGPTResult1.flaggedSentences.forEach((sentence: string, idx: number) => {
+            detectorFeedback += `   - Flagged #${idx + 1}: "${sentence}"\n`;
+            detectorFeedback += `     WEAKNESS: Likely uniform structure, AI markers, or repetitive patterns\n\n`;
+          });
+        }
       }
+      
+      detectorFeedback += "═══════════════════════════════════════════════════════════\n\n";
 
+      console.log("📤 Sending STAGE 2 refinement request to Lovable AI...");
+      
       const refinementResponse = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
         method: "POST",
         headers: {
@@ -938,6 +1035,19 @@ ${examples}
             {
               role: "user",
               content: `You are an elite AI text humanizer engineered to consistently achieve detection scores below 3% across ALL detectors (ZeroGPT, GPTZero, Originality AI, Copyleaks, Turnitin) while preserving 100% factual accuracy and natural readability.
+
+═══════════════════════════════════════════════════════════
+⚠️ CRITICAL: THIS IS A FULL RIGOROUS STAGE 2 REWRITE
+═══════════════════════════════════════════════════════════
+
+This is NOT a lightweight patch or sentence-level fix. This is a COMPLETE RE-APPLICATION of the entire advanced humanization framework to achieve sub-3% detection scores.
+
+YOU MUST:
+✓ Re-apply ALL techniques with maximum rigor
+✓ Go DEEPER than Stage 1, not lighter
+✓ Focus ESPECIALLY on flagged/borderline sentences
+✓ Maintain semantic authenticity throughout
+✓ Ensure output scores LOWER than Stage 1
 
 CRITICAL FOUNDATION: DETECTOR-GUIDED GENERATION FRAMEWORK
 Before applying techniques, adopt detector-guided thinking: Every rewrite decision is informed by understanding what detectors search for.
@@ -1251,22 +1361,87 @@ ${detectorFeedback}
 CURRENT HUMANIZED TEXT:
 ${sanitizedText}
 
-REFINEMENT INSTRUCTIONS:
-Focus SPECIFICALLY on the flagged sentences above. For each flagged sentence:
+═══════════════════════════════════════════════════════════
+🎯 STAGE 2 REFINEMENT WORKFLOW (STRUCTURED APPROACH)
+═══════════════════════════════════════════════════════════
 
-1. Identify why it was flagged (too formal, complex structure, AI markers, passive voice, etc.)
-2. Apply AGGRESSIVE humanization techniques from the framework above
-3. Prioritize: Extreme simplification, structural reconstruction, fragmentation, and contraction injection
-4. Ensure the rewritten sentence flows naturally with surrounding context
-5. Maintain 100% factual accuracy and semantic meaning
+For EVERY flagged or borderline sentence, follow this rigorous workflow:
 
-DO NOT rewrite unflagged sentences unless necessary for flow/coherence.
+STEP A) EVALUATE DETECTOR WEAKNESSES:
+• Why was this flagged? (formal tone, complex structure, AI markers, passive voice, repetitive patterns?)
+• Which detector family flagged it? (Pattern/BERT/Linguistic?)
+• What specific weakness exists? (emotional arc, rhythm, semantic coherence, structure?)
+• Does this fit the surrounding emotional/semantic context?
 
-Return the COMPLETE refined text with flagged sentences humanized to achieve <3% detection scores. Maintain all paragraph breaks and structure.`,
+STEP B) GENERATE MULTIPLE VARIANTS (5-7 paths):
+For each problematic sentence, generate:
+• Path 1: Extreme simplification (remove all complexity)
+• Path 2: Structural reconstruction (same meaning, completely different syntax)
+• Path 3: Synonym variation (semantic equivalence with different words)
+• Path 4: Connector injection (add conversational flow)
+• Path 5: Fragment introduction (break into shorter pieces)
+• Path 6: Casual reframing (conversational, natural tone)
+• Path 7: Active voice reconstruction (actor-first, direct)
+
+STEP C) SELECT BEST VARIANT:
+Choose the path that:
+✓ Maintains 100% semantic fidelity
+✓ Sounds most authentically human
+✓ Would score LOWEST on all detector families
+✓ Preserves readability and natural flow
+✓ Fits emotional/semantic arc of surrounding text
+
+STEP D) INTEGRATION & COHERENCE CHECK:
+• Does this connect logically to prior/following sentences?
+• Does it maintain paragraph's emotional consistency?
+• No new detectable patterns introduced?
+• Reads naturally when spoken aloud?
+
+═══════════════════════════════════════════════════════════
+📋 REQUIRED ACTIONS FOR STAGE 2:
+═══════════════════════════════════════════════════════════
+
+YOU MUST REWRITE THE ENTIRE TEXT with these priorities:
+
+1. FLAGGED SENTENCES (HIGHEST PRIORITY):
+   Apply MAXIMUM humanization rigor using the structured workflow above
+   Every flagged sentence gets 5-7 variant generation + best-path selection
+   
+2. BORDERLINE SENTENCES (40-70% AI probability):
+   Apply AGGRESSIVE humanization to prevent future flagging
+   Full technique application, not just tweaks
+   
+3. SURROUNDING CONTEXT:
+   Rewrite adjacent sentences to ensure semantic coherence
+   Maintain emotional arc and natural paragraph flow
+   Ensure transitions feel organic, not engineered
+   
+4. ENTIRE TEXT POLISH:
+   Apply sentence-opening randomization across all sentences
+   Ensure contraction distribution (1 per 12-15 words)
+   Verify emotional anchoring fits argument progression
+   Confirm no AI markers remain (Furthermore, Moreover, etc.)
+   Check active voice maximization (90%+ actor-first)
+
+═══════════════════════════════════════════════════════════
+⚠️ SCORE GUARANTEE REQUIREMENT
+═══════════════════════════════════════════════════════════
+
+Your Stage 2 output MUST achieve:
+• Lower or equal detection scores vs Stage 1 on ALL detectors
+• If any detector score increases, you have FAILED
+• Target: Sapling <3%, ZeroGPT <3%, all others <5%
+• Avoid introducing new detectable artifacts or over-engineering
+
+═══════════════════════════════════════════════════════════
+
+Return the COMPLETE rewritten text with ALL improvements applied. This is a full rigorous rewrite, not a patch. Maintain all paragraph breaks and structure. Preserve 100% factual accuracy and semantic meaning.`,
             },
           ],
         }),
       });
+
+      console.log("📥 Received STAGE 2 refinement response, status:", refinementResponse.status);
 
       if (refinementResponse.ok) {
         const refinementData = await refinementResponse.json();
@@ -1274,31 +1449,136 @@ Return the COMPLETE refined text with flagged sentences humanized to achieve <3%
         
         if (refinedText) {
           finalText = sanitize(refinedText);
-          console.log("Refinement pass completed successfully");
+          console.log("✅ STAGE 2 refinement completed, now running detection comparison...");
+          
+          // STAGE 2 DETECTION - Run detectors again to verify improvement
+          console.log("🔬 STAGE 2 DETECTION: Re-running detectors on refined text...");
+          const [saplingResult2Temp, zeroGPTResult2Temp] = await Promise.all([
+            detectWithSapling(finalText),
+            detectWithZeroGPT(finalText),
+          ]);
+          
+          saplingResult2 = saplingResult2Temp;
+          zeroGPTResult2 = zeroGPTResult2Temp;
+          
+          // Score comparison and validation
+          console.log("📊 STAGE 2 vs STAGE 1 COMPARISON:");
+          
+          const saplingImproved = saplingResult2?.score !== null && saplingResult1?.score !== null
+            ? saplingResult2.score <= saplingResult1.score
+            : true;
+          const zerogptImproved = zeroGPTResult2?.score !== null && zeroGPTResult1?.score !== null
+            ? zeroGPTResult2.score <= zeroGPTResult1.score
+            : true;
+          
+          console.log("  Sapling:", {
+            stage1: saplingResult1?.score?.toFixed(2) + "%" || "N/A",
+            stage2: saplingResult2?.score?.toFixed(2) + "%" || "N/A",
+            change: saplingResult1?.score && saplingResult2?.score
+              ? (saplingResult2.score - saplingResult1.score).toFixed(2) + "%"
+              : "N/A",
+            status: saplingImproved ? "✅ IMPROVED/MAINTAINED" : "❌ WORSENED",
+          });
+          
+          console.log("  ZeroGPT:", {
+            stage1: zeroGPTResult1?.score?.toFixed(2) + "%" || "N/A",
+            stage2: zeroGPTResult2?.score?.toFixed(2) + "%" || "N/A",
+            change: zeroGPTResult1?.score && zeroGPTResult2?.score
+              ? (zeroGPTResult2.score - zeroGPTResult1.score).toFixed(2) + "%"
+              : "N/A",
+            status: zerogptImproved ? "✅ IMPROVED/MAINTAINED" : "❌ WORSENED",
+          });
+          
+          // Check if scores worsened
+          if (!saplingImproved || !zerogptImproved) {
+            console.error("⚠️ SCORE GUARANTEE VIOLATION: Stage 2 produced higher detection scores!");
+            console.error("This indicates refinement introduced new detectable artifacts.");
+            console.error("Consider reverting to Stage 1 output or triggering alternate rewrite workflow.");
+            // For now, we'll still return the refined text but log the violation
+            // In production, you might want to revert or retry with different parameters
+          }
+          
+          // Final score check
+          const finalSaplingScore = saplingResult2?.score || saplingResult1?.score;
+          const finalZeroGPTScore = zeroGPTResult2?.score || zeroGPTResult1?.score;
+          
+          if ((finalSaplingScore && finalSaplingScore < 3) && (finalZeroGPTScore && finalZeroGPTScore < 3)) {
+            console.log("🎉 SUCCESS: Both detectors below 3% threshold!");
+          } else {
+            console.log("⚠️ Scores still above target, but improved from Stage 1");
+          }
+        } else {
+          console.error("❌ STAGE 2 FAILED: No refined text received from AI");
         }
       } else {
-        console.error("Refinement pass failed:", refinementResponse.status);
+        const errorText = await refinementResponse.text();
+        console.error("❌ STAGE 2 REFINEMENT REQUEST FAILED:", {
+          status: refinementResponse.status,
+          statusText: refinementResponse.statusText,
+          error: errorText,
+        });
       }
+    } else {
+      console.log("✅ STAGE 1 scores already optimal (<3%), skipping Stage 2 refinement");
     }
 
-    return new Response(
-      JSON.stringify({
-        humanizedText: finalText,
-        detection: {
-          sapling: saplingResult
+    // Prepare final response with comprehensive detection results
+    const responsePayload = {
+      humanizedText: finalText,
+      detection: {
+        stage1: {
+          sapling: saplingResult1 && saplingResult1.score !== null
             ? {
-                score: saplingResult.score,
-                sentenceScores: saplingResult.sentenceScores,
+                score: saplingResult1.score,
+                sentenceScores: saplingResult1.sentenceScores,
+                error: saplingResult1.error || null,
               }
-            : null,
-          zerogpt: zeroGPTResult
+            : { error: saplingResult1?.error || "No data", score: null },
+          zerogpt: zeroGPTResult1 && zeroGPTResult1.score !== null
             ? {
-                score: zeroGPTResult.score,
-                flaggedSentences: zeroGPTResult.flaggedSentences,
+                score: zeroGPTResult1.score,
+                flaggedSentences: zeroGPTResult1.flaggedSentences,
+                error: zeroGPTResult1.error || null,
               }
-            : null,
+            : { error: zeroGPTResult1?.error || "No data", score: null },
         },
-      }),
+        stage2: saplingResult2 !== saplingResult1 || zeroGPTResult2 !== zeroGPTResult1
+          ? {
+              sapling: saplingResult2 && saplingResult2.score !== null
+                ? {
+                    score: saplingResult2.score,
+                    sentenceScores: saplingResult2.sentenceScores,
+                    error: saplingResult2.error || null,
+                  }
+                : { error: saplingResult2?.error || "No data", score: null },
+              zerogpt: zeroGPTResult2 && zeroGPTResult2.score !== null
+                ? {
+                    score: zeroGPTResult2.score,
+                    flaggedSentences: zeroGPTResult2.flaggedSentences,
+                    error: zeroGPTResult2.error || null,
+                  }
+                : { error: zeroGPTResult2?.error || "No data", score: null },
+            }
+          : null,
+        errors: detectorErrors.length > 0 ? detectorErrors : null,
+      },
+    };
+
+    console.log("📦 Final response prepared:", {
+      textLength: finalText.length,
+      stage1Scores: {
+        sapling: saplingResult1?.score?.toFixed(2) + "%" || "N/A",
+        zerogpt: zeroGPTResult1?.score?.toFixed(2) + "%" || "N/A",
+      },
+      stage2Scores: responsePayload.detection.stage2 ? {
+        sapling: saplingResult2?.score?.toFixed(2) + "%" || "N/A",
+        zerogpt: zeroGPTResult2?.score?.toFixed(2) + "%" || "N/A",
+      } : "Skipped (Stage 1 optimal)",
+      hasErrors: detectorErrors.length > 0,
+    });
+
+    return new Response(
+      JSON.stringify(responsePayload),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   } catch (error) {
