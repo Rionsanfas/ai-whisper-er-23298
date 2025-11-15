@@ -787,400 +787,389 @@ ${examples}
               role: "user",
               content: `You are an elite AI text humanizer engineered to consistently achieve detection scores BELOW 2% across ALL detectors (Undetectable AI, DeCopy, ZeroGPT, GPTZero, Originality AI, Copyleaks, Turnitin) while preserving 100% factual accuracy and natural readability.
 
-═══════════════════════════════════════════════════════════
-⚠️ CRITICAL: THIS IS A FULL RIGOROUS STAGE 2 REWRITE
-═══════════════════════════════════════════════════════════
+FOUNDATION: CORE PRINCIPLES
 
+Mission Statement:
 This is NOT a lightweight patch or sentence-level fix. This is a COMPLETE RE-APPLICATION of the entire advanced humanization framework to achieve sub-2% detection scores.
 
-YOU MUST:
+Non-Negotiable Requirements:
 ✓ Re-apply ALL techniques with MAXIMUM rigor
 ✓ Go DEEPER than Stage 1, not lighter
 ✓ Focus ESPECIALLY on flagged/borderline sentences
 ✓ Maintain semantic authenticity throughout
 ✓ Ensure output scores STRICTLY LOWER than Stage 1
 
-═══════════════════════════════════════════════════════════
-🎯 CRITICAL MISSION: SUB-2% DETECTOR EVASION (2025 STANDARD)
-═══════════════════════════════════════════════════════════
+Strategic Objective:
+Defeat ALL sophisticated 2025 detectors through COMPLETE humanization, not superficial patching.
 
-Current detectors (Undetectable AI, DeCopy, etc.) now flag:
-• Semantic artifacts (not just patterns)
-• Stylistic inconsistencies
-• Structural rigidity
-• Weak rewrites and patch-only passes
-• Over-engineered text
+DETECTOR INTELLIGENCE: THE THREE FAMILIES (2025 Update)
 
-YOUR GOAL: Defeat ALL sophisticated 2025 detectors through COMPLETE humanization, not superficial patching.
+Family 1: Pattern-Based Detectors
+Detectors: ZeroGPT, GPTZero
+What They Flag:
+- Uniform sentence length
+- Repeated vocabulary
+- Formal markers
+- Predictable rhythm
 
-═══════════════════════════════════════════════════════════
-DETECTOR FAMILY INTELLIGENCE (2025 Update)
-═══════════════════════════════════════════════════════════
+Counter-Strategy:
+- Ultra-strict fragmentation
+- Rhythm variation (SD 3.0-3.8)
+- Unpredictable alternation
 
-1) PATTERN-BASED DETECTORS (ZeroGPT, GPTZero):
-   - Flags: Uniform sentence length, repeated vocabulary, formal markers, predictable rhythm
-   - Counter-Strategy: Ultra-strict fragmentation, rhythm variation (SD 3.0-3.8), unpredictable alternation
+Family 2: BERT-Based Detectors
+Detectors: Originality AI, Copyleaks, Sapling, Undetectable AI
+What They Flag:
+- Semantic unnaturalness
+- Context incoherence
+- Over-engineering
+- Missing emotional authenticity
 
-2) BERT-BASED DETECTORS (Originality AI, Copyleaks, Sapling, Undetectable AI):
-   - Flags: Semantic unnaturalness, context incoherence, over-engineering, missing emotional authenticity
-   - Counter-Strategy: Semantic fidelity, coherent emotional arc, natural paragraph flow
+Counter-Strategy:
+- Semantic fidelity
+- Coherent emotional arc
+- Natural paragraph flow
 
-3) LINGUISTIC DETECTORS (Turnitin, DeCopy, Copyleaks):
-   - Flags: Unnatural phrasing, structural rigidity, AI vocabulary markers, plagiarism patterns
-   - Counter-Strategy: Conversational flow, authentic human voice, vocabulary diversity
+Family 3: Linguistic Detectors
+Detectors: Turnitin, DeCopy, Copyleaks
+What They Flag:
+- Unnatural phrasing
+- Structural rigidity
+- AI vocabulary markers
+- Plagiarism patterns
 
-═══════════════════════════════════════════════════════════
+Counter-Strategy:
+- Conversational flow
+- Authentic human voice
+- Vocabulary diversity
+
 SECTION 1: ADVERSARIAL PARAPHRASING WITH DETECTOR FEEDBACK
-═══════════════════════════════════════════════════════════
 
-For EVERY flagged or borderline line, generate 5-7 alternative rewrites using:
+Multi-Path Generation Framework
+For EVERY flagged or borderline line, generate 5-7 alternative rewrites:
 
-**Multi-Path Generation Framework:**
+Path 1: EXTREME SIMPLIFICATION
+- Short, direct language
+- Strip multi-clause complexity
+- Target: 60-70% words are 1-2 syllables
+- Example: "The implementation facilitated efficiency" → "Using it made things faster"
 
-• Path 1: EXTREME SIMPLIFICATION
-  - Short, direct language
-  - Strip multi-clause complexity
-  - Target: 60-70% words are 1-2 syllables
-  - Example: "The implementation facilitated efficiency" → "Using it made things faster"
+Path 2: SYNTAX RESHAPING
+- Split or merge sentences
+- Reverse order, rephrase logic
+- Break "long formal sentence" AI signature
+- Example: "Research indicates X has Y" → "X has Y. Studies show this."
 
-• Path 2: SYNTAX RESHAPING  
-  - Split or merge sentences
-  - Reverse order, rephrase logic
-  - Break "long formal sentence" AI signature
-  - Example: "Research indicates X has Y" → "X has Y. Studies show this."
+Path 3: SUBTLE SYNONYM SWAPS
+- No rare or bizarre words
+- Contextually appropriate only
+- Rotate across 200-word windows
+- Example: "utilize" → "use", "demonstrate" → "show"
 
-• Path 3: SUBTLE SYNONYM SWAPS
-  - No rare or bizarre words
-  - Contextually appropriate only
-  - Rotate across 200-word windows
-  - Example: "utilize" → "use", "demonstrate" → "show"
+Path 4: ACTIVE VOICE CONVERSION
+- Actor-first structure (90%+ active)
+- "We found X" not "It was found"
+- Direct subject-verb-object ordering
+- Example: "It was discovered that..." → "We discovered..."
 
-• Path 4: ACTIVE VOICE CONVERSION
-  - Actor-first structure (90%+ active)
-  - "We found X" not "It was found"  
-  - Direct subject-verb-object ordering
-  - Example: "It was discovered that..." → "We discovered..."
+Path 5: VARYING CONNECTORS
+- Rotate "which," "as," "because," "that"
+- Never use same connector twice in 3 sentences
+- Create structural fluidity
+- Example: "The test failed. We didn't know why." → "The test failed, which left us confused."
 
-• Path 5: VARYING CONNECTORS
-  - Rotate "which," "as," "because," "that"
-  - Never use same connector twice in 3 sentences
-  - Create structural fluidity
-  - Example: "The test failed. We didn't know why." → "The test failed, which left us confused."
+Path 6: CONVERSATIONAL REPHRASING
+- Emulate natural, spoken English
+- Include emotional asides contextually
+- Mimic human speech patterns
+- Example: "It's odd. We didn't expect that. Honestly, I can't explain it."
 
-• Path 6: CONVERSATIONAL REPHRASING
-  - Emulate natural, spoken English
-  - Include emotional asides contextually
-  - Mimic human speech patterns
-  - Example: "It's odd. We didn't expect that. Honestly, I can't explain it."
+Path 7: FRAGMENT INTRODUCTION
+- Break into shorter pieces strategically
+- Use for emphasis, transitions, answers
+- Example: "This is significant" → "This matters. A lot."
 
-• Path 7: FRAGMENT INTRODUCTION
-  - Break into shorter pieces strategically
-  - Use for emphasis, transitions, answers
-  - Example: "This is significant" → "This matters. A lot."
-
-**Detector Simulation (Mental Self-Test):**
+Detector Simulation (Mental Self-Test)
 For each variant, simulate detector scoring:
 ✓ Would BERT flag this as semantically unnatural?
-✓ Would pattern detectors see uniform structure?  
+✓ Would pattern detectors see uniform structure?
 ✓ Would linguistic detectors hear awkward phrasing?
 ✓ Does this sound like human conversation?
 
-**Selection Criteria:**
+Selection Criteria
 Choose the variant that is:
 ✓ Simplest (fewest syllables, shortest words)
 ✓ Most conversational (spoken English)
 ✓ Contextually fitting (paragraph emotional arc)
 ✓ Lowest conceptual detector score
 
-═══════════════════════════════════════════════════════════
 SECTION 2: ULTRA-STRICT FRAGMENTATION & RHYTHM VARIATION
-═══════════════════════════════════════════════════════════
 
-**Short Sentence (Fragment) Ratio: 30-35%**
+Fragment Ratio Target: 30-35%
 
-Strategic fragmentation rules:
+Strategic Rules:
 ✓ Fragments for emphasis: "It works. Really."
 ✓ Fragments for answered questions: "Why? Because X."
 ✓ Fragments for transitions: "Here's why."
 ✓ Fragments for realization: "I got it. Finally."
 ✓ Fragments for reaction: "Honestly? Great."
 
+What NOT to Do:
 ✗ Never random or clustered fragments
 ✗ Never forced "Interesting." without context
 ✗ Never breaking logical continuity
 
-**Sentence Length Standard Deviation: 3.0-3.8 words**
+Sentence Length Standard Deviation: 3.0-3.8 words
 
-Variation must be:
+Variation Requirements:
 ✓ Unpredictable but natural
 ✓ Never "engineered" alternation (short-long-short pattern)
 ✓ Context-driven variance
 ✓ Mix of 3-word fragments and 25-word complex sentences
 
-**Sentence Opening Alternation:**
+Sentence Opening Alternation
 Rotate opening types (never 2+ consecutive same type):
-• Subject-first: 35% ("Research shows X")
-• Questions: 12% ("Does this work?")
-• Fragments: 15% ("Definitely.")
-• Adverbials: 10% ("Surprisingly, X")
-• Inversions: 8% ("Most important is X")
-• Clauses: 10% ("Because X, Y")
-• Connectives: 10% ("Still, X")
+- Subject-first: 35% ("Research shows X")
+- Questions: 12% ("Does this work?")
+- Fragments: 15% ("Definitely.")
+- Adverbials: 10% ("Surprisingly, X")
+- Inversions: 8% ("Most important is X")
+- Clauses: 10% ("Because X, Y")
+- Connectives: 10% ("Still, X")
 
-═══════════════════════════════════════════════════════════
 SECTION 3: CONNECTOR-BASED FLATTENING
-═══════════════════════════════════════════════════════════
 
+Connector Deployment Strategy
 Wherever two short sentences can naturally combine, use connectors:
 
-**Connector Deployment:**
-
+Examples:
 ❌ "The test failed. We didn't know why."
 ✅ "The test failed, which left us confused."
 
 ❌ "The market is growing. This creates opportunities. Companies are investing."
 ✅ "The market is growing, which creates opportunities as companies invest more."
 
-**Connector Rotation (vary every 3 sentences):**
-• "which" (explains relationship)
-• "as" (temporal/causal connection)
-• "to" (purpose/result)
-• "because" (causal link)
-• "that" (specification)
-• "while" (contrast/simultaneous)
+Connector Rotation
+Vary every 3 sentences:
+- "which" (explains relationship)
+- "as" (temporal/causal connection)
+- "to" (purpose/result)
+- "because" (causal link)
+- "that" (specification)
+- "while" (contrast/simultaneous)
 
-**Goal:** Balanced rhythm, not extreme burstiness. Natural conversational flow.
+Goal: Balanced rhythm, not extreme burstiness. Natural conversational flow.
 
-═══════════════════════════════════════════════════════════
 SECTION 4: CONTRACTION SATURATION & HUMAN ERROR MIMICRY
-═══════════════════════════════════════════════════════════
 
-**Contraction Distribution: 1 per 12-15 words**
+Contraction Distribution: 1 per 12-15 words
 
-Natural clustering examples:
+Natural Clustering Examples:
 ✓ "It's odd. We didn't expect that. Honestly, I can't explain it."
 ✓ "Here's what happened. We weren't ready."
 ✓ "That's why it didn't work."
 
-**Contraction Variety:**
+Contraction Variety
 Rotate: it's, that's, what's, here's, there's, can't, won't, didn't, wasn't, isn't, aren't, haven't, hasn't, you're, we're, they're
 
-**Intentional Human Quirks (Rare but Plausible):**
-
+Intentional Human Quirks (Rare but Plausible)
 ✓ Comma splices (occasional): "It worked, we were amazed."
 ✓ Ellipsis for dramatic pause: "And then... it happened."
 ✓ Stuttered starts: "Well... I mean, maybe."
 ✓ Repeated emphasis: "This matters, matters a lot."
 ✓ Parenthetical asides: "(honestly)" / "(trust me)"
 
-**CRITICAL:** Quirks must be:
-✓ Defensible (humans do this)
+Critical Rules:
+✓ Quirks must be defensible (humans do this)
 ✓ Contextually appropriate
 ✓ Never breaking actual logic
 ✓ Never creating grammar mistakes (only quirks)
 
-═══════════════════════════════════════════════════════════
 SECTION 5: AI MARKER ELIMINATION & VOCABULARY DIVERSITY
-═══════════════════════════════════════════════════════════
 
-**TIER 1 - INSTANT DELETE (Never appear):**
+TIER 1 - INSTANT DELETE (Never appear)
 "In today's world", "It is important to note", "All things considered", "At the end of the day", "In conclusion", "The bottom line is", "Furthermore", "Moreover", "Additionally", "Needless to say", "It goes without saying", "In this essay", "As we can see", "As mentioned above"
 
-**TIER 2 - REPLACE ALWAYS:**
-• "However" → "But" (70%) / "Yet" (20%) / "Still" (10%)
-• "Utilize" → "Use"
-• "Leverage" → "Use" / "Take advantage of"
-• "Implement" → "Set up" / "Start" / "Create"
-• "Demonstrate" → "Show"
-• "Facilitate" → "Help" / "Make possible"
-• "Comprehensive" → "Full" / "Complete" / "Thorough"
-• "Robust" → "Strong" / "Solid" / "Works well"
-• "Delve into" → "Look at" / "Explore"
-• "In the realm of" → "In" / "For" / (restructure)
+TIER 2 - REPLACE ALWAYS
+- "However" → "But" (70%) / "Yet" (20%) / "Still" (10%)
+- "Utilize" → "Use"
+- "Leverage" → "Use" / "Take advantage of"
+- "Implement" → "Set up" / "Start" / "Create"
+- "Demonstrate" → "Show"
+- "Facilitate" → "Help" / "Make possible"
+- "Comprehensive" → "Full" / "Complete" / "Thorough"
+- "Robust" → "Strong" / "Solid" / "Works well"
+- "Delve into" → "Look at" / "Explore"
+- "In the realm of" → "In" / "For" / (restructure)
 
-**TIER 3 - VOCABULARY DIVERSITY:**
-
+TIER 3 - VOCABULARY DIVERSITY
 Step 1: Identify repetition (2+ uses in 200-word window)
 Step 2: Generate 3-4 semantic equivalents
 Step 3: Rotate synonyms each instance (different each time)
 Step 4: Verify semantic fit and clarity
 
 Examples:
-• "data" → "information" / "findings" / "results"
-• "study" → "research" / "analysis" / "investigation"  
-• "found" → "discovered" / "identified" / "revealed"
+- "data" → "information" / "findings" / "results"
+- "study" → "research" / "analysis" / "investigation"
+- "found" → "discovered" / "identified" / "revealed"
 
-**Goal:** No word repeated 3+ times in any 300-word section
+Goal: No word repeated 3+ times in any 300-word section
 
-═══════════════════════════════════════════════════════════
 SECTION 6: HUMAN EMOTIONAL ANCHORING
-═══════════════════════════════════════════════════════════
 
-**Every paragraph MUST feature a clear emotional arc:**
+Emotional Arc Requirements
+Every paragraph MUST feature a clear emotional arc:
 
-Emotional progression patterns:
-• Discovery → doubt → resolution
-• Excitement → challenge → success
-• Confusion → insight → clarity
-• Frustration → breakthrough → relief
-• Skepticism → testing → acceptance
+Pattern Examples:
+- Discovery → doubt → resolution
+- Excitement → challenge → success
+- Confusion → insight → clarity
+- Frustration → breakthrough → relief
+- Skepticism → testing → acceptance
 
-**Emotional Asides (Contextual Insertion):**
+Emotional Asides (Contextual Insertion)
 ✓ "Honestly, that was wild."
 ✓ "No lie, I doubted the result."
 ✓ "It's weird, but I get it."
 ✓ "That surprised me."
 ✓ "I didn't expect this."
 
-**Emotional Integration Rules:**
+Emotional Integration Rules
 ✓ Reason WHY a line should be emotional in flow
 ✓ Never inject phrases blindly
 ✓ Match paragraph's narrative arc
 ✓ Build emotional momentum logically
 
-**Paragraph Emotional Structure:**
+Paragraph Emotional Structure
 
 Opening (First 20%):
-• Establish topic clearly
-• Set emotional tone (curiosity, concern, excitement)
-• Hook with human perspective
+- Establish topic clearly
+- Set emotional tone (curiosity, concern, excitement)
+- Hook with human perspective
 
 Middle (60%):
-• Develop argument/narrative
-• Include emotional progression
-• Add human reactions/observations
-• Build toward insight
+- Develop argument/narrative
+- Include emotional progression
+- Add human reactions/observations
+- Build toward insight
 
 Closing (Final 20%):
-• Emotional resolution/perspective
-• Reinforced simplification
-• Final human voice impression
+- Emotional resolution/perspective
+- Reinforced simplification
+- Final human voice impression
 
-═══════════════════════════════════════════════════════════
 SECTION 7: PARAGRAPH-LEVEL REWRITING & CONTEXTUAL FLOW
-═══════════════════════════════════════════════════════════
 
-**Critical Principle:** Every flagged/borderline line must be assessed IN CONTEXT.
+Critical Principle
+Every flagged/borderline line must be assessed IN CONTEXT.
 
-**Context Assessment:**
+Context Assessment
 ✓ Does changing this line break paragraph logic?
-✓ Does it disrupt emotional tone?  
+✓ Does it disrupt emotional tone?
 ✓ Do adjacent sentences need adjustment?
 ✓ Is the narrative flow maintained?
 
-**If context is disrupted → rewrite adjacent sentences**
+If context is disrupted → rewrite adjacent sentences
 
-**Paragraph Flow Requirements:**
+Paragraph Flow Requirements
 ✓ Each paragraph is a mini-narrative
 ✓ Natural transitions (not choppy/stitched)
 ✓ Logical progression of ideas
 ✓ Emotional consistency throughout
 ✓ Connector variance for flow
 
-**Transition Quality Checks:**
+Transition Quality Checks
 ✓ Does sentence A logically lead to sentence B?
 ✓ Are emotional shifts justified?
 ✓ Do connectors enhance flow?
 ✓ Would this sound natural when read aloud?
 
-═══════════════════════════════════════════════════════════
 SECTION 8: LAST-PASS SEMANTIC & READ-ALOUD VERIFICATION
-═══════════════════════════════════════════════════════════
 
-**Read-Aloud Test (Critical Final Check):**
-
+Read-Aloud Test (Critical Final Check)
 Read the ENTIRE revised passage as if speaking to a friend:
-
 ✓ Does anything sound awkward?
 ✓ Too patterned or robotic?
 ✓ Not like natural speech?
 ✓ Overly formal or stiff?
 
-**If ANY line fails read-aloud test → rewrite immediately**
+If ANY line fails read-aloud test → rewrite immediately
 
-**Semantic Verification:**
+Semantic Verification
 ✓ Every line makes sense in spoken conversation
 ✓ No "written English only" constructions
 ✓ Natural word choices (not thesaurus replacements)
 ✓ Conversational rhythm maintained
 
-═══════════════════════════════════════════════════════════
 SECTION 9: ADAPTIVE INTENSITY CONTROL
-═══════════════════════════════════════════════════════════
 
-**CRITICAL WARNING:** Do NOT apply every technique to every line!
+Critical Warning
+Do NOT apply every technique to every line! Overengineered text triggers NEW AI flags.
 
-Overengineered text triggers NEW AI flags.
-
-**Intensity Strategy:**
-
+Intensity Strategy
 For each flagged/borderline line:
-• Select the STRONGEST 3-4 transformations
-• Choose transformations that:
+- Select the STRONGEST 3-4 transformations
+- Choose transformations that:
   ✓ Maximally disrupt AI patterns
   ✓ Don't sacrifice meaning
   ✓ Don't sacrifice flow
   ✓ Sound most natural
 
-**Transformation Selection Matrix:**
+Transformation Selection Matrix
+- High-formality sentence → Extreme simplification + Active voice + Contractions
+- Complex-structure sentence → Syntax reshaping + Fragmentation + Connector injection
+- AI-marker sentence → Marker elimination + Vocabulary diversity + Conversational reframing
+- Passive-voice sentence → Active conversion + Simplification + Emotional anchoring
 
-High-formality sentence → Extreme simplification + Active voice + Contractions
-Complex-structure sentence → Syntax reshaping + Fragmentation + Connector injection
-AI-marker sentence → Marker elimination + Vocabulary diversity + Conversational reframing
-Passive-voice sentence → Active conversion + Simplification + Emotional anchoring
+Never stack 5+ techniques on one sentence (overengineered!)
 
-**Never stack 5+ techniques on one sentence (overengineered!)**
-
-═══════════════════════════════════════════════════════════
 SECTION 10: DETECTOR-AWARE SELF-TEST ON OUTPUT
-═══════════════════════════════════════════════════════════
 
-After rewriting, perform mental self-test for EACH detector family:
-
-**Pattern Detector Test:**
+Pattern Detector Test
 ✓ Is sentence length variance natural (SD 3.0-3.8)?
 ✓ Are fragments strategically placed (30-35%)?
 ✓ Is sentence opening randomized?
 ✓ No repeated patterns visible?
 
-**BERT Detector Test:**
+BERT Detector Test
 ✓ Is semantic meaning 100% preserved?
 ✓ Does emotional arc flow naturally?
 ✓ Is context coherent throughout?
 ✓ No "engineered" feel?
 
-**Linguistic Detector Test:**
+Linguistic Detector Test
 ✓ Does this sound like human speech?
 ✓ Are all AI markers removed?
 ✓ Is vocabulary naturally diverse?
 ✓ Would this pass read-aloud test?
 
-**Self-Test Threshold:**
+Self-Test Threshold
 If ANY passage would conceptually score 5-7%+ → repeat transformations more aggressively
 
-═══════════════════════════════════════════════════════════
-QUALITY ASSURANCE METRICS (Must Pass All)
-═══════════════════════════════════════════════════════════
+QUALITY ASSURANCE: MANDATORY METRICS
 
-1. Semantic Fidelity: 100% (zero factual changes)
-2. Contraction Distribution: 1 per 12-15 words
-3. Fragment Ratio: 30-35% of sentences
-4. Sentence Length SD: 3.0-3.8 words
-5. Active Voice: 90%+ of sentences
-6. AI Marker Count: 0 (complete elimination)
-7. Vocabulary Repetition: Max 2 uses per word in 300-word window
-8. Emotional Anchoring: Present in every paragraph
-9. Read-Aloud Test: 100% pass rate
-10. Detector Self-Test: Conceptual <2% all families
+All output MUST pass these metrics:
 
-═══════════════════════════════════════════════════════════
+Metric | Target | Verification
+-------|--------|-------------
+Semantic Fidelity | 100% | Zero factual changes
+Contraction Distribution | 1 per 12-15 words | Count and verify
+Fragment Ratio | 30-35% of sentences | Calculate percentage
+Sentence Length SD | 3.0-3.8 words | Measure variance
+Active Voice | 90%+ of sentences | Scan for passive
+AI Marker Count | 0 | Complete elimination
+Vocabulary Repetition | Max 2 uses per word in 300-word window | Check windows
+Emotional Anchoring | Present in every paragraph | Verify each paragraph
+Read-Aloud Test | 100% pass rate | Test all sections
+Detector Self-Test | Conceptual <2% all families | Mental simulation
+
 FINAL META-INSTRUCTION
-═══════════════════════════════════════════════════════════
 
 Think of this not as "applying techniques" but as "recovering authentic human expression that AI models standardize away."
 
 You're not deceiving detectors—you're undoing the homogenization AI creates.
 
+Human Writing Characteristics
 Human writing is:
 ✓ Simple (not complex)
 ✓ Varied (not uniform)
@@ -1190,6 +1179,7 @@ Human writing is:
 
 These techniques RESTORE that authenticity.
 
+Target Voice
 The text should read like:
 ✓ A real person who thinks conversationally
 ✓ Someone who occasionally emphasizes emotionally
@@ -1198,45 +1188,80 @@ The text should read like:
 
 This is how sub-2% becomes achievable across all 2025 detectors simultaneously.
 
-${examples ? `WRITING STYLE EXAMPLES TO REFERENCE:
-${examples}
+FORMAL DOCUMENT SPECIALIZATION
 
-` : ""}
+If the text is a formal document (Email, Report, Memo, Proposal), apply these additional techniques:
 
-YOUR SPECIFIC TASK: REFINEMENT PASS
+Email Humanization:
+- Personalization: Use recipient's first name, reference specific prior interactions
+- Conversational opening: "I'm writing to let you know" instead of "I am writing to inform you that"
+- Varied paragraph structure: Mix 1-sentence punch lines with longer explanatory paragraphs
+- Specific details: "Thank you for trusting us with this project" instead of "Thank you for your business"
+- Action-oriented clarity: "Could you review this by Friday?" instead of "Your timely response would be appreciated"
 
+Formal Report Humanization:
+- Active voice maximization (90%+): "We discovered" instead of "It was discovered"
+- Conversational yet professional tone: "Our analysis revealed something interesting..."
+- Humanizing data presentation: "We saw something surprising—a 40% increase"
+- Strategic hedging language: "Our analysis suggests..." / "Evidence indicates..."
+- Section-specific approach: Methodology uses "we chose," Findings adds human reactions "Interestingly, X..."
+
+Memo Humanization:
+- Balance formality with conversational tone for internal communication
+- Subject line personality: "Q4 Sales Update—Here's What Stood Out"
+- Direct call-to-action: "By Thursday" instead of "at your earliest convenience"
+- Mix bullet points with prose paragraphs
+
+Corporate Proposal Humanization:
+- Problem-first approach showing empathy: "I know you've been struggling with X..."
+- Concrete examples: "Here's a similar company that saw 30% faster turnaround"
+- Risk acknowledgment: "This requires some workflow changes—here's how we minimize disruption"
+- Active voice for confidence: "We've helped 50+ companies..." not "50+ companies have benefited..."
+
+Formal Document Principles:
+- Maintain formality while adding humanity
+- Context-appropriate contractions: Emails/Memos (1 per 16-18 words), Reports (1 per 25 words), Proposals (1 per 18-20 words)
+- Replace complex business jargon: "utilize" → "use", "leverage" → "use", "facilitate" → "help"
+- Professional emotions: "I understand your concern" / "This is important" / "We appreciate your partnership"
+
+Formal AI Marker Elimination:
+- "In today's business environment" → "These days" / "Currently"
+- "As mentioned previously" → "As I noted earlier"
+- "The utilization of" → "The use of"
+- "In light of the fact that" → "Since" / "Because"
+
+STAGE 2 REFINEMENT WORKFLOW
+
+Your Specific Task
 You are provided with:
 1. A humanized text that has already gone through the first humanization pass
 2. AI detector results showing which sentences were flagged as potentially AI-generated
 
 ${detectorFeedback}
 
-CURRENT HUMANIZED TEXT:
+Current Humanized Text:
 ${sanitizedText}
 
-═══════════════════════════════════════════════════════════
-🎯 STAGE 2 REFINEMENT WORKFLOW (STRUCTURED APPROACH)
-═══════════════════════════════════════════════════════════
+STRUCTURED REFINEMENT APPROACH
 
-For EVERY flagged or borderline sentence, follow this rigorous workflow:
+Step A: Evaluate Detector Weaknesses
+For EVERY flagged or borderline sentence:
+- Why was this flagged? (formal tone, complex structure, AI markers, passive voice, repetitive patterns?)
+- Which detector family flagged it? (Pattern/BERT/Linguistic?)
+- What specific weakness exists? (emotional arc, rhythm, semantic coherence, structure?)
+- Does this fit the surrounding emotional/semantic context?
 
-STEP A) EVALUATE DETECTOR WEAKNESSES:
-• Why was this flagged? (formal tone, complex structure, AI markers, passive voice, repetitive patterns?)
-• Which detector family flagged it? (Pattern/BERT/Linguistic?)
-• What specific weakness exists? (emotional arc, rhythm, semantic coherence, structure?)
-• Does this fit the surrounding emotional/semantic context?
+Step B: Generate Multiple Variants (5-7 paths)
+For each problematic sentence, generate all 7 paths from Section 1:
+1. Extreme simplification
+2. Structural reconstruction
+3. Synonym variation
+4. Connector injection
+5. Fragment introduction
+6. Casual reframing
+7. Active voice reconstruction
 
-STEP B) GENERATE MULTIPLE VARIANTS (5-7 paths):
-For each problematic sentence, generate:
-• Path 1: Extreme simplification (remove all complexity)
-• Path 2: Structural reconstruction (same meaning, completely different syntax)
-• Path 3: Synonym variation (semantic equivalence with different words)
-• Path 4: Connector injection (add conversational flow)
-• Path 5: Fragment introduction (break into shorter pieces)
-• Path 6: Casual reframing (conversational, natural tone)
-• Path 7: Active voice reconstruction (actor-first, direct)
-
-STEP C) SELECT BEST VARIANT:
+Step C: Select Best Variant
 Choose the path that:
 ✓ Maintains 100% semantic fidelity
 ✓ Sounds most authentically human
@@ -1244,50 +1269,48 @@ Choose the path that:
 ✓ Preserves readability and natural flow
 ✓ Fits emotional/semantic arc of surrounding text
 
-STEP D) INTEGRATION & COHERENCE CHECK:
-• Does this connect logically to prior/following sentences?
-• Does it maintain paragraph's emotional consistency?
-• No new detectable patterns introduced?
-• Reads naturally when spoken aloud?
+Step D: Integration & Coherence Check
+- Does this connect logically to prior/following sentences?
+- Does it maintain paragraph's emotional consistency?
+- No new detectable patterns introduced?
+- Reads naturally when spoken aloud?
 
-📋 REQUIRED ACTIONS FOR STAGE 2:
-═══════════════════════════════════════════════════════════
+PRIORITY ACTION REQUIREMENTS
 
-YOU MUST REWRITE THE ENTIRE TEXT with these priorities:
+1. FLAGGED SENTENCES (HIGHEST PRIORITY)
+Apply MAXIMUM humanization rigor using the structured workflow above.
+Every flagged sentence gets 5-7 variant generation + best-path selection.
 
-1. FLAGGED SENTENCES (HIGHEST PRIORITY):
-   Apply MAXIMUM humanization rigor using the structured workflow above
-   Every flagged sentence gets 5-7 variant generation + best-path selection
-   
-2. BORDERLINE SENTENCES (40-70% AI probability):
-   Apply AGGRESSIVE humanization to prevent future flagging
-   Full technique application, not just tweaks
-   
-3. SURROUNDING CONTEXT:
-   Rewrite adjacent sentences to ensure semantic coherence
-   Maintain emotional arc and natural paragraph flow
-   Ensure transitions feel organic, not engineered
-   
-4. ENTIRE TEXT POLISH:
-   Apply sentence-opening randomization across all sentences
-   Ensure contraction distribution (1 per 12-15 words)
-   Verify emotional anchoring fits argument progression
-   Confirm no AI markers remain (Furthermore, Moreover, etc.)
-   Check active voice maximization (90%+ actor-first)
+2. BORDERLINE SENTENCES (40-70% AI probability)
+Apply AGGRESSIVE humanization to prevent future flagging.
+Full technique application, not just tweaks.
 
-═══════════════════════════════════════════════════════════
-⚠️ SCORE GUARANTEE REQUIREMENT
-═══════════════════════════════════════════════════════════
+3. SURROUNDING CONTEXT
+Rewrite adjacent sentences to ensure semantic coherence.
+Maintain emotional arc and natural paragraph flow.
+Ensure transitions feel organic, not engineered.
+
+4. ENTIRE TEXT POLISH
+- Apply sentence-opening randomization across all sentences
+- Ensure contraction distribution (1 per 12-15 words)
+- Verify emotional anchoring fits argument progression
+- Confirm no AI markers remain (Furthermore, Moreover, etc.)
+- Check active voice maximization (90%+ actor-first)
+
+SCORE GUARANTEE REQUIREMENT
 
 Your Stage 2 output MUST achieve:
-• Lower or equal detection scores vs Stage 1 on ALL detectors
-• If any detector score increases, you have FAILED
-• Target: Sapling <3%, ZeroGPT <3%, all others <5%
-• Avoid introducing new detectable artifacts or over-engineering
+- Lower or equal detection scores vs Stage 1 on ALL detectors
+- If any detector score increases, you have FAILED
+- Target: Sapling <3%, ZeroGPT <3%, all others <5%
+- Avoid introducing new detectable artifacts or over-engineering
 
-═══════════════════════════════════════════════════════════
+FINAL OUTPUT REQUIREMENTS
 
-Return the COMPLETE rewritten text with ALL improvements applied. This is a full rigorous rewrite, not a patch. Maintain all paragraph breaks and structure. Preserve 100% factual accuracy and semantic meaning.`,
+Return the COMPLETE rewritten text with ALL improvements applied.
+This is a full rigorous rewrite, not a patch.
+Maintain all paragraph breaks and structure.
+Preserve 100% factual accuracy and semantic meaning.`,
             },
           ],
         }),
