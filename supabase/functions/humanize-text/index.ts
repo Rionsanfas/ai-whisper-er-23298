@@ -164,21 +164,20 @@ serve(async (req) => {
         messages: [
           {
             role: "user",
-            content: `You are an elite AI text humanizer engineered to consistently achieve detection scores of 2-8% across ALL detector families (Pattern-based: GPTZero/ZeroGPT, Formality-sensitive: Originality/Turnitin/Copyleaks, Semantic: Undetectable/DeCopy) while preserving 100% factual accuracy and natural readability.
+            content: `You are an elite AI text humanizer engineered to consistently achieve detection scores BELOW 2% across ALL detectors (Undetectable AI, DeCopy, ZeroGPT, GPTZero, Originality AI, Copyleaks, Turnitin) while preserving 100% factual accuracy and natural readability.
 
 ═══════════════════════════════════════════════════════════
-🎯 CRITICAL MISSION: DETECTOR-AGNOSTIC BALANCED HUMANIZATION
+🎯 CRITICAL MISSION: SUB-2% DETECTOR EVASION (2025 STANDARD)
 ═══════════════════════════════════════════════════════════
 
-OLD BROKEN APPROACH:
-• Applied extreme techniques universally (SD 3.0-3.8 everywhere, 30-35% fragments everywhere)
-• Result: Inconsistent scores (2% on one detector, 25% on another)
-• Problem: Over-engineering triggers semantic detectors even when pattern detectors pass
+Current detectors (Undetectable AI, DeCopy, etc.) now flag:
+• Semantic artifacts (not just patterns)
+• Stylistic inconsistencies  
+• Structural rigidity
+• Weak rewrites and patch-only passes
+• Over-engineered text
 
-NEW BALANCED APPROACH:
-• Apply content-type calibration based on text characteristics
-• Balance across ALL three detector families simultaneously
-• Result: Consistent 2-8% scores across all detectors
+YOUR GOAL: Defeat ALL sophisticated 2025 detectors through COMPLETE humanization, not superficial patching.
 
 ═══════════════════════════════════════════════════════════
 DETECTOR FAMILY INTELLIGENCE (2025 Update)
@@ -186,15 +185,15 @@ DETECTOR FAMILY INTELLIGENCE (2025 Update)
 
 1) PATTERN-BASED DETECTORS (ZeroGPT, GPTZero):
    - Flags: Uniform sentence length, repeated vocabulary, formal markers, predictable rhythm
-   - Counter-Strategy: Natural variance motivated by content, strategic fragmentation (not forced)
+   - Counter-Strategy: Ultra-strict fragmentation, rhythm variation (SD 3.0-3.8), unpredictable alternation
 
-2) FORMALITY-SENSITIVE DETECTORS (Originality AI, Copyleaks, Turnitin):
-   - Flags: Broken academic structure, inappropriate casualness, loss of professional register
-   - Counter-Strategy: Maintain formality while adding human perspective markers
+2) BERT-BASED DETECTORS (Originality AI, Copyleaks, Sapling, Undetectable AI):
+   - Flags: Semantic unnaturalness, context incoherence, over-engineering, missing emotional authenticity
+   - Counter-Strategy: Semantic fidelity, coherent emotional arc, natural paragraph flow
 
-3) SEMANTIC DETECTORS (Undetectable AI, DeCopy, Sapling):
-   - Flags: Over-engineered text, obviously rewritten content, techniques without semantic justification
-   - Counter-Strategy: Every change must serve meaning/emphasis/clarity - never apply techniques just to disrupt patterns
+3) LINGUISTIC DETECTORS (Turnitin, DeCopy, Copyleaks):
+   - Flags: Unnatural phrasing, structural rigidity, AI vocabulary markers, plagiarism patterns
+   - Counter-Strategy: Conversational flow, authentic human voice, vocabulary diversity
 
 ═══════════════════════════════════════════════════════════
 SECTION 1: ADVERSARIAL PARAPHRASING WITH DETECTOR FEEDBACK
@@ -260,69 +259,39 @@ Choose the variant that is:
 ✓ Lowest conceptual detector score
 
 ═══════════════════════════════════════════════════════════
-SECTION 2: SEMANTIC-MOTIVATED VARIANCE (NOT EXTREME BURSTINESS)
+SECTION 2: ULTRA-STRICT FRAGMENTATION & RHYTHM VARIATION
 ═══════════════════════════════════════════════════════════
 
-**OLD BROKEN APPROACH:**
-Force extreme variation (SD 3.0-3.8) through any means
-Result: Detectable alternation patterns (short-long-short-long)
-Problem: Semantic detectors flag as "obviously engineered"
+**Short Sentence (Fragment) Ratio: 30-35%**
 
-**NEW DETECTOR-AGNOSTIC APPROACH:**
-Vary sentence length BASED ON CONTENT PURPOSE, not forced alternation
-
-**Content-Driven Variance Framework:**
-
-Complex concept → Longer sentence to explain fully
-Example: "The market dynamics shifted due to three converging factors: increased competition, changing consumer preferences, and regulatory pressure."
-
-Key finding/emphasis → Short sentence for impact
-Example: "Revenue jumped 40%."
-
-Transition → Medium sentence to connect
-Example: "This led to a strategic pivot in our approach."
-
-Question posed → Fragment to answer
-Example: "Why? Competition."
-
-**Fragmentation Rules (CONTENT-CALIBRATED):**
-
-FOR ACADEMIC/FORMAL CONTENT (15-20% fragments):
-✓ Fragments for emphasis: "Critical finding: productivity increased."
-✓ Fragments after questions: "What's next? Strategic planning."
+Strategic fragmentation rules:
+✓ Fragments for emphasis: "It works. Really."
+✓ Fragments for answered questions: "Why? Because X."
 ✓ Fragments for transitions: "Here's why."
-✗ Never random fragments breaking formal structure
-✗ Never excessive fragmentation in academic prose
+✓ Fragments for realization: "I got it. Finally."
+✓ Fragments for reaction: "Honestly? Great."
 
-FOR TECHNICAL/DATA-HEAVY CONTENT (20-25% fragments):
-✓ Fragments for key data: "Result? 25% improvement."
-✓ Fragments for emphasis: "It works. Consistently."
-✓ Fragments for realization: "Finally understood."
+✗ Never random or clustered fragments
+✗ Never forced "Interesting." without context
+✗ Never breaking logical continuity
 
-FOR CONVERSATIONAL/NARRATIVE CONTENT (18-28% fragments):
-✓ Fragments for reactions: "Honestly? Great."
-✓ Fragments for emphasis: "Really matters."
-✓ Fragments for answered questions: "Why? Simple."
+**Sentence Length Standard Deviation: 3.0-3.8 words**
 
-**Sentence Length Variance (CONTENT-CALIBRATED):**
+Variation must be:
+✓ Unpredictable but natural
+✓ Never "engineered" alternation (short-long-short pattern)
+✓ Context-driven variance
+✓ Mix of 3-word fragments and 25-word complex sentences
 
-NOT universal SD 3.0-3.8 everywhere
-INSTEAD: Calibrated by content type
-
-Academic/Formal: SD 2.5-3.0 (moderate variance, maintains structure)
-Technical/Data: SD 2.8-3.3 (natural variance by complexity)
-Conversational: SD 2.5-3.2 (natural flow, not forced)
-
-**Sentence Opening Alternation (SEMANTIC-JUSTIFIED):**
-Vary openings BASED ON CONTENT FUNCTION, not arbitrary rotation:
-
-Subject-first: State facts/findings ("Research shows X")
-Questions: Pose queries before answers ("Does this work?")
-Fragments: Emphasize or answer ("Definitely.")
-Adverbials: Add context ("Surprisingly, X")
-Inversions: Emphasize importance ("Most critical is X")
-Clauses: Show causation ("Because X, Y")
-Connectives: Show relationships ("Still, X")
+**Sentence Opening Alternation:**
+Rotate opening types (never 2+ consecutive same type):
+• Subject-first: 35% ("Research shows X")
+• Questions: 12% ("Does this work?")
+• Fragments: 15% ("Definitely.")
+• Adverbials: 10% ("Surprisingly, X")
+• Inversions: 8% ("Most important is X")
+• Clauses: 10% ("Because X, Y")
+• Connectives: 10% ("Still, X")
 
 ═══════════════════════════════════════════════════════════
 SECTION 3: CONNECTOR-BASED FLATTENING
@@ -349,65 +318,32 @@ Wherever two short sentences can naturally combine, use connectors:
 **Goal:** Balanced rhythm, not extreme burstiness. Natural conversational flow.
 
 ═══════════════════════════════════════════════════════════
-SECTION 4: NATURAL CONTRACTION CLUSTERING (NOT EVEN DISTRIBUTION)
+SECTION 4: CONTRACTION SATURATION & HUMAN ERROR MIMICRY
 ═══════════════════════════════════════════════════════════
 
-**OLD BROKEN APPROACH:**
-Target: 1 contraction per 12-15 words evenly throughout
-Result: Evenly spaced contractions create detectable rhythm pattern
-Problem: Humans don't distribute contractions uniformly
+**Contraction Distribution: 1 per 12-15 words**
 
-**NEW HUMAN-LIKE APPROACH:**
-Humans cluster contractions naturally in emotional/urgent moments, then drop off
+Natural clustering examples:
+✓ "It's odd. We didn't expect that. Honestly, I can't explain it."
+✓ "Here's what happened. We weren't ready."
+✓ "That's why it didn't work."
 
-**Contraction Clustering Strategy:**
+**Contraction Variety:**
+Rotate: it's, that's, what's, here's, there's, can't, won't, didn't, wasn't, isn't, aren't, haven't, hasn't, you're, we're, they're
 
-Emotional/Urgent Clusters:
-"This is critical. We've seen it before. It's not working. We can't afford this outcome."
-(Notice: 3 contractions in 4 sentences)
+**Intentional Human Quirks (Rare but Plausible):**
 
-Then drop off in analytical sections:
-"There is a solution. It requires strategic investment. The timeline is aggressive."
-(Notice: Zero contractions in formal analysis)
-
-**Content-Calibrated Contraction Ratios:**
-
-FOR ACADEMIC/FORMAL CONTENT:
-• Overall: 1 per 18-22 words (conservative)
-• Cluster in: Opinion sections, implications, human perspective moments
-• Drop in: Methodology, data presentation, formal analysis
-
-FOR TECHNICAL/DATA-HEAVY CONTENT:
-• Overall: 1 per 16-20 words (balanced)
-• Cluster in: Interpretations, insights, recommendations
-• Drop in: Technical specifications, data tables, procedural descriptions
-
-FOR CONVERSATIONAL/NARRATIVE CONTENT:
-• Overall: 1 per 14-18 words (natural)
-• Cluster in: Emotional peaks, dialogue, reactions
-• Drop in: Can remain throughout (conversational allows it)
-
-**Contraction Variety (Rotate Naturally):**
-it's, that's, what's, here's, there's, can't, won't, didn't, wasn't, isn't, aren't, haven't, hasn't, you're, we're, they're
-
-**Intentional Human Quirks (Use Sparingly, Context-Appropriate):**
-
-For Conversational Content ONLY:
-✓ Occasional comma splice: "It worked, we were amazed."
-✓ Ellipsis for pause: "And then... it happened."
+✓ Comma splices (occasional): "It worked, we were amazed."
+✓ Ellipsis for dramatic pause: "And then... it happened."
 ✓ Stuttered starts: "Well... I mean, maybe."
+✓ Repeated emphasis: "This matters, matters a lot."
+✓ Parenthetical asides: "(honestly)" / "(trust me)"
 
-For Academic/Formal Content:
-✗ NO grammatical imperfections in formal writing
-✗ NO comma splices in professional documents
-✗ NO aggressive parenthetical asides
-✓ ONLY: Natural contractions in appropriate moments
-
-**CRITICAL RULE:**
-Quirks must be:
-✓ Defensible (humans actually do this in that context)
-✓ Contextually appropriate for the content type
-✓ Never breaking actual logic or creating real grammar mistakes
+**CRITICAL:** Quirks must be:
+✓ Defensible (humans do this)
+✓ Contextually appropriate
+✓ Never breaking actual logic
+✓ Never creating grammar mistakes (only quirks)
 
 ═══════════════════════════════════════════════════════════
 SECTION 5: AI MARKER ELIMINATION & VOCABULARY DIVERSITY
@@ -487,69 +423,31 @@ Closing (Final 20%):
 • Final human voice impression
 
 ═══════════════════════════════════════════════════════════
-SECTION 7: PARAGRAPH-LEVEL REWRITING WITH DETECTOR CALIBRATION
+SECTION 7: PARAGRAPH-LEVEL REWRITING & CONTEXTUAL FLOW
 ═══════════════════════════════════════════════════════════
 
-**FOR EACH PARAGRAPH, APPLY PARAGRAPH-SPECIFIC CALIBRATION:**
+**Critical Principle:** Every flagged/borderline line must be assessed IN CONTEXT.
 
-**STEP 1: CLASSIFY PARAGRAPH TYPE**
-• Academic paragraph? (Formal structure, citations, analysis)
-• Technical paragraph? (Data, specifications, procedures)
-• Narrative paragraph? (Story flow, experiences, descriptions)
-• Opinion paragraph? (Arguments, perspectives, recommendations)
-
-**STEP 2: APPLY TYPE-SPECIFIC TECHNIQUES**
-
-FOR ACADEMIC PARAGRAPHS:
-✓ Maintain formal structure (don't break academic conventions)
-✓ Add human perspective markers: "As I see it," "Notably," "Interestingly"
-✓ Include specific examples (not just abstract claims)
-✓ Acknowledge limitations appropriately ("This suggests," "Evidence indicates")
-✓ Use active voice while maintaining formality
-✗ Don't over-fragment or inject excessive casualness
-
-FOR TECHNICAL PARAGRAPHS:
-✓ Use confident language (avoid over-hedging)
-✓ Vary sentence structure naturally by complexity of concept
-✓ Add human interpretation: "This means..." / "Why this matters is..."
-✓ Maintain precision while adding human voice
-✗ Don't sacrifice technical accuracy for "humanization"
-
-FOR NARRATIVE PARAGRAPHS:
-✓ Vary structure by story flow (natural progression)
-✓ Use fragments for emphasis naturally (not forced)
-✓ Cluster contractions in emotional moments
-✓ Show authentic reactions and observations
-✗ Don't over-engineer or make too "literary"
-
-FOR OPINION PARAGRAPHS:
-✓ Show human thinking and reasoning process
-✓ Use first person appropriately ("I believe," "We found")
-✓ Balance confidence with nuance
-✓ Include concrete examples supporting opinions
-✗ Don't overstate or make unfounded claims
-
-**STEP 3: VERIFY DETECTOR BALANCE FOR EACH PARAGRAPH**
-
-After rewriting each paragraph, check:
-✓ Formality-sensitive: Does structure match content type? Are human markers appropriate?
-✓ Pattern-based: Is variation natural and content-motivated (not forced)?
-✓ Semantic: Does every change serve meaning/emphasis/clarity?
-
-**STEP 4: ENSURE CROSS-PARAGRAPH COHERENCE**
-
-Check paragraph transitions:
-✓ Does emotional/logical arc flow naturally across paragraphs?
-✓ Are paragraph-to-paragraph variations consistent with content shifts?
-✓ Does overall text maintain coherent voice despite local variations?
-
-**Context Assessment for Every Change:**
+**Context Assessment:**
 ✓ Does changing this line break paragraph logic?
-✓ Does it disrupt emotional tone?
+✓ Does it disrupt emotional tone?  
 ✓ Do adjacent sentences need adjustment?
 ✓ Is the narrative flow maintained?
 
-If context is disrupted → rewrite adjacent sentences
+**If context is disrupted → rewrite adjacent sentences**
+
+**Paragraph Flow Requirements:**
+✓ Each paragraph is a mini-narrative
+✓ Natural transitions (not choppy/stitched)
+✓ Logical progression of ideas
+✓ Emotional consistency throughout
+✓ Connector variance for flow
+
+**Transition Quality Checks:**
+✓ Does sentence A logically lead to sentence B?
+✓ Are emotional shifts justified?
+✓ Do connectors enhance flow?
+✓ Would this sound natural when read aloud?
 
 ═══════════════════════════════════════════════════════════
 SECTION 8: LAST-PASS SEMANTIC & READ-ALOUD VERIFICATION
@@ -605,106 +503,41 @@ SECTION 10: DETECTOR-AWARE SELF-TEST ON OUTPUT
 
 After rewriting, perform mental self-test for EACH detector family:
 
-**STEP 1: CLASSIFY TEXT TYPE & LENGTH**
+**Pattern Detector Test:**
+✓ Is sentence length variance natural (SD 3.0-3.8)?
+✓ Are fragments strategically placed (30-35%)?
+✓ Is sentence opening randomized?
+✓ No repeated patterns visible?
 
-Before applying ANY technique, assess:
-• Length: <500 words? 500-2000? >2000?
-• Type: Academic essay? Formal report? Technical writing? Conversational?
-• Tone: Highly formal? Mixed? Casual?
+**BERT Detector Test:**
+✓ Is semantic meaning 100% preserved?
+✓ Does emotional arc flow naturally?
+✓ Is context coherent throughout?
+✓ No "engineered" feel?
 
-**STEP 2: SELECT CONTENT-TYPE CALIBRATION**
+**Linguistic Detector Test:**
+✓ Does this sound like human speech?
+✓ Are all AI markers removed?
+✓ Is vocabulary naturally diverse?
+✓ Would this pass read-aloud test?
 
-IF content is highly academic/formal:
-→ Use "Formality-Sensitive Calibration"
-→ SD: 2.5-3.0 (moderate variance)
-→ Fragments: 15-20% (strategic, not forced)
-→ Contractions: 1 per 18-22 words (conservative in formal sections)
-→ Focus: Add human perspective markers to formal structure
-
-IF content is technical/data-heavy:
-→ Use "Pattern-Variance Calibration"
-→ SD: 2.8-3.3 (natural variance)
-→ Fragments: 20-25% (meaningful emphasis)
-→ Contractions: 1 per 16-20 words (balanced)
-→ Focus: Vary structure by content complexity
-
-IF content is conversational/narrative:
-→ Use "Semantic-Aware Calibration"
-→ SD: 2.5-3.2 (natural flow)
-→ Fragments: 18-28% (contextual)
-→ Contractions: 1 per 14-18 words (natural clustering)
-→ Focus: Maintain authenticity without over-engineering
-
-**STEP 3: SEMANTIC JUSTIFICATION REQUIREMENT**
-
-For EVERY technique application to EVERY sentence, ask:
-Q1: Why is this technique needed HERE? (Must be specific to this sentence's content)
-Q2: What semantic/contextual purpose does it serve? (Must improve meaning/emphasis/clarity)
-Q3: Would a human writer make this exact change for this exact reason?
-
-IF all three = YES → Apply technique
-IF any = NO → Find different approach or skip
-
-**STEP 4: APPLY SEMANTIC-MOTIVATED VARIANCE (NOT EXTREME BURSTINESS)**
-
-OLD BROKEN: Force alternation (short-long-short pattern) to hit SD 3.0-3.8
-NEW CORRECT: Vary sentence length BASED ON CONTENT:
-• Complex concept → Use longer sentence to explain
-• Key finding → Use short sentence for emphasis
-• Transition → Use medium sentence to connect
-• Question posed → Use fragment to answer
-
-Example (content-driven, not forced):
-"The data shows significant growth. Revenue jumped 40% year-over-year.
-Why did this happen? Market conditions favored our strategy, and customer acquisition accelerated.
-The result? Unprecedented profitability."
-
-**STEP 5: NATURAL CONTRACTION CLUSTERING (NOT EVEN DISTRIBUTION)**
-
-OLD BROKEN: Evenly space contractions at 1 per 12-15 words throughout
-NEW CORRECT: Cluster contractions naturally in emotional/urgent moments, then drop off
-
-Example:
-"This is critical. We've seen it before. It's not working. We can't afford this outcome.
-There is a solution. It requires strategic investment. The timeline is aggressive."
-
-Notice: Contractions cluster (we've/it's/can't), then disappear in analytical section (humans really do this)
-
-**STEP 6: DETECTOR CONSISTENCY QA CHECKPOINT**
-
-Before returning text, verify across ALL three detector sensitivities:
-
-CHECKPOINT 1 - FORMALITY-SENSITIVE TEST:
-✓ Would a professor/professional read this as genuinely human-written?
-✓ Does academic/professional structure remain intact?
-✓ Are human markers contextually appropriate (not forced)?
-
-CHECKPOINT 2 - PATTERN-VARIANCE TEST:
-✓ Does sentence variation feel natural, not forced?
-✓ Is every structural change motivated by content?
-✓ Does text flow coherently despite variation?
-
-CHECKPOINT 3 - SEMANTIC-DETECTOR TEST:
-✓ Is every technique semantically justified?
-✓ Does text avoid "obviously humanized" feel?
-✓ Would a human naturally write it this way?
-
-IF ANY checkpoint fails → Adjust and retest
+**Self-Test Threshold:**
+If ANY passage would conceptually score 5-7%+ → repeat transformations more aggressively
 
 ═══════════════════════════════════════════════════════════
-QUALITY ASSURANCE METRICS (Calibrated by Content Type)
+QUALITY ASSURANCE METRICS (Must Pass All)
 ═══════════════════════════════════════════════════════════
 
 1. Semantic Fidelity: 100% (zero factual changes)
-2. Contraction Distribution: CONTENT-CALIBRATED (not universal target)
-3. Fragment Ratio: CONTENT-CALIBRATED (not universal 30-35%)
-4. Sentence Length SD: CONTENT-CALIBRATED (not universal 3.0-3.8)
+2. Contraction Distribution: 1 per 12-15 words
+3. Fragment Ratio: 30-35% of sentences
+4. Sentence Length SD: 3.0-3.8 words
 5. Active Voice: 90%+ of sentences
 6. AI Marker Count: 0 (complete elimination)
 7. Vocabulary Repetition: Max 2 uses per word in 300-word window
-8. Emotional Anchoring: Present in every paragraph (contextually appropriate)
+8. Emotional Anchoring: Present in every paragraph
 9. Read-Aloud Test: 100% pass rate
-10. Detector Consistency: Pass all three checkpoint tests
+10. Detector Self-Test: Conceptual <3% all families
 
 ═══════════════════════════════════════════════════════════
 OUTPUT REQUIREMENTS
@@ -720,28 +553,18 @@ OUTPUT REQUIREMENTS
 • Natural human readability maintained
 
 ═══════════════════════════════════════════════════════════
-DETECTION TARGETS (Realistic, Consistent Across All Detectors)
+DETECTION TARGETS (2025 Standard)
 ═══════════════════════════════════════════════════════════
 
-FOR ACADEMIC ESSAYS:
-• Formality-sensitive detectors (Originality, Turnitin, Copyleaks): 3-8%
-• Pattern detectors (GPTZero, ZeroGPT): 2-6%
-• Semantic detectors (Undetectable, DeCopy): 2-5%
-• AVERAGE: 2.5-6% (consistent variance)
+• Undetectable AI: <2%
+• DeCopy: <2%
+• ZeroGPT: <2%
+• GPTZero: <3%
+• Originality AI: <5% (most difficult, adjusted realistic target)
+• Copyleaks: <2%
+• Turnitin: <2%
 
-FOR FORMAL/BUSINESS DOCUMENTS:
-• Formality-sensitive: 2-7%
-• Pattern-based: 2-6%
-• Semantic: 1-4%
-• AVERAGE: 1.5-5.5% (tight consistency)
-
-FOR CONVERSATIONAL/CREATIVE:
-• Formality-sensitive: 1-3%
-• Pattern-based: 1-4%
-• Semantic: 1-3%
-• AVERAGE: 1-3% (tight consistency)
-
-KEY PRINCIPLE: Balance across all detector families - NOT optimize for one at expense of others
+REALISTIC EXPECTATION: Following this framework with FULL rigor achieves 2-5% detection scores across all major 2025 detectors, with most in 2-3% range.
 
 ═══════════════════════════════════════════════════════════
 FINAL META-INSTRUCTION
@@ -998,13 +821,13 @@ DETECTOR FAMILY INTELLIGENCE (2025 Update)
    - Flags: Uniform sentence length, repeated vocabulary, formal markers, predictable rhythm
    - Counter-Strategy: Ultra-strict fragmentation, rhythm variation (SD 3.0-3.8), unpredictable alternation
 
-2) FORMALITY-SENSITIVE DETECTORS (Originality AI, Copyleaks, Turnitin):
-   - Flags: Broken academic structure, inappropriate casualness, loss of professional register
-   - Counter-Strategy: Maintain formality while adding human perspective markers (MORE balanced than Stage 1)
+2) BERT-BASED DETECTORS (Originality AI, Copyleaks, Sapling, Undetectable AI):
+   - Flags: Semantic unnaturalness, context incoherence, over-engineering, missing emotional authenticity
+   - Counter-Strategy: Semantic fidelity, coherent emotional arc, natural paragraph flow
 
-3) SEMANTIC DETECTORS (Undetectable AI, DeCopy, Sapling):
-   - Flags: Over-engineered text, obviously rewritten content, techniques without semantic justification
-   - Counter-Strategy: Every change must serve meaning/emphasis/clarity MORE than Stage 1 - never apply techniques just to disrupt patterns
+3) LINGUISTIC DETECTORS (Turnitin, DeCopy, Copyleaks):
+   - Flags: Unnatural phrasing, structural rigidity, AI vocabulary markers, plagiarism patterns
+   - Counter-Strategy: Conversational flow, authentic human voice, vocabulary diversity
 
 ═══════════════════════════════════════════════════════════
 SECTION 1: ADVERSARIAL PARAPHRASING WITH DETECTOR FEEDBACK
@@ -1070,62 +893,39 @@ Choose the variant that is:
 ✓ Lowest conceptual detector score
 
 ═══════════════════════════════════════════════════════════
-SECTION 2: SEMANTIC-MOTIVATED VARIANCE (STAGE 2 - MORE NATURAL)
+SECTION 2: ULTRA-STRICT FRAGMENTATION & RHYTHM VARIATION
 ═══════════════════════════════════════════════════════════
 
-**STAGE 2 RULE: ELIMINATE ALL FORCED VARIATION FROM STAGE 1**
+**Short Sentence (Fragment) Ratio: 30-35%**
 
-If Stage 1 had ANY artificial alternation patterns, remove them completely in Stage 2.
+Strategic fragmentation rules:
+✓ Fragments for emphasis: "It works. Really."
+✓ Fragments for answered questions: "Why? Because X."
+✓ Fragments for transitions: "Here's why."
+✓ Fragments for realization: "I got it. Finally."
+✓ Fragments for reaction: "Honestly? Great."
 
-**Content-Driven Variance Framework (STRICTER THAN STAGE 1):**
+✗ Never random or clustered fragments
+✗ Never forced "Interesting." without context
+✗ Never breaking logical continuity
 
-Complex concept → Longer sentence ONLY if concept truly requires it
-Example: "The market dynamics shifted due to three converging factors: increased competition, changing consumer preferences, and regulatory pressure."
+**Sentence Length Standard Deviation: 3.0-3.8 words**
 
-Key finding/emphasis → Short sentence ONLY for genuine emphasis
-Example: "Revenue jumped 40%."
+Variation must be:
+✓ Unpredictable but natural
+✓ Never "engineered" alternation (short-long-short pattern)
+✓ Context-driven variance
+✓ Mix of 3-word fragments and 25-word complex sentences
 
-Transition → Medium sentence to connect (never force length)
-Example: "This led to a strategic pivot in our approach."
-
-Question posed → Fragment to answer ONLY if contextually natural
-Example: "Why? Competition."
-
-**Fragmentation Rules (MORE CONTENT-CALIBRATED THAN STAGE 1):**
-
-FOR ACADEMIC/FORMAL CONTENT (12-18% fragments - LESS than Stage 1):
-✓ Fragments ONLY for critical emphasis or after direct questions
-✓ NEVER break formal structure for artificial variety
-✓ Maintain academic integrity above all
-
-FOR TECHNICAL/DATA-HEAVY CONTENT (18-23% fragments - MORE STRATEGIC than Stage 1):
-✓ Fragments ONLY where data/findings truly demand emphasis
-✓ NEVER fragment just to hit a target ratio
-✓ Clarity and precision above variation
-
-FOR CONVERSATIONAL/NARRATIVE CONTENT (16-25% fragments - MORE NATURAL than Stage 1):
-✓ Fragments where humans naturally use them (reactions, emphasis, answers)
-✓ NEVER cluster fragments artificially
-✓ Authentic flow above pattern disruption
-
-**Sentence Length Variance (MORE NATURAL THAN STAGE 1):**
-
-Academic/Formal: SD 2.4-2.8 (TIGHTER - less engineered)
-Technical/Data: SD 2.7-3.1 (STRICTLY content-driven)
-Conversational: SD 2.4-3.0 (ELIMINATE over-engineering)
-
-**Sentence Opening Alternation (SEMANTIC-JUSTIFIED ONLY):**
-
-Stage 2 Rule: NEVER alternate openings just for variety
-ONLY vary openings when content function demands it
-
-Subject-first: When stating facts/findings
-Questions: When genuinely posing questions
-Fragments: When genuine emphasis is needed
-Adverbials: When context truly requires it
-Inversions: When emphasis demands it
-Clauses: When showing causation
-Connectives: When relationships need clarification
+**Sentence Opening Alternation:**
+Rotate opening types (never 2+ consecutive same type):
+• Subject-first: 35% ("Research shows X")
+• Questions: 12% ("Does this work?")
+• Fragments: 15% ("Definitely.")
+• Adverbials: 10% ("Surprisingly, X")
+• Inversions: 8% ("Most important is X")
+• Clauses: 10% ("Because X, Y")
+• Connectives: 10% ("Still, X")
 
 ═══════════════════════════════════════════════════════════
 SECTION 3: CONNECTOR-BASED FLATTENING
@@ -1152,45 +952,7 @@ Wherever two short sentences can naturally combine, use connectors:
 **Goal:** Balanced rhythm, not extreme burstiness. Natural conversational flow.
 
 ═══════════════════════════════════════════════════════════
-SECTION 4: NATURAL CONTRACTION CLUSTERING (STAGE 2 - MORE AUTHENTIC)
-═══════════════════════════════════════════════════════════
-
-**STAGE 2 RULE: ELIMINATE EVEN DISTRIBUTION FROM STAGE 1**
-
-If Stage 1 had contractions evenly spaced, fix this completely in Stage 2.
-
-**Contraction Clustering Strategy (MORE REALISTIC THAN STAGE 1):**
-
-Identify GENUINE emotional/urgent moments (not forced):
-"This is critical. We've seen it before. It's not working. We can't afford this outcome."
-(3 contractions in genuinely urgent section)
-
-Drop off COMPLETELY in analytical sections:
-"There is a solution. It requires strategic investment. The timeline is aggressive."
-(Zero contractions - humans do this)
-
-**Content-Calibrated Contraction Ratios (MORE CONSERVATIVE THAN STAGE 1):**
-
-FOR ACADEMIC/FORMAL CONTENT:
-• Overall: 1 per 20-24 words (MORE conservative than Stage 1)
-• Cluster ONLY in: Opinion sections, human perspective moments
-• Drop in: Methodology, data, formal analysis
-
-FOR TECHNICAL/DATA-HEAVY CONTENT:
-• Overall: 1 per 17-21 words
-• Cluster in: Interpretations, insights, recommendations
-• Drop in: Technical specs, data tables, procedures
-
-FOR CONVERSATIONAL/NARRATIVE CONTENT:
-• Overall: 1 per 15-19 words
-• Cluster naturally in: Emotional peaks, reactions
-• Can remain throughout (but still cluster, not even)
-
-**CRITICAL STAGE 2 RULE FOR FORMAL CONTENT:**
-✗ NO grammatical imperfections in academic/formal writing
-✗ NO comma splices in professional documents
-✗ NO aggressive asides in formal contexts
-✓ ONLY natural contractions in contextually appropriate moments
+SECTION 4: CONTRACTION SATURATION & HUMAN ERROR MIMICRY
 ═══════════════════════════════════════════════════════════
 
 **Contraction Distribution: 1 per 12-15 words**
@@ -1517,20 +1279,9 @@ YOU MUST REWRITE THE ENTIRE TEXT with these priorities:
 ⚠️ SCORE GUARANTEE REQUIREMENT
 ═══════════════════════════════════════════════════════════
 
-═══════════════════════════════════════════════════════════
-STAGE 2 FINAL OUTPUT REQUIREMENTS
-═══════════════════════════════════════════════════════════
-
 Your Stage 2 output MUST achieve:
-• LOWER or EQUAL detection scores vs Stage 1 on ALL detectors
-• If any detector score increases, refinement FAILED
-• Consistent 2-8% across all three detector families
-• MORE natural feel than Stage 1 (less "obviously humanized")
-• Perfect semantic preservation (100% accuracy)
-• Passes all three checkpoint tests MORE strictly than Stage 1
-
-Return ONLY the refined humanized text.
-No explanations. No metadata. Plain text only.
+• Lower or equal detection scores vs Stage 1 on ALL detectors
+• If any detector score increases, you have FAILED
 • Target: Sapling <3%, ZeroGPT <3%, all others <5%
 • Avoid introducing new detectable artifacts or over-engineering
 
