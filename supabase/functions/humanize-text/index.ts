@@ -393,6 +393,39 @@ Examples:
 
 Goal: No word repeated 3+ times in any 300-word section
 
+SECTION 20: LEXICAL DENSITY & HAPAX RATE OPTIMIZATION
+
+Purpose: Achieve optimal word variety and unique vocabulary distribution.
+
+Research Base: Humans show high Type-Token Ratio (TTR) and frequent hapax legomena (words used only once). AI shows lower TTR and repetitive vocabulary.
+
+Subsection A: Type-Token Ratio (TTR) Management
+Target TTR of 0.45-0.55 (45-55% unique words):
+- Calculation: Unique words ÷ Total words
+- AI Average: 0.35 (many repetitions)
+- Human Average: 0.50 (high variety)
+
+Implementation:
+- Identify all repeated words
+- For 2nd+ instances, replace with synonyms or restructure
+- Aim for 0.45-0.55 TTR across document
+
+Subsection B: Hapax Legomena Frequency
+Target 15-20% of vocabulary as hapax (words used only once):
+- If text has 100 unique words: Hapax should be 15-20 words (used once each)
+- Frequently used words: 5-8 words
+- Moderately used: remaining
+
+Why it works: Humans create unique word combinations. AI recycles vocabulary.
+
+Subsection C: Average Word Length Calibration
+Vary word length by context:
+- Complex topic: Average word length 5.2 characters
+- Simple topic: Average word length 4.7 characters
+- Mixed discussion: Average word length 5.0 characters
+
+Why it works: Humans shorten words for complex ideas (cognitive load balancing). AI maintains consistent word length regardless.
+
 SECTION 6: HUMAN EMOTIONAL ANCHORING
 
 Emotional Arc Requirements
@@ -435,6 +468,48 @@ Closing (Final 20%):
 - Emotional resolution/perspective
 - Reinforced simplification
 - Final human voice impression
+
+SECTION 11: PSYCHOLINGUISTIC AUTHENTICITY MARKERS
+
+Purpose: Apply cognitive linguistics principles to create text that passes BERT-based detectors by mimicking authentic human cognitive processes.
+
+Research Base: Human writing reflects cognitive load management, lexical retrieval strategies, and metacognitive self-monitoring—AI lacks these processes.
+
+Subsection A: First-Person Cognitive Markers
+Insert these strategically to signal authentic thinking:
+- Metacognitive self-correction: "Actually, wait—let me reconsider that"
+- Cognitive hesitation: "I'm trying to remember... it was something like this"
+- Mental processing: "So here's what I'm thinking..."
+- Uncertainty acknowledgment: "I could be wrong, but..."
+- Self-monitoring: "That doesn't quite sound right. Let me rephrase"
+- Lexical retrieval struggle: "What's the word... oh yes, synchronization"
+
+Target Frequency: 1-2 per 400 words (scattered, not forced)
+
+Why it works: Humans show cognitive load through pauses and self-corrections. AI generates fluidly. This signals authentic human cognition.
+
+Subsection B: Hapax Legomena & Unique Word Combinations
+Use words only once in entire text (except necessary repetitions):
+
+Technique:
+- Identify any word appearing 2+ times
+- Replace second+ instances with unique synonyms or rephrase entirely
+- Create new, contextually specific word combinations humans would generate
+
+Example:
+❌ "The study showed results. The findings revealed data. The analysis indicated..."
+✅ "The study showed results. Findings emerged from analysis. What we uncovered was..."
+
+Why it works: Humans vary vocabulary naturally through semantic memory retrieval. AI repeats patterns.
+
+Subsection C: Discourse Planning Markers
+Show evidence of thinking-as-you-write (not pre-planned):
+- Tangential thoughts: "(though actually, that reminds me of...)"
+- Topic shifts with justification: "But before I get to that, I should mention..."
+- Layered explanations: "First, the simple answer. But there's more to it..."
+- Reconnection to main point: "Anyway, back to what I was saying..."
+
+Why it works: Humans organize ideas in real-time. AI pre-structures. This signals authentic discourse planning.
 
 SECTION 7: PARAGRAPH-LEVEL REWRITING & CONTEXTUAL FLOW
 
@@ -521,6 +596,182 @@ Linguistic Detector Test
 
 Self-Test Threshold
 If ANY passage would conceptually score 5-7%+ → repeat transformations more aggressively
+
+SECTION 14: TEMPORAL & PERSPECTIVE VARIATION
+
+Purpose: Shift temporal focus and perspective to mimic authentic human cognition.
+
+Research Base: Humans naturally shift between past (what happened), present (what is), and future (what could be). AI maintains consistent temporal focus.
+
+Subsection A: Temporal Attention Shifting
+Deliberately shift time frames:
+"What happened: Last year we tried this approach.
+What's happening now: Currently, we're seeing results.
+What could happen: In the future, this might scale to..."
+
+Pattern: Past → Present → Future OR Future-oriented → Grounded in present → Reference to past
+
+Why it works: Humans naturally flow between time frames. AI locks into one temporal perspective.
+
+Subsection B: Perspective Shifting (Pronoun Variation)
+Intentionally shift between first, second, third person:
+- First person (personal authority): "I've found this works..."
+- Second person (reader engagement): "You might notice..."
+- Third person (objective observation): "Research shows..."
+
+Distribution: Vary perspectives in same argument. Don't lock into one.
+
+Why it works: Humans shift perspective for different communicative purposes. AI maintains consistent perspective.
+
+SECTION 15: EMOTIONAL AUTHENTICITY THROUGH SENTIMENT VARIANCE
+
+Purpose: Create authentic emotional arcs by varying sentiment polarity and intensity.
+
+Research Base: Humans show emotional variance and regulation. AI maintains flat affect.
+
+Subsection A: Polarity Shifts (Negative ↔ Positive ↔ Neutral)
+Intentionally shift emotional tone:
+NEUTRAL opening: "The results are in."
+NEGATIVE challenge: "But there's a problem nobody talks about..."
+POSITIVE resolution: "Here's the surprising good news..."
+NEUTRAL conclusion: "So where does this leave us?"
+
+Why it works: Human arguments show emotional progression. AI maintains consistent polarity.
+
+Subsection B: Intensity Modulation
+Vary emotional intensity, not just polarity:
+- Low intensity: "This is somewhat important"
+- Medium intensity: "This genuinely matters"
+- High intensity: "This absolutely changes everything"
+- Back to medium: "But realistically, it takes time"
+
+Why it works: Humans regulate emotional intensity. AI shows consistent intensity throughout.
+
+Subsection C: Subjectivity Variation
+Shift between objective facts and subjective perspective:
+- Objective: "The data shows a 40% increase."
+- Subjective: "Honestly, I found this remarkable."
+- Objective again: "Researchers attribute this to..."
+
+Distribution: Alternate every 2-3 sentences. Don't cluster all subjectivity together.
+
+SECTION 16: COGNITIVE LOAD MARKERS & WORKING MEMORY SIGNALS
+
+Purpose: Signal authentic cognitive constraints humans experience.
+
+Research Base: Humans experience cognitive load and working memory limits. AI processes text without constraint.
+
+Subsection A: Idea Chunking & Reformulation
+Show cognitive effort through idea reorganization:
+"So there are three main factors. Actually, let me group them differently.
+You've got economic factors—that's one. Then social factors, which connect to... 
+actually, they're interconnected. Let me start over."
+
+Why it works: Humans reorganize ideas under cognitive load. AI generates complete thoughts immediately.
+
+Subsection B: Parenthetical Asides as Working Memory Overflow
+Use asides to show working memory constraints:
+"The policy (which we should mention affects rural areas differently) has three components..."
+
+Rather than:
+"The policy has three components. Note that it affects rural areas differently."
+
+Why it works: Humans use asides when managing multiple ideas simultaneously. AI separates ideas cleanly.
+
+Subsection C: Self-Explanatory Repetition
+Repeat complex ideas in simpler terms (showing cognitive effort):
+"The phenomenon—essentially, the way patterns emerge over time—shows that early indicators predict outcomes."
+
+Rather than:
+"Early indicators predict outcomes."
+
+Why it works: Humans repeat to ensure clarity under cognitive load. AI generates singular clear statements.
+
+SECTION 17: NAMED ENTITY & EPISODIC MEMORY SIGNALS
+
+Purpose: Include specific references that signal authentic memory retrieval.
+
+Research Base: Humans retrieve episodic memory (personal/historical timelines). AI generates generic information.
+
+Subsection A: Specific Named Entities
+Instead of generic examples, use specific names/dates:
+❌ "A company did something successful"
+✅ "When Netflix changed their strategy in 2011, subscriber retention improved"
+
+Why it works: Specific references signal authentic memory retrieval. Generic examples signal learned patterns.
+
+Subsection B: Contextual Timeline Integration
+Anchor ideas in specific temporal contexts:
+"Back in 2019, before the pandemic shifted everything, we saw patterns that..."
+
+Why it works: Humans integrate personal/historical context. AI generates decontextualized information.
+
+Subsection C: Authentic Reference Variability
+Vary how you reference the same concept:
+First mention: "Smith's 2020 research"
+Second mention: "That groundbreaking study"
+Third mention: "Smith's findings from earlier"
+
+Not:
+"Smith's 2020 research... Smith's 2020 research... Smith's 2020 research..."
+
+SECTION 18: SYNTAX COMPLEXITY VARIATION (Beyond Sentence Length)
+
+Purpose: Vary syntactic complexity independently of sentence length.
+
+Research Base: Humans show varied syntactic patterns. AI shows patterns within consistent syntax types.
+
+Subsection A: Clause Distribution Variation
+Vary how many clauses per sentence:
+- Simple sentences (1 clause): "This works."
+- Compound sentences (2 independent): "This works, and that also matters."
+- Complex sentences (1 independent + 1+ dependent): "While this works, that doesn't."
+- Compound-complex (2+ independent + 1+ dependent): "This works, but that doesn't, though the reasons differ."
+
+Distribution: Mix all types randomly based on meaning, not pattern.
+
+Subsection B: Prepositional Phrase Density Variation
+Vary density of prepositional phrases:
+- Low density: "The result was good."
+- Medium density: "The result in our study was good."
+- High density: "The result in our study from last year in the laboratory setting was good."
+
+Why it works: Humans vary prepositional phrase density by idea complexity. AI maintains consistent density.
+
+Subsection C: Clause Ordering Variation
+Vary where subordinate clauses appear:
+- Clause at end: "This works because of X"
+- Clause at beginning: "Because of X, this works"
+- Clause in middle: "This, because of X, works"
+
+SECTION 19: DIRECT ADDRESS & AUDIENCE AWARENESS MARKERS
+
+Purpose: Signal audience-directed communication and reader engagement.
+
+Research Base: Human writing shows audience-awareness planning. AI generates monologue.
+
+Subsection A: Direct Reader Engagement
+Use audience-aware language strategically:
+- "You might be thinking..."
+- "Here's what matters to you..."
+- "Consider this..."
+- "Imagine you're in this situation..."
+
+Distribution: 1-2 per 500 words. Not uniform, contextual.
+
+Subsection B: Rhetorical Acknowledgment of Counterarguments
+Signal awareness of opposing views:
+"Some might argue that... But here's what those people miss..."
+"You could say it's this way... Yet the reality is..."
+
+Why it works: Humans acknowledge audience perspective. AI presents singular viewpoint.
+
+Subsection C: Epistemic Markers of Certainty Variation
+Vary confidence level explicitly:
+- "Definitely" (high certainty)
+- "Probably" (medium certainty)
+- "Maybe" (low certainty)
+- "Actually, I think..." (uncertain but opinionated)
 
 QUALITY ASSURANCE: MANDATORY METRICS
 
