@@ -14,13 +14,65 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      usage_tracking: {
+        Row: {
+          created_at: string
+          id: string
+          last_request_at: string | null
+          month_year: string
+          quota_limit: number
+          request_count: number
+          tier: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          last_request_at?: string | null
+          month_year: string
+          quota_limit?: number
+          request_count?: number
+          tier?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          last_request_at?: string | null
+          month_year?: string
+          quota_limit?: number
+          request_count?: number
+          tier?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      check_usage_quota: {
+        Args: { p_tier?: string; p_user_id: string }
+        Returns: {
+          current_count: number
+          is_within_quota: boolean
+          quota_limit: number
+          remaining: number
+        }[]
+      }
+      increment_usage_count: {
+        Args: { p_tier?: string; p_user_id: string }
+        Returns: {
+          current_count: number
+          is_within_quota: boolean
+          quota_limit: number
+          remaining: number
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
