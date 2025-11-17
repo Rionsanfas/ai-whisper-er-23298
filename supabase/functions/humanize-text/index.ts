@@ -1,9 +1,12 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.58.0";
 
 const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
 const SAPLING_API_KEY = Deno.env.get("SAPLING_API_KEY");
 const ZEROGPT_API_KEY = Deno.env.get("ZEROGPT_API_KEY");
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -14,6 +17,15 @@ const corsHeaders = {
 const MAX_INPUT_LENGTH = 15000; // chars per request
 const API_TIMEOUT = 10000; // 10 seconds for external API calls
 const LOG_LEVEL = Deno.env.get("LOG_LEVEL") || "ERROR"; // ERROR, INFO, DEBUG
+
+// Allowed origins for request validation (add your production domains)
+const ALLOWED_ORIGINS = [
+  "http://localhost:5173",
+  "http://localhost:8080", 
+  "https://lovable.dev",
+  "https://gjvrdthkcrjpvfdincfn.lovable.app", // Your Lovable Cloud domain
+  // Add your custom domain(s) here when deployed
+];
 
 // Rate limiting storage (in-memory, use Redis/DB for production)
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
@@ -231,12 +243,57 @@ serve(async (req) => {
   const startTime = Date.now();
 
   try {
-    // Extract client identifier for rate limiting
+    // SECURITY: Validate request origin
+    const origin = req.headers.get("origin") || req.headers.get("referer");
+    const isAllowedOrigin = origin && ALLOWED_ORIGINS.some(allowed => 
+      origin.startsWith(allowed)
+    );
+    
+    if (!isAllowedOrigin && origin) {
+      log("ERROR", "Unauthorized origin", { origin: origin.slice(0, 50) });
+      return new Response(
+        JSON.stringify({ error: "Unauthorized: Invalid request origin" }),
+        { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // Extract client identifier and auth
     const clientIp = req.headers.get("x-forwarded-for") || 
                      req.headers.get("x-real-ip") || 
                      "unknown";
     const authHeader = req.headers.get("authorization");
     const clientId = authHeader ? `user:${authHeader.substring(0, 20)}` : `ip:${clientIp}`;
+    
+    // Initialize Supabase client for usage tracking
+    const supabaseClient = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+    
+    // Get authenticated user
+    let userId: string | null = null;
+    let userTier = "free"; // Default tier
+    
+    if (authHeader) {
+      const token = authHeader.replace("Bearer ", "");
+      const { data: { user }, error: authError } = await supabaseClient.auth.getUser(token);
+      
+      if (user) {
+        userId = user.id;
+        // TODO: Fetch user tier from user_roles or profiles table when implemented
+        // For now, all authenticated users are "free" tier
+      } else {
+        log("ERROR", "Invalid authentication token", { error: authError?.message });
+        return new Response(
+          JSON.stringify({ error: "Unauthorized: Invalid authentication token" }),
+          { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    } else {
+      // Require authentication for usage tracking
+      log("ERROR", "No authentication provided");
+      return new Response(
+        JSON.stringify({ error: "Unauthorized: Authentication required" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
     
     const { text, examples } = await req.json();
     
@@ -258,6 +315,46 @@ serve(async (req) => {
         JSON.stringify({ error: rateLimitCheck.error }),
         { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
+    }
+
+    // USAGE CONTROL: Check monthly quota
+    const { data: quotaCheck, error: quotaError } = await supabaseClient
+      .rpc("check_usage_quota", { p_user_id: userId, p_tier: userTier });
+    
+    if (quotaError) {
+      log("ERROR", "Failed to check usage quota", { error: quotaError.message });
+      // Don't block on quota check failure, but log it
+    } else if (quotaCheck && quotaCheck.length > 0) {
+      const quota = quotaCheck[0];
+      
+      if (!quota.is_within_quota) {
+        log("ERROR", "Monthly quota exceeded", { 
+          userId: userId.slice(0, 8),
+          used: quota.current_count,
+          limit: quota.quota_limit 
+        });
+        return new Response(
+          JSON.stringify({ 
+            error: "Monthly quota exceeded",
+            quota: {
+              used: quota.current_count,
+              limit: quota.quota_limit,
+              remaining: 0,
+              tier: userTier
+            }
+          }),
+          { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      
+      // Warn if approaching limit (90% used)
+      if (quota.remaining <= quota.quota_limit * 0.1) {
+        log("INFO", "User approaching quota limit", {
+          userId: userId.slice(0, 8),
+          remaining: quota.remaining,
+          limit: quota.quota_limit
+        });
+      }
     }
 
     if (!LOVABLE_API_KEY) {
@@ -1843,7 +1940,45 @@ Preserve 100% factual accuracy and semantic meaning.`,
         stage2Applied: saplingResult2 !== saplingResult1 || zeroGPTResult2 !== zeroGPTResult1,
         stage2Worse,
       },
+      quota: {
+        used: 0,
+        limit: 0,
+        remaining: 0,
+        tier: userTier
+      }
     };
+
+    // USAGE TRACKING: Increment usage counter after successful processing
+    const { data: usageData, error: usageError } = await supabaseClient
+      .rpc("increment_usage_count", { p_user_id: userId, p_tier: userTier });
+    
+    let quotaInfo = {
+      used: 0,
+      limit: 30,
+      remaining: 30,
+      tier: userTier
+    };
+    
+    if (usageError) {
+      log("ERROR", "Failed to increment usage", { error: usageError.message });
+    } else if (usageData && usageData.length > 0) {
+      const usage = usageData[0];
+      quotaInfo = {
+        used: usage.current_count,
+        limit: usage.quota_limit,
+        remaining: usage.remaining,
+        tier: userTier
+      };
+      
+      log("INFO", "Usage updated", {
+        userId: userId?.slice(0, 8),
+        used: usage.current_count,
+        remaining: usage.remaining
+      });
+    }
+    
+    // Add quota info to response
+    responsePayload.quota = quotaInfo;
 
     log("INFO", "Request complete", {
       processingTime: `${processingTime}ms`,
@@ -1853,6 +1988,7 @@ Preserve 100% factual accuracy and semantic meaning.`,
       },
       stage2Applied: responsePayload.metadata.stage2Applied,
       stage2Worse,
+      quotaRemaining: quotaInfo.remaining,
     });
 
     return new Response(
