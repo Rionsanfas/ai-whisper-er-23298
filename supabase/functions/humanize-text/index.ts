@@ -10,14 +10,114 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-// Call Sapling AI Detector with explicit logging
+// Configuration Constants
+const MAX_INPUT_LENGTH = 15000; // chars per request
+const API_TIMEOUT = 10000; // 10 seconds for external API calls
+const LOG_LEVEL = Deno.env.get("LOG_LEVEL") || "ERROR"; // ERROR, INFO, DEBUG
+
+// Rate limiting storage (in-memory, use Redis/DB for production)
+const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_PER_MINUTE = 10;
+const RATE_LIMIT_PER_HOUR = 100;
+
+// Helper: Logging with levels
+function log(level: "ERROR" | "INFO" | "DEBUG", message: string, data?: any) {
+  const levels = { ERROR: 0, INFO: 1, DEBUG: 2 };
+  const currentLevel = levels[LOG_LEVEL as keyof typeof levels] || 0;
+  
+  if (levels[level] <= currentLevel) {
+    if (level === "ERROR") {
+      console.error(message, data ? JSON.stringify(data, null, 2) : "");
+    } else {
+      console.log(message, data ? JSON.stringify(data, null, 2) : "");
+    }
+  }
+}
+
+// Helper: Input validation
+function validateInput(text: string): { valid: boolean; error?: string } {
+  if (!text || typeof text !== "string") {
+    return { valid: false, error: "Text must be a non-empty string" };
+  }
+  
+  if (text.length > MAX_INPUT_LENGTH) {
+    return { valid: false, error: `Text exceeds maximum length of ${MAX_INPUT_LENGTH} characters` };
+  }
+  
+  // Check for script injection patterns
+  const suspiciousPatterns = [
+    /<script[^>]*>.*?<\/script>/gi,
+    /javascript:/gi,
+    /on\w+\s*=/gi, // event handlers
+    /<iframe/gi,
+  ];
+  
+  for (const pattern of suspiciousPatterns) {
+    if (pattern.test(text)) {
+      return { valid: false, error: "Text contains potentially malicious content" };
+    }
+  }
+  
+  return { valid: true };
+}
+
+// Helper: Rate limiting check
+function checkRateLimit(clientId: string): { allowed: boolean; error?: string } {
+  const now = Date.now();
+  const minuteKey = `${clientId}:minute`;
+  const hourKey = `${clientId}:hour`;
+  
+  // Check minute limit
+  const minuteData = rateLimitStore.get(minuteKey);
+  if (minuteData && minuteData.resetAt > now) {
+    if (minuteData.count >= RATE_LIMIT_PER_MINUTE) {
+      return { allowed: false, error: "Rate limit exceeded: too many requests per minute" };
+    }
+    minuteData.count++;
+  } else {
+    rateLimitStore.set(minuteKey, { count: 1, resetAt: now + 60000 });
+  }
+  
+  // Check hour limit
+  const hourData = rateLimitStore.get(hourKey);
+  if (hourData && hourData.resetAt > now) {
+    if (hourData.count >= RATE_LIMIT_PER_HOUR) {
+      return { allowed: false, error: "Rate limit exceeded: too many requests per hour" };
+    }
+    hourData.count++;
+  } else {
+    rateLimitStore.set(hourKey, { count: 1, resetAt: now + 3600000 });
+  }
+  
+  return { allowed: true };
+}
+
+// Helper: Timeout wrapper for fetch calls
+async function fetchWithTimeout(url: string, options: any, timeoutMs: number = API_TIMEOUT) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+  
+  try {
+    const response = await fetch(url, { ...options, signal: controller.signal });
+    clearTimeout(timeout);
+    return response;
+  } catch (error) {
+    clearTimeout(timeout);
+    if (error instanceof Error && error.name === "AbortError") {
+      throw new Error(`Request timeout after ${timeoutMs}ms`);
+    }
+    throw error;
+  }
+}
+
+// Call Sapling AI Detector with timeout and graceful error handling
 async function detectWithSapling(text: string) {
   if (!SAPLING_API_KEY) {
-    console.error("❌ DETECTOR ERROR: Sapling API key not configured");
+    log("ERROR", "Sapling API key not configured");
     return { error: "API key not configured", score: null };
   }
 
-  console.log("🔍 SAPLING DETECTOR CALL - Input length:", text.length, "chars");
+  log("INFO", `Sapling detector call - length: ${text.length} chars`);
   
   try {
     const requestBody = {
@@ -26,92 +126,84 @@ async function detectWithSapling(text: string) {
       sent_scores: true,
     };
     
-    console.log("📤 Sapling request prepared, sending...");
-    
-    const response = await fetch("https://api.sapling.ai/api/v1/aidetect", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(requestBody),
-    });
-
-    console.log("📥 Sapling response status:", response.status);
+    const response = await fetchWithTimeout(
+      "https://api.sapling.ai/api/v1/aidetect",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(requestBody),
+      },
+      API_TIMEOUT
+    );
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error("❌ SAPLING DETECTION FAILED:", {
+      log("ERROR", "Sapling detection failed", {
         status: response.status,
-        statusText: response.statusText,
-        error: errorText,
+        error: errorText.substring(0, 200), // Limit logged error text
       });
-      return { error: `HTTP ${response.status}: ${errorText}`, score: null };
+      return { error: `HTTP ${response.status}`, score: null };
     }
 
     const data = await response.json();
-    console.log("✅ SAPLING DETECTION SUCCESS:", {
-      overallScore: (data.score * 100).toFixed(2) + "%",
-      sentenceCount: data.sentence_scores?.length || 0,
-      tokensCount: data.tokens?.length || 0,
-    });
+    log("INFO", `Sapling detection success: ${(data.score * 100).toFixed(2)}%`);
     
     return {
-      score: data.score * 100, // Convert to percentage
+      score: data.score * 100,
       sentenceScores: data.sentence_scores || [],
       tokens: data.tokens || [],
       tokenProbs: data.token_probs || [],
       error: null,
     };
   } catch (error) {
-    console.error("❌ SAPLING DETECTION EXCEPTION:", {
+    log("ERROR", "Sapling detection exception", {
       error: error instanceof Error ? error.message : String(error),
-      stack: error instanceof Error ? error.stack : undefined,
     });
-    return { error: error instanceof Error ? error.message : "Unknown error", score: null };
+    return { 
+      error: error instanceof Error ? error.message : "Unknown error", 
+      score: null 
+    };
   }
 }
 
-// Call ZeroGPT AI Detector with explicit logging
+// Call ZeroGPT AI Detector with timeout and graceful error handling
 async function detectWithZeroGPT(text: string) {
   if (!ZEROGPT_API_KEY) {
-    console.error("❌ DETECTOR ERROR: ZeroGPT API key not configured");
+    log("ERROR", "ZeroGPT API key not configured");
     return { error: "API key not configured", score: null };
   }
 
-  console.log("🔍 ZEROGPT DETECTOR CALL - Input length:", text.length, "chars");
+  log("INFO", `ZeroGPT detector call - length: ${text.length} chars`);
   
   try {
     const requestBody = {
       input_text: text,
     };
     
-    console.log("📤 ZeroGPT request prepared, sending...");
-    
-    const response = await fetch("https://api.zerogpt.com/api/v1/detectText", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${ZEROGPT_API_KEY}`,
+    const response = await fetchWithTimeout(
+      "https://api.zerogpt.com/api/v1/detectText",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${ZEROGPT_API_KEY}`,
+        },
+        body: JSON.stringify(requestBody),
       },
-      body: JSON.stringify(requestBody),
-    });
-
-    console.log("📥 ZeroGPT response status:", response.status);
+      API_TIMEOUT
+    );
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error("❌ ZEROGPT DETECTION FAILED:", {
+      log("ERROR", "ZeroGPT detection failed", {
         status: response.status,
-        statusText: response.statusText,
-        error: errorText,
+        error: errorText.substring(0, 200),
       });
-      return { error: `HTTP ${response.status}: ${errorText}`, score: null };
+      return { error: `HTTP ${response.status}`, score: null };
     }
 
     const data = await response.json();
-    console.log("✅ ZEROGPT DETECTION SUCCESS:", {
-      score: data.data?.is_gpt_generated + "%",
-      flaggedSentencesCount: data.data?.gpt_generated_sentences?.length || 0,
-      wordsCount: data.data?.words_count || 0,
-    });
+    log("INFO", `ZeroGPT detection success: ${data.data?.is_gpt_generated}%`);
     
     return {
       score: data.data?.is_gpt_generated || 0,
@@ -120,11 +212,13 @@ async function detectWithZeroGPT(text: string) {
       error: null,
     };
   } catch (error) {
-    console.error("❌ ZEROGPT DETECTION EXCEPTION:", {
+    log("ERROR", "ZeroGPT detection exception", {
       error: error instanceof Error ? error.message : String(error),
-      stack: error instanceof Error ? error.stack : undefined,
     });
-    return { error: error instanceof Error ? error.message : "Unknown error", score: null };
+    return { 
+      error: error instanceof Error ? error.message : "Unknown error", 
+      score: null 
+    };
   }
 }
 
@@ -134,34 +228,63 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  const startTime = Date.now();
+
   try {
+    // Extract client identifier for rate limiting
+    const clientIp = req.headers.get("x-forwarded-for") || 
+                     req.headers.get("x-real-ip") || 
+                     "unknown";
+    const authHeader = req.headers.get("authorization");
+    const clientId = authHeader ? `user:${authHeader.substring(0, 20)}` : `ip:${clientIp}`;
+    
+    // Rate limiting check
+    const rateLimitCheck = checkRateLimit(clientId);
+    if (!rateLimitCheck.allowed) {
+      log("ERROR", "Rate limit exceeded", { clientId });
+      return new Response(JSON.stringify({ error: rateLimitCheck.error }), {
+        status: 429,
+        headers: { 
+          ...corsHeaders, 
+          "Content-Type": "application/json",
+          "Retry-After": "60"
+        },
+      });
+    }
+
     const { text, examples } = await req.json();
 
-    if (!text) {
-      return new Response(JSON.stringify({ error: "No text provided" }), {
+    // Input validation
+    const validation = validateInput(text);
+    if (!validation.valid) {
+      log("ERROR", "Input validation failed", { error: validation.error });
+      return new Response(JSON.stringify({ error: validation.error }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
     if (!LOVABLE_API_KEY) {
+      log("ERROR", "Lovable AI not configured");
       return new Response(
         JSON.stringify({ error: "Lovable AI is not configured" }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
 
-    console.log("Humanizing text...");
+    log("INFO", `Processing request - text length: ${text.length} chars`);
 
-    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
-        messages: [
+    const response = await fetchWithTimeout(
+      "https://ai.gateway.lovable.dev/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${LOVABLE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "google/gemini-2.5-flash",
+          messages: [
           {
             role: "user",
             content: `You are an elite AI text humanizer engineered to consistently achieve detection scores BELOW 2% across ALL detectors (Undetectable AI, DeCopy, ZeroGPT, GPTZero, Originality AI, Copyleaks, Turnitin) while preserving 100% factual accuracy and natural readability.
@@ -1661,7 +1784,9 @@ Preserve 100% factual accuracy and semantic meaning.`,
       console.log("✅ STAGE 1 scores already optimal (<3%), skipping Stage 2 refinement");
     }
 
-    // Prepare final response with comprehensive detection results
+    // Prepare final response
+    const processingTime = Date.now() - startTime;
+    
     const responsePayload = {
       humanizedText: finalText,
       detection: {
@@ -1697,23 +1822,28 @@ Preserve 100% factual accuracy and semantic meaning.`,
                     error: zeroGPTResult2.error || null,
                   }
                 : { error: zeroGPTResult2?.error || "No data", score: null },
+              stage2Worse,
             }
           : null,
         errors: detectorErrors.length > 0 ? detectorErrors : null,
       },
+      metadata: {
+        processingTimeMs: processingTime,
+        textLength: text.length,
+        outputLength: finalText.length,
+        stage2Applied: saplingResult2 !== saplingResult1 || zeroGPTResult2 !== zeroGPTResult1,
+        stage2Worse,
+      },
     };
 
-    console.log("📦 Final response prepared:", {
-      textLength: finalText.length,
+    log("INFO", "Request complete", {
+      processingTime: `${processingTime}ms`,
       stage1Scores: {
         sapling: saplingResult1?.score?.toFixed(2) + "%" || "N/A",
         zerogpt: zeroGPTResult1?.score?.toFixed(2) + "%" || "N/A",
       },
-      stage2Scores: responsePayload.detection.stage2 ? {
-        sapling: saplingResult2?.score?.toFixed(2) + "%" || "N/A",
-        zerogpt: zeroGPTResult2?.score?.toFixed(2) + "%" || "N/A",
-      } : "Skipped (Stage 1 optimal)",
-      hasErrors: detectorErrors.length > 0,
+      stage2Applied: responsePayload.metadata.stage2Applied,
+      stage2Worse,
     });
 
     return new Response(
@@ -1721,10 +1851,18 @@ Preserve 100% factual accuracy and semantic meaning.`,
       { headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   } catch (error) {
-    console.error("Error in humanize-text function:", error);
-    return new Response(JSON.stringify({ error: error instanceof Error ? error.message : "Unknown error" }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    log("ERROR", "Request failed", {
+      error: error instanceof Error ? error.message : String(error),
     });
+    return new Response(
+      JSON.stringify({ 
+        error: error instanceof Error ? error.message : "Unknown error",
+        type: "internal_error"
+      }),
+      {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      },
+    );
   }
 });
