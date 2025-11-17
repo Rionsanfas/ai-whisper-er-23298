@@ -24,6 +24,7 @@ const ALLOWED_ORIGINS = [
   "http://localhost:8080", 
   "https://lovable.dev",
   "https://gjvrdthkcrjpvfdincfn.lovable.app", // Your Lovable Cloud domain
+  "https://91e106d7-b8f0-4cd7-875e-2888d00d034a.lovableproject.com", // Preview domain
   // Add your custom domain(s) here when deployed
 ];
 
