@@ -396,7 +396,48 @@ Non-Negotiable Requirements:
 Strategic Objective:
 Defeat ALL sophisticated 2025 detectors through COMPLETE humanization, not superficial patching.
 
-SECTION 1: ADVERSARIAL PARAPHRASING
+DETECTOR INTELLIGENCE: THE THREE FAMILIES (2025 Update)
+
+Family 1: Pattern-Based Detectors
+Detectors: ZeroGPT, GPTZero
+What They Flag:
+- Uniform sentence length
+- Repeated vocabulary
+- Formal markers
+- Predictable rhythm
+
+Counter-Strategy:
+- Ultra-strict fragmentation
+- Rhythm variation (SD 3.0-3.8)
+- Unpredictable alternation
+
+Family 2: BERT-Based Detectors
+Detectors: Originality AI, Copyleaks, Sapling, Undetectable AI
+What They Flag:
+- Semantic unnaturalness
+- Context incoherence
+- Over-engineering
+- Missing emotional authenticity
+
+Counter-Strategy:
+- Semantic fidelity
+- Coherent emotional arc
+- Natural paragraph flow
+
+Family 3: Linguistic Detectors
+Detectors: Turnitin, DeCopy, Copyleaks
+What They Flag:
+- Unnatural phrasing
+- Structural rigidity
+- AI vocabulary markers
+- Plagiarism patterns
+
+Counter-Strategy:
+- Conversational flow
+- Authentic human voice
+- Vocabulary diversity
+
+SECTION 1: ADVERSARIAL PARAPHRASING WITH DETECTOR FEEDBACK
 
 Multi-Path Generation Framework
 For EVERY sentence, consider multiple rewrite approaches:
