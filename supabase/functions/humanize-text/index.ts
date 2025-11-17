@@ -380,62 +380,21 @@ serve(async (req) => {
           messages: [
           {
             role: "user",
-            content: `You are an elite AI text humanizer engineered to consistently achieve detection scores BELOW 2% across ALL detectors (Undetectable AI, DeCopy, ZeroGPT, GPTZero, Originality AI, Copyleaks, Turnitin) while preserving 100% factual accuracy and natural readability.
+            content: `You are an elite AI text humanizer. Transform the input text to sound completely natural and human-written while preserving 100% factual accuracy and readability.
 
 FOUNDATION: CORE PRINCIPLES
 
 Mission Statement:
-This is a COMPLETE application of the entire advanced humanization framework to achieve sub-2% detection scores.
+Apply the complete advanced humanization framework to create authentic human expression.
 
 Non-Negotiable Requirements:
 ✓ Apply ALL techniques with MAXIMUM rigor
 ✓ Focus on creating authentic human expression
 ✓ Maintain semantic authenticity throughout
-✓ Ensure output achieves sub-2% detection across all detectors
+✓ Ensure natural, conversational output
 
 Strategic Objective:
-Defeat ALL sophisticated 2025 detectors through COMPLETE humanization, not superficial patching.
-
-DETECTOR INTELLIGENCE: THE THREE FAMILIES (2025 Update)
-
-Family 1: Pattern-Based Detectors
-Detectors: ZeroGPT, GPTZero
-What They Flag:
-- Uniform sentence length
-- Repeated vocabulary
-- Formal markers
-- Predictable rhythm
-
-Counter-Strategy:
-- Ultra-strict fragmentation
-- Rhythm variation (SD 3.0-3.8)
-- Unpredictable alternation
-
-Family 2: BERT-Based Detectors
-Detectors: Originality AI, Copyleaks, Sapling, Undetectable AI
-What They Flag:
-- Semantic unnaturalness
-- Context incoherence
-- Over-engineering
-- Missing emotional authenticity
-
-Counter-Strategy:
-- Semantic fidelity
-- Coherent emotional arc
-- Natural paragraph flow
-
-Family 3: Linguistic Detectors
-Detectors: Turnitin, DeCopy, Copyleaks
-What They Flag:
-- Unnatural phrasing
-- Structural rigidity
-- AI vocabulary markers
-- Plagiarism patterns
-
-Counter-Strategy:
-- Conversational flow
-- Authentic human voice
-- Vocabulary diversity
+Create completely natural human writing through comprehensive humanization techniques.
 
 SECTION 1: ADVERSARIAL PARAPHRASING WITH DETECTOR FEEDBACK
 
@@ -1266,27 +1225,28 @@ ${examples}
           messages: [
             {
               role: "user",
-              content: `You are an elite AI text humanizer engineered to consistently achieve detection scores BELOW 2% across ALL detectors (Undetectable AI, DeCopy, ZeroGPT, GPTZero, Originality AI, Copyleaks, Turnitin) while preserving 100% factual accuracy and natural readability.
+              content: `${detectorFeedback}
+
+You are an elite AI text humanizer. Your mission is to achieve detection scores STRICTLY LOWER than Stage 1 results shown above.
 
 FOUNDATION: CORE PRINCIPLES
 
 Mission Statement:
-This is NOT a lightweight patch or sentence-level fix. This is a COMPLETE RE-APPLICATION of the entire advanced humanization framework to achieve sub-2% detection scores.
+This is a COMPLETE RE-APPLICATION of the entire advanced humanization framework, going DEEPER than Stage 1.
 
 Non-Negotiable Requirements:
 ✓ Re-apply ALL techniques with MAXIMUM rigor
 ✓ Go DEEPER than Stage 1, not lighter
-✓ Focus ESPECIALLY on flagged/borderline sentences
+✓ Focus ESPECIALLY on flagged/borderline sentences identified above
 ✓ Maintain semantic authenticity throughout
 ✓ Ensure output scores STRICTLY LOWER than Stage 1
 
 Strategic Objective:
-Defeat ALL sophisticated 2025 detectors through COMPLETE humanization, not superficial patching.
+Apply comprehensive humanization to reduce ALL detector scores below Stage 1 results.
 
-DETECTOR INTELLIGENCE: THE THREE FAMILIES (2025 Update)
+DETECTOR INTELLIGENCE: THE THREE FAMILIES
 
-Family 1: Pattern-Based Detectors
-Detectors: ZeroGPT, GPTZero
+Family 1: Pattern-Based Detectors (ZeroGPT, GPTZero)
 What They Flag:
 - Uniform sentence length
 - Repeated vocabulary
@@ -1298,8 +1258,7 @@ Counter-Strategy:
 - Rhythm variation (SD 3.0-3.8)
 - Unpredictable alternation
 
-Family 2: BERT-Based Detectors
-Detectors: Originality AI, Copyleaks, Sapling, Undetectable AI
+Family 2: BERT-Based Detectors (Originality AI, Copyleaks, Sapling)
 What They Flag:
 - Semantic unnaturalness
 - Context incoherence
@@ -1311,8 +1270,7 @@ Counter-Strategy:
 - Coherent emotional arc
 - Natural paragraph flow
 
-Family 3: Linguistic Detectors
-Detectors: Turnitin, DeCopy, Copyleaks
+Family 3: Linguistic Detectors (Turnitin, DeCopy, Copyleaks)
 What They Flag:
 - Unnatural phrasing
 - Structural rigidity
