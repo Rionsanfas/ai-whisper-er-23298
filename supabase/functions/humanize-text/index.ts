@@ -238,30 +238,26 @@ serve(async (req) => {
     const authHeader = req.headers.get("authorization");
     const clientId = authHeader ? `user:${authHeader.substring(0, 20)}` : `ip:${clientIp}`;
     
-    // Rate limiting check
-    const rateLimitCheck = checkRateLimit(clientId);
-    if (!rateLimitCheck.allowed) {
-      log("ERROR", "Rate limit exceeded", { clientId });
-      return new Response(JSON.stringify({ error: rateLimitCheck.error }), {
-        status: 429,
-        headers: { 
-          ...corsHeaders, 
-          "Content-Type": "application/json",
-          "Retry-After": "60"
-        },
-      });
-    }
-
     const { text, examples } = await req.json();
-
-    // Input validation
+    
+    // Validate input
     const validation = validateInput(text);
     if (!validation.valid) {
       log("ERROR", "Input validation failed", { error: validation.error });
-      return new Response(JSON.stringify({ error: validation.error }), {
-        status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      return new Response(
+        JSON.stringify({ error: validation.error }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // Check rate limit
+    const rateLimitCheck = checkRateLimit(clientId);
+    if (!rateLimitCheck.allowed) {
+      log("ERROR", "Rate limit exceeded", { clientId: clientId.slice(0, 8) });
+      return new Response(
+        JSON.stringify({ error: rateLimitCheck.error }),
+        { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
     }
 
     if (!LOVABLE_API_KEY) {
@@ -1096,6 +1092,7 @@ ${examples}
     let finalText = sanitizedText;
     let saplingResult2 = saplingResult1;
     let zeroGPTResult2 = zeroGPTResult1;
+    let stage2Worse = false; // Track if Stage 2 worsened scores
     
     // Determine if we need refinement - always run unless both detectors are <3%
     const needsRefinement = 
@@ -1751,13 +1748,25 @@ Preserve 100% factual accuracy and semantic meaning.`,
             status: zerogptImproved ? "✅ IMPROVED/MAINTAINED" : "❌ WORSENED",
           });
           
-          // Check if scores worsened
-          if (!saplingImproved || !zerogptImproved) {
-            console.error("⚠️ SCORE GUARANTEE VIOLATION: Stage 2 produced higher detection scores!");
-            console.error("This indicates refinement introduced new detectable artifacts.");
-            console.error("Consider reverting to Stage 1 output or triggering alternate rewrite workflow.");
-            // For now, we'll still return the refined text but log the violation
-            // In production, you might want to revert or retry with different parameters
+          // STAGE 2 GUARDRAIL: Check if scores worsened
+          stage2Worse = !saplingImproved || !zerogptImproved;
+          
+          if (stage2Worse) {
+            log("ERROR", "SCORE GUARANTEE VIOLATION: Stage 2 worsened detection scores", {
+              saplingDelta: saplingResult1?.score && saplingResult2?.score 
+                ? (saplingResult2.score - saplingResult1.score).toFixed(2) 
+                : "N/A",
+              zerogptDelta: zeroGPTResult1?.score && zeroGPTResult2?.score
+                ? (zeroGPTResult2.score - zeroGPTResult1.score).toFixed(2)
+                : "N/A",
+            });
+            
+            // REVERT TO STAGE 1: Return original humanized text if Stage 2 made things worse
+            finalText = sanitizedText;
+            saplingResult2 = saplingResult1;
+            zeroGPTResult2 = zeroGPTResult1;
+            
+            log("INFO", "Reverted to Stage 1 output due to score degradation");
           }
           
           // Final score check
