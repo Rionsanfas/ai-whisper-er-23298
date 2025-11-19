@@ -15,7 +15,8 @@ const corsHeaders = {
 
 // Configuration Constants
 const MAX_INPUT_LENGTH = 15000; // chars per request
-const API_TIMEOUT = 10000; // 10 seconds for external API calls
+const API_TIMEOUT = 90000; // 90 seconds for AI humanization calls (complex processing)
+const DETECTOR_TIMEOUT = 15000; // 15 seconds for detector API calls
 const LOG_LEVEL = Deno.env.get("LOG_LEVEL") || "ERROR"; // ERROR, INFO, DEBUG
 
 // Allowed origins for request validation (add your production domains)
@@ -146,7 +147,7 @@ async function detectWithSapling(text: string) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestBody),
       },
-      API_TIMEOUT
+      DETECTOR_TIMEOUT
     );
 
     if (!response.ok) {
@@ -203,7 +204,7 @@ async function detectWithZeroGPT(text: string) {
         },
         body: JSON.stringify(requestBody),
       },
-      API_TIMEOUT
+      DETECTOR_TIMEOUT
     );
 
     if (!response.ok) {

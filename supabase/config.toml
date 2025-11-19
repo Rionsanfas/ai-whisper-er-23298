@@ -2,3 +2,4 @@ project_id = "gjvrdthkcrjpvfdincfn"
 
 [functions.humanize-text]
 verify_jwt = false
+timeout = 120
