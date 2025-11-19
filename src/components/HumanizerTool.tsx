@@ -14,6 +14,8 @@ const HumanizerTool = () => {
   const [examples, setExamples] = useState<{ name: string; content: string }[]>([]);
   const [isParsingFiles, setIsParsingFiles] = useState(false);
   const [detection, setDetection] = useState<any | null>(null);
+  const [documentType, setDocumentType] = useState<string | null>(null);
+  const [qaMetrics, setQaMetrics] = useState<any | null>(null);
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -88,6 +90,8 @@ const HumanizerTool = () => {
 
       setOutputText(data.humanizedText);
       setDetection(data.detection || null);
+      setDocumentType(data.documentType || null);
+      setQaMetrics(data.qaMetrics || null);
       setIsProcessing(false);
       toast.success("Text humanized successfully!");
     } catch (error) {
@@ -198,6 +202,70 @@ const HumanizerTool = () => {
               )}
             </Button>
           </div>
+
+          {/* Document Type and QA Metrics */}
+          {(documentType || qaMetrics) && (
+            <div className="mb-4 p-4 bg-muted/50 rounded-lg space-y-3">
+              {documentType && (
+                <div className="flex items-center gap-2">
+                  <FileText className="h-4 w-4 text-primary" />
+                  <span className="text-sm font-medium">Document Type:</span>
+                  <span className="text-sm text-muted-foreground capitalize">
+                    {documentType.replace(/_/g, ' ')}
+                  </span>
+                </div>
+              )}
+              
+              {qaMetrics && (
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium">QA Metrics:</span>
+                    <span className={`text-sm font-semibold ${qaMetrics.passed ? 'text-green-600 dark:text-green-400' : 'text-yellow-600 dark:text-yellow-400'}`}>
+                      {qaMetrics.passed ? '✓ All Passed' : '⚠ Some Issues'}
+                    </span>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+                    <div className={`p-2 rounded ${qaMetrics.metrics.contractionDensity.passed ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200'}`}>
+                      <div className="font-medium">Contractions</div>
+                      <div>{qaMetrics.metrics.contractionDensity.value}%</div>
+                    </div>
+                    
+                    <div className={`p-2 rounded ${qaMetrics.metrics.fragmentRatio.passed ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200'}`}>
+                      <div className="font-medium">Fragments</div>
+                      <div>{qaMetrics.metrics.fragmentRatio.value}%</div>
+                    </div>
+                    
+                    <div className={`p-2 rounded ${qaMetrics.metrics.sentenceLengthSD.passed ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200'}`}>
+                      <div className="font-medium">Length SD</div>
+                      <div>{qaMetrics.metrics.sentenceLengthSD.value}</div>
+                    </div>
+                    
+                    <div className={`p-2 rounded ${qaMetrics.metrics.activeVoicePercent.passed ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200'}`}>
+                      <div className="font-medium">Active Voice</div>
+                      <div>{qaMetrics.metrics.activeVoicePercent.value}%</div>
+                    </div>
+                    
+                    <div className={`p-2 rounded ${qaMetrics.metrics.aiMarkerCount.passed ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200'}`}>
+                      <div className="font-medium">AI Markers</div>
+                      <div>{qaMetrics.metrics.aiMarkerCount.value}</div>
+                    </div>
+                    
+                    <div className={`p-2 rounded ${qaMetrics.metrics.vocabularyRepetition.passed ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200'}`}>
+                      <div className="font-medium">Vocab Rep</div>
+                      <div>{qaMetrics.metrics.vocabularyRepetition.value}</div>
+                    </div>
+                    
+                    <div className={`p-2 rounded ${qaMetrics.metrics.emotionalAnchoring.passed ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200'}`}>
+                      <div className="font-medium">Emotion</div>
+                      <div>{qaMetrics.metrics.emotionalAnchoring.value}%</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
           <Textarea
             placeholder="Your humanized text will appear here..."
             value={outputText}
