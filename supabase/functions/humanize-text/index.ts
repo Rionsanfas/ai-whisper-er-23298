@@ -103,39 +103,54 @@ EMAIL-SPECIFIC RULES:
 - Personal pronouns (I, we, you)`,
 
     academic_paper: `
-ACADEMIC PAPER RULES:
-- Formal yet accessible academic tone
+ACADEMIC PAPER RULES (STUDENT/ASSIGNMENT SPECIALIZATION):
+- Formal yet accessible academic tone with personal scholarly voice
+- Bridge factual analysis with opinion and reflection naturally
+- "What made this topic matter to me was..." style integration
 - Complex sentences mixed with clear, direct statements
-- Disciplinary terminology with natural explanation
-- Varied citation integration styles
-- Strong topic sentences with natural development
-- Logical flow with human reasoning patterns
+- Disciplinary terminology with natural explanation (register shifting)
+- Varied citation integration - not formulaic, natural progression
+- Strong topic sentences with natural development from lived context
+- Logical flow with human reasoning patterns, not just source summary
 - Occasional hedging (may, might, could suggest)
-- Mix of passive and active voice (70% active)`,
+- Mix of passive and active voice (70% active)
+- Extra density/temporal/semantic bridging in body and conclusion
+- Emphasize original argument structure over summary`,
 
     research_paper: `
-RESEARCH PAPER RULES:
-- Scientific rigor with human interpretation
-- Data presentation with natural commentary
-- Methodological clarity without robotic description
-- Results discussion with genuine analysis
-- Limitations acknowledged naturally
-- Implications explored with authentic reasoning
+RESEARCH PAPER RULES (ACADEMIC/HOMEWORK SPECIALIZATION):
+- Scientific rigor with human interpretation and personal investment
+- Data presentation with natural commentary from researcher perspective
+- Methodological clarity showing thought process, not robotic description
+- Results discussion with genuine analysis and reflection
+- Bridge technical findings with personal insight ("This surprised me because...")
+- Limitations acknowledged naturally with context
+- Implications explored with authentic reasoning and real-world connection
 - Technical precision balanced with readability
-- Strategic use of "we" for inclusive scholarly voice`,
+- Strategic use of "we" for inclusive scholarly voice
+- Integrate "research project"/"assignment" vocabulary distinctly
+- Register shifts between formal citation and conversational insight
+- Temporal anchoring to research process and timeline`,
 
     essay: `
-ESSAY/STUDENT WRITING RULES (PRIORITY FOCUS):
-- Authentic student voice with developing arguments
-- Natural progression of ideas with personal insight
+ESSAY/STUDENT WRITING RULES (MAXIMUM PRIORITY FOCUS):
+- Authentic student voice with developing arguments from personal lens
+- Emphasize original perspective and lived context, not just summary
+- Natural progression of ideas with personal insight and reflection
+- "What struck me about this was..." style integration
 - Mix of confident assertions and thoughtful questioning
-- Occasional informal asides or realizations
-- Varied sentence complexity reflecting genuine thinking
-- Personal examples and connections
-- Natural transitions that show thought process
-- Imperfect but coherent logical flow
-- Emotional engagement with topic
-- Strategic use of rhetorical devices without over-polish`,
+- Occasional informal asides or realizations ("Honestly, I hadn't considered...")
+- Varied sentence complexity reflecting genuine thinking process
+- Personal examples and connections to real experience
+- Natural transitions that show thought process evolution
+- Imperfect but coherent logical flow - authentic development
+- Emotional engagement with topic through personal investment
+- Strategic use of rhetorical devices without over-polish
+- Bridge analysis with opinion seamlessly
+- Extra register shifting: formal argument ↔ conversational reflection
+- Density/temporal/semantic bridging throughout
+- Citations and sources integrated naturally, not mechanically
+- Show homework/assignment context appropriately`,
 
     memo: `
 MEMO RULES:
@@ -250,20 +265,171 @@ Final scan for over-application:
 
 // QA Metrics Checklist
 const QA_METRICS = `
-QA METRICS CHECKLIST (Must Pass ALL):
+QA METRICS CHECKLIST (MANDATORY - Must Pass ALL Before Output):
 
-1. PERPLEXITY SCORE: 40-120 (measured by unpredictability)
-2. BURSTINESS: StdDev 4.5-6.0 words per sentence
-3. FRAGMENT RATIO: 25-35% of total sentences
-4. CONTRACTION DENSITY: 1 per 12-15 words
-5. ACTIVE VOICE: 85-95% of sentences
-6. DISCOURSE MARKERS: <5% formal markers (Furthermore, Moreover, etc.)
-7. SENTENCE OPENING VARIETY: No pattern for 5+ consecutive sentences
-8. TEMPORAL ANCHORING: 3-5 time references per 1000 words
-9. SEMANTIC COHERENCE: Every transition feels natural when read aloud
-10. ANTI-PATTERN COMPLIANCE: No LLM fingerprints detected
+Verify EACH metric below before returning output:
 
-FAILURE = Rewrite until all metrics pass`;
+1. SEMANTIC FIDELITY: 100% (no factual changes from original)
+2. CONTRACTIONS: 1 per 12-15 words (calculate total contractions/total words)
+3. FRAGMENT RATIO: 30-35% of sentences (count fragments vs total sentences)
+4. SENTENCE LENGTH SD: 3.0-3.8 words (calculate standard deviation)
+5. ACTIVE VOICE: 90%+ of sentences (count actor-first constructions)
+6. AI MARKER COUNT: 0 (completely eliminate: Furthermore, Moreover, Additionally, etc.)
+7. VOCABULARY REPETITION: Max 2 uses per word per 300 words
+8. EMOTIONAL ANCHORING: Present in EVERY paragraph (Honestly, Actually, Surprisingly, etc.)
+9. READ-ALOUD NATURALNESS: 100% pass rate (every sentence flows when spoken)
+10. DETECTOR SELF-SIMULATION: Estimated score <2% for all detector families
+
+FAILURE PROTOCOL:
+If ANY metric fails → Re-apply advanced techniques focusing on failed area
+If metrics still fail after 1 retry → Flag for manual review but return best version
+
+CALCULATION FORMULAS:
+- Contraction Density = (Total Contractions / Total Words) × 100
+  Target: 6.67-8.33% (1 per 12-15 words)
+- Fragment Ratio = (Fragment Count / Total Sentences) × 100
+  Target: 30-35%
+- Sentence Length SD = Standard Deviation of all sentence lengths
+  Target: 3.0-3.8 words
+- Active Voice % = (Active Voice Sentences / Total Sentences) × 100
+  Target: 90%+
+- Vocabulary Repetition = Count instances of each word per 300-word block
+  Target: ≤2 uses per word per block
+
+PRIORITY: Essay and Academic documents receive MAXIMUM scrutiny on ALL metrics`;
+
+// QA Metrics calculation functions
+function calculateQAMetrics(text: string): any {
+  // Split into sentences
+  const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+  const totalSentences = sentences.length;
+  
+  // Word count
+  const words = text.split(/\s+/).filter(w => w.trim().length > 0);
+  const totalWords = words.length;
+  
+  // 1. Contractions count
+  const contractionPattern = /\b\w+[''](?:t|s|re|ve|ll|d|m)\b/gi;
+  const contractions = text.match(contractionPattern) || [];
+  const contractionDensity = (contractions.length / totalWords) * 100;
+  const contractionTarget = contractionDensity >= 6.67 && contractionDensity <= 8.33;
+  
+  // 2. Fragment detection (sentences < 6 words or incomplete)
+  const fragments = sentences.filter(s => {
+    const sWords = s.trim().split(/\s+/).length;
+    return sWords < 6 || !/\b(is|are|was|were|be|been|has|have|had|do|does|did|will|would|can|could|should|must)\b/i.test(s);
+  });
+  const fragmentRatio = (fragments.length / totalSentences) * 100;
+  const fragmentTarget = fragmentRatio >= 30 && fragmentRatio <= 35;
+  
+  // 3. Sentence length standard deviation
+  const sentenceLengths = sentences.map(s => s.trim().split(/\s+/).length);
+  const avgLength = sentenceLengths.reduce((a, b) => a + b, 0) / sentenceLengths.length;
+  const variance = sentenceLengths.reduce((sum, len) => sum + Math.pow(len - avgLength, 2), 0) / sentenceLengths.length;
+  const stdDev = Math.sqrt(variance);
+  const stdDevTarget = stdDev >= 3.0 && stdDev <= 3.8;
+  
+  // 4. Active voice detection (rough heuristic: subject-verb-object, no passive markers)
+  const passiveMarkers = /\b(was|were|been|being)\s+\w+(ed|en)\b/gi;
+  const passiveSentences = sentences.filter(s => passiveMarkers.test(s)).length;
+  const activeSentences = totalSentences - passiveSentences;
+  const activeVoicePercent = (activeSentences / totalSentences) * 100;
+  const activeVoiceTarget = activeVoicePercent >= 90;
+  
+  // 5. AI markers detection
+  const aiMarkers = [
+    'furthermore', 'moreover', 'additionally', 'consequently', 
+    'thus', 'hence', 'firstly', 'secondly', 'thirdly',
+    'it is important to note', 'it is worth mentioning',
+    'in conclusion, it can be said', 'in today\'s world'
+  ];
+  const lowerText = text.toLowerCase();
+  const foundMarkers = aiMarkers.filter(marker => lowerText.includes(marker));
+  const aiMarkerTarget = foundMarkers.length === 0;
+  
+  // 6. Vocabulary repetition (simplified check)
+  const wordFreq: { [key: string]: number } = {};
+  const blocks = Math.ceil(totalWords / 300);
+  let maxRepetition = 0;
+  
+  for (let i = 0; i < blocks; i++) {
+    const blockWords = words.slice(i * 300, (i + 1) * 300)
+      .map(w => w.toLowerCase().replace(/[^a-z]/g, ''))
+      .filter(w => w.length > 3); // Only count words > 3 chars
+    
+    const blockFreq: { [key: string]: number } = {};
+    blockWords.forEach(w => {
+      blockFreq[w] = (blockFreq[w] || 0) + 1;
+      if (blockFreq[w] > maxRepetition) maxRepetition = blockFreq[w];
+    });
+  }
+  const vocabRepetitionTarget = maxRepetition <= 2;
+  
+  // 7. Emotional anchoring (check for presence in paragraphs)
+  const paragraphs = text.split(/\n\n+/).filter(p => p.trim().length > 0);
+  const emotionalWords = ['honestly', 'actually', 'surprisingly', 'interestingly', 'frankly', 
+                          'clearly', 'obviously', 'really', 'truly'];
+  const paragraphsWithEmotion = paragraphs.filter(p => 
+    emotionalWords.some(ew => p.toLowerCase().includes(ew))
+  ).length;
+  const emotionCoverage = (paragraphsWithEmotion / paragraphs.length) * 100;
+  const emotionalAnchoringTarget = emotionCoverage >= 90; // At least 90% of paragraphs
+  
+  // Overall pass/fail
+  const allMetricsPassed = contractionTarget && fragmentTarget && stdDevTarget && 
+                          activeVoiceTarget && aiMarkerTarget && vocabRepetitionTarget && 
+                          emotionalAnchoringTarget;
+  
+  return {
+    passed: allMetricsPassed,
+    metrics: {
+      contractionDensity: {
+        value: contractionDensity.toFixed(2),
+        target: '6.67-8.33%',
+        passed: contractionTarget,
+        count: contractions.length,
+        totalWords,
+      },
+      fragmentRatio: {
+        value: fragmentRatio.toFixed(2),
+        target: '30-35%',
+        passed: fragmentTarget,
+        count: fragments.length,
+        totalSentences,
+      },
+      sentenceLengthSD: {
+        value: stdDev.toFixed(2),
+        target: '3.0-3.8',
+        passed: stdDevTarget,
+      },
+      activeVoicePercent: {
+        value: activeVoicePercent.toFixed(2),
+        target: '90%+',
+        passed: activeVoiceTarget,
+        activeSentences,
+        totalSentences,
+      },
+      aiMarkerCount: {
+        value: foundMarkers.length,
+        target: '0',
+        passed: aiMarkerTarget,
+        foundMarkers,
+      },
+      vocabularyRepetition: {
+        value: maxRepetition,
+        target: '≤2 per 300 words',
+        passed: vocabRepetitionTarget,
+      },
+      emotionalAnchoring: {
+        value: emotionCoverage.toFixed(2),
+        target: '90%+ paragraphs',
+        passed: emotionalAnchoringTarget,
+        paragraphsWithEmotion,
+        totalParagraphs: paragraphs.length,
+      },
+    },
+  };
+}
 
 // Core humanization prompt
 function buildHumanizationPrompt(text: string, docType: DocumentType, examples: string): string {
@@ -628,6 +794,56 @@ async function humanizeText(text: string, docType: DocumentType, examples: strin
   }
 }
 
+// Humanization with custom prompt (for QA retry)
+async function humanizeWithCustomPrompt(customPrompt: string): Promise<string> {
+  if (!LOVABLE_API_KEY) {
+    throw new Error("LOVABLE_API_KEY not configured");
+  }
+  
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), API_TIMEOUT);
+  
+  try {
+    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${LOVABLE_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "google/gemini-2.5-flash",
+        messages: [
+          {
+            role: "user",
+            content: customPrompt,
+          },
+        ],
+        temperature: 0.8,
+      }),
+      signal: controller.signal,
+    });
+    
+    clearTimeout(timeoutId);
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`AI API error: ${response.status} - ${errorText}`);
+    }
+    
+    const data = await response.json();
+    const humanizedText = data.choices?.[0]?.message?.content;
+    
+    if (!humanizedText) {
+      throw new Error("No content in AI response");
+    }
+    
+    return sanitize(humanizedText);
+  } catch (error) {
+    clearTimeout(timeoutId);
+    throw error;
+  }
+}
+
 // Stage 2 refinement
 async function refineText(text: string, stage1Detection: any): Promise<string> {
   if (!LOVABLE_API_KEY) {
@@ -783,6 +999,52 @@ serve(async (req) => {
     log("INFO", "🔄 Starting Stage 1 humanization with document-specific rules...");
     let humanizedText = await humanizeText(text, docType, examples);
     
+    // STEP 2.5: QA METRICS VALIDATION
+    log("INFO", "📋 Validating QA metrics on humanized text...");
+    let qaMetrics = calculateQAMetrics(humanizedText);
+    
+    // If QA metrics fail on first pass, retry with enhanced guidance (for academic/essay documents)
+    if (!qaMetrics.passed && (docType === 'essay' || docType === 'academic_paper' || docType === 'research_paper')) {
+      log("INFO", "⚠️ QA metrics failed on first pass, retrying with enhanced guidance...");
+      
+      // Build failure guidance
+      const failedMetrics = Object.entries(qaMetrics.metrics)
+        .filter(([_, metric]: [string, any]) => !metric.passed)
+        .map(([name, metric]: [string, any]) => `${name}: ${JSON.stringify(metric)}`)
+        .join('\n');
+      
+      const enhancedPrompt = buildHumanizationPrompt(text, docType, examples) + 
+        `\n\n⚠️ CRITICAL QA METRICS FAILED ON PREVIOUS ATTEMPT:\n${failedMetrics}\n\n` +
+        `MUST FIX: Apply extra focus on the failed metrics above. Re-check all requirements before output.`;
+      
+      try {
+        const retryText = await humanizeWithCustomPrompt(enhancedPrompt);
+        qaMetrics = calculateQAMetrics(retryText);
+        
+        if (qaMetrics.passed) {
+          humanizedText = retryText;
+          log("INFO", "✅ QA metrics passed on retry!");
+        } else {
+          log("INFO", "⚠️ QA metrics still failing after retry, using best version available");
+          // Keep original humanizedText
+        }
+      } catch (error) {
+        log("ERROR", "QA retry failed", { error: String(error) });
+        // Keep original humanizedText
+      }
+    }
+    
+    log("INFO", "📊 QA Metrics Results", {
+      passed: qaMetrics.passed,
+      contractions: qaMetrics.metrics.contractionDensity.passed ? '✅' : '❌',
+      fragments: qaMetrics.metrics.fragmentRatio.passed ? '✅' : '❌',
+      stdDev: qaMetrics.metrics.sentenceLengthSD.passed ? '✅' : '❌',
+      activeVoice: qaMetrics.metrics.activeVoicePercent.passed ? '✅' : '❌',
+      aiMarkers: qaMetrics.metrics.aiMarkerCount.passed ? '✅' : '❌',
+      vocabRep: qaMetrics.metrics.vocabularyRepetition.passed ? '✅' : '❌',
+      emotion: qaMetrics.metrics.emotionalAnchoring.passed ? '✅' : '❌',
+    });
+    
     // STEP 3: STAGE 1 DETECTION
     log("INFO", "🔬 Running Stage 1 AI detection...");
     const [saplingResult1, zeroGPTResult1] = await Promise.all([
@@ -897,6 +1159,7 @@ serve(async (req) => {
     const responsePayload = {
       humanizedText: finalText,
       documentType: docType,
+      qaMetrics: qaMetrics,
       detection: {
         stage1: {
           sapling: saplingResult1.score !== null
