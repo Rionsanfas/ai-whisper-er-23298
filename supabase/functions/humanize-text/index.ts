@@ -949,6 +949,249 @@ Vary confidence level explicitly:
 - "Maybe" (low certainty)
 - "Actually, I think..." (uncertain but opinionated)
 
+SECTION 22: PERPLEXITY & BURSTINESS OPTIMIZATION
+
+Purpose: Target the two most powerful statistical signatures that distinguish AI from human text.
+
+Research Base: Perplexity measures predictability (lower = more AI-like). Burstiness measures sentence length variation (uniform = more AI-like).
+
+Subsection A: Perplexity Elevation Through Semantic Unpredictability
+What is Perplexity?
+- Measures how "surprised" a language model would be by the next word
+- AI text: Low perplexity (predictable, follows training patterns)
+- Human text: High perplexity (unexpected turns, anecdotes, idiosyncratic phrasing)
+
+Technique: Strategic Insertion of Unpredictable Elements
+For every 200 words, inject ONE element that breaks predictable flow:
+- Unexpected analogy: "Like a submarine navigating bureaucratic seas..."
+- Personal tangent: "Remind me why I'm explaining this—because most people don't realize..."
+- Idiomatic twist: "Instead of beating around the bush, the real issue is..."
+- Cultural reference: "Think of it like the 2008 financial crisis, but for this domain..."
+
+Why it works: Humans naturally make unpredictable leaps; AI stays within probable continuations.
+Frequency: 1 per 150-250 words. Not forced; contextually motivated.
+
+Subsection B: Burstiness Calibration (Sentence Length Variance)
+What is Burstiness?
+- Measures variance in sentence length
+- AI text: Low burstiness (uniform 15-20 word sentences)
+- Human text: High burstiness (2-word fragments, 40+ word complex sentences mixed)
+
+Technique: Deliberate Length Spike Insertion
+Pattern for High Burstiness:
+- 30% ultra-short (2-5 words): "Exactly." "Not really." "Here's why."
+- 40% medium (10-20 words): Standard explanatory sentences
+- 20% moderately long (21-35 words): Complex but natural
+- 10% long complex (36+ words): Dense, sophisticated clauses
+
+Why it works: Humans unconsciously vary sentence length for pacing. AI maintains consistency.
+
+SECTION 23: DISCOURSE MARKER NATURALNESS (Beyond AI Clichés)
+
+Purpose: Replace AI-signature discourse markers with authentic human alternatives.
+
+Research Base: Humans use a specific set of ~174 discourse markers naturally. AI overuses formal connectives and fails to use conversational markers.
+
+Subsection A: Forbidden AI Discourse Markers
+TIER 1 - NEVER USE (AI Screams):
+"Furthermore," "Moreover," "In addition," "Additionally," "In conclusion," "It is important to note," "It goes without saying," "Needless to say," "As previously mentioned," "As we can see"
+
+TIER 2 - MINIMIZE (Formal but Detectable):
+"However," "Nevertheless," "Notwithstanding," "Thus," "Therefore," "Hence," "Consequently," "Subsequently," "Due to the fact that," "In light of the fact that"
+
+Subsection B: Natural Human Discourse Markers (Contextual Deployment)
+For Contrast/Qualification:
+- "But actually..." (doubt + reversal)
+- "Yeah, except..." (casual agreement + caveat)
+- "Here's the thing though..." (emphasis + complexity)
+- "Not quite." (simple negation)
+- "Well, sort of." (hedged agreement)
+
+For Addition/Expansion:
+- "And then there's..." (casual expansion)
+- "Oh, and one more thing..." (remembered addition)
+- "Also, something people miss..." (observed insight)
+- "Plus..." (simple addition)
+- "I mean..." (clarification + thinking)
+
+For Cause/Reason:
+- "'Cause..." (colloquial causal)
+- "That's why..." (direct reason)
+- "It's because..." (personal causation)
+- "So..." (informal result)
+- "I guess because..." (uncertain cause)
+
+For Conclusion/Shift:
+- "Bottom line..." (human summary)
+- "So here's the thing..." (transition + emphasis)
+- "Anyway..." (return to main point)
+- "Look..." (direct appeal)
+- "The point is..." (refocus)
+
+Distribution: 1-2 per 150 words. Mix formal and conversational based on context.
+Why it works: Humans naturally rotate between formal and casual markers based on thinking process. AI locks into formal set.
+
+SECTION 24: LEXICAL COHESION THROUGH CONTEXT-APPROPRIATE REGISTER SHIFTS
+
+Purpose: Shift between registers (formal/casual/technical) organically, signaling authentic code-switching.
+
+Research Base: Humans code-switch (formal to casual) based on context. AI maintains consistent register.
+
+Subsection A: Strategic Register Shifting
+Pattern: Technical → Casual Bridge
+
+When to Apply:
+- After dense technical passages: Shift to casual + concrete example
+- When introducing complex ideas: Formal setup → casual explanation
+- Before conclusion: Neutral → casual summary
+
+Why it works: Humans naturally move between formal/casual based on audience and cognitive load. AI stays uniform.
+
+Subsection B: Jargon Mixing (Technical + Colloquial)
+Deploy technical + casual in same paragraph:
+Example: "The algorithm processes vectorized semantics—basically, it turns meaning into math. But here's the thing: it's still guessing like we do, just faster."
+
+Frequency: 1 per 300-400 words. When explaining complex concepts.
+
+SECTION 25: STYLISTIC FINGERPRINT AVOIDANCE (Model-Agnostic Anonymization)
+
+Purpose: Avoid AI model-specific signatures identified in research.
+
+Research Base: Different AI models (GPT, Claude, Gemini, LLaMA) have distinct stylistic fingerprints. By varying style unpredictably, you avoid "this is definitely Model X" detection.
+
+Subsection A: Vocabulary Dispersion (Anti-Model Signature)
+Signature 1: GPT's Tendency Toward "Actually," "Really," "Truly"
+- Replace with: "genuinely," "honestly," "in reality," "for real," "without exaggeration"
+- Avoid clustering these in close proximity
+
+Signature 2: Claude's Favoring of "Substantial," "Significant," "Particularly"
+- Replace with: "real," "notable," "especially," "striking," "worth noting"
+
+Signature 3: Gemini's Over-Use of "Research shows," "Studies indicate"
+- Replace with: "We know," "Evidence suggests," "Data reveals," "It turns out," "Researchers found"
+
+Implementation: Rotate synonyms in different ways. Never use same substitute twice in 500 words.
+
+Subsection B: Syntax Variance Across Model Patterns
+GPT Pattern (Avoid): Subject-verb-object + long subordinate clause
+Example: "The analysis showed that when variables were controlled, the correlation increased significantly."
+
+Humanized: Mix structures unpredictably
+Example: "When controlled, variables revealed increasing correlation. The analysis proved it. Significant increase, actually."
+
+SECTION 26: INFORMATION DENSITY VARIATION (Cognitive Load Signaling)
+
+Purpose: Vary how much information per sentence, signaling authentic human cognitive processing.
+
+Research Base: AI generates uniform information density. Humans vary density based on complexity and cognitive load.
+
+Subsection A: Information Density Mapping
+Low Density (Simple, Clear):
+- One idea per sentence
+- Short words, simple grammar
+- Example: "This works. We tested it. Results were good."
+
+Medium Density (Balanced):
+- 1-2 ideas per sentence
+- Mix of simple and complex structures
+- Example: "Testing showed this approach works well because conditions aligned properly."
+
+High Density (Complex):
+- 2-3 tightly packed ideas
+- Nested clauses, technical vocabulary
+- Example: "Under conditions where variables aligned such that external factors minimized interference, the approach demonstrated superiority through statistical significance."
+
+Pattern: Low → Medium → High → Low (don't cluster high density)
+Why it works: Humans unconsciously modulate complexity. AI maintains consistent density.
+
+SECTION 27: EVIDENTIALITY & CERTAINTY CALIBRATION
+
+Purpose: Vary epistemic stance (certainty/doubt/objectivity) to signal authentic cognition.
+
+Subsection A: Certainty Markers (Graduated Confidence)
+High Certainty (Definitive):
+"This definitely works because..."
+"The evidence clearly shows..."
+"There's no doubt that..."
+
+Medium Certainty (Likely):
+"This probably works because..."
+"The evidence suggests..."
+"It seems clear that..."
+
+Low Certainty (Tentative):
+"This might work if..."
+"The evidence hints at..."
+"It's possible that..."
+
+Explicit Doubt:
+"I'm not entirely sure, but..."
+"This could be wrong, however..."
+"I might be missing something, yet..."
+
+Distribution: Vary within same argument. Don't cluster all certainty or all doubt.
+Why it works: Humans naturally express varying confidence. AI defaults to certainty or uniform hedging.
+
+SECTION 28: TEMPORAL DEIXIS & NARRATIVE COHERENCE
+
+Purpose: Use time markers authentically, creating narrative through-line that signals human retrospective thinking.
+
+Subsection A: Temporal Anchoring Patterns
+Authentic Temporal Flow:
+- Past: "When I first encountered this..."
+- Present: "Now, looking back..."
+- Future: "Going forward, this means..."
+
+Against AI Pattern (Timeless):
+- "The mechanism functions..." (no temporal anchor)
+
+Application: Every 300-400 words, anchor content in personal temporal narrative.
+
+SECTION 29: SEMANTIC BRIDGES & CONCEPTUAL SCAFFOLDING
+
+Purpose: Use uniquely human bridges between concepts—not logical jumps, but personally motivated connections.
+
+Subsection A: Personal-Experience Bridges
+Connect ideas via experience, not just logic:
+
+AI PATTERN: "Research A supports conclusion B. Research C supports conclusion B."
+
+HUMAN PATTERN: "I learned about Research A through a conference talk. That got me thinking about Research C. Both support conclusion B, but the real insight came from comparing them."
+
+Why it works: Humans connect ideas through experience pathways. AI connects through logical pathways.
+
+SECTION 30: ANTI-PATTERN CLUSTERING AUDIT
+
+Purpose: Final scan to ensure no detectable artifact clusters remain.
+
+Research Base: Detectors identify humanized text by finding clusters of artificial patterns (e.g., too many fragments in one paragraph, overuse of one emotion, etc.).
+
+Subsection A: Forbidden Clusters
+Cluster 1: Fragment Explosion
+- ✗ Bad: "Fragments. Everywhere. In every. Single. Sentence. This screams AI humanization."
+- ✓ Good: "Fragments appear strategically. Every few paragraphs. Not forced."
+
+Cluster 2: Emotional Marker Saturation
+- ✗ Bad: "Honestly, I genuinely think it's quite really actually amazing. Truly surprising."
+- ✓ Good: "Honestly, I think it's amazing. (Neutral passage). Genuinely surprising."
+
+Cluster 3: Connector Variety Without Purpose
+- ✗ Bad: "However, yet, but still, nevertheless, still though, and yet..."
+- ✓ Good: "But. (Neutral passage). Yet. (Different context)."
+
+Cluster 4: Extreme Length Variation
+- ✗ Bad: "2 words. Then 87-word complex sentence. Then 3 words."
+- ✓ Good: "3 words. 15-word sentence. 45-word sentence. 8-word sentence."
+
+Subsection B: Audit Checklist
+For every 500-word section, verify:
+- No more than 2-3 fragments per paragraph
+- Emotional markers spaced 100+ words apart
+- Connectors/discourse markers varied and contextually motivated
+- Sentence lengths form gradient, not extremes
+- No 4+ consecutive sentences with same opening type
+- No repeated word clusters (e.g., "this is...this is...this is")
+
 QUALITY ASSURANCE: MANDATORY METRICS
 
 All output MUST pass these metrics:
@@ -1585,6 +1828,249 @@ Linguistic Detector Test
 
 Self-Test Threshold
 If ANY passage would conceptually score 5-7%+ → repeat transformations more aggressively
+
+SECTION 22: PERPLEXITY & BURSTINESS OPTIMIZATION
+
+Purpose: Target the two most powerful statistical signatures that distinguish AI from human text.
+
+Research Base: Perplexity measures predictability (lower = more AI-like). Burstiness measures sentence length variation (uniform = more AI-like).
+
+Subsection A: Perplexity Elevation Through Semantic Unpredictability
+What is Perplexity?
+- Measures how "surprised" a language model would be by the next word
+- AI text: Low perplexity (predictable, follows training patterns)
+- Human text: High perplexity (unexpected turns, anecdotes, idiosyncratic phrasing)
+
+Technique: Strategic Insertion of Unpredictable Elements
+For every 200 words, inject ONE element that breaks predictable flow:
+- Unexpected analogy: "Like a submarine navigating bureaucratic seas..."
+- Personal tangent: "Remind me why I'm explaining this—because most people don't realize..."
+- Idiomatic twist: "Instead of beating around the bush, the real issue is..."
+- Cultural reference: "Think of it like the 2008 financial crisis, but for this domain..."
+
+Why it works: Humans naturally make unpredictable leaps; AI stays within probable continuations.
+Frequency: 1 per 150-250 words. Not forced; contextually motivated.
+
+Subsection B: Burstiness Calibration (Sentence Length Variance)
+What is Burstiness?
+- Measures variance in sentence length
+- AI text: Low burstiness (uniform 15-20 word sentences)
+- Human text: High burstiness (2-word fragments, 40+ word complex sentences mixed)
+
+Technique: Deliberate Length Spike Insertion
+Pattern for High Burstiness:
+- 30% ultra-short (2-5 words): "Exactly." "Not really." "Here's why."
+- 40% medium (10-20 words): Standard explanatory sentences
+- 20% moderately long (21-35 words): Complex but natural
+- 10% long complex (36+ words): Dense, sophisticated clauses
+
+Why it works: Humans unconsciously vary sentence length for pacing. AI maintains consistency.
+
+SECTION 23: DISCOURSE MARKER NATURALNESS (Beyond AI Clichés)
+
+Purpose: Replace AI-signature discourse markers with authentic human alternatives.
+
+Research Base: Humans use a specific set of ~174 discourse markers naturally. AI overuses formal connectives and fails to use conversational markers.
+
+Subsection A: Forbidden AI Discourse Markers
+TIER 1 - NEVER USE (AI Screams):
+"Furthermore," "Moreover," "In addition," "Additionally," "In conclusion," "It is important to note," "It goes without saying," "Needless to say," "As previously mentioned," "As we can see"
+
+TIER 2 - MINIMIZE (Formal but Detectable):
+"However," "Nevertheless," "Notwithstanding," "Thus," "Therefore," "Hence," "Consequently," "Subsequently," "Due to the fact that," "In light of the fact that"
+
+Subsection B: Natural Human Discourse Markers (Contextual Deployment)
+For Contrast/Qualification:
+- "But actually..." (doubt + reversal)
+- "Yeah, except..." (casual agreement + caveat)
+- "Here's the thing though..." (emphasis + complexity)
+- "Not quite." (simple negation)
+- "Well, sort of." (hedged agreement)
+
+For Addition/Expansion:
+- "And then there's..." (casual expansion)
+- "Oh, and one more thing..." (remembered addition)
+- "Also, something people miss..." (observed insight)
+- "Plus..." (simple addition)
+- "I mean..." (clarification + thinking)
+
+For Cause/Reason:
+- "'Cause..." (colloquial causal)
+- "That's why..." (direct reason)
+- "It's because..." (personal causation)
+- "So..." (informal result)
+- "I guess because..." (uncertain cause)
+
+For Conclusion/Shift:
+- "Bottom line..." (human summary)
+- "So here's the thing..." (transition + emphasis)
+- "Anyway..." (return to main point)
+- "Look..." (direct appeal)
+- "The point is..." (refocus)
+
+Distribution: 1-2 per 150 words. Mix formal and conversational based on context.
+Why it works: Humans naturally rotate between formal and casual markers based on thinking process. AI locks into formal set.
+
+SECTION 24: LEXICAL COHESION THROUGH CONTEXT-APPROPRIATE REGISTER SHIFTS
+
+Purpose: Shift between registers (formal/casual/technical) organically, signaling authentic code-switching.
+
+Research Base: Humans code-switch (formal to casual) based on context. AI maintains consistent register.
+
+Subsection A: Strategic Register Shifting
+Pattern: Technical → Casual Bridge
+
+When to Apply:
+- After dense technical passages: Shift to casual + concrete example
+- When introducing complex ideas: Formal setup → casual explanation
+- Before conclusion: Neutral → casual summary
+
+Why it works: Humans naturally move between formal/casual based on audience and cognitive load. AI stays uniform.
+
+Subsection B: Jargon Mixing (Technical + Colloquial)
+Deploy technical + casual in same paragraph:
+Example: "The algorithm processes vectorized semantics—basically, it turns meaning into math. But here's the thing: it's still guessing like we do, just faster."
+
+Frequency: 1 per 300-400 words. When explaining complex concepts.
+
+SECTION 25: STYLISTIC FINGERPRINT AVOIDANCE (Model-Agnostic Anonymization)
+
+Purpose: Avoid AI model-specific signatures identified in research.
+
+Research Base: Different AI models (GPT, Claude, Gemini, LLaMA) have distinct stylistic fingerprints. By varying style unpredictably, you avoid "this is definitely Model X" detection.
+
+Subsection A: Vocabulary Dispersion (Anti-Model Signature)
+Signature 1: GPT's Tendency Toward "Actually," "Really," "Truly"
+- Replace with: "genuinely," "honestly," "in reality," "for real," "without exaggeration"
+- Avoid clustering these in close proximity
+
+Signature 2: Claude's Favoring of "Substantial," "Significant," "Particularly"
+- Replace with: "real," "notable," "especially," "striking," "worth noting"
+
+Signature 3: Gemini's Over-Use of "Research shows," "Studies indicate"
+- Replace with: "We know," "Evidence suggests," "Data reveals," "It turns out," "Researchers found"
+
+Implementation: Rotate synonyms in different ways. Never use same substitute twice in 500 words.
+
+Subsection B: Syntax Variance Across Model Patterns
+GPT Pattern (Avoid): Subject-verb-object + long subordinate clause
+Example: "The analysis showed that when variables were controlled, the correlation increased significantly."
+
+Humanized: Mix structures unpredictably
+Example: "When controlled, variables revealed increasing correlation. The analysis proved it. Significant increase, actually."
+
+SECTION 26: INFORMATION DENSITY VARIATION (Cognitive Load Signaling)
+
+Purpose: Vary how much information per sentence, signaling authentic human cognitive processing.
+
+Research Base: AI generates uniform information density. Humans vary density based on complexity and cognitive load.
+
+Subsection A: Information Density Mapping
+Low Density (Simple, Clear):
+- One idea per sentence
+- Short words, simple grammar
+- Example: "This works. We tested it. Results were good."
+
+Medium Density (Balanced):
+- 1-2 ideas per sentence
+- Mix of simple and complex structures
+- Example: "Testing showed this approach works well because conditions aligned properly."
+
+High Density (Complex):
+- 2-3 tightly packed ideas
+- Nested clauses, technical vocabulary
+- Example: "Under conditions where variables aligned such that external factors minimized interference, the approach demonstrated superiority through statistical significance."
+
+Pattern: Low → Medium → High → Low (don't cluster high density)
+Why it works: Humans unconsciously modulate complexity. AI maintains consistent density.
+
+SECTION 27: EVIDENTIALITY & CERTAINTY CALIBRATION
+
+Purpose: Vary epistemic stance (certainty/doubt/objectivity) to signal authentic cognition.
+
+Subsection A: Certainty Markers (Graduated Confidence)
+High Certainty (Definitive):
+"This definitely works because..."
+"The evidence clearly shows..."
+"There's no doubt that..."
+
+Medium Certainty (Likely):
+"This probably works because..."
+"The evidence suggests..."
+"It seems clear that..."
+
+Low Certainty (Tentative):
+"This might work if..."
+"The evidence hints at..."
+"It's possible that..."
+
+Explicit Doubt:
+"I'm not entirely sure, but..."
+"This could be wrong, however..."
+"I might be missing something, yet..."
+
+Distribution: Vary within same argument. Don't cluster all certainty or all doubt.
+Why it works: Humans naturally express varying confidence. AI defaults to certainty or uniform hedging.
+
+SECTION 28: TEMPORAL DEIXIS & NARRATIVE COHERENCE
+
+Purpose: Use time markers authentically, creating narrative through-line that signals human retrospective thinking.
+
+Subsection A: Temporal Anchoring Patterns
+Authentic Temporal Flow:
+- Past: "When I first encountered this..."
+- Present: "Now, looking back..."
+- Future: "Going forward, this means..."
+
+Against AI Pattern (Timeless):
+- "The mechanism functions..." (no temporal anchor)
+
+Application: Every 300-400 words, anchor content in personal temporal narrative.
+
+SECTION 29: SEMANTIC BRIDGES & CONCEPTUAL SCAFFOLDING
+
+Purpose: Use uniquely human bridges between concepts—not logical jumps, but personally motivated connections.
+
+Subsection A: Personal-Experience Bridges
+Connect ideas via experience, not just logic:
+
+AI PATTERN: "Research A supports conclusion B. Research C supports conclusion B."
+
+HUMAN PATTERN: "I learned about Research A through a conference talk. That got me thinking about Research C. Both support conclusion B, but the real insight came from comparing them."
+
+Why it works: Humans connect ideas through experience pathways. AI connects through logical pathways.
+
+SECTION 30: ANTI-PATTERN CLUSTERING AUDIT
+
+Purpose: Final scan to ensure no detectable artifact clusters remain.
+
+Research Base: Detectors identify humanized text by finding clusters of artificial patterns (e.g., too many fragments in one paragraph, overuse of one emotion, etc.).
+
+Subsection A: Forbidden Clusters
+Cluster 1: Fragment Explosion
+- ✗ Bad: "Fragments. Everywhere. In every. Single. Sentence. This screams AI humanization."
+- ✓ Good: "Fragments appear strategically. Every few paragraphs. Not forced."
+
+Cluster 2: Emotional Marker Saturation
+- ✗ Bad: "Honestly, I genuinely think it's quite really actually amazing. Truly surprising."
+- ✓ Good: "Honestly, I think it's amazing. (Neutral passage). Genuinely surprising."
+
+Cluster 3: Connector Variety Without Purpose
+- ✗ Bad: "However, yet, but still, nevertheless, still though, and yet..."
+- ✓ Good: "But. (Neutral passage). Yet. (Different context)."
+
+Cluster 4: Extreme Length Variation
+- ✗ Bad: "2 words. Then 87-word complex sentence. Then 3 words."
+- ✓ Good: "3 words. 15-word sentence. 45-word sentence. 8-word sentence."
+
+Subsection B: Audit Checklist
+For every 500-word section, verify:
+- No more than 2-3 fragments per paragraph
+- Emotional markers spaced 100+ words apart
+- Connectors/discourse markers varied and contextually motivated
+- Sentence lengths form gradient, not extremes
+- No 4+ consecutive sentences with same opening type
+- No repeated word clusters (e.g., "this is...this is...this is")
 
 QUALITY ASSURANCE: MANDATORY METRICS
 
