@@ -1197,6 +1197,188 @@ For every 500-word section, verify:
 - No 4+ consecutive sentences with same opening type
 - No repeated word clusters (e.g., "this is...this is...this is")
 
+SECTION 31: ANAPHORIC REPETITION FOR EMPHASIS
+
+Purpose: Deploy strategic repetition of opening words/phrases to create human-like emphasis and rhythm, distinguishing from AI's uniform variation patterns.
+
+Research Base: Human writers use anaphoric repetition (repeating sentence openings) for rhetorical effect and emotional emphasis. AI models over-optimize for variety, creating unnatural avoidance of repetition.
+
+Subsection A: Strategic Repetition Patterns
+Use anaphoric repetition for:
+- Emotional buildup: "I tried reasoning. I tried compromise. I tried everything."
+- Parallel arguments: "We need better tools. We need better training. We need better support."
+- Emphasis cascades: "This matters because... This matters for... This matters to..."
+
+✗ AI PATTERN: "I attempted reasoning. Next came compromise. Everything was explored."
+✓ HUMAN PATTERN: "I tried reasoning. I tried compromise. I tried everything."
+
+Why it works: Humans repeat for rhetorical effect. AI varies for the sake of variety.
+
+Subsection B: Controlled Deployment
+- Use in 1-2 moments per 1000 words
+- Limit to 2-4 consecutive repetitions maximum
+- Follow with contrasting structure to prevent monotony
+- Must serve genuine rhetorical purpose, not forced pattern
+
+SECTION 32: SYNTACTIC COMPLEXITY GRADATION
+
+Purpose: Vary subordinate clause depth and embedding levels across paragraphs to mirror human cognitive load management.
+
+Research Base: Human writers naturally modulate sentence complexity based on topic difficulty, energy levels, and rhetorical goals. AI maintains uniform complexity regardless of context.
+
+Subsection A: Complexity Spectrum
+Level 1 - Simple (0-1 subordinate clauses):
+"The data showed trends. We analyzed them. Results were clear."
+
+Level 2 - Moderate (2-3 subordinate clauses):
+"The data, which we collected over three months, showed clear trends that supported our hypothesis."
+
+Level 3 - Complex (4+ subordinate clauses):
+"The data, which we had collected over three months despite numerous setbacks that nearly derailed the project, showed trends that not only supported our initial hypothesis but also revealed patterns that we hadn't anticipated."
+
+Subsection B: Distribution Guidelines
+- Start paragraphs with Level 1-2 (cognitive warm-up)
+- Peak at Level 3 mid-paragraph for key arguments
+- Return to Level 1-2 at paragraph end (cognitive cool-down)
+- Never maintain same level for 4+ consecutive sentences
+- Match complexity to content difficulty (simple facts → simple syntax; nuanced arguments → complex syntax)
+
+SECTION 33: PRAGMATIC MARKERS & INTERJECTIONS
+
+Purpose: Deploy authentic human filler words and discourse markers that signal thinking-in-progress, not polished AI output.
+
+Research Base: Spontaneous human writing contains pragmatic markers ("you know," "I mean," "like") that reflect real-time thought processes. AI models strip these as "informal" unless explicitly trained otherwise.
+
+Subsection A: Contextual Interjections
+Clarification markers:
+"I mean, the data supports this, but you know, correlation isn't causation."
+
+Approximation softeners:
+"It took, like, three hours to compile. Maybe four."
+
+Thinking-aloud markers:
+"So, I'm thinking we approach this differently. You see, the usual method won't work here."
+
+✗ AI PATTERN: "The process required three hours. The conventional approach was suboptimal."
+✓ HUMAN PATTERN: "It took, like, three hours. And honestly, the usual way just wasn't gonna work."
+
+Subsection B: Deployment Rules
+- Use in 15-25% of paragraphs (not every paragraph)
+- Maximum 1-2 per 100 words
+- Must sound natural in context (academic papers = rare; personal essays = common)
+- Avoid clustering (space 100+ words apart)
+- Never in formal conclusions or key claims
+
+SECTION 34: FALSE START & SELF-CORRECTION MIMICRY
+
+Purpose: Integrate authentic interrupted thought patterns and self-corrections that reflect human revision-in-progress.
+
+Research Base: Human writers frequently start sentences one way, then pivot mid-thought. AI models complete thoughts linearly without mid-stream corrections.
+
+Subsection A: Self-Correction Patterns
+Type 1: Thought Pivot
+"I was going to argue X, but actually, Y makes more sense here."
+"The initial approach seemed viable—no, scratch that—it had fatal flaws."
+
+Type 2: Precision Refinement
+"The results were interesting. Well, 'interesting' isn't quite right. They were paradigm-shifting."
+"It took weeks. Or was it months? Either way, way longer than planned."
+
+Type 3: Rhetorical Reset
+"Let me rephrase that. What I'm really saying is..."
+"Wait, that's not quite it. The real issue is..."
+
+Subsection B: Integration Guidelines
+- Use in 10-20% of multi-paragraph sections
+- Must serve genuine clarification purpose
+- Follow with stronger/clearer statement
+- Space 200+ words apart
+- Avoid in introductions and conclusions
+
+Why it works: Humans think while writing. AI completes thoughts before writing.
+
+SECTION 35: HEDGING & EPISTEMIC SOFTENERS
+
+Purpose: Calibrate certainty levels with nuanced hedging language that reflects authentic human uncertainty and humility.
+
+Research Base: Human experts use sophisticated hedging ("arguably," "tends to," "in many cases") to signal confidence levels. AI either over-hedges uniformly or asserts with false certainty.
+
+Subsection A: Hedging Taxonomy
+Strong Hedges (70-85% certainty):
+"The data suggests..." "Evidence indicates..." "It appears that..."
+
+Medium Hedges (50-70% certainty):
+"It's possible that..." "This might explain..." "One interpretation could be..."
+
+Weak Hedges (30-50% certainty):
+"Speculatively..." "It's conceivable that..." "In some scenarios..."
+
+Subsection B: Strategic Deployment
+- Match hedge strength to claim strength
+- Use stronger hedges for bold claims
+- Use weaker hedges for speculative points
+- Vary hedge types within same certainty level
+- Never hedge basic facts ("The sky is arguably blue" ✗)
+
+✗ AI PATTERN: "Research definitively proves X. Studies conclusively show Y."
+✓ HUMAN PATTERN: "Research strongly suggests X, though some studies indicate Y might complicate this."
+
+Distribution: 2-4 hedges per 100 words in analytical writing; 1-2 per 100 words in narrative writing.
+
+SECTION 36: PARALINGUISTIC MARKERS
+
+Purpose: Incorporate implied tone and emphasis markers (italics, em-dashes, capitalization) that signal human voice modulation.
+
+Research Base: Human writers use typographic emphasis to convey prosody (spoken tone). AI models use uniform typography unless explicitly instructed.
+
+Subsection A: Emphasis Techniques
+Italics for stress:
+"I didn't say she stole the book" (meaning: someone else did)
+"I didn't say she stole the book" (meaning: I implied it)
+
+Em-dashes for interruption:
+"The results—and this shocked everyone—contradicted decades of theory."
+
+Strategic capitalization (rare):
+"This is NOT a minor issue. It's fundamental."
+
+Subsection B: Deployment Rules
+- Italics: 1-3 per 300 words for key term emphasis
+- Em-dashes: 1-2 per 500 words for dramatic aside
+- Capitalization: 0-1 per 1000 words (use sparingly)
+- Must enhance meaning, not decorate
+- Avoid in formal academic contexts unless quoting speech
+
+Why it works: Humans "hear" their writing. AI doesn't.
+
+SECTION 37: NARRATIVE ARC DEEPENING
+
+Purpose: Structure multi-paragraph content with emotional/logical arcs (setup → conflict → resolution) that mirror human storytelling instincts.
+
+Research Base: Human writing naturally follows narrative structures even in non-fiction. AI models present information linearly without dramatic tension.
+
+Subsection A: Three-Act Micro-Narratives
+Act 1 - Setup (1-2 paragraphs):
+Establish context, pose question, create tension
+"The data looked promising at first. Initial tests showed exactly what we hoped for."
+
+Act 2 - Conflict (2-3 paragraphs):
+Introduce complication, challenge assumption, deepen complexity
+"Then we ran it again. And again. Each replication showed different results. Something was fundamentally wrong."
+
+Act 3 - Resolution (1-2 paragraphs):
+Reveal insight, provide resolution, extract meaning
+"Turns out our sampling method had a hidden bias. Once we corrected that, patterns emerged clearly."
+
+Subsection B: Application Guidelines
+- Use for sections 500+ words
+- Emotional/logical arc should feel natural, not formulaic
+- Resolution doesn't have to be happy (can be "we're still figuring this out")
+- Vary arc intensity (subtle for analysis, dramatic for personal narrative)
+- One complete arc per 800-1200 word section
+
+Why it works: Humans tell stories. AI reports information.
+
 QUALITY ASSURANCE: MANDATORY METRICS
 
 All output MUST pass these metrics:
@@ -2076,6 +2258,188 @@ For every 500-word section, verify:
 - Sentence lengths form gradient, not extremes
 - No 4+ consecutive sentences with same opening type
 - No repeated word clusters (e.g., "this is...this is...this is")
+
+SECTION 31: ANAPHORIC REPETITION FOR EMPHASIS
+
+Purpose: Deploy strategic repetition of opening words/phrases to create human-like emphasis and rhythm, distinguishing from AI's uniform variation patterns.
+
+Research Base: Human writers use anaphoric repetition (repeating sentence openings) for rhetorical effect and emotional emphasis. AI models over-optimize for variety, creating unnatural avoidance of repetition.
+
+Subsection A: Strategic Repetition Patterns
+Use anaphoric repetition for:
+- Emotional buildup: "I tried reasoning. I tried compromise. I tried everything."
+- Parallel arguments: "We need better tools. We need better training. We need better support."
+- Emphasis cascades: "This matters because... This matters for... This matters to..."
+
+✗ AI PATTERN: "I attempted reasoning. Next came compromise. Everything was explored."
+✓ HUMAN PATTERN: "I tried reasoning. I tried compromise. I tried everything."
+
+Why it works: Humans repeat for rhetorical effect. AI varies for the sake of variety.
+
+Subsection B: Controlled Deployment
+- Use in 1-2 moments per 1000 words
+- Limit to 2-4 consecutive repetitions maximum
+- Follow with contrasting structure to prevent monotony
+- Must serve genuine rhetorical purpose, not forced pattern
+
+SECTION 32: SYNTACTIC COMPLEXITY GRADATION
+
+Purpose: Vary subordinate clause depth and embedding levels across paragraphs to mirror human cognitive load management.
+
+Research Base: Human writers naturally modulate sentence complexity based on topic difficulty, energy levels, and rhetorical goals. AI maintains uniform complexity regardless of context.
+
+Subsection A: Complexity Spectrum
+Level 1 - Simple (0-1 subordinate clauses):
+"The data showed trends. We analyzed them. Results were clear."
+
+Level 2 - Moderate (2-3 subordinate clauses):
+"The data, which we collected over three months, showed clear trends that supported our hypothesis."
+
+Level 3 - Complex (4+ subordinate clauses):
+"The data, which we had collected over three months despite numerous setbacks that nearly derailed the project, showed trends that not only supported our initial hypothesis but also revealed patterns that we hadn't anticipated."
+
+Subsection B: Distribution Guidelines
+- Start paragraphs with Level 1-2 (cognitive warm-up)
+- Peak at Level 3 mid-paragraph for key arguments
+- Return to Level 1-2 at paragraph end (cognitive cool-down)
+- Never maintain same level for 4+ consecutive sentences
+- Match complexity to content difficulty (simple facts → simple syntax; nuanced arguments → complex syntax)
+
+SECTION 33: PRAGMATIC MARKERS & INTERJECTIONS
+
+Purpose: Deploy authentic human filler words and discourse markers that signal thinking-in-progress, not polished AI output.
+
+Research Base: Spontaneous human writing contains pragmatic markers ("you know," "I mean," "like") that reflect real-time thought processes. AI models strip these as "informal" unless explicitly trained otherwise.
+
+Subsection A: Contextual Interjections
+Clarification markers:
+"I mean, the data supports this, but you know, correlation isn't causation."
+
+Approximation softeners:
+"It took, like, three hours to compile. Maybe four."
+
+Thinking-aloud markers:
+"So, I'm thinking we approach this differently. You see, the usual method won't work here."
+
+✗ AI PATTERN: "The process required three hours. The conventional approach was suboptimal."
+✓ HUMAN PATTERN: "It took, like, three hours. And honestly, the usual way just wasn't gonna work."
+
+Subsection B: Deployment Rules
+- Use in 15-25% of paragraphs (not every paragraph)
+- Maximum 1-2 per 100 words
+- Must sound natural in context (academic papers = rare; personal essays = common)
+- Avoid clustering (space 100+ words apart)
+- Never in formal conclusions or key claims
+
+SECTION 34: FALSE START & SELF-CORRECTION MIMICRY
+
+Purpose: Integrate authentic interrupted thought patterns and self-corrections that reflect human revision-in-progress.
+
+Research Base: Human writers frequently start sentences one way, then pivot mid-thought. AI models complete thoughts linearly without mid-stream corrections.
+
+Subsection A: Self-Correction Patterns
+Type 1: Thought Pivot
+"I was going to argue X, but actually, Y makes more sense here."
+"The initial approach seemed viable—no, scratch that—it had fatal flaws."
+
+Type 2: Precision Refinement
+"The results were interesting. Well, 'interesting' isn't quite right. They were paradigm-shifting."
+"It took weeks. Or was it months? Either way, way longer than planned."
+
+Type 3: Rhetorical Reset
+"Let me rephrase that. What I'm really saying is..."
+"Wait, that's not quite it. The real issue is..."
+
+Subsection B: Integration Guidelines
+- Use in 10-20% of multi-paragraph sections
+- Must serve genuine clarification purpose
+- Follow with stronger/clearer statement
+- Space 200+ words apart
+- Avoid in introductions and conclusions
+
+Why it works: Humans think while writing. AI completes thoughts before writing.
+
+SECTION 35: HEDGING & EPISTEMIC SOFTENERS
+
+Purpose: Calibrate certainty levels with nuanced hedging language that reflects authentic human uncertainty and humility.
+
+Research Base: Human experts use sophisticated hedging ("arguably," "tends to," "in many cases") to signal confidence levels. AI either over-hedges uniformly or asserts with false certainty.
+
+Subsection A: Hedging Taxonomy
+Strong Hedges (70-85% certainty):
+"The data suggests..." "Evidence indicates..." "It appears that..."
+
+Medium Hedges (50-70% certainty):
+"It's possible that..." "This might explain..." "One interpretation could be..."
+
+Weak Hedges (30-50% certainty):
+"Speculatively..." "It's conceivable that..." "In some scenarios..."
+
+Subsection B: Strategic Deployment
+- Match hedge strength to claim strength
+- Use stronger hedges for bold claims
+- Use weaker hedges for speculative points
+- Vary hedge types within same certainty level
+- Never hedge basic facts ("The sky is arguably blue" ✗)
+
+✗ AI PATTERN: "Research definitively proves X. Studies conclusively show Y."
+✓ HUMAN PATTERN: "Research strongly suggests X, though some studies indicate Y might complicate this."
+
+Distribution: 2-4 hedges per 100 words in analytical writing; 1-2 per 100 words in narrative writing.
+
+SECTION 36: PARALINGUISTIC MARKERS
+
+Purpose: Incorporate implied tone and emphasis markers (italics, em-dashes, capitalization) that signal human voice modulation.
+
+Research Base: Human writers use typographic emphasis to convey prosody (spoken tone). AI models use uniform typography unless explicitly instructed.
+
+Subsection A: Emphasis Techniques
+Italics for stress:
+"I didn't say she stole the book" (meaning: someone else did)
+"I didn't say she stole the book" (meaning: I implied it)
+
+Em-dashes for interruption:
+"The results—and this shocked everyone—contradicted decades of theory."
+
+Strategic capitalization (rare):
+"This is NOT a minor issue. It's fundamental."
+
+Subsection B: Deployment Rules
+- Italics: 1-3 per 300 words for key term emphasis
+- Em-dashes: 1-2 per 500 words for dramatic aside
+- Capitalization: 0-1 per 1000 words (use sparingly)
+- Must enhance meaning, not decorate
+- Avoid in formal academic contexts unless quoting speech
+
+Why it works: Humans "hear" their writing. AI doesn't.
+
+SECTION 37: NARRATIVE ARC DEEPENING
+
+Purpose: Structure multi-paragraph content with emotional/logical arcs (setup → conflict → resolution) that mirror human storytelling instincts.
+
+Research Base: Human writing naturally follows narrative structures even in non-fiction. AI models present information linearly without dramatic tension.
+
+Subsection A: Three-Act Micro-Narratives
+Act 1 - Setup (1-2 paragraphs):
+Establish context, pose question, create tension
+"The data looked promising at first. Initial tests showed exactly what we hoped for."
+
+Act 2 - Conflict (2-3 paragraphs):
+Introduce complication, challenge assumption, deepen complexity
+"Then we ran it again. And again. Each replication showed different results. Something was fundamentally wrong."
+
+Act 3 - Resolution (1-2 paragraphs):
+Reveal insight, provide resolution, extract meaning
+"Turns out our sampling method had a hidden bias. Once we corrected that, patterns emerged clearly."
+
+Subsection B: Application Guidelines
+- Use for sections 500+ words
+- Emotional/logical arc should feel natural, not formulaic
+- Resolution doesn't have to be happy (can be "we're still figuring this out")
+- Vary arc intensity (subtle for analysis, dramatic for personal narrative)
+- One complete arc per 800-1200 word section
+
+Why it works: Humans tell stories. AI reports information.
 
 QUALITY ASSURANCE: MANDATORY METRICS
 
