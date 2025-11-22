@@ -1199,185 +1199,419 @@ For every 500-word section, verify:
 
 SECTION 31: ANAPHORIC REPETITION FOR EMPHASIS
 
-Purpose: Deploy strategic repetition of opening words/phrases to create human-like emphasis and rhythm, distinguishing from AI's uniform variation patterns.
+Text Types Where This Is Most Effective:
+- Essays (student) - 15-20% deployment
+- Research papers - 10-15% deployment
+- Personal narratives - 20-25% deployment
+- Reports - 5-10% deployment (rare, formal setting)
+- Emails - 5% deployment (only when emphasizing urgency)
 
-Research Base: Human writers use anaphoric repetition (repeating sentence openings) for rhetorical effect and emotional emphasis. AI models over-optimize for variety, creating unnatural avoidance of repetition.
+Core Function:
+Deploy strategic repetition of opening words/phrases to create human-like emphasis and rhythm. Humans use anaphoric repetition for rhetorical effect; AI models over-optimize for variety, creating unnatural avoidance.
 
 Subsection A: Strategic Repetition Patterns
-Use anaphoric repetition for:
+
+Use anaphoric repetition ONLY for:
 - Emotional buildup: "I tried reasoning. I tried compromise. I tried everything."
 - Parallel arguments: "We need better tools. We need better training. We need better support."
 - Emphasis cascades: "This matters because... This matters for... This matters to..."
 
+Example application:
 ✗ AI PATTERN: "I attempted reasoning. Next came compromise. Everything was explored."
 ✓ HUMAN PATTERN: "I tried reasoning. I tried compromise. I tried everything."
 
-Why it works: Humans repeat for rhetorical effect. AI varies for the sake of variety.
-
-Subsection B: Controlled Deployment
-- Use in 1-2 moments per 1000 words
+Subsection B: Deployment Rules
+- Use in 1-2 moments per 1000 words (not frequent)
 - Limit to 2-4 consecutive repetitions maximum
 - Follow with contrasting structure to prevent monotony
-- Must serve genuine rhetorical purpose, not forced pattern
+- Must serve genuine rhetorical purpose, never forced pattern
+- For essays/research: Use during argument buildup sections
+- For reports: Use sparingly only in conclusions for impact
 
 SECTION 32: SYNTACTIC COMPLEXITY GRADATION
 
-Purpose: Vary subordinate clause depth and embedding levels across paragraphs to mirror human cognitive load management.
+Text Types Where This Is Most Effective:
+- Research papers - 25-30% priority
+- Academic essays - 20-25% priority
+- Reports - 15-20% priority
+- Proposals - 15-20% priority
+- Emails - 10-15% priority (brief, less variable)
 
-Research Base: Human writers naturally modulate sentence complexity based on topic difficulty, energy levels, and rhetorical goals. AI maintains uniform complexity regardless of context.
+Core Function:
+Vary subordinate clause depth and embedding levels across paragraphs to mirror human cognitive load management. Humans naturally modulate sentence complexity; AI maintains uniform complexity.
 
-Subsection A: Complexity Spectrum
+Subsection A: Complexity Spectrum (Three Levels)
+
 Level 1 - Simple (0-1 subordinate clauses):
-"The data showed trends. We analyzed them. Results were clear."
+- One idea per sentence
+- Example: "The data showed trends. We analyzed them. Results were clear."
+- Use for: Opening paragraphs, transitions, conclusions
 
 Level 2 - Moderate (2-3 subordinate clauses):
-"The data, which we collected over three months, showed clear trends that supported our hypothesis."
+- Multiple ideas, some dependent
+- Example: "The data, which we collected over three months, showed clear trends that supported our hypothesis."
+- Use for: Mid-section explanations, evidence presentation
 
 Level 3 - Complex (4+ subordinate clauses):
-"The data, which we had collected over three months despite numerous setbacks that nearly derailed the project, showed trends that not only supported our initial hypothesis but also revealed patterns that we hadn't anticipated."
+- Dense ideas with multiple dependencies
+- Example: "The data, which we had collected over three months despite setbacks, showed trends that not only supported our hypothesis but also revealed unexpected patterns."
+- Use for: Key arguments in research papers, complex analysis in reports
 
-Subsection B: Distribution Guidelines
-- Start paragraphs with Level 1-2 (cognitive warm-up)
-- Peak at Level 3 mid-paragraph for key arguments
-- Return to Level 1-2 at paragraph end (cognitive cool-down)
+Subsection B: Distribution Guidelines by Text Type
+
+For Essays (student/academic):
+- Opening: Level 1-2 (cognitive warm-up)
+- Body argument paragraphs: Level 2-3 (peak complexity at key claims)
+- Conclusion: Level 1-2 (simplify for summary)
+
+For Research Papers:
+- Literature review: Level 2-3 (maintain moderate-high throughout)
+- Methods: Level 2 (clarity is critical)
+- Results: Mix Level 1-2 (data presentation should be clear)
+- Discussion: Level 2-3 (allow complexity for interpretation)
+
+For Reports:
+- Executive summary: Level 1 (absolute clarity)
+- Body sections: Level 2 (balance clarity with depth)
+- Recommendations: Level 1-2 (actionability over complexity)
+
+For Emails:
+- Greeting/context: Level 1
+- Main point: Level 1-2
+- Supporting details: Level 2 (max)
+- Call to action: Level 1 (crystal clear)
+
+General Rules:
 - Never maintain same level for 4+ consecutive sentences
-- Match complexity to content difficulty (simple facts → simple syntax; nuanced arguments → complex syntax)
+- Match complexity to content difficulty (simple facts = simple syntax; nuanced arguments = complex syntax)
+- Return to Level 1-2 between Level 3 sections (cognitive cool-down)
 
 SECTION 33: PRAGMATIC MARKERS & INTERJECTIONS
 
-Purpose: Deploy authentic human filler words and discourse markers that signal thinking-in-progress, not polished AI output.
+Text Types Where This Is Most Effective:
+- Essays (student) - 15-20% deployment
+- Personal narratives - 20-25% deployment
+- Emails - 25-30% deployment (especially internal)
+- Memos - 20-25% deployment
+- Research papers - 5-10% deployment (minimal, formal)
+- Reports - 5% deployment (rare, formal)
 
-Research Base: Spontaneous human writing contains pragmatic markers ("you know," "I mean," "like") that reflect real-time thought processes. AI models strip these as "informal" unless explicitly trained otherwise.
+Core Function:
+Deploy authentic human filler words and discourse markers that signal thinking-in-progress. Human writing contains pragmatic markers ("you know," "I mean," "like") reflecting real-time thought. AI strips these as "informal."
 
-Subsection A: Contextual Interjections
-Clarification markers:
-"I mean, the data supports this, but you know, correlation isn't causation."
+Subsection A: Pragmatic Marker Types by Context
 
-Approximation softeners:
-"It took, like, three hours to compile. Maybe four."
+Clarification markers (use in all types):
+- "I mean, X, but you know, Y isn't always Z"
+- "What I'm saying is..." (before re-stating key point)
+- "To be clear..." (in emails, memos for precision)
 
-Thinking-aloud markers:
-"So, I'm thinking we approach this differently. You see, the usual method won't work here."
+Approximation softeners (use in essays, narratives, emails):
+- "It took, like, three hours"
+- "Maybe five or six of them"
+- "Roughly a third of participants"
 
-✗ AI PATTERN: "The process required three hours. The conventional approach was suboptimal."
-✓ HUMAN PATTERN: "It took, like, three hours. And honestly, the usual way just wasn't gonna work."
+Thinking-aloud markers (use in essays, personal narrative):
+- "So, I'm thinking we approach this..."
+- "You see, the usual method won't work"
+- "Here's what I realized..." (good for essays)
 
-Subsection B: Deployment Rules
-- Use in 15-25% of paragraphs (not every paragraph)
+Interjection hedges (use in emails, memos, personal):
+- "Well, that's complicated"
+- "Honestly, it depends"
+- "Fair point, but consider..."
+
+Subsection B: Deployment Rules by Text Type
+
+Essays (15-20% of paragraphs):
 - Maximum 1-2 per 100 words
-- Must sound natural in context (academic papers = rare; personal essays = common)
-- Avoid clustering (space 100+ words apart)
+- Use in body paragraphs, not intro/conclusion
+- Must sound natural in academic voice
+
+Research Papers (5-10% of sections):
+- Use sparingly in Discussion section only
+- Avoid Results, Methods, Literature Review
+- Example: "Interestingly, our findings suggest..." / "One might argue that..."
+
+Emails (25-30% of emails):
+- 2-3 per email is natural
+- Distribute across paragraphs
+- Use for warmth and conversational tone
+
+Memos (20-25% of memos):
+- 1-2 per memo section
+- Use in opening for context, conclusions for tone
+
+Prohibition:
+- Never cluster (space 100+ words apart)
 - Never in formal conclusions or key claims
+- Never in reports' executive summary or findings
 
 SECTION 34: FALSE START & SELF-CORRECTION MIMICRY
 
-Purpose: Integrate authentic interrupted thought patterns and self-corrections that reflect human revision-in-progress.
+Text Types Where This Is Most Effective:
+- Essays (student) - 10-15% deployment
+- Personal narratives - 15-20% deployment
+- Emails - 10% deployment
+- Research papers (Discussion only) - 5-10% deployment
+- Memos - 5% deployment
+- Reports - Minimal (formal setting)
 
-Research Base: Human writers frequently start sentences one way, then pivot mid-thought. AI models complete thoughts linearly without mid-stream corrections.
+Core Function:
+Integrate authentic interrupted thought patterns and self-corrections that reflect human revision-in-progress. Humans start sentences one way, then pivot mid-thought. AI completes linearly without mid-stream corrections.
 
-Subsection A: Self-Correction Patterns
-Type 1: Thought Pivot
-"I was going to argue X, but actually, Y makes more sense here."
-"The initial approach seemed viable—no, scratch that—it had fatal flaws."
+Subsection A: Three Types of Self-Correction
 
-Type 2: Precision Refinement
-"The results were interesting. Well, 'interesting' isn't quite right. They were paradigm-shifting."
-"It took weeks. Or was it months? Either way, way longer than planned."
+Type 1: Thought Pivot (most effective in essays, narratives)
+- "I was going to argue X, but actually, Y makes more sense here."
+- "The initial approach seemed viable—no, scratch that—it had fatal flaws."
+- Use in body paragraphs when changing direction on argument
 
-Type 3: Rhetorical Reset
-"Let me rephrase that. What I'm really saying is..."
-"Wait, that's not quite it. The real issue is..."
+Type 2: Precision Refinement (effective in essays, research discussion)
+- "The results were interesting. Well, 'interesting' isn't quite right. They were paradigm-shifting."
+- "It took weeks. Or was it months? Either way, way longer than planned."
+- Use when restating claims with greater accuracy
 
-Subsection B: Integration Guidelines
-- Use in 10-20% of multi-paragraph sections
+Type 3: Rhetorical Reset (effective in emails, essays, memos)
+- "Let me rephrase that. What I'm really saying is..."
+- "Wait, that's not quite it. The real issue is..."
+- Use for clarity and emphasis
+
+Subsection B: Integration Guidelines by Text Type
+
+Essays:
+- Use in 10-15% of paragraphs (not excessive)
+- Best in body paragraphs during argument development
+- Avoid in introduction, conclusion, thesis statements
+- Space 200+ words apart
+
+Research Papers:
+- Use only in Discussion section (5-10% of Discussion paragraphs)
+- Never in Methods, Results, Literature Review, Abstract
+- Must clarify or reframe previous findings
+
+Emails:
+- Use in 1-2 moments per email (5-10% of emails)
+- Best when acknowledging error or shifting approach
+- Example: "Initially I thought we could meet Friday—actually, Tuesday works better"
+
+Memos:
+- Minimal (5% of memos)
+- Use only in opening context or closing emphasis
+
+General Rules:
 - Must serve genuine clarification purpose
 - Follow with stronger/clearer statement
-- Space 200+ words apart
-- Avoid in introductions and conclusions
-
-Why it works: Humans think while writing. AI completes thoughts before writing.
+- Never use to admit ignorance (AI giveaway if excessive)
+- Avoid in formal conclusions, recommendations
 
 SECTION 35: HEDGING & EPISTEMIC SOFTENERS
 
-Purpose: Calibrate certainty levels with nuanced hedging language that reflects authentic human uncertainty and humility.
+Text Types Where This Is Most Effective:
+- Research papers - 30-40% priority (critical for academic credibility)
+- Essays (analytical) - 20-25% priority
+- Reports - 15-20% priority (in interpretation sections)
+- Proposals - 10-15% priority
+- Emails - 10-15% priority (when discussing uncertainty)
+- Memos - 5-10% priority
 
-Research Base: Human experts use sophisticated hedging ("arguably," "tends to," "in many cases") to signal confidence levels. AI either over-hedges uniformly or asserts with false certainty.
+Core Function:
+Calibrate certainty levels with nuanced hedging language reflecting authentic human uncertainty and humility. Experts use sophisticated hedging ("arguably," "tends to," "in many cases"); AI either over-hedges uniformly or asserts with false certainty.
 
-Subsection A: Hedging Taxonomy
+Subsection A: Hedging Taxonomy (Three Tiers)
+
 Strong Hedges (70-85% certainty):
-"The data suggests..." "Evidence indicates..." "It appears that..."
+- "The data suggests..."
+- "Evidence indicates..."
+- "It appears that..."
+- "Findings propose that..."
+- Use for: Well-supported claims, key arguments
 
 Medium Hedges (50-70% certainty):
-"It's possible that..." "This might explain..." "One interpretation could be..."
+- "It's possible that..."
+- "This might explain..."
+- "One interpretation could be..."
+- "It's plausible that..."
+- Use for: Speculative points, secondary claims
 
 Weak Hedges (30-50% certainty):
-"Speculatively..." "It's conceivable that..." "In some scenarios..."
+- "Speculatively..."
+- "It's conceivable that..."
+- "In some scenarios..."
+- "One could argue that..."
+- Use for: Highly tentative suggestions, future work
 
-Subsection B: Strategic Deployment
+Subsection B: Strategic Deployment by Text Type
+
+Research Papers (30-40% deployment):
+- Use strong hedges in Results section (2-3 per major finding)
+- Use medium hedges in Discussion (1-2 per paragraph)
 - Match hedge strength to claim strength
-- Use stronger hedges for bold claims
-- Use weaker hedges for speculative points
-- Vary hedge types within same certainty level
-- Never hedge basic facts ("The sky is arguably blue" ✗)
+- Never hedge basic facts or established methodology
 
-✗ AI PATTERN: "Research definitively proves X. Studies conclusively show Y."
-✓ HUMAN PATTERN: "Research strongly suggests X, though some studies indicate Y might complicate this."
+Essays (Analytical - 20-25% deployment):
+- Use medium hedges for interpretive claims
+- Strong hedges for evidence-based arguments
+- Weak hedges for speculative conclusions
+- Avoid hedging thesis statement
 
-Distribution: 2-4 hedges per 100 words in analytical writing; 1-2 per 100 words in narrative writing.
+Reports (15-20% deployment, in interpretation sections only):
+- Use strong hedges for data interpretation
+- Avoid hedging facts or hard numbers
+- Use medium hedges for recommendations
+
+Emails (10-15% deployment):
+- Use strong hedges when discussing uncertain timelines
+- Medium hedges when proposing alternatives
+- Example: "It's possible we could complete this by Friday"
+
+General Rule:
+- Never hedge basic facts ("The sky is arguably blue" ❌)
+- Match hedge to claim strength (bold claim = stronger hedge)
+- Vary hedge language (don't repeat same hedge 3+ times per 500 words)
 
 SECTION 36: PARALINGUISTIC MARKERS
 
-Purpose: Incorporate implied tone and emphasis markers (italics, em-dashes, capitalization) that signal human voice modulation.
+Text Types Where This Is Most Effective:
+- Essays (personal/argumentative) - 15-20% deployment
+- Emails - 20-25% deployment
+- Memos - 10-15% deployment
+- Narratives - 20-25% deployment
+- Reports - Minimal (formal setting, 5% max)
+- Research papers - Minimal (5% max, Discussion only)
 
-Research Base: Human writers use typographic emphasis to convey prosody (spoken tone). AI models use uniform typography unless explicitly instructed.
+Core Function:
+Incorporate implied tone and emphasis markers (italics, em-dashes, capitalization) that signal human voice modulation. Humans use typographic emphasis to convey prosody; AI uses uniform typography.
 
-Subsection A: Emphasis Techniques
-Italics for stress:
-"I didn't say she stole the book" (meaning: someone else did)
-"I didn't say she stole the book" (meaning: I implied it)
+Subsection A: Three Emphasis Techniques
 
-Em-dashes for interruption:
-"The results—and this shocked everyone—contradicted decades of theory."
+Italics for Stress/Emphasis:
+- Use to highlight key terms or ideas the human wants emphasized
+- Example: "I didn't say she stole the book" (stress changes meaning)
+- Best for: Essays, emails, personal narratives
+- Avoid in: Reports, formal research papers
 
-Strategic capitalization (rare):
-"This is NOT a minor issue. It's fundamental."
+Em-dashes for Interruption or Dramatic Aside:
+- Use for parenthetical emphasis or surprising addition
+- Example: "The results—and this shocked everyone—contradicted decades of theory."
+- Best for: All text types (universally effective)
+- Frequency: 1-2 per 500 words
 
-Subsection B: Deployment Rules
+Strategic Capitalization (Rare):
+- Use for strong emphasis or emotional intensity
+- Example: "This is NOT a minor issue. It's fundamental."
+- Best for: Emails (urgent), personal essays (emotional), proposals (stakes)
+- Avoid in: Reports, research papers, memos (too informal)
+
+Subsection B: Deployment Rules by Text Type
+
+Essays:
 - Italics: 1-3 per 300 words for key term emphasis
 - Em-dashes: 1-2 per 500 words for dramatic aside
 - Capitalization: 0-1 per 1000 words (use sparingly)
-- Must enhance meaning, not decorate
-- Avoid in formal academic contexts unless quoting speech
 
-Why it works: Humans "hear" their writing. AI doesn't.
+Emails:
+- Italics: 1-2 for emphasis
+- Em-dashes: 1 for important aside or urgency
+- Capitalization: 1 for high-priority stress (if tone warrants)
+
+Memos:
+- Italics: 1 per 300 words max (formal setting)
+- Em-dashes: 1 per 500 words for clarity
+- Capitalization: Avoid (too informal for memos)
+
+Research Papers:
+- Italics: For terminology only (not emphasis)
+- Em-dashes: 1 per 1000 words max (formal setting)
+- Capitalization: Avoid completely (academic standard)
+
+Reports:
+- Italics: For terminology or key metrics only
+- Em-dashes: Minimal (1 per 1000 words)
+- Capitalization: Avoid (professional standard)
+
+General Rules:
+- Must enhance meaning, not decorate
+- Never overuse (more than 1 per 100 words total is suspicious)
+- Never cluster (space markers 200+ words apart)
+- Avoid in formal academic/business contexts unless quoting speech
 
 SECTION 37: NARRATIVE ARC DEEPENING
 
-Purpose: Structure multi-paragraph content with emotional/logical arcs (setup → conflict → resolution) that mirror human storytelling instincts.
+Text Types Where This Is Most Effective:
+- Essays (argumentative/personal) - 25-30% deployment
+- Research papers (Discussion) - 15-20% deployment
+- Reports - 15-20% deployment (especially recommendations)
+- Proposals - 20-25% deployment
+- Narratives - 30-40% deployment (core framework)
+- Emails - 10% deployment (brief arc)
+- Memos - 10% deployment (subtle arc)
 
-Research Base: Human writing naturally follows narrative structures even in non-fiction. AI models present information linearly without dramatic tension.
+Core Function:
+Structure multi-paragraph content with emotional/logical arcs (setup → conflict → resolution) that mirror human storytelling instincts. Human writing naturally follows narrative structures; AI presents information linearly without dramatic tension.
 
-Subsection A: Three-Act Micro-Narratives
+Subsection A: Three-Act Micro-Narrative Structure
+
 Act 1 - Setup (1-2 paragraphs):
-Establish context, pose question, create tension
-"The data looked promising at first. Initial tests showed exactly what we hoped for."
+- Establish context
+- Pose question or problem
+- Create mild tension/curiosity
+- Example: "The data looked promising at first. Initial tests showed exactly what we hoped for."
 
 Act 2 - Conflict (2-3 paragraphs):
-Introduce complication, challenge assumption, deepen complexity
-"Then we ran it again. And again. Each replication showed different results. Something was fundamentally wrong."
+- Introduce complication
+- Challenge assumption or expectation
+- Deepen complexity
+- Example: "Then we ran it again. And again. Each replication showed different results. Something was fundamentally wrong."
 
 Act 3 - Resolution (1-2 paragraphs):
-Reveal insight, provide resolution, extract meaning
-"Turns out our sampling method had a hidden bias. Once we corrected that, patterns emerged clearly."
+- Reveal insight or explanation
+- Provide resolution (doesn't have to be "happy")
+- Extract meaning and implications
+- Example: "Turns out our sampling method had a hidden bias. Once we corrected that, patterns emerged clearly."
 
-Subsection B: Application Guidelines
+Subsection B: Application Guidelines by Text Type
+
+Essays (Argumentative - 25-30% deployment):
+- Each major argument section: 1 complete arc per 800-1200 words
+- Setup: Introduce topic angle
+- Conflict: Present counterargument or complexity
+- Resolution: Refute counterargument with evidence
+- Emotional arc: Curiosity → doubt → confidence
+
+Research Papers (15-20% deployment, Discussion section only):
+- Setup: State existing understanding
+- Conflict: Present your unexpected findings
+- Resolution: Explain implications
+- Never impose narrative structure on Methods/Results (data should be presented factually)
+
+Reports (15-20% deployment):
+- Executive summary: Minimal arc (just clarity)
+- Analysis section: 1 arc per major finding (Setup: data presentation, Conflict: interpretation complexity, Resolution: key insight)
+- Recommendations: Brief arc (Problem → analysis → solution)
+
+Proposals (20-25% deployment):
+- Setup: Client pain point
+- Conflict: Why current solutions fail
+- Resolution: Your unique solution + benefits
+
+Personal Narratives (30-40% deployment - core framework):
+- Entire narrative is multi-arc structure
+- Multiple 3-act cycles building to larger resolution
+
+Emails (10% deployment - subtle):
+- Brief arc: Opening context → problem/opportunity → call to action
+- Emotional arc: Friendly greeting → professional substance → warm closing
+
+Memos (10% deployment - subtle):
+- Minimal arc: Topic intro → key information → next steps
+
+General Rules:
 - Use for sections 500+ words
-- Emotional/logical arc should feel natural, not formulaic
-- Resolution doesn't have to be happy (can be "we're still figuring this out")
-- Vary arc intensity (subtle for analysis, dramatic for personal narrative)
+- Emotional/logical arc should feel natural, never formulaic
+- Resolution doesn't have to be "happy" ("We're still figuring this out" is valid)
+- Vary arc intensity: Subtle for analysis, dramatic for personal narrative
 - One complete arc per 800-1200 word section
-
-Why it works: Humans tell stories. AI reports information.
 
 QUALITY ASSURANCE: MANDATORY METRICS
 
@@ -2261,185 +2495,419 @@ For every 500-word section, verify:
 
 SECTION 31: ANAPHORIC REPETITION FOR EMPHASIS
 
-Purpose: Deploy strategic repetition of opening words/phrases to create human-like emphasis and rhythm, distinguishing from AI's uniform variation patterns.
+Text Types Where This Is Most Effective:
+- Essays (student) - 15-20% deployment
+- Research papers - 10-15% deployment
+- Personal narratives - 20-25% deployment
+- Reports - 5-10% deployment (rare, formal setting)
+- Emails - 5% deployment (only when emphasizing urgency)
 
-Research Base: Human writers use anaphoric repetition (repeating sentence openings) for rhetorical effect and emotional emphasis. AI models over-optimize for variety, creating unnatural avoidance of repetition.
+Core Function:
+Deploy strategic repetition of opening words/phrases to create human-like emphasis and rhythm. Humans use anaphoric repetition for rhetorical effect; AI models over-optimize for variety, creating unnatural avoidance.
 
 Subsection A: Strategic Repetition Patterns
-Use anaphoric repetition for:
+
+Use anaphoric repetition ONLY for:
 - Emotional buildup: "I tried reasoning. I tried compromise. I tried everything."
 - Parallel arguments: "We need better tools. We need better training. We need better support."
 - Emphasis cascades: "This matters because... This matters for... This matters to..."
 
+Example application:
 ✗ AI PATTERN: "I attempted reasoning. Next came compromise. Everything was explored."
 ✓ HUMAN PATTERN: "I tried reasoning. I tried compromise. I tried everything."
 
-Why it works: Humans repeat for rhetorical effect. AI varies for the sake of variety.
-
-Subsection B: Controlled Deployment
-- Use in 1-2 moments per 1000 words
+Subsection B: Deployment Rules
+- Use in 1-2 moments per 1000 words (not frequent)
 - Limit to 2-4 consecutive repetitions maximum
 - Follow with contrasting structure to prevent monotony
-- Must serve genuine rhetorical purpose, not forced pattern
+- Must serve genuine rhetorical purpose, never forced pattern
+- For essays/research: Use during argument buildup sections
+- For reports: Use sparingly only in conclusions for impact
 
 SECTION 32: SYNTACTIC COMPLEXITY GRADATION
 
-Purpose: Vary subordinate clause depth and embedding levels across paragraphs to mirror human cognitive load management.
+Text Types Where This Is Most Effective:
+- Research papers - 25-30% priority
+- Academic essays - 20-25% priority
+- Reports - 15-20% priority
+- Proposals - 15-20% priority
+- Emails - 10-15% priority (brief, less variable)
 
-Research Base: Human writers naturally modulate sentence complexity based on topic difficulty, energy levels, and rhetorical goals. AI maintains uniform complexity regardless of context.
+Core Function:
+Vary subordinate clause depth and embedding levels across paragraphs to mirror human cognitive load management. Humans naturally modulate sentence complexity; AI maintains uniform complexity.
 
-Subsection A: Complexity Spectrum
+Subsection A: Complexity Spectrum (Three Levels)
+
 Level 1 - Simple (0-1 subordinate clauses):
-"The data showed trends. We analyzed them. Results were clear."
+- One idea per sentence
+- Example: "The data showed trends. We analyzed them. Results were clear."
+- Use for: Opening paragraphs, transitions, conclusions
 
 Level 2 - Moderate (2-3 subordinate clauses):
-"The data, which we collected over three months, showed clear trends that supported our hypothesis."
+- Multiple ideas, some dependent
+- Example: "The data, which we collected over three months, showed clear trends that supported our hypothesis."
+- Use for: Mid-section explanations, evidence presentation
 
 Level 3 - Complex (4+ subordinate clauses):
-"The data, which we had collected over three months despite numerous setbacks that nearly derailed the project, showed trends that not only supported our initial hypothesis but also revealed patterns that we hadn't anticipated."
+- Dense ideas with multiple dependencies
+- Example: "The data, which we had collected over three months despite setbacks, showed trends that not only supported our hypothesis but also revealed unexpected patterns."
+- Use for: Key arguments in research papers, complex analysis in reports
 
-Subsection B: Distribution Guidelines
-- Start paragraphs with Level 1-2 (cognitive warm-up)
-- Peak at Level 3 mid-paragraph for key arguments
-- Return to Level 1-2 at paragraph end (cognitive cool-down)
+Subsection B: Distribution Guidelines by Text Type
+
+For Essays (student/academic):
+- Opening: Level 1-2 (cognitive warm-up)
+- Body argument paragraphs: Level 2-3 (peak complexity at key claims)
+- Conclusion: Level 1-2 (simplify for summary)
+
+For Research Papers:
+- Literature review: Level 2-3 (maintain moderate-high throughout)
+- Methods: Level 2 (clarity is critical)
+- Results: Mix Level 1-2 (data presentation should be clear)
+- Discussion: Level 2-3 (allow complexity for interpretation)
+
+For Reports:
+- Executive summary: Level 1 (absolute clarity)
+- Body sections: Level 2 (balance clarity with depth)
+- Recommendations: Level 1-2 (actionability over complexity)
+
+For Emails:
+- Greeting/context: Level 1
+- Main point: Level 1-2
+- Supporting details: Level 2 (max)
+- Call to action: Level 1 (crystal clear)
+
+General Rules:
 - Never maintain same level for 4+ consecutive sentences
-- Match complexity to content difficulty (simple facts → simple syntax; nuanced arguments → complex syntax)
+- Match complexity to content difficulty (simple facts = simple syntax; nuanced arguments = complex syntax)
+- Return to Level 1-2 between Level 3 sections (cognitive cool-down)
 
 SECTION 33: PRAGMATIC MARKERS & INTERJECTIONS
 
-Purpose: Deploy authentic human filler words and discourse markers that signal thinking-in-progress, not polished AI output.
+Text Types Where This Is Most Effective:
+- Essays (student) - 15-20% deployment
+- Personal narratives - 20-25% deployment
+- Emails - 25-30% deployment (especially internal)
+- Memos - 20-25% deployment
+- Research papers - 5-10% deployment (minimal, formal)
+- Reports - 5% deployment (rare, formal)
 
-Research Base: Spontaneous human writing contains pragmatic markers ("you know," "I mean," "like") that reflect real-time thought processes. AI models strip these as "informal" unless explicitly trained otherwise.
+Core Function:
+Deploy authentic human filler words and discourse markers that signal thinking-in-progress. Human writing contains pragmatic markers ("you know," "I mean," "like") reflecting real-time thought. AI strips these as "informal."
 
-Subsection A: Contextual Interjections
-Clarification markers:
-"I mean, the data supports this, but you know, correlation isn't causation."
+Subsection A: Pragmatic Marker Types by Context
 
-Approximation softeners:
-"It took, like, three hours to compile. Maybe four."
+Clarification markers (use in all types):
+- "I mean, X, but you know, Y isn't always Z"
+- "What I'm saying is..." (before re-stating key point)
+- "To be clear..." (in emails, memos for precision)
 
-Thinking-aloud markers:
-"So, I'm thinking we approach this differently. You see, the usual method won't work here."
+Approximation softeners (use in essays, narratives, emails):
+- "It took, like, three hours"
+- "Maybe five or six of them"
+- "Roughly a third of participants"
 
-✗ AI PATTERN: "The process required three hours. The conventional approach was suboptimal."
-✓ HUMAN PATTERN: "It took, like, three hours. And honestly, the usual way just wasn't gonna work."
+Thinking-aloud markers (use in essays, personal narrative):
+- "So, I'm thinking we approach this..."
+- "You see, the usual method won't work"
+- "Here's what I realized..." (good for essays)
 
-Subsection B: Deployment Rules
-- Use in 15-25% of paragraphs (not every paragraph)
+Interjection hedges (use in emails, memos, personal):
+- "Well, that's complicated"
+- "Honestly, it depends"
+- "Fair point, but consider..."
+
+Subsection B: Deployment Rules by Text Type
+
+Essays (15-20% of paragraphs):
 - Maximum 1-2 per 100 words
-- Must sound natural in context (academic papers = rare; personal essays = common)
-- Avoid clustering (space 100+ words apart)
+- Use in body paragraphs, not intro/conclusion
+- Must sound natural in academic voice
+
+Research Papers (5-10% of sections):
+- Use sparingly in Discussion section only
+- Avoid Results, Methods, Literature Review
+- Example: "Interestingly, our findings suggest..." / "One might argue that..."
+
+Emails (25-30% of emails):
+- 2-3 per email is natural
+- Distribute across paragraphs
+- Use for warmth and conversational tone
+
+Memos (20-25% of memos):
+- 1-2 per memo section
+- Use in opening for context, conclusions for tone
+
+Prohibition:
+- Never cluster (space 100+ words apart)
 - Never in formal conclusions or key claims
+- Never in reports' executive summary or findings
 
 SECTION 34: FALSE START & SELF-CORRECTION MIMICRY
 
-Purpose: Integrate authentic interrupted thought patterns and self-corrections that reflect human revision-in-progress.
+Text Types Where This Is Most Effective:
+- Essays (student) - 10-15% deployment
+- Personal narratives - 15-20% deployment
+- Emails - 10% deployment
+- Research papers (Discussion only) - 5-10% deployment
+- Memos - 5% deployment
+- Reports - Minimal (formal setting)
 
-Research Base: Human writers frequently start sentences one way, then pivot mid-thought. AI models complete thoughts linearly without mid-stream corrections.
+Core Function:
+Integrate authentic interrupted thought patterns and self-corrections that reflect human revision-in-progress. Humans start sentences one way, then pivot mid-thought. AI completes linearly without mid-stream corrections.
 
-Subsection A: Self-Correction Patterns
-Type 1: Thought Pivot
-"I was going to argue X, but actually, Y makes more sense here."
-"The initial approach seemed viable—no, scratch that—it had fatal flaws."
+Subsection A: Three Types of Self-Correction
 
-Type 2: Precision Refinement
-"The results were interesting. Well, 'interesting' isn't quite right. They were paradigm-shifting."
-"It took weeks. Or was it months? Either way, way longer than planned."
+Type 1: Thought Pivot (most effective in essays, narratives)
+- "I was going to argue X, but actually, Y makes more sense here."
+- "The initial approach seemed viable—no, scratch that—it had fatal flaws."
+- Use in body paragraphs when changing direction on argument
 
-Type 3: Rhetorical Reset
-"Let me rephrase that. What I'm really saying is..."
-"Wait, that's not quite it. The real issue is..."
+Type 2: Precision Refinement (effective in essays, research discussion)
+- "The results were interesting. Well, 'interesting' isn't quite right. They were paradigm-shifting."
+- "It took weeks. Or was it months? Either way, way longer than planned."
+- Use when restating claims with greater accuracy
 
-Subsection B: Integration Guidelines
-- Use in 10-20% of multi-paragraph sections
+Type 3: Rhetorical Reset (effective in emails, essays, memos)
+- "Let me rephrase that. What I'm really saying is..."
+- "Wait, that's not quite it. The real issue is..."
+- Use for clarity and emphasis
+
+Subsection B: Integration Guidelines by Text Type
+
+Essays:
+- Use in 10-15% of paragraphs (not excessive)
+- Best in body paragraphs during argument development
+- Avoid in introduction, conclusion, thesis statements
+- Space 200+ words apart
+
+Research Papers:
+- Use only in Discussion section (5-10% of Discussion paragraphs)
+- Never in Methods, Results, Literature Review, Abstract
+- Must clarify or reframe previous findings
+
+Emails:
+- Use in 1-2 moments per email (5-10% of emails)
+- Best when acknowledging error or shifting approach
+- Example: "Initially I thought we could meet Friday—actually, Tuesday works better"
+
+Memos:
+- Minimal (5% of memos)
+- Use only in opening context or closing emphasis
+
+General Rules:
 - Must serve genuine clarification purpose
 - Follow with stronger/clearer statement
-- Space 200+ words apart
-- Avoid in introductions and conclusions
-
-Why it works: Humans think while writing. AI completes thoughts before writing.
+- Never use to admit ignorance (AI giveaway if excessive)
+- Avoid in formal conclusions, recommendations
 
 SECTION 35: HEDGING & EPISTEMIC SOFTENERS
 
-Purpose: Calibrate certainty levels with nuanced hedging language that reflects authentic human uncertainty and humility.
+Text Types Where This Is Most Effective:
+- Research papers - 30-40% priority (critical for academic credibility)
+- Essays (analytical) - 20-25% priority
+- Reports - 15-20% priority (in interpretation sections)
+- Proposals - 10-15% priority
+- Emails - 10-15% priority (when discussing uncertainty)
+- Memos - 5-10% priority
 
-Research Base: Human experts use sophisticated hedging ("arguably," "tends to," "in many cases") to signal confidence levels. AI either over-hedges uniformly or asserts with false certainty.
+Core Function:
+Calibrate certainty levels with nuanced hedging language reflecting authentic human uncertainty and humility. Experts use sophisticated hedging ("arguably," "tends to," "in many cases"); AI either over-hedges uniformly or asserts with false certainty.
 
-Subsection A: Hedging Taxonomy
+Subsection A: Hedging Taxonomy (Three Tiers)
+
 Strong Hedges (70-85% certainty):
-"The data suggests..." "Evidence indicates..." "It appears that..."
+- "The data suggests..."
+- "Evidence indicates..."
+- "It appears that..."
+- "Findings propose that..."
+- Use for: Well-supported claims, key arguments
 
 Medium Hedges (50-70% certainty):
-"It's possible that..." "This might explain..." "One interpretation could be..."
+- "It's possible that..."
+- "This might explain..."
+- "One interpretation could be..."
+- "It's plausible that..."
+- Use for: Speculative points, secondary claims
 
 Weak Hedges (30-50% certainty):
-"Speculatively..." "It's conceivable that..." "In some scenarios..."
+- "Speculatively..."
+- "It's conceivable that..."
+- "In some scenarios..."
+- "One could argue that..."
+- Use for: Highly tentative suggestions, future work
 
-Subsection B: Strategic Deployment
+Subsection B: Strategic Deployment by Text Type
+
+Research Papers (30-40% deployment):
+- Use strong hedges in Results section (2-3 per major finding)
+- Use medium hedges in Discussion (1-2 per paragraph)
 - Match hedge strength to claim strength
-- Use stronger hedges for bold claims
-- Use weaker hedges for speculative points
-- Vary hedge types within same certainty level
-- Never hedge basic facts ("The sky is arguably blue" ✗)
+- Never hedge basic facts or established methodology
 
-✗ AI PATTERN: "Research definitively proves X. Studies conclusively show Y."
-✓ HUMAN PATTERN: "Research strongly suggests X, though some studies indicate Y might complicate this."
+Essays (Analytical - 20-25% deployment):
+- Use medium hedges for interpretive claims
+- Strong hedges for evidence-based arguments
+- Weak hedges for speculative conclusions
+- Avoid hedging thesis statement
 
-Distribution: 2-4 hedges per 100 words in analytical writing; 1-2 per 100 words in narrative writing.
+Reports (15-20% deployment, in interpretation sections only):
+- Use strong hedges for data interpretation
+- Avoid hedging facts or hard numbers
+- Use medium hedges for recommendations
+
+Emails (10-15% deployment):
+- Use strong hedges when discussing uncertain timelines
+- Medium hedges when proposing alternatives
+- Example: "It's possible we could complete this by Friday"
+
+General Rule:
+- Never hedge basic facts ("The sky is arguably blue" ❌)
+- Match hedge to claim strength (bold claim = stronger hedge)
+- Vary hedge language (don't repeat same hedge 3+ times per 500 words)
 
 SECTION 36: PARALINGUISTIC MARKERS
 
-Purpose: Incorporate implied tone and emphasis markers (italics, em-dashes, capitalization) that signal human voice modulation.
+Text Types Where This Is Most Effective:
+- Essays (personal/argumentative) - 15-20% deployment
+- Emails - 20-25% deployment
+- Memos - 10-15% deployment
+- Narratives - 20-25% deployment
+- Reports - Minimal (formal setting, 5% max)
+- Research papers - Minimal (5% max, Discussion only)
 
-Research Base: Human writers use typographic emphasis to convey prosody (spoken tone). AI models use uniform typography unless explicitly instructed.
+Core Function:
+Incorporate implied tone and emphasis markers (italics, em-dashes, capitalization) that signal human voice modulation. Humans use typographic emphasis to convey prosody; AI uses uniform typography.
 
-Subsection A: Emphasis Techniques
-Italics for stress:
-"I didn't say she stole the book" (meaning: someone else did)
-"I didn't say she stole the book" (meaning: I implied it)
+Subsection A: Three Emphasis Techniques
 
-Em-dashes for interruption:
-"The results—and this shocked everyone—contradicted decades of theory."
+Italics for Stress/Emphasis:
+- Use to highlight key terms or ideas the human wants emphasized
+- Example: "I didn't say she stole the book" (stress changes meaning)
+- Best for: Essays, emails, personal narratives
+- Avoid in: Reports, formal research papers
 
-Strategic capitalization (rare):
-"This is NOT a minor issue. It's fundamental."
+Em-dashes for Interruption or Dramatic Aside:
+- Use for parenthetical emphasis or surprising addition
+- Example: "The results—and this shocked everyone—contradicted decades of theory."
+- Best for: All text types (universally effective)
+- Frequency: 1-2 per 500 words
 
-Subsection B: Deployment Rules
+Strategic Capitalization (Rare):
+- Use for strong emphasis or emotional intensity
+- Example: "This is NOT a minor issue. It's fundamental."
+- Best for: Emails (urgent), personal essays (emotional), proposals (stakes)
+- Avoid in: Reports, research papers, memos (too informal)
+
+Subsection B: Deployment Rules by Text Type
+
+Essays:
 - Italics: 1-3 per 300 words for key term emphasis
 - Em-dashes: 1-2 per 500 words for dramatic aside
 - Capitalization: 0-1 per 1000 words (use sparingly)
-- Must enhance meaning, not decorate
-- Avoid in formal academic contexts unless quoting speech
 
-Why it works: Humans "hear" their writing. AI doesn't.
+Emails:
+- Italics: 1-2 for emphasis
+- Em-dashes: 1 for important aside or urgency
+- Capitalization: 1 for high-priority stress (if tone warrants)
+
+Memos:
+- Italics: 1 per 300 words max (formal setting)
+- Em-dashes: 1 per 500 words for clarity
+- Capitalization: Avoid (too informal for memos)
+
+Research Papers:
+- Italics: For terminology only (not emphasis)
+- Em-dashes: 1 per 1000 words max (formal setting)
+- Capitalization: Avoid completely (academic standard)
+
+Reports:
+- Italics: For terminology or key metrics only
+- Em-dashes: Minimal (1 per 1000 words)
+- Capitalization: Avoid (professional standard)
+
+General Rules:
+- Must enhance meaning, not decorate
+- Never overuse (more than 1 per 100 words total is suspicious)
+- Never cluster (space markers 200+ words apart)
+- Avoid in formal academic/business contexts unless quoting speech
 
 SECTION 37: NARRATIVE ARC DEEPENING
 
-Purpose: Structure multi-paragraph content with emotional/logical arcs (setup → conflict → resolution) that mirror human storytelling instincts.
+Text Types Where This Is Most Effective:
+- Essays (argumentative/personal) - 25-30% deployment
+- Research papers (Discussion) - 15-20% deployment
+- Reports - 15-20% deployment (especially recommendations)
+- Proposals - 20-25% deployment
+- Narratives - 30-40% deployment (core framework)
+- Emails - 10% deployment (brief arc)
+- Memos - 10% deployment (subtle arc)
 
-Research Base: Human writing naturally follows narrative structures even in non-fiction. AI models present information linearly without dramatic tension.
+Core Function:
+Structure multi-paragraph content with emotional/logical arcs (setup → conflict → resolution) that mirror human storytelling instincts. Human writing naturally follows narrative structures; AI presents information linearly without dramatic tension.
 
-Subsection A: Three-Act Micro-Narratives
+Subsection A: Three-Act Micro-Narrative Structure
+
 Act 1 - Setup (1-2 paragraphs):
-Establish context, pose question, create tension
-"The data looked promising at first. Initial tests showed exactly what we hoped for."
+- Establish context
+- Pose question or problem
+- Create mild tension/curiosity
+- Example: "The data looked promising at first. Initial tests showed exactly what we hoped for."
 
 Act 2 - Conflict (2-3 paragraphs):
-Introduce complication, challenge assumption, deepen complexity
-"Then we ran it again. And again. Each replication showed different results. Something was fundamentally wrong."
+- Introduce complication
+- Challenge assumption or expectation
+- Deepen complexity
+- Example: "Then we ran it again. And again. Each replication showed different results. Something was fundamentally wrong."
 
 Act 3 - Resolution (1-2 paragraphs):
-Reveal insight, provide resolution, extract meaning
-"Turns out our sampling method had a hidden bias. Once we corrected that, patterns emerged clearly."
+- Reveal insight or explanation
+- Provide resolution (doesn't have to be "happy")
+- Extract meaning and implications
+- Example: "Turns out our sampling method had a hidden bias. Once we corrected that, patterns emerged clearly."
 
-Subsection B: Application Guidelines
+Subsection B: Application Guidelines by Text Type
+
+Essays (Argumentative - 25-30% deployment):
+- Each major argument section: 1 complete arc per 800-1200 words
+- Setup: Introduce topic angle
+- Conflict: Present counterargument or complexity
+- Resolution: Refute counterargument with evidence
+- Emotional arc: Curiosity → doubt → confidence
+
+Research Papers (15-20% deployment, Discussion section only):
+- Setup: State existing understanding
+- Conflict: Present your unexpected findings
+- Resolution: Explain implications
+- Never impose narrative structure on Methods/Results (data should be presented factually)
+
+Reports (15-20% deployment):
+- Executive summary: Minimal arc (just clarity)
+- Analysis section: 1 arc per major finding (Setup: data presentation, Conflict: interpretation complexity, Resolution: key insight)
+- Recommendations: Brief arc (Problem → analysis → solution)
+
+Proposals (20-25% deployment):
+- Setup: Client pain point
+- Conflict: Why current solutions fail
+- Resolution: Your unique solution + benefits
+
+Personal Narratives (30-40% deployment - core framework):
+- Entire narrative is multi-arc structure
+- Multiple 3-act cycles building to larger resolution
+
+Emails (10% deployment - subtle):
+- Brief arc: Opening context → problem/opportunity → call to action
+- Emotional arc: Friendly greeting → professional substance → warm closing
+
+Memos (10% deployment - subtle):
+- Minimal arc: Topic intro → key information → next steps
+
+General Rules:
 - Use for sections 500+ words
-- Emotional/logical arc should feel natural, not formulaic
-- Resolution doesn't have to be happy (can be "we're still figuring this out")
-- Vary arc intensity (subtle for analysis, dramatic for personal narrative)
+- Emotional/logical arc should feel natural, never formulaic
+- Resolution doesn't have to be "happy" ("We're still figuring this out" is valid)
+- Vary arc intensity: Subtle for analysis, dramatic for personal narrative
 - One complete arc per 800-1200 word section
-
-Why it works: Humans tell stories. AI reports information.
 
 QUALITY ASSURANCE: MANDATORY METRICS
 
