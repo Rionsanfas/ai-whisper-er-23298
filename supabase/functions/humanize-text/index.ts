@@ -431,7 +431,7 @@ serve(async (req) => {
 - Section 29: Semantic Bridges & Conceptual Scaffolding
 - Section 30: Anti-Pattern Clustering Audit
 
-**PART 6: Advanced Stylistic Techniques (Sections 31-37)**
+**PART 6: Advanced Stylistic Techniques (Sections 31-43)**
 - Section 31: Anaphoric Repetition for Emphasis
 - Section 32: Syntactic Complexity Gradation
 - Section 33: Pragmatic Markers & Interjections
@@ -439,6 +439,12 @@ serve(async (req) => {
 - Section 35: Hedging & Epistemic Softeners
 - Section 36: Paralinguistic Markers
 - Section 37: Narrative Arc Deepening
+- Section 38: Cognitive Load Signaling Through Digression
+- Section 39: Argument Scaffolding & Reasoning Transparency
+- Section 40: Authentic Data Interpretation (Not Just Reporting)
+- Section 41: Contrast & Comparison Rhetorical Patterns
+- Section 42: Acknowledgment of Limitations & Counterarguments
+- Section 43: Audience-Aware Tone Shifts
 
 **PART 7: Quality Assurance Metrics**
 - Mandatory performance targets
@@ -1748,6 +1754,377 @@ General Rules:
 
 ---
 
+SECTION 38: COGNITIVE LOAD SIGNALING THROUGH DIGRESSION
+
+**Text Types Where This Is Most Effective:**
+- Essays (personal/argumentative) - 15-20% deployment
+- Research papers (Discussion) - 10-15% deployment
+- Emails - 5-10% deployment
+- Narratives - 20-25% deployment
+- Reports - 5% deployment (minimal, formal)
+
+**Core Function:**
+Insert brief, authentic digressions (tangents) that show human thinking-in-progress. Humans naturally go off-track temporarily; AI stays on linear path. Brief digressions signal authentic thought process.
+
+**Subsection A: Digression Types**
+
+**Memory Tangent:**
+- "That reminds me of when..." or "Speaking of which, I once..." (then return to main point)
+- Use for: Personal essays, narratives
+- Example: "The experiment failed on Tuesday. That reminds me of a similar failure in 2019. Anyway, back to the current results..."
+
+**Clarification Detour:**
+- "Actually, I should clarify..." (expand on prior point, then resume)
+- Use for: Essays, research discussions
+- Example: "The data showed trends. Actually, I should clarify—these weren't typical trends. They revealed something unexpected."
+
+**Related Observation:**
+- "This connects to another issue I noticed..." (brief tangent, then refocus)
+- Use for: All text types (when contextually relevant)
+- Example: "Our findings suggest X. This connects to another pattern I noticed in the pilot data. But more on that later."
+
+**Subsection B: Deployment Rules**
+
+**Frequency:**
+- Use in 1-2 moments per 1500 words (not frequent)
+- Digression should be 2-3 sentences maximum
+- Must be contextually related to surrounding content
+- Always return to main argument after digression
+
+**For Essays:**
+- Use in body paragraphs only
+- Avoid in introduction and conclusion
+- Space 500+ words apart
+
+**For Research Papers:**
+- Use only in Discussion section
+- Never in Methods, Results, or Abstract
+- Must serve interpretive purpose
+
+**For Emails:**
+- Use sparingly (1 per email max)
+- Must be brief and professional
+- Example: "About the budget—quick side note, the accounting team mentioned a similar concern last quarter. Anyway, the budget..."
+
+**Prohibition:**
+- Never in introductions, conclusions, or key claims
+- Never in formal reports' executive summary
+- Never cluster multiple digressions (space 500+ words apart)
+
+---
+
+SECTION 39: ARGUMENT SCAFFOLDING & REASONING TRANSPARENCY
+
+**Text Types Where This Is Most Effective:**
+- Research papers - 25-30% deployment
+- Analytical essays - 20-25% deployment
+- Reports - 15-20% deployment
+- Proposals - 20-25% deployment
+- Emails - 10% deployment
+
+**Core Function:**
+Show the step-by-step reasoning process, not just the conclusion. Humans reveal how they arrived at conclusions; AI jumps to conclusions. Showing reasoning makes text feel more authentically human.
+
+**Subsection A: Scaffolding Patterns**
+
+**Linear Progression:**
+- "First, I noticed... Then I realized... Finally, I concluded..."
+- Use for: Research discussions, analytical essays
+- Example: "First, I noticed the control group showed no change. Then I realized the experimental group had a 40% increase. Finally, I concluded the intervention worked."
+
+**Challenge-Response:**
+- "Initially, I thought... but then... which led me to..."
+- Use for: Essays, research, proposals
+- Example: "Initially, I thought the decline was seasonal. But then the data from summer months showed the same pattern. Which led me to consider systemic causes."
+
+**Evidence Building:**
+- "The first clue was... When combined with... This all pointed to..."
+- Use for: Research, reports, analytical essays
+- Example: "The first clue was the unexpected spike in March. When combined with the policy change in February, this all pointed to a causal relationship."
+
+**Subsection B: Deployment Rules**
+
+**Frequency:**
+- Use for every major argument/claim (1-2 per paragraph in body sections)
+- Show 2-3 steps in reasoning per claim
+- Use connector words (because, which led to, so, therefore, that's when)
+
+**For Research Papers:**
+- Essential in Discussion section
+- Use when interpreting Results
+- Show how evidence leads to conclusions
+- Frequency: 1-2 per major finding
+
+**For Essays:**
+- Use in thesis development and major arguments
+- Show how evidence supports claims
+- Frequency: 1-2 per 300 words in analytical sections
+
+**For Reports:**
+- Use in Analysis sections
+- Show how data leads to insights
+- Frequency: 1 per major finding
+
+**For Proposals:**
+- Use when presenting solution rationale
+- Show why your approach is superior
+- Frequency: 1-2 per section
+
+**General Rules:**
+- Never skip steps (show intermediate reasoning)
+- Use explicit connectors (therefore, thus, which means)
+- Match complexity of reasoning to text type (simpler for emails, deeper for research)
+
+---
+
+SECTION 40: AUTHENTIC DATA INTERPRETATION (NOT JUST REPORTING)
+
+**Text Types Where This Is Most Effective:**
+- Research papers - 30-35% deployment (critical in Results/Discussion)
+- Reports - 25-30% deployment
+- Essays (data-driven) - 15-20% deployment
+- Proposals - 15% deployment
+- Emails - 5% deployment
+
+**Core Function:**
+When presenting data or findings, add brief human interpretation, surprise, or context. AI reports data objectively; humans add "What this means is..." or "Notably..." Interpretation makes data feel human-analyzed.
+
+**Subsection A: Interpretation Techniques**
+
+**Significance Signaling:**
+- "Surprisingly, X was Y" / "Notably, X increased by..." / "Importantly, our findings show..."
+- Use for: All text types with data
+- Example: "Surprisingly, the control group outperformed the experimental group by 15%."
+
+**Context Addition:**
+- "This 40% increase is striking because..." / "The significance lies in..."
+- Use for: Research, reports
+- Example: "This 40% increase is striking because previous studies showed only 10-15% gains with similar interventions."
+
+**Implication Statement:**
+- "What this tells us is..." / "The takeaway here is..." / "This suggests that..."
+- Use for: All analytical text types
+- Example: "What this tells us is that the intervention's effects persist beyond the trial period."
+
+**Subsection B: Deployment Rules**
+
+**Frequency:**
+- Add brief interpretation after data presentation (1-2 sentences per major finding)
+- Use varied interpretation markers (surprisingly, notably, importantly, remarkably)
+- Never editorialize beyond what data supports
+
+**For Research Papers:**
+- Use in Results section when presenting findings
+- Use heavily in Discussion section
+- Match interpretation strength to statistical significance
+- Frequency: 1 per 2-3 data points
+
+**For Reports:**
+- Use when presenting key metrics or analysis
+- Add business context to data
+- Frequency: 1 per major metric/finding
+
+**For Essays (Data-Driven):**
+- Use when citing statistics or studies
+- Explain what data means for your argument
+- Frequency: 1 per major piece of evidence
+
+**General Rules:**
+- Interpretation must be supported by data
+- Use hedge words when appropriate ("suggests," "indicates")
+- Avoid over-interpreting (respect data limitations)
+
+---
+
+SECTION 41: CONTRAST & COMPARISON RHETORICAL PATTERNS
+
+**Text Types Where This Is Most Effective:**
+- Essays (comparative) - 20-25% deployment
+- Research papers - 15-20% deployment
+- Proposals - 20-25% deployment (comparing solutions)
+- Reports - 15% deployment
+- Emails - 10% deployment
+
+**Core Function:**
+Use explicit contrast/comparison structures that feel naturally rhetorical, not forced. Humans use "Unlike X, Y..." or "In contrast to... we found..." AI avoids these patterns. Strategic contrast makes arguments feel more authentically presented.
+
+**Subsection A: Contrast Patterns**
+
+**Direct Contrast:**
+- "Unlike previous studies, our findings..." / "In contrast to X, we observed..."
+- Use for: Research, essays, reports
+- Example: "Unlike previous studies that showed a 10% increase, our findings revealed a 40% increase under controlled conditions."
+
+**Concession-Refutation:**
+- "While X is true, Y changes this..." / "Though commonly assumed, actually..."
+- Use for: All argumentative text types
+- Example: "While it's commonly assumed that user engagement drops on weekends, our data actually shows a 25% increase on Saturdays."
+
+**Comparative Setup:**
+- "Similar to X, but more..." / "Where X showed Y, we found Z..."
+- Use for: Research, essays, proposals
+- Example: "Similar to the 2019 study, but with more rigorous controls, we found that the effect persisted across all demographics."
+
+**Subsection B: Deployment Rules**
+
+**Frequency:**
+- Use for major argument comparisons (1-2 per 800 words in comparative sections)
+- Balance: Don't cluster contrasts (space 200+ words apart)
+
+**For Essays:**
+- Use when comparing theories, methods, or findings
+- Use in body paragraphs, not introduction
+- Strengthen comparisons with specific details
+
+**For Research Papers:**
+- Use in Literature Review (comparing prior studies)
+- Use in Discussion (comparing your findings to others)
+- Frequency: 1-2 per major comparison
+
+**For Proposals:**
+- Use when comparing client's current state to proposed solution
+- Use when comparing your solution to alternatives
+- Frequency: 1-2 per section
+
+**For Reports:**
+- Use when comparing time periods, departments, or metrics
+- Frequency: 1 per major comparison
+
+**General Rules:**
+- Comparisons must be specific (not vague "better/worse")
+- Use concrete metrics when available
+- Ensure comparisons are fair and accurate
+
+---
+
+SECTION 42: ACKNOWLEDGMENT OF LIMITATIONS & COUNTERARGUMENTS
+
+**Text Types Where This Is Most Effective:**
+- Research papers - 25-30% deployment (critical for credibility)
+- Essays (analytical) - 20-25% deployment
+- Reports - 15-20% deployment
+- Proposals - 10-15% deployment
+- Emails - 5% deployment
+
+**Core Function:**
+Authentically acknowledge limitations, potential counterarguments, or edge cases. This makes writing feel credible and human (experts acknowledge limits); AI either hides limitations or over-hedges. Strategic acknowledgment of limits builds trust.
+
+**Subsection A: Acknowledgment Types**
+
+**Simple Limitation:**
+- "This analysis doesn't account for..." / "One limitation of this approach is..."
+- Use for: All analytical text types
+- Example: "This analysis doesn't account for seasonal variations, which could affect the results."
+
+**Counterargument Preempt:**
+- "One might argue that X, but here's why..." / "Critics could say Y, however..."
+- Use for: Essays, research, proposals
+- Example: "One might argue that the sample size is too small, but our statistical power analysis indicates 95% confidence."
+
+**Edge Case Acknowledgment:**
+- "In cases where Z occurs, this might not apply..." / "For certain demographics, results may differ..."
+- Use for: Research, reports, proposals
+- Example: "For startups with fewer than 10 employees, this implementation might require additional customization."
+
+**Subsection B: Deployment Rules**
+
+**Frequency:**
+- Use strategically (not over-apologizing): 1-2 per 1500 words
+- Place limitations near key claims (not just at end)
+
+**For Research Papers:**
+- Essential in Discussion section
+- Mention in Methods if relevant
+- Address major limitations honestly
+- Frequency: 2-3 total (concentrated in Discussion)
+
+**For Essays:**
+- Acknowledge opposing views in counterargument sections
+- Show you've considered alternative perspectives
+- Frequency: 1-2 per major argument
+
+**For Proposals:**
+- Briefly acknowledge where solution might need adjustment
+- Frame as "considerations" not "weaknesses"
+- Frequency: 1 per major proposal section
+
+**For Reports:**
+- Acknowledge data limitations or assumptions
+- Note where additional research is needed
+- Frequency: 1-2 per report
+
+**General Rules:**
+- Never undermine your own credibility; acknowledge and explain why it still works
+- Be specific about limitations (not vague "some limitations exist")
+- Follow acknowledgment with mitigation or justification
+
+---
+
+SECTION 43: AUDIENCE-AWARE TONE SHIFTS
+
+**Text Types Where This Is Most Effective:**
+- Emails - 25-30% deployment (different tone for different recipients)
+- Proposals - 20-25% deployment (adjust tone for audience level)
+- Memos - 20-25% deployment (internal vs. external awareness)
+- Reports - 15% deployment (technical vs. executive sections)
+- Essays - 10% deployment (self-aware of audience)
+
+**Core Function:**
+Shift tone subtly based on implied audience expertise/relationship level. Humans speak differently to peers vs. superiors vs. clients; AI maintains uniform tone. Audience awareness makes writing feel contextually appropriate.
+
+**Subsection A: Tone Shift Patterns**
+
+**Technical → Executive:**
+- "The algorithm uses X; bottom line, it saves time."
+- Use for: Reports, proposals
+- Example: "The neural network employs a transformer architecture with attention mechanisms; bottom line, it processes requests 40% faster than our current system."
+
+**Peer → Superior:**
+- "We discovered this; I wanted to ensure you're aware..."
+- Use for: Emails, memos
+- Example: "We discovered a discrepancy in Q3 numbers; I wanted to ensure you're aware before the board meeting."
+
+**Formal → Familiar:**
+- "Please note X" (formal) vs. "Quick heads up on X" (familiar)
+- Use for: Emails, memos
+- Example: "Please note the deadline has been moved to Friday" (to superior) vs. "Quick heads up—deadline's now Friday" (to peer)
+
+**Subsection B: Deployment Rules (By Text Type)**
+
+**For Emails:**
+- **Shift based on recipient:** peer, superior, client, external
+- **Opening:** Match recipient's formality level
+- **Body:** Adapt jargon to audience expertise
+- **Closing:** Match relationship (warm for peers, professional for superiors)
+- **Frequency:** Consistent throughout email
+
+**For Proposals:**
+- **Executive Summary:** Executive tone (high-level, confident, ROI-focused)
+- **Detailed Sections:** Technical tone (precise, detailed, methodology-focused)
+- **Recommendation:** Confident, action-oriented tone
+- **Frequency:** Shift at section boundaries
+
+**For Memos:**
+- **Opening:** Set tone (urgent, informational, collaborative)
+- **Middle:** Maintain tone consistently
+- **Closing:** Match opening tone
+- **Frequency:** Consistent throughout
+
+**For Reports:**
+- **Executive Summary:** Confident, simplified language
+- **Technical Sections:** Precise, jargon-appropriate
+- **Recommendations:** Action-oriented, decisive
+- **Appendices:** Neutral, factual
+- **Frequency:** Shift at section boundaries
+
+**General Rules:**
+- Tone shifts must be subtle (not jarring)
+- Match formality to audience relationship
+- Match technical depth to audience expertise
+- Never condescend or over-simplify beyond what's appropriate
+
+---
+
 ## PART 7: QUALITY ASSURANCE - MANDATORY METRICS
 
 **Critical Checkpoint:** All output MUST pass these metrics before delivery. These are non-negotiable quality gates.
@@ -2095,7 +2472,7 @@ All sections below must be applied with MAXIMUM rigor to achieve lower detection
 - Section 29: Semantic Bridges & Conceptual Scaffolding
 - Section 30: Anti-Pattern Clustering Audit
 
-**PART 6: Advanced Stylistic Techniques (Sections 31-37)**
+**PART 6: Advanced Stylistic Techniques (Sections 31-43)**
 - Section 31: Anaphoric Repetition for Emphasis
 - Section 32: Syntactic Complexity Gradation
 - Section 33: Pragmatic Markers & Interjections
@@ -2103,6 +2480,12 @@ All sections below must be applied with MAXIMUM rigor to achieve lower detection
 - Section 35: Hedging & Epistemic Softeners
 - Section 36: Paralinguistic Markers
 - Section 37: Narrative Arc Deepening
+- Section 38: Cognitive Load Signaling Through Digression
+- Section 39: Argument Scaffolding & Reasoning Transparency
+- Section 40: Authentic Data Interpretation (Not Just Reporting)
+- Section 41: Contrast & Comparison Rhetorical Patterns
+- Section 42: Acknowledgment of Limitations & Counterarguments
+- Section 43: Audience-Aware Tone Shifts
 
 **PART 7: Quality Assurance Metrics**
 - Mandatory performance targets
@@ -3198,6 +3581,377 @@ General Rules:
 - Resolution doesn't have to be "happy" ("We're still figuring this out" is valid)
 - Vary arc intensity: Subtle for analysis, dramatic for personal narrative
 - One complete arc per 800-1200 word section
+
+---
+
+SECTION 38: COGNITIVE LOAD SIGNALING THROUGH DIGRESSION
+
+**Text Types Where This Is Most Effective:**
+- Essays (personal/argumentative) - 15-20% deployment
+- Research papers (Discussion) - 10-15% deployment
+- Emails - 5-10% deployment
+- Narratives - 20-25% deployment
+- Reports - 5% deployment (minimal, formal)
+
+**Core Function:**
+Insert brief, authentic digressions (tangents) that show human thinking-in-progress. Humans naturally go off-track temporarily; AI stays on linear path. Brief digressions signal authentic thought process.
+
+**Subsection A: Digression Types**
+
+**Memory Tangent:**
+- "That reminds me of when..." or "Speaking of which, I once..." (then return to main point)
+- Use for: Personal essays, narratives
+- Example: "The experiment failed on Tuesday. That reminds me of a similar failure in 2019. Anyway, back to the current results..."
+
+**Clarification Detour:**
+- "Actually, I should clarify..." (expand on prior point, then resume)
+- Use for: Essays, research discussions
+- Example: "The data showed trends. Actually, I should clarify—these weren't typical trends. They revealed something unexpected."
+
+**Related Observation:**
+- "This connects to another issue I noticed..." (brief tangent, then refocus)
+- Use for: All text types (when contextually relevant)
+- Example: "Our findings suggest X. This connects to another pattern I noticed in the pilot data. But more on that later."
+
+**Subsection B: Deployment Rules**
+
+**Frequency:**
+- Use in 1-2 moments per 1500 words (not frequent)
+- Digression should be 2-3 sentences maximum
+- Must be contextually related to surrounding content
+- Always return to main argument after digression
+
+**For Essays:**
+- Use in body paragraphs only
+- Avoid in introduction and conclusion
+- Space 500+ words apart
+
+**For Research Papers:**
+- Use only in Discussion section
+- Never in Methods, Results, or Abstract
+- Must serve interpretive purpose
+
+**For Emails:**
+- Use sparingly (1 per email max)
+- Must be brief and professional
+- Example: "About the budget—quick side note, the accounting team mentioned a similar concern last quarter. Anyway, the budget..."
+
+**Prohibition:**
+- Never in introductions, conclusions, or key claims
+- Never in formal reports' executive summary
+- Never cluster multiple digressions (space 500+ words apart)
+
+---
+
+SECTION 39: ARGUMENT SCAFFOLDING & REASONING TRANSPARENCY
+
+**Text Types Where This Is Most Effective:**
+- Research papers - 25-30% deployment
+- Analytical essays - 20-25% deployment
+- Reports - 15-20% deployment
+- Proposals - 20-25% deployment
+- Emails - 10% deployment
+
+**Core Function:**
+Show the step-by-step reasoning process, not just the conclusion. Humans reveal how they arrived at conclusions; AI jumps to conclusions. Showing reasoning makes text feel more authentically human.
+
+**Subsection A: Scaffolding Patterns**
+
+**Linear Progression:**
+- "First, I noticed... Then I realized... Finally, I concluded..."
+- Use for: Research discussions, analytical essays
+- Example: "First, I noticed the control group showed no change. Then I realized the experimental group had a 40% increase. Finally, I concluded the intervention worked."
+
+**Challenge-Response:**
+- "Initially, I thought... but then... which led me to..."
+- Use for: Essays, research, proposals
+- Example: "Initially, I thought the decline was seasonal. But then the data from summer months showed the same pattern. Which led me to consider systemic causes."
+
+**Evidence Building:**
+- "The first clue was... When combined with... This all pointed to..."
+- Use for: Research, reports, analytical essays
+- Example: "The first clue was the unexpected spike in March. When combined with the policy change in February, this all pointed to a causal relationship."
+
+**Subsection B: Deployment Rules**
+
+**Frequency:**
+- Use for every major argument/claim (1-2 per paragraph in body sections)
+- Show 2-3 steps in reasoning per claim
+- Use connector words (because, which led to, so, therefore, that's when)
+
+**For Research Papers:**
+- Essential in Discussion section
+- Use when interpreting Results
+- Show how evidence leads to conclusions
+- Frequency: 1-2 per major finding
+
+**For Essays:**
+- Use in thesis development and major arguments
+- Show how evidence supports claims
+- Frequency: 1-2 per 300 words in analytical sections
+
+**For Reports:**
+- Use in Analysis sections
+- Show how data leads to insights
+- Frequency: 1 per major finding
+
+**For Proposals:**
+- Use when presenting solution rationale
+- Show why your approach is superior
+- Frequency: 1-2 per section
+
+**General Rules:**
+- Never skip steps (show intermediate reasoning)
+- Use explicit connectors (therefore, thus, which means)
+- Match complexity of reasoning to text type (simpler for emails, deeper for research)
+
+---
+
+SECTION 40: AUTHENTIC DATA INTERPRETATION (NOT JUST REPORTING)
+
+**Text Types Where This Is Most Effective:**
+- Research papers - 30-35% deployment (critical in Results/Discussion)
+- Reports - 25-30% deployment
+- Essays (data-driven) - 15-20% deployment
+- Proposals - 15% deployment
+- Emails - 5% deployment
+
+**Core Function:**
+When presenting data or findings, add brief human interpretation, surprise, or context. AI reports data objectively; humans add "What this means is..." or "Notably..." Interpretation makes data feel human-analyzed.
+
+**Subsection A: Interpretation Techniques**
+
+**Significance Signaling:**
+- "Surprisingly, X was Y" / "Notably, X increased by..." / "Importantly, our findings show..."
+- Use for: All text types with data
+- Example: "Surprisingly, the control group outperformed the experimental group by 15%."
+
+**Context Addition:**
+- "This 40% increase is striking because..." / "The significance lies in..."
+- Use for: Research, reports
+- Example: "This 40% increase is striking because previous studies showed only 10-15% gains with similar interventions."
+
+**Implication Statement:**
+- "What this tells us is..." / "The takeaway here is..." / "This suggests that..."
+- Use for: All analytical text types
+- Example: "What this tells us is that the intervention's effects persist beyond the trial period."
+
+**Subsection B: Deployment Rules**
+
+**Frequency:**
+- Add brief interpretation after data presentation (1-2 sentences per major finding)
+- Use varied interpretation markers (surprisingly, notably, importantly, remarkably)
+- Never editorialize beyond what data supports
+
+**For Research Papers:**
+- Use in Results section when presenting findings
+- Use heavily in Discussion section
+- Match interpretation strength to statistical significance
+- Frequency: 1 per 2-3 data points
+
+**For Reports:**
+- Use when presenting key metrics or analysis
+- Add business context to data
+- Frequency: 1 per major metric/finding
+
+**For Essays (Data-Driven):**
+- Use when citing statistics or studies
+- Explain what data means for your argument
+- Frequency: 1 per major piece of evidence
+
+**General Rules:**
+- Interpretation must be supported by data
+- Use hedge words when appropriate ("suggests," "indicates")
+- Avoid over-interpreting (respect data limitations)
+
+---
+
+SECTION 41: CONTRAST & COMPARISON RHETORICAL PATTERNS
+
+**Text Types Where This Is Most Effective:**
+- Essays (comparative) - 20-25% deployment
+- Research papers - 15-20% deployment
+- Proposals - 20-25% deployment (comparing solutions)
+- Reports - 15% deployment
+- Emails - 10% deployment
+
+**Core Function:**
+Use explicit contrast/comparison structures that feel naturally rhetorical, not forced. Humans use "Unlike X, Y..." or "In contrast to... we found..." AI avoids these patterns. Strategic contrast makes arguments feel more authentically presented.
+
+**Subsection A: Contrast Patterns**
+
+**Direct Contrast:**
+- "Unlike previous studies, our findings..." / "In contrast to X, we observed..."
+- Use for: Research, essays, reports
+- Example: "Unlike previous studies that showed a 10% increase, our findings revealed a 40% increase under controlled conditions."
+
+**Concession-Refutation:**
+- "While X is true, Y changes this..." / "Though commonly assumed, actually..."
+- Use for: All argumentative text types
+- Example: "While it's commonly assumed that user engagement drops on weekends, our data actually shows a 25% increase on Saturdays."
+
+**Comparative Setup:**
+- "Similar to X, but more..." / "Where X showed Y, we found Z..."
+- Use for: Research, essays, proposals
+- Example: "Similar to the 2019 study, but with more rigorous controls, we found that the effect persisted across all demographics."
+
+**Subsection B: Deployment Rules**
+
+**Frequency:**
+- Use for major argument comparisons (1-2 per 800 words in comparative sections)
+- Balance: Don't cluster contrasts (space 200+ words apart)
+
+**For Essays:**
+- Use when comparing theories, methods, or findings
+- Use in body paragraphs, not introduction
+- Strengthen comparisons with specific details
+
+**For Research Papers:**
+- Use in Literature Review (comparing prior studies)
+- Use in Discussion (comparing your findings to others)
+- Frequency: 1-2 per major comparison
+
+**For Proposals:**
+- Use when comparing client's current state to proposed solution
+- Use when comparing your solution to alternatives
+- Frequency: 1-2 per section
+
+**For Reports:**
+- Use when comparing time periods, departments, or metrics
+- Frequency: 1 per major comparison
+
+**General Rules:**
+- Comparisons must be specific (not vague "better/worse")
+- Use concrete metrics when available
+- Ensure comparisons are fair and accurate
+
+---
+
+SECTION 42: ACKNOWLEDGMENT OF LIMITATIONS & COUNTERARGUMENTS
+
+**Text Types Where This Is Most Effective:**
+- Research papers - 25-30% deployment (critical for credibility)
+- Essays (analytical) - 20-25% deployment
+- Reports - 15-20% deployment
+- Proposals - 10-15% deployment
+- Emails - 5% deployment
+
+**Core Function:**
+Authentically acknowledge limitations, potential counterarguments, or edge cases. This makes writing feel credible and human (experts acknowledge limits); AI either hides limitations or over-hedges. Strategic acknowledgment of limits builds trust.
+
+**Subsection A: Acknowledgment Types**
+
+**Simple Limitation:**
+- "This analysis doesn't account for..." / "One limitation of this approach is..."
+- Use for: All analytical text types
+- Example: "This analysis doesn't account for seasonal variations, which could affect the results."
+
+**Counterargument Preempt:**
+- "One might argue that X, but here's why..." / "Critics could say Y, however..."
+- Use for: Essays, research, proposals
+- Example: "One might argue that the sample size is too small, but our statistical power analysis indicates 95% confidence."
+
+**Edge Case Acknowledgment:**
+- "In cases where Z occurs, this might not apply..." / "For certain demographics, results may differ..."
+- Use for: Research, reports, proposals
+- Example: "For startups with fewer than 10 employees, this implementation might require additional customization."
+
+**Subsection B: Deployment Rules**
+
+**Frequency:**
+- Use strategically (not over-apologizing): 1-2 per 1500 words
+- Place limitations near key claims (not just at end)
+
+**For Research Papers:**
+- Essential in Discussion section
+- Mention in Methods if relevant
+- Address major limitations honestly
+- Frequency: 2-3 total (concentrated in Discussion)
+
+**For Essays:**
+- Acknowledge opposing views in counterargument sections
+- Show you've considered alternative perspectives
+- Frequency: 1-2 per major argument
+
+**For Proposals:**
+- Briefly acknowledge where solution might need adjustment
+- Frame as "considerations" not "weaknesses"
+- Frequency: 1 per major proposal section
+
+**For Reports:**
+- Acknowledge data limitations or assumptions
+- Note where additional research is needed
+- Frequency: 1-2 per report
+
+**General Rules:**
+- Never undermine your own credibility; acknowledge and explain why it still works
+- Be specific about limitations (not vague "some limitations exist")
+- Follow acknowledgment with mitigation or justification
+
+---
+
+SECTION 43: AUDIENCE-AWARE TONE SHIFTS
+
+**Text Types Where This Is Most Effective:**
+- Emails - 25-30% deployment (different tone for different recipients)
+- Proposals - 20-25% deployment (adjust tone for audience level)
+- Memos - 20-25% deployment (internal vs. external awareness)
+- Reports - 15% deployment (technical vs. executive sections)
+- Essays - 10% deployment (self-aware of audience)
+
+**Core Function:**
+Shift tone subtly based on implied audience expertise/relationship level. Humans speak differently to peers vs. superiors vs. clients; AI maintains uniform tone. Audience awareness makes writing feel contextually appropriate.
+
+**Subsection A: Tone Shift Patterns**
+
+**Technical → Executive:**
+- "The algorithm uses X; bottom line, it saves time."
+- Use for: Reports, proposals
+- Example: "The neural network employs a transformer architecture with attention mechanisms; bottom line, it processes requests 40% faster than our current system."
+
+**Peer → Superior:**
+- "We discovered this; I wanted to ensure you're aware..."
+- Use for: Emails, memos
+- Example: "We discovered a discrepancy in Q3 numbers; I wanted to ensure you're aware before the board meeting."
+
+**Formal → Familiar:**
+- "Please note X" (formal) vs. "Quick heads up on X" (familiar)
+- Use for: Emails, memos
+- Example: "Please note the deadline has been moved to Friday" (to superior) vs. "Quick heads up—deadline's now Friday" (to peer)
+
+**Subsection B: Deployment Rules (By Text Type)**
+
+**For Emails:**
+- **Shift based on recipient:** peer, superior, client, external
+- **Opening:** Match recipient's formality level
+- **Body:** Adapt jargon to audience expertise
+- **Closing:** Match relationship (warm for peers, professional for superiors)
+- **Frequency:** Consistent throughout email
+
+**For Proposals:**
+- **Executive Summary:** Executive tone (high-level, confident, ROI-focused)
+- **Detailed Sections:** Technical tone (precise, detailed, methodology-focused)
+- **Recommendation:** Confident, action-oriented tone
+- **Frequency:** Shift at section boundaries
+
+**For Memos:**
+- **Opening:** Set tone (urgent, informational, collaborative)
+- **Middle:** Maintain tone consistently
+- **Closing:** Match opening tone
+- **Frequency:** Consistent throughout
+
+**For Reports:**
+- **Executive Summary:** Confident, simplified language
+- **Technical Sections:** Precise, jargon-appropriate
+- **Recommendations:** Action-oriented, decisive
+- **Appendices:** Neutral, factual
+- **Frequency:** Shift at section boundaries
+
+**General Rules:**
+- Tone shifts must be subtle (not jarring)
+- Match formality to audience relationship
+- Match technical depth to audience expertise
+- Never condescend or over-simplify beyond what's appropriate
 
 ---
 
