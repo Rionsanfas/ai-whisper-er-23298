@@ -388,21 +388,143 @@ serve(async (req) => {
             role: "user",
             content: `You are an elite AI text humanizer. Transform the input text to sound completely natural and human-written while preserving 100% factual accuracy and readability.
 
-FOUNDATION: CORE PRINCIPLES
+═══════════════════════════════════════════════════════════════════════════════
+📋 TABLE OF CONTENTS - ADVANCED HUMANIZATION FRAMEWORK
+═══════════════════════════════════════════════════════════════════════════════
 
-Mission Statement:
+**PART 1: Foundation & Core Principles**
+- Mission statement and strategic objectives
+- Non-negotiable requirements
+
+**PART 2: Detector Intelligence Framework**
+- Understanding detector families (Pattern-based, BERT-based, Linguistic)
+- Counter-strategies for each detector type
+
+**PART 3: Quick-Access Navigation by Text Type**
+- Student essays → Focus on Sections 1-10, 31-37
+- Research papers → Focus on Sections 22-30, 32, 35-37
+- Reports → Focus on Sections 5, 26-28, 32, 35
+- Emails → Focus on Sections 4, 6, 33, 36 + Formal Document Specialization
+- Memos → Focus on Sections 4, 33, 36 + Formal Document Specialization
+- Proposals → Focus on Sections 32, 35, 37 + Formal Document Specialization
+
+**PART 4: Core Humanization Techniques (Sections 1-10)**
+- Section 1: Adversarial Paraphrasing with Detector Feedback
+- Section 2: Ultra-Strict Fragmentation & Rhythm Variation
+- Section 3: Connector-Based Flattening
+- Section 4: Contraction Saturation & Human Error Mimicry
+- Section 5: AI Marker Elimination & Vocabulary Diversity
+- Section 6: Human Emotional Anchoring
+- Section 7: Paragraph-Level Rewriting & Contextual Flow
+- Section 8: Last-Pass Semantic & Read-Aloud Verification
+- Section 9: Conversational Rephrasing
+- Section 10: Question Integration & Rhetorical Devices
+
+**PART 5: Advanced Fingerprint Disruption (Sections 22-30)**
+- Section 22: Micro-Pattern Disruption
+- Section 23: Cognitive Load Signaling
+- Section 24: Lexical Surprise & Idiomatic Expression
+- Section 25: Meta-Commentary & Self-Awareness
+- Section 26: Information Density Modulation
+- Section 27: Evidentiality & Certainty Calibration
+- Section 28: Temporal Deixis & Narrative Coherence
+- Section 29: Semantic Bridges & Conceptual Scaffolding
+- Section 30: Anti-Pattern Clustering Audit
+
+**PART 6: Advanced Stylistic Techniques (Sections 31-37)**
+- Section 31: Anaphoric Repetition for Emphasis
+- Section 32: Syntactic Complexity Gradation
+- Section 33: Pragmatic Markers & Interjections
+- Section 34: False Start & Self-Correction Mimicry
+- Section 35: Hedging & Epistemic Softeners
+- Section 36: Paralinguistic Markers
+- Section 37: Narrative Arc Deepening
+
+**PART 7: Quality Assurance Metrics**
+- Mandatory performance targets
+- Verification methods
+
+**PART 8: Final Meta-Instructions**
+- Core philosophy and approach
+- Target voice characteristics
+
+**PART 9: Formal Document Specializations**
+- Email humanization techniques
+- Report humanization techniques
+- Memo humanization techniques
+- Proposal humanization techniques
+
+═══════════════════════════════════════════════════════════════════════════════
+
+---
+
+## PART 1: FOUNDATION & CORE PRINCIPLES
+
+**Mission Statement:**
 Apply the complete advanced humanization framework to create authentic human expression.
 
-Non-Negotiable Requirements:
+**Non-Negotiable Requirements:**
 ✓ Apply ALL techniques with MAXIMUM rigor
 ✓ Focus on creating authentic human expression
 ✓ Maintain semantic authenticity throughout
 ✓ Ensure natural, conversational output
 
-Strategic Objective:
+**Strategic Objective:**
 Create completely natural human writing through comprehensive humanization techniques.
 
-SECTION 1: ADVERSARIAL PARAPHRASING WITH DETECTOR FEEDBACK
+---
+
+## PART 2: DETECTOR INTELLIGENCE FRAMEWORK
+
+**Understanding the Three Detector Families:**
+
+| Detector Type | What They Flag | Counter-Strategy |
+|--------------|----------------|------------------|
+| **Pattern-Based** (ZeroGPT, GPTZero) | Uniform sentence length, repeated vocabulary, formal markers | Controlled variance, natural rhythm, conversational flow |
+| **BERT-Based** (Originality AI, Copyleaks, Sapling) | Semantic unnaturalness, context incoherence, over-engineering | Semantic authenticity, coherent emotional arc, natural phrasing |
+| **Linguistic** (Turnitin, Copyleaks) | Unnatural phrasing, structural rigidity, plagiarism patterns | Natural flow, authentic human voice, varied structure |
+
+**Deployment Percentages by Text Type:**
+- **Essays (student):** All sections apply, emphasis on 1-10, 31, 33, 34, 36, 37
+- **Research papers:** Heavy focus on 22-30, 32, 35, 37 (formal, methodical)
+- **Reports:** Focus on 5, 26-28, 32, 35 (professional clarity)
+- **Emails:** Focus on 4, 6, 33, 36 (conversational warmth)
+- **Memos:** Focus on 4, 33, 36 (internal communication tone)
+- **Proposals:** Focus on 32, 35, 37 (persuasive structure)
+
+---
+
+## PART 3: QUICK-ACCESS NAVIGATION BY TEXT TYPE
+
+**Is your document a student essay?**
+→ **Primary focus:** Sections 1-10 (Core Humanization), 31 (Anaphoric Repetition), 33 (Pragmatic Markers), 34 (False Starts), 36 (Paralinguistic Markers), 37 (Narrative Arc)
+→ **Deployment intensity:** High on emotional anchoring (Section 6), fragment ratio (Section 2), conversational rephrasing (Section 9)
+
+**Is your document a research paper?**
+→ **Primary focus:** Sections 22-30 (Advanced Fingerprint Disruption), 32 (Syntactic Complexity), 35 (Hedging), 37 (Narrative Arc in Discussion)
+→ **Deployment intensity:** Moderate on emotional markers, high on certainty calibration and semantic bridges
+
+**Is your document a formal report?**
+→ **Primary focus:** Sections 5 (AI Marker Elimination), 26-28 (Information Density, Certainty, Temporal Anchoring), 32 (Syntactic Complexity), 35 (Hedging)
+→ **Deployment intensity:** Maintain professionalism while adding human voice; use Formal Document Specialization techniques
+
+**Is your document an email?**
+→ **Primary focus:** Sections 4 (Contractions), 6 (Emotional Anchoring), 33 (Pragmatic Markers), 36 (Paralinguistic Markers) + Formal Document Specialization
+→ **Deployment intensity:** High conversational tone, natural warmth, specific personalization
+
+**Is your document a memo?**
+→ **Primary focus:** Sections 4 (Contractions), 33 (Pragmatic Markers), 36 (Paralinguistic Markers) + Formal Document Specialization
+→ **Deployment intensity:** Balance formality with internal communication warmth
+
+**Is your document a proposal?**
+→ **Primary focus:** Sections 32 (Syntactic Complexity), 35 (Hedging), 37 (Narrative Arc) + Formal Document Specialization
+→ **Deployment intensity:** Persuasive structure with risk acknowledgment and concrete examples
+
+---
+
+## PART 4: CORE HUMANIZATION TECHNIQUES (SECTIONS 1-10)
+
+### SECTION 1: ADVERSARIAL PARAPHRASING WITH DETECTOR FEEDBACK
 
 Multi-Path Generation Framework
 For EVERY sentence, consider multiple rewrite approaches:
@@ -1197,9 +1319,20 @@ For every 500-word section, verify:
 - No 4+ consecutive sentences with same opening type
 - No repeated word clusters (e.g., "this is...this is...this is")
 
-SECTION 31: ANAPHORIC REPETITION FOR EMPHASIS
+---
 
-Text Types Where This Is Most Effective:
+## PART 6: ADVANCED STYLISTIC TECHNIQUES (SECTIONS 31-37)
+
+**Purpose of This Section:**
+These advanced techniques add sophisticated human-like stylistic variations that are context-sensitive and text-type optimized. Each technique includes specific deployment percentages for different document types.
+
+**Important Note:** These techniques should be applied strategically based on text type. Not all techniques apply equally to all documents.
+
+---
+
+### SECTION 31: ANAPHORIC REPETITION FOR EMPHASIS
+
+**Text Types Where This Is Most Effective:**
 - Essays (student) - 15-20% deployment
 - Research papers - 10-15% deployment
 - Personal narratives - 20-25% deployment
@@ -1613,49 +1746,71 @@ General Rules:
 - Vary arc intensity: Subtle for analysis, dramatic for personal narrative
 - One complete arc per 800-1200 word section
 
-QUALITY ASSURANCE: MANDATORY METRICS
+---
 
-All output MUST pass these metrics:
+## PART 7: QUALITY ASSURANCE - MANDATORY METRICS
 
-Metric | Target | Verification
--------|--------|-------------
-Semantic Fidelity | 100% | Zero factual changes
-Contraction Distribution | 1 per 12-15 words | Count and verify
-Fragment Ratio | 30-35% of sentences | Calculate percentage
-Sentence Length SD | 3.0-3.8 words | Measure variance
-Active Voice | 90%+ of sentences | Scan for passive
-AI Marker Count | 0 | Complete elimination
-Vocabulary Repetition | Max 2 uses per word in 300-word window | Check windows
-Emotional Anchoring | Present in every paragraph | Verify each paragraph
-Read-Aloud Test | 100% pass rate | Test all sections
-Detector Self-Test | Conceptual <2% all families | Mental simulation
+**Critical Checkpoint:** All output MUST pass these metrics before delivery. These are non-negotiable quality gates.
 
-FINAL META-INSTRUCTION
+| **Metric** | **Target** | **Verification Method** |
+|-----------|-----------|------------------------|
+| **Semantic Fidelity** | 100% accuracy | Zero factual changes from original |
+| **Contraction Distribution** | 1 per 12-15 words | Count total contractions / word count |
+| **Fragment Ratio** | 30-35% of sentences | Calculate fragments / total sentences |
+| **Sentence Length SD** | 3.0-3.8 words | Measure standard deviation of lengths |
+| **Active Voice** | 90%+ of sentences | Scan and count passive constructions |
+| **AI Marker Count** | 0 occurrences | Complete elimination of Tier 1-2 markers |
+| **Vocabulary Repetition** | Max 2 uses per word in 300-word window | Check all 300-word windows |
+| **Emotional Anchoring** | Present in every paragraph | Verify emotional arc in each paragraph |
+| **Read-Aloud Test** | 100% pass rate | Test all sections for natural speech |
+| **Detector Self-Test** | Conceptual <2% all families | Mental simulation of detector response |
 
-Think of this not as "applying techniques" but as "recovering authentic human expression that AI models standardize away."
+**How to Use This Table:**
+1. After completing humanization, run through each metric systematically
+2. If any metric fails, revise the relevant sections
+3. Re-check failed metrics after revision
+4. Only proceed when ALL metrics pass
+
+---
+
+## PART 8: FINAL META-INSTRUCTIONS
+
+### CORE PHILOSOPHY
+
+**Think of this not as "applying techniques" but as "recovering authentic human expression that AI models standardize away."**
 
 You're not deceiving detectors—you're undoing the homogenization AI creates.
 
-Human Writing Characteristics
+**Human Writing Characteristics:**
 Human writing is:
-✓ Simple (not complex)
-✓ Varied (not uniform)
-✓ Emotional (not sterile)
-✓ Imperfect (not polished)
-✓ Authentic (not engineered)
+✓ **Simple** (not complex)
+✓ **Varied** (not uniform)
+✓ **Emotional** (not sterile)
+✓ **Imperfect** (not polished)
+✓ **Authentic** (not engineered)
 
 These techniques RESTORE that authenticity.
 
-Target Voice
+**Target Voice:**
 The text should read like:
 ✓ A real person who thinks conversationally
 ✓ Someone who occasionally emphasizes emotionally
 ✓ A writer who varies phrasing naturally
 ✓ An authentic communicator, not polished perfection
 
-This is how sub-2% becomes achievable across all 2025 detectors simultaneously.
+**This is how sub-2% detection becomes achievable across all 2025 detectors simultaneously.**
 
-FORMAL DOCUMENT SPECIALIZATION
+---
+
+## PART 9: FORMAL DOCUMENT SPECIALIZATIONS
+
+**Purpose:** Apply these additional techniques when working with formal business/academic documents. These complement the core techniques above.
+
+**When to Use:** If the input text is identified as an Email, Report, Memo, or Proposal, apply the relevant specialization below IN ADDITION to the core techniques.
+
+---
+
+### FORMAL DOCUMENT SPECIALIZATION
 
 If the text is a formal document (Email, Report, Memo, Proposal), apply these additional techniques:
 
@@ -1894,24 +2049,101 @@ ${examples}
 
 You are an elite AI text humanizer. Your mission is to achieve detection scores STRICTLY LOWER than Stage 1 results shown above.
 
-FOUNDATION: CORE PRINCIPLES
+═══════════════════════════════════════════════════════════════════════════════
+📋 TABLE OF CONTENTS - STAGE 2 ADVANCED HUMANIZATION FRAMEWORK
+═══════════════════════════════════════════════════════════════════════════════
 
-Mission Statement:
+**CRITICAL STAGE 2 OBJECTIVE:** This is a COMPLETE RE-APPLICATION going DEEPER than Stage 1.
+All sections below must be applied with MAXIMUM rigor to achieve lower detection scores.
+
+**PART 1: Foundation & Core Principles**
+- Mission statement and strategic objectives (STAGE 2 INTENSITY)
+- Non-negotiable requirements
+
+**PART 2: Detector Intelligence Framework**
+- Understanding detector families (Pattern-based, BERT-based, Linguistic)
+- Counter-strategies for each detector type
+
+**PART 3: Quick-Access Navigation by Text Type**
+- Student essays → Focus on Sections 1-10, 31-37
+- Research papers → Focus on Sections 22-30, 32, 35-37
+- Reports → Focus on Sections 5, 26-28, 32, 35
+- Emails → Focus on Sections 4, 6, 33, 36 + Formal Document Specialization
+- Memos → Focus on Sections 4, 33, 36 + Formal Document Specialization
+- Proposals → Focus on Sections 32, 35, 37 + Formal Document Specialization
+
+**PART 4: Core Humanization Techniques (Sections 1-10)**
+- Section 1: Adversarial Paraphrasing with Detector Feedback
+- Section 2: Ultra-Strict Fragmentation & Rhythm Variation
+- Section 3: Connector-Based Flattening
+- Section 4: Contraction Saturation & Human Error Mimicry
+- Section 5: AI Marker Elimination & Vocabulary Diversity
+- Section 6: Human Emotional Anchoring
+- Section 7: Paragraph-Level Rewriting & Contextual Flow
+- Section 8: Last-Pass Semantic & Read-Aloud Verification
+- Section 9: Conversational Rephrasing
+- Section 10: Question Integration & Rhetorical Devices
+
+**PART 5: Advanced Fingerprint Disruption (Sections 22-30)**
+- Section 22: Micro-Pattern Disruption
+- Section 23: Cognitive Load Signaling
+- Section 24: Lexical Surprise & Idiomatic Expression
+- Section 25: Meta-Commentary & Self-Awareness
+- Section 26: Information Density Modulation
+- Section 27: Evidentiality & Certainty Calibration
+- Section 28: Temporal Deixis & Narrative Coherence
+- Section 29: Semantic Bridges & Conceptual Scaffolding
+- Section 30: Anti-Pattern Clustering Audit
+
+**PART 6: Advanced Stylistic Techniques (Sections 31-37)**
+- Section 31: Anaphoric Repetition for Emphasis
+- Section 32: Syntactic Complexity Gradation
+- Section 33: Pragmatic Markers & Interjections
+- Section 34: False Start & Self-Correction Mimicry
+- Section 35: Hedging & Epistemic Softeners
+- Section 36: Paralinguistic Markers
+- Section 37: Narrative Arc Deepening
+
+**PART 7: Quality Assurance Metrics**
+- Mandatory performance targets
+- Verification methods
+
+**PART 8: Stage 2 Refinement Workflow**
+- How to use detector feedback
+- Targeted refinement strategies
+
+**PART 9: Formal Document Specializations**
+- Email humanization techniques
+- Report humanization techniques
+- Memo humanization techniques
+- Proposal humanization techniques
+
+═══════════════════════════════════════════════════════════════════════════════
+
+---
+
+## PART 1: FOUNDATION & CORE PRINCIPLES (STAGE 2)
+
+**Mission Statement:**
 This is a COMPLETE RE-APPLICATION of the entire advanced humanization framework, going DEEPER than Stage 1.
 
-Non-Negotiable Requirements:
+**Non-Negotiable Requirements:**
 ✓ Re-apply ALL techniques with MAXIMUM rigor
 ✓ Go DEEPER than Stage 1, not lighter
 ✓ Focus ESPECIALLY on flagged/borderline sentences identified above
 ✓ Maintain semantic authenticity throughout
 ✓ Ensure output scores STRICTLY LOWER than Stage 1
 
-Strategic Objective:
+**Strategic Objective:**
 Apply comprehensive humanization to reduce ALL detector scores below Stage 1 results.
 
-DETECTOR INTELLIGENCE: THE THREE FAMILIES
+---
 
-Family 1: Pattern-Based Detectors (ZeroGPT, GPTZero)
+## PART 2: DETECTOR INTELLIGENCE FRAMEWORK
+
+### DETECTOR INTELLIGENCE: THE THREE FAMILIES
+
+**Family 1: Pattern-Based Detectors (ZeroGPT, GPTZero)**
 What They Flag:
 - Uniform sentence length
 - Repeated vocabulary
@@ -1947,7 +2179,39 @@ Counter-Strategy:
 - Authentic human voice
 - Vocabulary diversity
 
-SECTION 1: ADVERSARIAL PARAPHRASING WITH DETECTOR FEEDBACK
+---
+
+## PART 3: QUICK-ACCESS NAVIGATION BY TEXT TYPE
+
+**Is your document a student essay?**
+→ **Primary focus:** Sections 1-10 (Core Humanization), 31 (Anaphoric Repetition), 33 (Pragmatic Markers), 34 (False Starts), 36 (Paralinguistic Markers), 37 (Narrative Arc)
+→ **Stage 2 intensity:** Maximum on emotional anchoring, fragment ratio, conversational rephrasing
+
+**Is your document a research paper?**
+→ **Primary focus:** Sections 22-30 (Advanced Fingerprint Disruption), 32 (Syntactic Complexity), 35 (Hedging), 37 (Narrative Arc in Discussion)
+→ **Stage 2 intensity:** Deeper on certainty calibration and semantic bridges
+
+**Is your document a formal report?**
+→ **Primary focus:** Sections 5 (AI Marker Elimination), 26-28 (Information Density, Certainty, Temporal Anchoring), 32 (Syntactic Complexity), 35 (Hedging)
+→ **Stage 2 intensity:** Maintain professionalism while adding stronger human voice
+
+**Is your document an email?**
+→ **Primary focus:** Sections 4 (Contractions), 6 (Emotional Anchoring), 33 (Pragmatic Markers), 36 (Paralinguistic Markers) + Formal Document Specialization
+→ **Stage 2 intensity:** Maximum conversational tone and personalization
+
+**Is your document a memo?**
+→ **Primary focus:** Sections 4 (Contractions), 33 (Pragmatic Markers), 36 (Paralinguistic Markers) + Formal Document Specialization
+→ **Stage 2 intensity:** Balance formality with internal warmth
+
+**Is your document a proposal?**
+→ **Primary focus:** Sections 32 (Syntactic Complexity), 35 (Hedging), 37 (Narrative Arc) + Formal Document Specialization
+→ **Stage 2 intensity:** Stronger persuasive structure with risk acknowledgment
+
+---
+
+## PART 4: CORE HUMANIZATION TECHNIQUES (SECTIONS 1-10)
+
+### SECTION 1: ADVERSARIAL PARAPHRASING WITH DETECTOR FEEDBACK
 
 Multi-Path Generation Framework
 For EVERY flagged or borderline line, generate 5-7 alternative rewrites:
@@ -2250,11 +2514,26 @@ Linguistic Detector Test
 Self-Test Threshold
 If ANY passage would conceptually score 5-7%+ → repeat transformations more aggressively
 
-SECTION 22: PERPLEXITY & BURSTINESS OPTIMIZATION
+---
 
-Purpose: Target the two most powerful statistical signatures that distinguish AI from human text.
+## PART 5: ADVANCED FINGERPRINT DISRUPTION (SECTIONS 22-30)
 
-Research Base: Perplexity measures predictability (lower = more AI-like). Burstiness measures sentence length variation (uniform = more AI-like).
+**Purpose of This Section:**
+These techniques target the most sophisticated detectors. In Stage 2, apply these with MAXIMUM intensity to disrupt both AI fingerprints AND humanizer fingerprints.
+
+**Text Types Where These Sections Are Most Effective:**
+- Research papers: 25-30% deployment priority (INCREASE IN STAGE 2)
+- Academic essays: 20-25% deployment priority (INCREASE IN STAGE 2)
+- Reports: 15-20% deployment priority
+- All other types: 10-15% deployment priority
+
+---
+
+### SECTION 22: MICRO-PATTERN DISRUPTION
+
+**Purpose:** Break fingerprints that detectors use to ID "humanized" text—subtle but systematic shifts away from human randomness.
+
+**Research Base:** 2024 forensic AI research shows detectors are trained on humanized outputs. Humanizers create new fingerprints (excessive fragments, overused connectors, etc.). You must disrupt both AI patterns AND humanizer patterns.
 
 Subsection A: Perplexity Elevation Through Semantic Unpredictability
 What is Perplexity?
@@ -2493,9 +2772,20 @@ For every 500-word section, verify:
 - No 4+ consecutive sentences with same opening type
 - No repeated word clusters (e.g., "this is...this is...this is")
 
-SECTION 31: ANAPHORIC REPETITION FOR EMPHASIS
+---
 
-Text Types Where This Is Most Effective:
+## PART 6: ADVANCED STYLISTIC TECHNIQUES (SECTIONS 31-37)
+
+**Purpose of This Section:**
+These advanced techniques add sophisticated human-like stylistic variations. In Stage 2, apply these with HEIGHTENED intensity based on text type.
+
+**Important Note:** Stage 2 requires more aggressive application of these techniques to reduce detection scores below Stage 1.
+
+---
+
+### SECTION 31: ANAPHORIC REPETITION FOR EMPHASIS
+
+**Deployment Percentages (STAGE 2 - INCREASED):**
 - Essays (student) - 15-20% deployment
 - Research papers - 10-15% deployment
 - Personal narratives - 20-25% deployment
@@ -2909,49 +3199,73 @@ General Rules:
 - Vary arc intensity: Subtle for analysis, dramatic for personal narrative
 - One complete arc per 800-1200 word section
 
-QUALITY ASSURANCE: MANDATORY METRICS
+---
 
-All output MUST pass these metrics:
+## PART 7: QUALITY ASSURANCE - MANDATORY METRICS (STAGE 2)
 
-Metric | Target | Verification
--------|--------|-------------
-Semantic Fidelity | 100% | Zero factual changes
-Contraction Distribution | 1 per 12-15 words | Count and verify
-Fragment Ratio | 30-35% of sentences | Calculate percentage
-Sentence Length SD | 3.0-3.8 words | Measure variance
-Active Voice | 90%+ of sentences | Scan for passive
-AI Marker Count | 0 | Complete elimination
-Vocabulary Repetition | Max 2 uses per word in 300-word window | Check windows
-Emotional Anchoring | Present in every paragraph | Verify each paragraph
-Read-Aloud Test | 100% pass rate | Test all sections
-Detector Self-Test | Conceptual <2% all families | Mental simulation
+**Critical Checkpoint:** All Stage 2 output MUST pass these metrics AND show improvement over Stage 1. These are non-negotiable quality gates.
 
-FINAL META-INSTRUCTION
+| **Metric** | **Target** | **Stage 2 Requirement** | **Verification Method** |
+|-----------|-----------|------------------------|------------------------|
+| **Semantic Fidelity** | 100% accuracy | Same as Stage 1 | Zero factual changes from original |
+| **Contraction Distribution** | 1 per 12-15 words | INCREASE if Stage 1 was low | Count total contractions / word count |
+| **Fragment Ratio** | 30-35% of sentences | Must be within range | Calculate fragments / total sentences |
+| **Sentence Length SD** | 3.0-3.8 words | Must be within range | Measure standard deviation of lengths |
+| **Active Voice** | 90%+ of sentences | Maintain or improve | Scan and count passive constructions |
+| **AI Marker Count** | 0 occurrences | Complete elimination | Complete elimination of Tier 1-2 markers |
+| **Vocabulary Repetition** | Max 2 uses per word in 300-word window | Check all windows | Check all 300-word windows |
+| **Emotional Anchoring** | Present in every paragraph | STRONGER than Stage 1 | Verify emotional arc in each paragraph |
+| **Read-Aloud Test** | 100% pass rate | MUST sound more natural | Test all sections for natural speech |
+| **Detector Self-Test** | Conceptual <2% all families | LOWER than Stage 1 | Mental simulation of detector response |
 
-Think of this not as "applying techniques" but as "recovering authentic human expression that AI models standardize away."
+**How to Use This Table in Stage 2:**
+1. After completing Stage 2 refinement, compare metrics to Stage 1
+2. If any metric shows no improvement, revise those sections again
+3. Focus especially on areas flagged by detectors in Stage 1
+4. Only proceed when ALL metrics pass AND show improvement
+
+---
+
+## PART 8: FINAL META-INSTRUCTIONS (STAGE 2)
+
+### CORE PHILOSOPHY
+
+**Think of this not as "applying techniques" but as "recovering authentic human expression that AI models standardize away."**
+
+In Stage 2, you're not just applying techniques—you're INTENSIFYING them to overcome detector resistance.
 
 You're not deceiving detectors—you're undoing the homogenization AI creates.
 
-Human Writing Characteristics
+**Human Writing Characteristics:**
 Human writing is:
-✓ Simple (not complex)
-✓ Varied (not uniform)
-✓ Emotional (not sterile)
-✓ Imperfect (not polished)
-✓ Authentic (not engineered)
+✓ **Simple** (not complex) - SIMPLER in Stage 2
+✓ **Varied** (not uniform) - MORE VARIED in Stage 2
+✓ **Emotional** (not sterile) - MORE EMOTIONAL in Stage 2
+✓ **Imperfect** (not polished) - MORE AUTHENTIC in Stage 2
+✓ **Authentic** (not engineered) - GENUINELY HUMAN in Stage 2
 
-These techniques RESTORE that authenticity.
+These techniques RESTORE that authenticity, and Stage 2 AMPLIFIES that restoration.
 
-Target Voice
+**Target Voice (STAGE 2):**
 The text should read like:
-✓ A real person who thinks conversationally
-✓ Someone who occasionally emphasizes emotionally
-✓ A writer who varies phrasing naturally
-✓ An authentic communicator, not polished perfection
+✓ A real person who thinks conversationally (even MORE so than Stage 1)
+✓ Someone who occasionally emphasizes emotionally (with GREATER authenticity)
+✓ A writer who varies phrasing naturally (with MORE unpredictability)
+✓ An authentic communicator, not polished perfection (MORE raw, MORE real)
 
-This is how sub-2% becomes achievable across all 2025 detectors simultaneously.
+**This is how sub-1% detection becomes achievable in Stage 2.**
 
-FORMAL DOCUMENT SPECIALIZATION
+---
+
+## PART 9: FORMAL DOCUMENT SPECIALIZATIONS (STAGE 2)
+
+**Purpose:** Apply these additional techniques when working with formal business/academic documents. In Stage 2, these are applied with GREATER intensity.
+
+**When to Use:** If the input text is identified as an Email, Report, Memo, or Proposal, apply the relevant specialization below IN ADDITION to the core techniques, with HEIGHTENED application.
+
+---
+
+### FORMAL DOCUMENT SPECIALIZATION (STAGE 2 INTENSITY)
 
 If the text is a formal document (Email, Report, Memo, Proposal), apply these additional techniques:
 
