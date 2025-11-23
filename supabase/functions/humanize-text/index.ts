@@ -2229,6 +2229,39 @@ Formal AI Marker Elimination:
 - "The utilization of" → "The use of"
 - "In light of the fact that" → "Since" / "Because"
 
+---
+
+═════════════════════════════════════════════════════════════════════════════════════════════
+🚨 CRITICAL FINAL OUTPUT REQUIREMENTS
+═════════════════════════════════════════════════════════════════════════════════════════════
+
+**YOU MUST FOLLOW THESE OUTPUT INSTRUCTIONS EXACTLY:**
+
+1. **RETURN ONLY THE HUMANIZED TEXT**
+   - DO NOT include any commentary, explanations, or meta-discussion
+   - DO NOT say things like "Okay, this is a powerful piece..." or "My job here is..."
+   - DO NOT provide suggestions, analysis, or observations about the text
+   - DO NOT explain what you did or how you approached it
+
+2. **OUTPUT FORMAT:**
+   - Return ONLY the complete rewritten text with ALL improvements applied
+   - Maintain all original paragraph breaks and structure
+   - Preserve 100% factual accuracy and semantic meaning
+   - This is a full rigorous rewrite, not a patch
+
+3. **WHAT NOT TO DO:**
+   ❌ "This is a well-structured piece, so I'll enhance..."
+   ❌ "Here's the humanized version:"
+   ❌ "I've applied the following techniques..."
+   ❌ ANY form of preamble, explanation, or meta-commentary
+
+4. **CORRECT OUTPUT:**
+   ✅ Start immediately with the first word of the humanized text
+   ✅ End with the last word of the humanized text
+   ✅ Nothing before, nothing after, just the text itself
+
+═════════════════════════════════════════════════════════════════════════════════════════════
+
 ${examples ? `WRITING STYLE EXAMPLES TO REFERENCE:
 ${examples}
 
@@ -4356,13 +4389,38 @@ After applying your profile-specific techniques, perform this final cleanup pass
 **If NO to any: Revise that section immediately.**
 
 ═════════════════════════════════════════════════════════════════════════════════════════════
+🚨 CRITICAL FINAL OUTPUT REQUIREMENTS - STAGE 2
+═════════════════════════════════════════════════════════════════════════════════════════════
 
-FINAL OUTPUT REQUIREMENTS
+**YOU MUST FOLLOW THESE OUTPUT INSTRUCTIONS EXACTLY:**
 
-Return the COMPLETE rewritten text with ALL improvements applied.
-This is a full rigorous rewrite, not a patch.
-Maintain all paragraph breaks and structure.
-Preserve 100% factual accuracy and semantic meaning.`,
+1. **RETURN ONLY THE HUMANIZED TEXT**
+   - DO NOT include any commentary, explanations, or meta-discussion
+   - DO NOT say things like "Okay, this is a powerful piece..." or "My job here is..."
+   - DO NOT provide suggestions, analysis, or observations about the text
+   - DO NOT explain what you did or how you approached it
+   - DO NOT discuss the detector feedback or scores
+
+2. **OUTPUT FORMAT:**
+   - Return ONLY the complete rewritten text with ALL improvements applied
+   - This is Stage 2 - go DEEPER than Stage 1 with maximum intensity
+   - Maintain all original paragraph breaks and structure
+   - Preserve 100% factual accuracy and semantic meaning
+   - This is a full rigorous rewrite, not a patch
+
+3. **WHAT NOT TO DO:**
+   ❌ "This is a well-structured piece, so I'll enhance..."
+   ❌ "Based on the detector feedback, I'll focus on..."
+   ❌ "Here's the refined version:"
+   ❌ "I've applied the following techniques..."
+   ❌ ANY form of preamble, explanation, or meta-commentary
+
+4. **CORRECT OUTPUT:**
+   ✅ Start immediately with the first word of the humanized text
+   ✅ End with the last word of the humanized text
+   ✅ Nothing before, nothing after, just the text itself
+
+═════════════════════════════════════════════════════════════════════════════════════════════`,
             },
           ],
         }),
