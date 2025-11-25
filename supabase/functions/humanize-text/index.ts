@@ -3275,161 +3275,307 @@ Citations reduce detection 15-20%. Integrated citations + interpretation 80%+ su
 
 ---
 
-SECTION 59: RHETORICAL QUESTION INTEGRATION [CAS/BUS]
+SECTION 59: SEMANTIC DISPLACEMENT VIA CLAUSE EMBEDDING SURPRISE
 
-**Text Types Where This Is Most Effective:**
-- Essays (argumentative) - 15-20% deployment
-- Proposals - 10-15% deployment
-- Emails (persuasive) - 10% deployment
-- Blog posts - 20-25% deployment
-
-**Deployment by Profile:**
-- [ACAD]: 5% deployment (minimal, formal rhetorical questions only)
-- [CASUAL]: 20-25% deployment (frequent engagement tool)
-- [BUSINESS]: 10-15% deployment (strategic persuasion)
+**Text Types Most Effective:**
+- Research papers: 25-35%
+- Essays: 20-30%
+- Business: 10-20%
 
 **Core Function:**
-Ask questions that advance argument, not just engage. AI states directly; humans use rhetorical questions for emphasis and engagement. Strategic questions signal conversational sophistication.
+Embed expected clauses in unexpected places, creating semantic displacement.
 
 **Research Base:**
-Rhetorical analysis shows skilled writers use questions to engage readers and emphasize points. AI typically avoids questions (stating directly instead). Questions signal awareness of reader thought process.
+PADBen "intermediate laundering region" created by displaced semantics. Effective against ensemble detection. Detectors struggle with semantic preservation + structural displacement.
 
-**Subsection A: Rhetorical Question Types**
+**Subsection A: Three Displacement Techniques**
 
-**Definitional:**
-- "But what does 'success' actually mean in this context?"
-- "What counts as evidence here?"
-- Then answer the question
-- Use for: Essays, proposals
+**Technique 1: Result Clause Fronting**
+- Normal: "We conducted X, which resulted in Y"
+- Displaced: "Y resulted from our investigation because we conducted X"
+- Same meaning, unexpected structure
 
-**Challenge:**
-- "Why should we accept this assumption?"
-- "What if the conventional wisdom is wrong?"
-- Then provide counterpoint
-- Use for: Argumentative essays
+**Technique 2: Conditional Embedding**
+- Normal: "If X, then Y happened"
+- Displaced: "Y happened as a condition of X occurring"
+- Meaning preserved, clause order surprising
 
-**Transition:**
-- "So what does this tell us?"
-- "Where does that leave us?"
-- Then answer and transition
-- Use for: All text types
-
-**Engagement:**
-- "Have you ever wondered why...?"
-- "What would happen if...?"
-- Then explore the question
-- Use for: Casual essays, blogs
+**Technique 3: Causal Reversal**
+- Normal: "X caused Y"
+- Displaced: "Y emerged from X"
+- Same idea, different semantic pathway
 
 **Subsection B: Deployment Rules**
-
-**Frequency:**
-- Use 1-2 per 1000 words
-- Must advance argument (not just rhetorical filler)
-- Always answer the question you pose
-
-**For Essays:**
-- Use at transition points
-- Challenge assumptions with questions
-- Frequency: 2-3 per essay
-
-**For Proposals:**
-- Use to frame client problems
-- "What if you could reduce costs by 40%?"
-- Frequency: 1-2 per major section
-
-**For Business Writing:**
-- Use sparingly, strategically
-- Frame problems or opportunities
-- Frequency: 1-2 per document
-
-**Why It Works:**
-AI states directly; humans use questions for emphasis and engagement. Rhetorical questions signal conversational awareness.
-
-❌ **AI Pattern:**
-"The solution reduces costs. Implementation is straightforward."
-(Direct statements only)
-
-✅ **Human Pattern:**
-"But what does 'cost reduction' actually mean here? Are we talking operational costs, overhead, or both? The answer matters—and it's both."
-(Rhetorical question → clarification → answer)
+- 1-2 per paragraph
+- Never displace to confusion point
+- Meaning must remain clear
+- **Frequency:** 3-5 per 1000 words
 
 ---
 
-SECTION 60: EMOTIONAL SALIENCE IN DATA PRESENTATION [ACAD/BUS]
+SECTION 60: VOICE & PERSONALITY CONSISTENCY (PERSONA AUTHENTICITY)
 
-**Text Types Where This Is Most Effective:**
-- Research papers (Results/Discussion) - 20-25% deployment
-- Reports - 20-25% deployment
-- Proposals - 15-20% deployment
-- Essays (data-driven) - 15% deployment
-
-**Deployment by Profile:**
-- [ACAD]: 20-25% deployment (adds human interpretation to data)
-- [CASUAL]: 15% deployment (casual data presentation)
-- [BUSINESS]: 20-25% deployment (strategic emphasis)
+**Text Types Most Effective:**
+- All types: 30-50%
+- Student essays: 40-50%
+- Personal narratives: 50-60%
+- Business: 20-30%
+- Research: 15-25%
 
 **Core Function:**
-Add human emotional response when presenting data/findings. AI presents data objectively; humans react emotionally. Emotional markers signal human interpretation and engagement.
+Maintain consistent personal voice/personality throughout, showing individual thinking patterns, word preferences, and perspective.
 
 **Research Base:**
-Cognitive science shows humans can't help but react emotionally to surprising data. AI presents findings neutrally. Emotional salience markers (surprisingly, remarkably, disappointingly) signal human cognitive response.
+Consistent synthetic personalities bypass detection. PNAS reveals humans confuse AI consistency with human "personality inconsistency." Authentic voice has PATTERNS.
 
-**Subsection A: Emotional Markers**
+**Subsection A: Three Personality Anchors**
 
-**Surprise:**
-- "Surprisingly, the control group outperformed..."
-- "Unexpectedly, results showed..."
-- "Counterintuitively, we found..."
-- Use for: All analytical text types
+**Anchor 1: Vocabulary Preferences**
+- Identify 5-7 words you use more than standard
+- Use consistently but naturally distributed
+- Example: Student prefers "literally" for emphasis, 2-3x per 1000 words
+- Creates recognizable voice
 
-**Significance:**
-- "Remarkably, this trend persisted across..."
-- "Notably, the effect was stronger than..."
-- Use for: Research, reports
+**Anchor 2: Metaphor/Analogy Signature**
+- Identify recurring metaphors tied to interests/background
+- Use 1-2 characteristic metaphors per 1500 words
+- Example: Sports fan uses sports metaphors naturally
+- Creates personality consistency
 
-**Disappointment/Concern:**
-- "Unfortunately, the intervention showed..."
-- "Worryingly, the gap widened..."
-- Use for: Reports, research (when appropriate)
-
-**Enthusiasm:**
-- "Encouragingly, early results suggest..."
-- "Promisingly, the pilot showed..."
-- Use for: Proposals, reports
+**Anchor 3: Perspective/Opinion Stance**
+- Identify general stance (skeptical, enthusiastic, balanced, etc.)
+- Maintain throughout
+- Example: Cautious writer uses "may," "might," "could" consistently
+- Authentic voice, not robotic neutrality
 
 **Subsection B: Deployment Rules**
+- Create personality profile before writing (5-7 characteristics)
+- Maintain consistency throughout
+- Show growth/evolution in thinking (not static)
+- **Frequency:** Always active, foundational layer
 
-**Frequency:**
-- Use 1-2 emotional markers per major finding
-- Must match data significance (don't oversell)
-- Vary emotional markers (don't repeat)
+---
 
-**For Research Papers:**
-- Use in Results when presenting unexpected findings
-- Use in Discussion for interpretation
-- Match emotion to statistical significance
-- Frequency: 2-3 per Results/Discussion section
+SECTION 61: MULTI-MODAL LEXICAL DENSITY ORCHESTRATION
 
-**For Reports:**
-- Add emotional context to key metrics
-- Shows human analyst, not just data dump
-- Frequency: 2-3 per report
+**Text Types Most Effective:**
+- All types: 40-50%
+- Dense academic: 50-60%
+- Casual: 30-40%
 
-**For Proposals:**
-- Use positive emotional markers for benefits
-- Frame client problems with appropriate emotion
-- Frequency: 2-3 per proposal
+**Core Function:**
+Orchestrate six lexical diversity metrics (volume, abundance, MATTR, evenness, disparity, dispersion) to move from LLM-typical to human-typical patterns.
 
-**Why It Works:**
-AI presents data neutrally; humans react emotionally to findings. Emotional salience signals human cognitive engagement with data.
+**Research Base:**
+Humans have specific lexical diversity signature. LLMs score higher on most metrics. Reducing diversity on specific metrics makes text more human-like.
 
-❌ **AI Pattern:**
-"The experimental group showed a 40% increase. The control group showed no change. The difference was statistically significant."
-(Neutral, no emotional response)
+**Subsection A: Six Metrics (Target Directions)**
 
-✅ **Human Pattern:**
-"Surprisingly, the experimental group showed a 40% increase—well beyond our expectations. The control group? No change at all. That difference wasn't just statistically significant; it was striking."
-(Emotional markers: surprisingly, striking, well beyond expectations)
+**Metric 1: Volume Reduction**
+- Reduce unique words 10-15%
+- Reuse words more often
+- AI: High volume | Human: Lower volume
+
+**Metric 2: Abundance Adjustment**
+- Reduce rare word usage
+- Replace rare words with common synonyms
+- AI: More rare words | Human: Fewer rare words
+
+**Metric 3: MATTR (Moving Average Type-Token Ratio)**
+- Standardize vocabulary consistency
+- Don't jump between simple and complex
+- AI: High variation | Human: More consistent
+
+**Metric 4: Evenness Manipulation**
+- Make word frequency distribution uniform
+- No huge gaps between common/rare
+- AI: Uneven (clustered) | Human: More even
+
+**Metric 5: Disparity Reduction**
+- Reduce gap between high/low frequency words
+- Bridge the extremes
+- AI: Wide gap | Human: Narrower gap
+
+**Metric 6: Dispersion Spreading**
+- Spread vocabulary evenly across text
+- Don't cluster rare words in one section
+- AI: Clustered | Human: Dispersed
+
+**Subsection B: Deployment Rules**
+- Measure/estimate metrics on first pass
+- Adjust on second pass targeting lower diversity
+- **Frequency:** Applied to all academic/formal text
+
+---
+
+SECTION 62: GRAMMATICAL IMPERFECTION SIGNALING (AUTHENTIC QUIRKS, ADVANCED)
+
+**Text Types Most Effective:**
+- Student essays: 20-25%
+- Casual: 15-20%
+- Personal: 15-20%
+- Academic: 5-10%
+- Business: 2-5%
+
+**Core Function:**
+Introduce grammar quirks signaling AUTHENTIC thinking process (not careless mistakes), breaking AI's grammatical perfection.
+
+**Research Base:**
+PNAS reveals humans flag perfection as AI; humans make errors. Introduce DEFENSIBLE errors showing thinking-in-process. Grammar quirks personalize without hurting credibility.
+
+**Subsection A: Five Authentic Grammar Quirks**
+
+**Quirk 1: Sentence Fragment for Emphasis**
+- "We faced a choice. And a hard one."
+- Signals: Emotional emphasis, thinking aloud
+- Human pattern: Especially in personal narrative
+
+**Quirk 2: Comma Splice in Thought Cluster**
+- "We analyzed it, we were surprised, we reported" (rapid-fire)
+- Signals: Ideas flowing fast, excitement
+- Human pattern: Ideas connected quickly
+
+**Quirk 3: Subject-Verb Agreement Slip in Dense Section**
+- "The data from sources suggests..." (plural/singular mismatch)
+- Signals: Cognitive load from complexity
+- Human pattern: Writing fast on complex topics
+
+**Quirk 4: Inconsistent Pronoun Use**
+- "One should consider that we might find..."
+- Signals: Shifting between formal/personal
+- Human pattern: Natural code-switching
+
+**Quirk 5: Ellipsis for Dramatic Pause**
+- "And then... everything changed"
+- Signals: Narrative building, emotional moment
+- Human pattern: Storytelling technique
+
+**Subsection B: Deployment Rules (STRICT)**
+- All quirks defensible (not obviously wrong)
+- Signal cognitive/emotional state (not carelessness)
+- 1-2 per 1000 words maximum
+- Never in critical claim sentences
+- **Frequency:** Strategic, not random
+
+---
+
+SECTION 63: RHETORICAL QUESTION INTEGRATION FOR ARGUMENTATIVE FLOW
+
+**Text Types Most Effective:**
+- Essays: 20-25%
+- Research (Discussion): 15-20%
+- Persuasive: 25-30%
+- Proposals: 15-20%
+
+**Core Function:**
+Use rhetorical questions advancing argument (not just asking), creating thinking-process effect.
+
+**Research Base:**
+Rhetorical questions help bypass detection. Humans 1-2 per 1000 words; AI rarely uses. Signal argument engagement.
+
+**Subsection A: Five Rhetorical Question Types**
+
+**Type 1: Anticipatory Question**
+- Asks what reader might think, answers it
+- "But how is this possible? Here's the explanation..."
+- Before explaining complex ideas
+
+**Type 2: Emphasis Question**
+- Restates claim as question
+- "Isn't it clear that X is the case?"
+- At key argumentative moments
+
+**Type 3: Transition Question**
+- Questions bridge sections
+- "What does this mean for future research?"
+- Between sections
+
+**Type 4: Challenge Question**
+- Questions conventional wisdom
+- "Do we really understand what X means?"
+- Before alternative view
+
+**Type 5: Reflection Question**
+- Asks reader to consider implications
+- "How might this change our approach?"
+- In conclusions
+
+**Subsection B: Deployment Rules**
+- 1-2 per 1000 words maximum
+- Always answer rhetorical question
+- Space 300+ words apart
+- **Frequency:** Applied to persuasive/argumentative writing
+
+---
+
+SECTION 64: INFORMATION DENSITY MICRO-MODULATION
+
+**Text Types Most Effective:**
+- All types: 35-45%
+- Dense academic: 45-55%
+- Casual: 25-35%
+
+**Core Function:**
+Constantly micro-modulate information density (sentence-to-sentence, not just paragraph-level).
+
+**Research Base:**
+AI maintains consistent density. Density oscillation is human-specific. Varying every 2-3 sentences breaks detection patterns.
+
+**Subsection A: Micro-Modulation Pattern (Per 6-8 sentences)**
+
+**Sentence 1: LOW density** → One simple idea → "Temperature increased."
+**Sentence 2: LOW density** → Elaboration → "It rose 5 degrees."
+**Sentence 3: MEDIUM density** → Two related ideas → "The increase happened because greenhouse gases trapped heat."
+**Sentence 4: HIGH density** → Two complex ideas → "The mechanism by which atmospheric carbon dioxide concentrations... thereby increasing terrestrial temperature..."
+**Sentence 5: MEDIUM density** → Return to accessible → "This process is called the greenhouse effect."
+**Sentence 6: LOW density** → Simple, clear → "It matters."
+
+**Subsection B: Deployment Rules**
+- Never same density 3+ consecutive sentences
+- Match density to content importance
+- **Frequency:** Applied to all academic/formal writing
+
+---
+
+SECTION 65: ENTROPY INJECTION THROUGH WORD-LEVEL UNPREDICTABILITY
+
+**Text Types Most Effective:**
+- All types: 25-35%
+- High-risk: 35-45%
+
+**Core Function:**
+Inject strategic unpredictability at word level (not sentence level), breaking AI's predictable word-choice patterns.
+
+**Research Base:**
+Entropy manipulation effective vs ensemble detectors. TempParaphraser uses word-level entropy achieving 50-80% bypass. Higher entropy = lower detection.
+
+**Subsection A: Four Unpredictability Techniques**
+
+**Technique 1: Synonym Surprise**
+- Use less-common synonym in neutral context
+- Instead of "big," use "capacious" or "voluminous"
+- Raises word-level entropy, breaks pattern
+
+**Technique 2: Colloquialism Injection**
+- Suddenly drop to casual language
+- "The findings were lit." (in academic context, ironically)
+- Entropy spike, signals authenticity
+
+**Technique 3: Technical Term Casualization**
+- Replace technical with colloquial
+- "Mitigate" → "deal with" or "handle"
+- Breaks AI's technical patterns
+
+**Technique 4: Rare Word Deployment**
+- Use genuinely rare but correct word
+- "The phenomenon was deliquescent"
+- Unpredictable, signals educated writer
+
+**Subsection B: Deployment Rules**
+- 1 unpredictable word per 200-300 words
+- Must be defensible (correct, if unusual)
+- Spread throughout (not clustered)
+- **Frequency:** Mandatory for high-risk documents
 
 ---
 
