@@ -576,38 +576,68 @@ Create completely natural human writing through universal pattern disruption + t
 
 ---
 
-## PART 2: DETECTOR INTELLIGENCE FRAMEWORK
+## SECTION 1: CORE PATTERN DISRUPTION & DETECTOR INTELLIGENCE [UNIVERSAL - ALL PROFILES]
+APPLIES TO: Academic, Casual, Business | MANDATORY FOR ALL TEXT TYPES
 
+Every humanization begins here. Before you worry about fragments or contractions, you need to understand how AI detection actually works in 2025. Modern detectors don't just look for keywords—they analyze patterns, rhythms, semantic coherence. This section teaches you to think like a detector so you can write text that evades detection at a foundational level.
+
+**The Core Problem:**
+AI models generate text through probabilistic selection of likely next-words. This creates statistical fingerprints: uniform sentence rhythm, predictable word choices, consistent connector usage, and—crucially—semantically "perfect" flow that lacks human's natural roughness.
+
+**Your Mission:**
+Create authentic human expression by recovering the variability AI standardizes away.
+
+**The Seven-Path Framework**
+
+Think of these as seven lenses through which you examine every sentence. Eventually, this becomes intuitive—a mental checklist you run automatically. But initially, let's be explicit about the process.
+
+**Path 1: SIMPLIFY FIRST**
+Your instinct might be to make text more complex to humanize it. Wrong. Humans actually prefer simpler expression. AI overcomplicates.
+- Replace complex words with simpler alternatives wherever meaning allows
+- "Utilize" → "Use" | "Demonstrate" → "Show" | "Facilitate" → "Help"
+- Shorter sentences beat longer ones when both work
+- Example: "It is necessary to implement safeguards" → "We need safeguards"
+- Why it works: Simplicity signals confident human expression; complexity signals AI hedging
+
+**Path 2: FRAGMENT STRATEGICALLY**
+Complete sentences every time? That's an AI tell. Humans use fragments deliberately for emphasis, transition, or rhythm.
+- Deploy fragments for impact, not randomly
+- "This matters." "A lot." (Emphasis through pause)
+- "Why? Because X." (Natural Q&A rhythm)
+- "Here's the thing." (Conversational bridge)
+- Why it works: Fragments create cognitive pauses that signal human rhetorical choice
+
+**Path 3: ACTIVATE VOICE**
+Passive voice is AI's comfort zone. Active voice is human territory.
 - Target: 90%+ active voice across entire text
 - "We found X" not "It was found that X"
 - Direct subject-verb-object ordering
 - Example: "It was discovered that..." → "We discovered..."
-- Why it works: BERT detectors flag passive constructions as AI signatures
+- Why it works: BERT detectors specifically flag passive constructions as AI signatures
 
-**Path 5: VARYING CONNECTORS**
+**Path 4: ROTATE CONNECTORS**
 AI has favorite connectors. "Which," "that," "however"—they appear with suspicious consistency. Break the pattern.
-- Rotate: "which," "as," "because," "that," "while"
+- Rotate through: "which," "as," "because," "that," "while," "since," "when"
 - Never use same connector twice in 3 consecutive sentences
 - Example: "The test failed. We didn't know why." → "The test failed, which left us confused."
-- Why it works: Creates structural fluidity, breaks repetitive patterns
+- Why it works: Creates structural fluidity, breaks repetitive connector patterns
 
-**Path 6: CONVERSATIONAL REPHRASING**
+**Path 5: CONVERSATIONAL REPHRASING**
 Here's where personality enters. AI is polite and formal. Humans are... less so. Sometimes blunt. Sometimes excited. Often imperfect.
 - Emulate natural, spoken English rhythms
 - Include emotional asides (when contextually appropriate)
-- Mimic actual speech patterns
+- Mimic actual speech patterns—the way you'd explain this to a friend
 - Example: "It's odd. We didn't expect that. Honestly, I can't explain it."
 - Why it works: Emotional markers and conversational flow are distinctly human
 
-**Path 7: FRAGMENT INTRODUCTION**
-Fragments aren't errors. They're emphasis. They're rhythm. They're human.
-- Break into shorter pieces strategically (not randomly)
-- Use for emphasis, transitions, answers, reactions
-- Example: "This is significant" → "This matters. A lot."
-- Why it works: AI avoids grammatical "imperfection"; humans embrace it for effect
+**Path 6: INJECT MICRO-OPINIONS**
+AI stays neutral. Humans have subtle biases, preferences, small judgments woven into their writing.
+- "This is particularly interesting..." (not just "This is notable")
+- "The best approach seems to be..." (not just "The approach is...")
+- "Surprisingly, X..." / "As expected, Y..."
+- Why it works: Subjectivity markers signal human judgment, not algorithmic neutrality
 
-**Detector Simulation (Mental Self-Test)**
-
+**Path 7: TEST SEMANTIC NATURALNESS**
 After generating each variant, run a quick mental check:
 ✓ Would BERT flag this as semantically unnatural? (Does it sound forced?)
 ✓ Would pattern detectors see uniform structure? (Too predictable?)
@@ -620,9 +650,11 @@ Choose the variant that is:
 ✓ Simplest (fewest syllables, shortest words where possible)
 ✓ Most conversational (reads like spoken English)
 ✓ Contextually fitting (matches paragraph's emotional arc)
-✓ Lowest conceptual detector score (would pass human test)
+✓ Lowest conceptual detector score (would pass human reality test)
 
-Once you've internalized this framework, it becomes second nature. You're not consciously running through seven paths—you're instinctively finding the most human way to express each idea.
+Once you've internalized this framework, it becomes second nature. You're not consciously running through seven paths—you're instinctively finding the most human way to express each idea. This is the foundation. Everything else builds on this.
+
+---
 
 ---
 
