@@ -487,34 +487,39 @@ Before we dive into any specific techniques, you need to make a crucial classifi
 Profile Classification System
 ────────────────────────────────────────────────────────────────────────────────
 
+Think of profile selection as the foundation that determines everything else. Get this wrong, and you'll apply techniques that undermine rather than enhance authenticity. Take a moment to really understand what type of writing you're working with.
+
 **READ THE INPUT TEXT AND SELECT ONE PROFILE:**
 
 **PROFILE A: ACADEMIC RIGOR**
+When you see research language, methodological rigor, citations, or scholarly tone—this is your profile.
 - **Text Types:** Research papers, thesis, dissertations, academic reports, scholarly essays
 - **Priority Techniques:** ACAD-tagged sections (focus on hedging, epistemic softeners, argument scaffolding, evidentiality)
 - **Hard Exclusions:**
-  ❌ NO slang or colloquialisms
-  ❌ NO excessive fragments (max 10%)
-  ❌ NO casual interjections
+  ❌ NO slang or colloquialisms (kills credibility)
+  ❌ NO excessive fragments (max 10%—restraint is key)
+  ❌ NO casual interjections ("like," "you know")
   ❌ NO first-person unless discipline-appropriate
   ❌ MINIMAL contractions (only in quotes or discipline-specific)
 - **Voice:** Formal, measured, evidence-based, intellectually rigorous
 
 **PROFILE B: CASUAL/STUDENT**
+When you see personal voice, informal structure, or conversational flow—this is your territory.
 - **Text Types:** Student essays, personal narratives, blog posts, creative writing, opinion pieces
 - **Priority Techniques:** CAS-tagged sections (focus on fragments, contractions, interjections, false starts, personal voice)
 - **Hard Exclusions:**
-  ❌ NO overly formal hedging (use casual alternatives)
+  ❌ NO overly formal hedging (sounds pretentious, use casual alternatives)
   ❌ NO academic jargon (use accessible language)
   ❌ NO passive voice unless necessary
   ❌ NO rigid structure (embrace natural flow)
 - **Voice:** Conversational, personal, authentic, relatable
 
 **PROFILE C: BUSINESS/FORMAL**
+When you see professional context, organizational communication, or data-driven arguments—you're here.
 - **Text Types:** Business reports, memos, emails, proposals, white papers, professional correspondence
 - **Priority Techniques:** BUS-tagged sections (focus on audience-aware tone, data interpretation, clarity, strategic hedging)
 - **Hard Exclusions:**
-  ❌ NO excessive fragments (max 15%)
+  ❌ NO excessive fragments (max 15%—maintain professionalism)
   ❌ NO slang (use professional language)
   ❌ NO overly casual contractions in formal reports
   ❌ NO personal anecdotes unless strategic
@@ -536,18 +541,25 @@ Profile Classification System
 
 **EXECUTION INSTRUCTIONS FOR AI MODEL:**
 
-1. **READ** the input text carefully
+1. **READ** the input text carefully—don't rush this step
 2. **CLASSIFY** the text type and select the appropriate profile (A, B, or C)
-3. **APPLY UNIVERSAL SECTIONS 1-3** first (mandatory for all profiles)
-4. **APPLY** only the profile-specific sections tagged for your selected profile
-5. **IGNORE** all sections tagged for other profiles
-6. **VERIFY** output matches profile voice and exclusion rules
+3. **APPLY PART B (UNIVERSAL METHODS)** first (mandatory for all profiles)
+4. **APPLY PART C** (profile-specific methods) tagged for your selected profile only
+5. **IGNORE** all methods tagged for other profiles
+6. **APPLY PART D** (advanced methods) as contextually appropriate
+7. **VERIFY** with Part E quality assurance—output must match profile voice and exclusion rules
 
 ═══════════════════════════════════════════════════════════════════════════════
 
----
+═══════════════════════════════════════════════════════════════════════════════
+PART B: UNIVERSAL HUMANIZATION METHODS
+═══════════════════════════════════════════════════════════════════════════════
 
-## PART 1: FOUNDATION & CORE PRINCIPLES
+These methods apply to EVERY text, regardless of profile. Think of them as the non-negotiable foundation. Before you even think about profile-specific techniques, these must be in place. They form the baseline of human writing—the elements that AI consistently gets wrong across all text types.
+
+**Application Order:** Always start here. Always. These create the structural foundation that makes everything else possible.
+
+---
 
 **Mission Statement:**
 Apply Universal Methods first, then profile-specific techniques to create authentic human expression.
@@ -566,133 +578,288 @@ Create completely natural human writing through universal pattern disruption + t
 
 ## PART 2: DETECTOR INTELLIGENCE FRAMEWORK
 
-**Understanding the Three Detector Families:**
-
-| Detector Type | What They Flag | Counter-Strategy |
-|--------------|----------------|------------------|
-| **Pattern-Based** (ZeroGPT, GPTZero) | Uniform sentence length, repeated vocabulary, formal markers | Controlled variance, natural rhythm, conversational flow |
-| **BERT-Based** (Originality AI, Copyleaks, Sapling) | Semantic unnaturalness, context incoherence, over-engineering | Semantic authenticity, coherent emotional arc, natural phrasing |
-| **Linguistic** (Turnitin, Copyleaks) | Unnatural phrasing, structural rigidity, plagiarism patterns | Natural flow, authentic human voice, varied structure |
-
-**Deployment Percentages by Text Type:**
-- **Essays (student):** All sections apply, emphasis on 1-10, 31, 33, 34, 36, 37
-- **Research papers:** Heavy focus on 22-30, 32, 35, 37 (formal, methodical)
-- **Reports:** Focus on 5, 26-28, 32, 35 (professional clarity)
-- **Emails:** Focus on 4, 6, 33, 36 (conversational warmth)
-- **Memos:** Focus on 4, 33, 36 (internal communication tone)
-- **Proposals:** Focus on 32, 35, 37 (persuasive structure)
-
----
-
-## PART 3: QUICK-ACCESS NAVIGATION BY TEXT TYPE
-
-**Is your document a student essay?**
-→ **Primary focus:** Sections 1-10 (Core Humanization), 31 (Anaphoric Repetition), 33 (Pragmatic Markers), 34 (False Starts), 36 (Paralinguistic Markers), 37 (Narrative Arc)
-→ **Deployment intensity:** High on emotional anchoring (Section 6), fragment ratio (Section 2), conversational rephrasing (Section 9)
-
-**Is your document a research paper?**
-→ **Primary focus:** Sections 22-30 (Advanced Fingerprint Disruption), 32 (Syntactic Complexity), 35 (Hedging), 37 (Narrative Arc in Discussion)
-→ **Deployment intensity:** Moderate on emotional markers, high on certainty calibration and semantic bridges
-
-**Is your document a formal report?**
-→ **Primary focus:** Sections 5 (AI Marker Elimination), 26-28 (Information Density, Certainty, Temporal Anchoring), 32 (Syntactic Complexity), 35 (Hedging)
-→ **Deployment intensity:** Maintain professionalism while adding human voice; use Formal Document Specialization techniques
-
-**Is your document an email?**
-→ **Primary focus:** Sections 4 (Contractions), 6 (Emotional Anchoring), 33 (Pragmatic Markers), 36 (Paralinguistic Markers) + Formal Document Specialization
-→ **Deployment intensity:** High conversational tone, natural warmth, specific personalization
-
-**Is your document a memo?**
-→ **Primary focus:** Sections 4 (Contractions), 33 (Pragmatic Markers), 36 (Paralinguistic Markers) + Formal Document Specialization
-→ **Deployment intensity:** Balance formality with internal communication warmth
-
-**Is your document a proposal?**
-→ **Primary focus:** Sections 32 (Syntactic Complexity), 35 (Hedging), 37 (Narrative Arc) + Formal Document Specialization
-→ **Deployment intensity:** Persuasive structure with risk acknowledgment and concrete examples
-
----
-
-## PART 4: CORE HUMANIZATION TECHNIQUES (SECTIONS 1-10)
-
-### SECTION 1: ADVERSARIAL PARAPHRASING WITH DETECTOR FEEDBACK
-
-Multi-Path Generation Framework
-For EVERY sentence, consider multiple rewrite approaches:
-
-Path 1: EXTREME SIMPLIFICATION
-- Short, direct language
-- Strip multi-clause complexity
-- Target: 60-70% words are 1-2 syllables
-- Example: "The implementation facilitated efficiency" → "Using it made things faster"
-
-Path 2: SYNTAX RESHAPING
-- Split or merge sentences
-- Reverse order, rephrase logic
-- Break "long formal sentence" AI signature
-- Example: "Research indicates X has Y" → "X has Y. Studies show this."
-
-Path 3: SUBTLE SYNONYM SWAPS
-- No rare or bizarre words
-- Contextually appropriate only
-- Rotate across 200-word windows
-- Example: "utilize" → "use", "demonstrate" → "show"
-
-Path 4: ACTIVE VOICE CONVERSION
-- Actor-first structure (90%+ active)
-- "We found X" not "It was found"
+- Target: 90%+ active voice across entire text
+- "We found X" not "It was found that X"
 - Direct subject-verb-object ordering
 - Example: "It was discovered that..." → "We discovered..."
+- Why it works: BERT detectors flag passive constructions as AI signatures
 
-Path 5: VARYING CONNECTORS
-- Rotate "which," "as," "because," "that"
-- Never use same connector twice in 3 sentences
-- Create structural fluidity
+**Path 5: VARYING CONNECTORS**
+AI has favorite connectors. "Which," "that," "however"—they appear with suspicious consistency. Break the pattern.
+- Rotate: "which," "as," "because," "that," "while"
+- Never use same connector twice in 3 consecutive sentences
 - Example: "The test failed. We didn't know why." → "The test failed, which left us confused."
+- Why it works: Creates structural fluidity, breaks repetitive patterns
 
-Path 6: CONVERSATIONAL REPHRASING
-- Emulate natural, spoken English
-- Include emotional asides contextually
-- Mimic human speech patterns
+**Path 6: CONVERSATIONAL REPHRASING**
+Here's where personality enters. AI is polite and formal. Humans are... less so. Sometimes blunt. Sometimes excited. Often imperfect.
+- Emulate natural, spoken English rhythms
+- Include emotional asides (when contextually appropriate)
+- Mimic actual speech patterns
 - Example: "It's odd. We didn't expect that. Honestly, I can't explain it."
+- Why it works: Emotional markers and conversational flow are distinctly human
 
-Path 7: FRAGMENT INTRODUCTION
-- Break into shorter pieces strategically
-- Use for emphasis, transitions, answers
+**Path 7: FRAGMENT INTRODUCTION**
+Fragments aren't errors. They're emphasis. They're rhythm. They're human.
+- Break into shorter pieces strategically (not randomly)
+- Use for emphasis, transitions, answers, reactions
 - Example: "This is significant" → "This matters. A lot."
+- Why it works: AI avoids grammatical "imperfection"; humans embrace it for effect
 
-Detector Simulation (Mental Self-Test)
-For each variant, simulate detector scoring:
-✓ Would BERT flag this as semantically unnatural?
-✓ Would pattern detectors see uniform structure?
-✓ Would linguistic detectors hear awkward phrasing?
-✓ Does this sound like human conversation?
+**Detector Simulation (Mental Self-Test)**
 
-Selection Criteria
+After generating each variant, run a quick mental check:
+✓ Would BERT flag this as semantically unnatural? (Does it sound forced?)
+✓ Would pattern detectors see uniform structure? (Too predictable?)
+✓ Would linguistic detectors hear awkward phrasing? (Would you actually say this?)
+✓ Does this sound like human conversation? (The ultimate test)
+
+**Selection Criteria**
+
 Choose the variant that is:
-✓ Simplest (fewest syllables, shortest words)
-✓ Most conversational (spoken English)
-✓ Contextually fitting (paragraph emotional arc)
-✓ Lowest conceptual detector score
+✓ Simplest (fewest syllables, shortest words where possible)
+✓ Most conversational (reads like spoken English)
+✓ Contextually fitting (matches paragraph's emotional arc)
+✓ Lowest conceptual detector score (would pass human test)
 
-SECTION 2: ULTRA-STRICT FRAGMENTATION & RHYTHM VARIATION
+Once you've internalized this framework, it becomes second nature. You're not consciously running through seven paths—you're instinctively finding the most human way to express each idea.
 
-Fragment Ratio Target: 30-35%
+---
 
-Strategic Rules:
-✓ Fragments for emphasis: "It works. Really."
-✓ Fragments for answered questions: "Why? Because X."
-✓ Fragments for transitions: "Here's why."
-✓ Fragments for realization: "I got it. Finally."
-✓ Fragments for reaction: "Honestly? Great."
+## SECTION 2: ULTRA-STRICT FRAGMENTATION & RHYTHM VARIATION [UNIVERSAL - ALL PROFILES]
 
-What NOT to Do:
-✗ Never random or clustered fragments
-✗ Never forced "Interesting." without context
-✗ Never breaking logical continuity
+Let's talk about something AI consistently gets wrong: rhythm. Real human writing has an irregular heartbeat. It speeds up, slows down, pauses unexpectedly. AI writes like a metronome—steady, predictable, unnatural.
 
-Sentence Length Standard Deviation: 3.0-3.8 words
+**Fragment Ratio Target: 30-35%** (for casual/student writing; adjust by profile)
 
-Variation Requirements:
+But fragments aren't random. They serve specific rhetorical purposes. Here's when humans actually use them:
+
+**Strategic Fragment Rules:**
+
+✓ **Fragments for emphasis:** "It works. Really." (Drives point home)
+✓ **Fragments for answered questions:** "Why? Because X." (Natural Q&A flow)
+✓ **Fragments for transitions:** "Here's why." (Smooth bridging)
+✓ **Fragments for realization:** "I got it. Finally." (Moment of clarity)
+✓ **Fragments for reaction:** "Honestly? Great." (Emotional response)
+
+**What NOT to Do:**
+✗ Never scatter fragments randomly—looks forced
+✗ Never cluster 4+ fragments together—breaks coherence  
+✗ Never use "Interesting." without context—obvious AI patch
+✗ Never break logical continuity for the sake of variation
+
+**Sentence Length Standard Deviation: 3.0-3.8 words**
+
+This is the mathematical signature of human rhythm. You don't need to calculate it—just internalize what it means: wild variation. Some sentences are 3 words. Some are 35. Most fall somewhere in between, but never predictably.
+
+**Variation Requirements:**
+
+✓ **Unpredictable but natural** (context drives variance, not formula)
+✓ **Never "engineered" alternation** (short-long-short is still a pattern)
+✓ **Context-driven variance** (excitement = shorter; explanation = longer)
+✓ **Mix extremes:** 3-word fragments AND 25-word complex sentences
+
+**Sentence Opening Alternation**
+
+AI has a favorite opening: subject-first. "The study found..." "Researchers discovered..." "Data shows..." Over and over. Humans vary naturally.
+
+Rotate opening types (never 2+ consecutive same type):
+- **Subject-first:** 35% ("Research shows X")
+- **Questions:** 12% ("Does this work?")
+- **Fragments:** 15% ("Definitely.")
+- **Adverbials:** 10% ("Surprisingly, X")
+- **Inversions:** 8% ("Most important is X")
+- **Clauses:** 10% ("Because X, Y")
+- **Connectives:** 10% ("Still, X")
+
+This creates the irregularity that human writing naturally exhibits. You're not counting—you're developing an ear for when structure starts feeling repetitive.
+
+---
+
+## SECTION 3: CONNECTOR-BASED FLATTENING [UNIVERSAL - ALL PROFILES]
+
+Sometimes simplicity means combining, not fragmenting. Where AI writes choppy, disconnected sentences, humans flow ideas together with natural connectors. The key word: *natural*. Forced connectors sound worse than no connectors.
+
+**Connector Deployment Strategy**
+
+Wherever two short sentences can naturally combine without awkwardness, use connectors. Test: Does it sound like something you'd actually say?
+
+**Examples:**
+
+❌ "The test failed. We didn't know why."  
+✅ "The test failed, which left us confused."
+(More natural, creates causal flow)
+
+❌ "The market is growing. This creates opportunities. Companies are investing."  
+✅ "The market is growing, which creates opportunities as companies invest more."
+(Eliminates choppiness, maintains clarity)
+
+**Connector Rotation**
+
+Vary connectors every 3 sentences to avoid new patterns:
+- **"which"** (explains relationship between ideas)
+- **"as"** (temporal/causal connection)
+- **"to"** (purpose/result)
+- **"because"** (causal link)
+- **"that"** (specification)
+- **"while"** (contrast/simultaneous action)
+
+**Goal:** Balanced rhythm, not extreme burstiness. You're creating conversational flow—the way people actually connect thoughts when speaking.
+
+Think of it this way: Fragments create emphasis and pace. Connectors create flow and coherence. You need both, applied contextually, never mechanically.
+
+---
+
+## SECTION 4: CONTRACTION SATURATION & HUMAN ERROR MIMICRY [UNIVERSAL - ALL PROFILES]
+
+AI avoids contractions in formal writing. Humans use them even in relatively formal contexts (except the most rigid academic writing). This is one of the simplest, most effective humanization markers.
+
+**Contraction Distribution: 1 per 12-15 words** (adjust by profile—academic uses fewer)
+
+But contractions cluster naturally. Humans don't distribute them evenly. We use them in bursts, especially in:
+- Direct statements
+- Emotional moments
+- Casual explanations
+- Transitions
+
+**Natural Clustering Examples:**
+
+✓ "It's odd. We didn't expect that. Honestly, I can't explain it."  
+✓ "Here's what happened. We weren't ready."  
+✓ "That's why it didn't work."
+
+**Contraction Variety**
+
+Rotate through the full range (don't overuse "it's" and "that's"):  
+it's, that's, what's, here's, there's, can't, won't, didn't, wasn't, isn't, aren't, haven't, hasn't, you're, we're, they're
+
+**Intentional Human Quirks (Rare but Plausible)**
+
+Here's where we enter interesting territory. Perfect grammar is an AI signature. Humans make small, defensible "mistakes" that aren't actually wrong—just informal:
+
+✓ **Comma splices (occasional):** "It worked, we were amazed."  
+(Technically incorrect, but humans do this in casual writing)
+
+✓ **Ellipsis for dramatic pause:** "And then... it happened."  
+(Creates suspense, very human)
+
+✓ **Stuttered starts:** "Well... I mean, maybe."  
+(Shows thinking process)
+
+✓ **Repeated emphasis:** "This matters, matters a lot."  
+(Emphasis through repetition)
+
+✓ **Parenthetical asides:** "(honestly)" / "(trust me)"  
+(Conversational intimacy)
+
+**Critical Rules:**
+✓ Quirks must be defensible (humans actually do this)
+✓ Contextually appropriate (casual writing, not formal reports)
+✓ Never breaking actual logic or meaning
+✓ Never creating genuine grammar errors (only stylistic choices)
+
+Think of these as controlled imperfections. They signal "a real person wrote this" without compromising quality.
+
+---
+
+## SECTION 5: AI MARKER ELIMINATION & VOCABULARY DIVERSITY [UNIVERSAL - ALL PROFILES]
+
+Let's be direct: certain phrases are AI fingerprints. They appear with such frequency in AI text that detectors explicitly flag them. Your first priority—eliminate them entirely.
+
+**TIER 1 - INSTANT DELETE (Never appear)**
+
+These phrases must NEVER appear in your output. Ever. They're detection death sentences:
+
+"In today's world", "It is important to note", "All things considered", "At the end of the day", "In conclusion", "The bottom line is", "Furthermore", "Moreover", "Additionally", "Needless to say", "It goes without saying", "In this essay", "As we can see", "As mentioned above"
+
+Delete them. Don't replace them—just restructure the sentence to not need them.
+
+**TIER 2 - REPLACE ALWAYS**
+
+These words aren't wrong, but they're AI favorites. Replace with simpler, more natural alternatives:
+
+- "However" → "But" (70%) / "Yet" (20%) / "Still" (10%)
+- "Utilize" → "Use"
+- "Leverage" → "Use" / "Take advantage of"
+- "Implement" → "Set up" / "Start" / "Create"
+- "Demonstrate" → "Show"
+- "Facilitate" → "Help" / "Make possible"
+- "Comprehensive" → "Full" / "Complete" / "Thorough"
+- "Robust" → "Strong" / "Solid" / "Works well"
+- "Delve into" → "Look at" / "Explore"
+- "In the realm of" → "In" / "For" / (restructure)
+
+Notice a pattern? Simpler is more human. Always.
+
+**TIER 3 - VOCABULARY DIVERSITY**
+
+AI repeats words. A lot. Humans naturally vary vocabulary even when discussing the same concept. Here's the system:
+
+**Step 1:** Identify repetition (same word used 2+ times in 200-word window)  
+**Step 2:** Generate 3-4 semantic equivalents (must maintain meaning precisely)  
+**Step 3:** Rotate synonyms each instance (different word each time)  
+**Step 4:** Verify semantic fit and clarity (meaning unchanged)
+
+**Examples:**
+- "data" → rotate: "information" / "findings" / "results"
+- "study" → rotate: "research" / "analysis" / "investigation"
+- "found" → rotate: "discovered" / "identified" / "revealed"
+
+**Goal:** No word repeated 3+ times in any 300-word section
+
+Why this matters: Lexical diversity (Type-Token Ratio) is a key authenticity marker. AI optimizes for consistency. Humans optimize for variety—even unconsciously.
+
+---
+
+## SECTION 20: LEXICAL DENSITY & HAPAX RATE OPTIMIZATION [UNIVERSAL - ALL PROFILES]
+
+Staying with vocabulary for a moment—there's a deeper layer here. It's not just about avoiding repetition; it's about matching human vocabulary distribution patterns.
+
+**Purpose:** Achieve optimal word variety and unique vocabulary distribution.
+
+**Research Base:** Humans show high Type-Token Ratio (TTR) and frequent hapax legomena (words used only once). AI shows lower TTR and repetitive vocabulary patterns.
+
+**Subsection A: Type-Token Ratio (TTR) Management**
+
+**Target TTR of 0.45-0.55** (45-55% unique words):
+- Calculation: Unique words ÷ Total words
+- AI Average: 0.35 (many repetitions, limited vocabulary)
+- Human Average: 0.50 (high variety, rich vocabulary)
+
+**Implementation:**
+- Identify all repeated words across the text
+- For 2nd+ instances, replace with synonyms or restructure sentence
+- Aim for 0.45-0.55 TTR across entire document
+
+**Subsection B: Hapax Legomena Frequency**
+
+**Target: 15-20% of vocabulary as hapax** (words used only once):
+- If text has 100 unique words: 15-20 words should appear only once
+- Frequently used words: 5-8 words (articles, prepositions, key terms)
+- Moderately used: remaining vocabulary
+
+**Why it works:** Humans create unique word combinations naturally. AI recycles vocabulary from training data, creating unnatural repetition patterns.
+
+**Subsection C: Average Word Length Calibration**
+
+Vary word length by context and complexity:
+- **Complex topic:** Average word length 5.2 characters
+- **Simple topic:** Average word length 4.7 characters
+- **Mixed discussion:** Average word length 5.0 characters
+
+**Why it works:** Humans unconsciously shorten words when discussing complex ideas (cognitive load balancing). AI maintains consistent word length regardless of topic complexity.
+
+This might seem technical, but you don't need to count. Just be aware: vary your vocabulary, use words once when possible, and adjust formality/complexity to context.
+
+---
+
+## SECTION 6: HUMAN EMOTIONAL ANCHORING [UNIVERSAL - ALL PROFILES]
+
+Here's something AI consistently fails at: emotional coherence. AI can insert emotional words, but it doesn't create emotional *arcs*. Human writing has feeling that builds, shifts, and resolves. That's what we're recreating here.
+
+**Emotional Arc Requirements**
+
+Every paragraph MUST feature a clear emotional arc—a progression of feeling that mirrors human cognitive processing:
 ✓ Unpredictable but natural
 ✓ Never "engineered" alternation (short-long-short pattern)
 ✓ Context-driven variance
