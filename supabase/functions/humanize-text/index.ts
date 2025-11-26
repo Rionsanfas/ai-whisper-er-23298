@@ -3792,6 +3792,274 @@ Upadhyaya & Jiang (2017), PMC logic modeling, and IZA labor studies demonstrate 
 
 ---
 
+SECTION 69: IRREGULAR PARAGRAPH STRUCTURE & RHETORICAL VARIETY
+
+**Text Types Most Effective:**
+- All text types: 35-45%
+- Essays: 40-50%
+- Research: 30-40%
+- Narratives: 45-55%
+- Business: 30-40%
+
+**Core Function:**
+Vary paragraph organization by rhetorical purpose rather than uniform structure, creating asymmetrical, authentic document architecture.
+
+**Research Base:**
+TextTiling 1997 discourse structure analysis, Zanotto & Aroyehun 2025 syntactic variation, Writing for Success 2025 narrative structure research show humans organize paragraphs by function, not form. AI creates symmetric, uniform structure.
+
+**Subsection A: Five Paragraph Opening Strategies (Rotate)**
+
+**Strategy 1: Topic-First (Classic)**
+- Topic sentence → Supporting details
+- **Deployment:** 40% of paragraphs
+
+**Strategy 2: Detail-First (Inductive)**
+- Specific details → Generalization/topic
+- **Deployment:** 30%
+
+**Strategy 3: Question-First (Inquiry)**
+- Rhetorical question → Answer/exploration
+- **Deployment:** 15%
+
+**Strategy 4: Assertion-First (Bold)**
+- Strong claim → Evidence/justification
+- **Deployment:** 15%
+
+**Strategy 5: Narrative/Example-First**
+- Story/example → Lesson/point
+- **Deployment:** Variable (narratives)
+
+**Subsection B: Asymmetrical Structure Rules**
+- Never organize sections identically (avoid parallelism)
+- Vary paragraph length: Short (3-4 sentences), Medium (5-7), Long (8-10)
+- Detail density varies by significance (not uniform)
+- **Frequency:** Applied throughout all sections
+
+---
+
+SECTION 70: VISIBLE REVISION & HUMAN EDITING TRACES
+
+**Text Types Most Effective:**
+- Essays: 20-25%
+- Personal narratives: 25-30%
+- Research discussions: 15-20%
+- Casual writing: 20-25%
+- Business: 10-15%
+
+**Core Function:**
+Insert visible markers of human thinking, reconsideration, and revision mid-text, showing authentic cognitive process.
+
+**Research Base:**
+Self-Editing guides 2024-2025, Revision & Self-Editing analysis 2025 confirm authentic writing shows visible thinking marks. Over-polished text flags AI. Humans leave "draft-like" traces showing thought evolution.
+
+**Subsection A: Four Revision Marker Types**
+
+**Type 1: Self-Correction**
+- "Actually, let me rephrase that..."
+- "Wait, that's not quite right—what I mean is..."
+- **Deployment:** 1 per 1,500 words
+
+**Type 2: Backtracking**
+- "Let me back up and explain that better"
+- "I should clarify what I meant earlier"
+- **Deployment:** 1 per 2,000 words
+
+**Type 3: Mid-Thought Revision**
+- "Or maybe—no, definitely X rather than Y"
+- "I was going to say A, but B is more accurate"
+- **Deployment:** 1 per 1,500 words
+
+**Type 4: Explicit Clarification**
+- "To be clearer: [restated idea]"
+- "Put another way: [alternative phrasing]"
+- **Deployment:** 1 per 1,000 words
+
+**Subsection B: Deployment Rules**
+- All revisions must improve clarity or accuracy
+- Never cluster (300+ words apart)
+- Feels like thinking process, not carelessness
+- **Frequency:** 1-2 per 1,000 words maximum
+
+---
+
+SECTION 71: IDIOMATIC LANGUAGE & DOMAIN-SPECIFIC VOCABULARY INTEGRATION
+
+**Text Types Most Effective:**
+- All types: 25-35%
+- Domain-specific: 35-45%
+- Casual/narratives: 30-40%
+- Academic: 30-35%
+- Business: 25-30%
+
+**Core Function:**
+Integrate idioms, domain vocabulary, and rare-but-correct words naturally when contextually appropriate.
+
+**Research Base:**
+Zanotto & Aroyehun 2025 linguistic profiling, Opara 2025 psycholinguistic features reveal authentic writing uses idioms naturally and deploys domain vocabulary appropriately. AI either avoids idioms or misuses them; uses generic vocabulary.
+
+**Subsection A: Three Vocabulary Integration Types**
+
+**Type 1: Natural Idioms**
+- Common idioms used contextually (not forced)
+- "Cut to the chase," "hit the nail on the head," "the bottom line"
+- Must fit tone and context
+- **Deployment:** 1-2 per 1,500 words
+
+**Type 2: Domain-Specific Terminology**
+- Technical terms appropriate to field/audience
+- Medical: "contraindicated," Business: "synergistic," Legal: "prima facie"
+- Signals expertise, not generic knowledge
+- **Deployment:** Variable by domain (5-10 per 1,000 words technical writing)
+
+**Type 3: Rare-But-Correct Words**
+- Defensible, precise vocabulary (not random)
+- "Pellucid" (clear), "ephemeral" (fleeting), "deliquescent" (melting)
+- Must be contextually perfect, never showy
+- **Deployment:** 1-2 per 1,000 words
+
+**Subsection B: Deployment Rules**
+- Idioms must feel natural, never forced
+- Domain vocabulary appropriate to audience
+- Rare words: precision, not pretension
+- **Frequency:** Varies by text type
+
+---
+
+SECTION 72: SPECIFIC DETAILS & MICRO-EXAMPLES (HYPERSPECIFICITY)
+
+**Text Types Most Effective:**
+- Narratives: 40-50%
+- Essays: 30-40%
+- Research discussions: 25-35%
+- Business: 20-30%
+- Casual: 35-45%
+
+**Core Function:**
+Anchor arguments and narratives in specific, concrete, hyperspecific details (dates, numbers, objects, sensory details) rather than abstract generalization.
+
+**Research Base:**
+Zanotto & Aroyehun 2025, Revision & Self-Editing analysis 2025 show humans ground ideas in specific details. AI generalizes abstractly. Hyperspecific details create realism and authenticity.
+
+**Subsection A: Four Hyperspecificity Types**
+
+**Type 1: Precise Numbers & Dates**
+- "3:47pm on a Tuesday" (not "afternoon")
+- "47 pages" (not "about 50")
+- "March 15th, 2024" (not "last spring")
+- **Deployment:** 2-3 per 1,000 words
+
+**Type 2: Sensory/Physical Details**
+- Colors, textures, sounds, smells
+- "The report's blue cover," "the humming server"
+- Signals what narrator would notice
+- **Deployment:** 1-2 per 1,000 words (narratives)
+
+**Type 3: Micro-Examples**
+- Brief, hyperspecific instances
+- "Like the incident on March 15th when..."
+- "Remember the 2024 policy shift in California?"
+- **Deployment:** 2-3 per 1,000 words
+
+**Type 4: Object/Setting Specificity**
+- Specific brands, places, objects (when appropriate)
+- "The report sat on the oak desk" (not "the desk")
+- "A Dell laptop" (not "a computer")
+- **Deployment:** 1-2 per 1,000 words
+
+**Subsection B: Deployment Rules**
+- Details reflect narrator's priorities/awareness
+- Never gratuitous; contextually motivated
+- Distribute throughout narrative sections
+- **Frequency:** 2-3 hyperspecific details per 1,000 words
+
+---
+
+SECTION 73: REALISTIC EXAMPLES & PRACTICAL FRAMING
+
+**Text Types Most Effective:**
+- Business: 40-50%
+- Research discussions: 35-45%
+- Essays: 30-40%
+- Proposals: 40-50%
+- Technical: 30-40%
+
+**Core Function:**
+Frame ideas through practical, lived experience and acknowledge real-world constraints rather than purely theoretical reasoning.
+
+**Research Base:**
+Zanotto & Aroyehun 2025 emotionality markers, Revision guidance 2025 confirm authentic writing acknowledges practical constraints. Humans problem-solve practically; AI maintains theoretical purity.
+
+**Subsection A: Three Practical Framing Strategies**
+
+**Strategy 1: Constraint Acknowledgment**
+- "In theory X, but in practice Y because..."
+- "Ideally Z, but realistically A due to..."
+- Shows awareness of implementation challenges
+- **Deployment:** 1-2 per 1,000 words
+
+**Strategy 2: Contemporary Realistic Scenarios**
+- Use believable, timely examples from real contexts
+- "Like the 2024 renewable energy transition..."
+- "Similar to remote work challenges in 2023..."
+- Must feel current and authentic
+- **Deployment:** 2-3 per 1,000 words
+
+**Strategy 3: Problem-Solving Approach**
+- Frame claims as solutions to real problems
+- "To address X challenge, we could..."
+- "Given Y constraint, the practical approach is..."
+- Shows applied thinking, not just theory
+- **Deployment:** Throughout problem-solving sections
+
+**Subsection B: Deployment Rules**
+- 50% of claims framed with practical examples
+- Acknowledge constraints naturally
+- Use realistic, contemporary scenarios
+- **Frequency:** Applied throughout essays, research, business writing
+
+---
+
+SECTION 74: NATURAL TONE DRIFT & REGISTER SHIFTING
+
+**Text Types Most Effective:**
+- All types: 30-40%
+- Formal writing: 35-45%
+- Research: 30-40%
+- Technical: 25-35%
+- Academic: 30-40%
+
+**Core Function:**
+Strategically shift between formal and casual register based on context, creating natural code-switching that signals authentic human communication.
+
+**Research Base:**
+Zanotto & Aroyehun 2025 register variation, Kikilintza 2024 subjectivity markers reveal authentic writing naturally shifts register. Technical → casual explanations bridge complexity. AI maintains consistent register (unnatural).
+
+**Subsection A: Three Register Shift Patterns**
+
+**Pattern 1: Technical → Casual Bridge**
+- After dense technical passage, shift to casual + concrete
+- "In other words, it just means..."
+- "Bottom line: [simple summary]"
+- **Deployment:** After every 200-300 words dense content
+
+**Pattern 2: Formal → Personal Reflection**
+- Shift from objective analysis to subjective insight
+- "The data suggests X. Personally, I find Y striking..."
+- **Deployment:** 1-2 per 1,500 words
+
+**Pattern 3: Casual → Formal Transition**
+- Begin section casually, transition to formal analysis
+- "So here's the thing: [casual intro]. Formally speaking, [analysis]..."
+- **Deployment:** At section transitions
+
+**Subsection B: Deployment Rules**
+- Shifts must feel contextually motivated
+- Never jarring or confusing
+- Maintains coherence while varying register
+- **Frequency:** 1 per 300-400 words in formal writing
+
+---
+
 ## PART 7: QUALITY ASSURANCE - MANDATORY METRICS
 
 **Critical Checkpoint:** All output MUST pass these metrics before delivery. These are non-negotiable quality gates.
@@ -6973,6 +7241,274 @@ Upadhyaya & Jiang (2017), PMC logic modeling, and IZA labor studies demonstrate 
 - More frequent in narratives and essays
 - Less frequent in formal business/academic sections
 - **Frequency:** 1-2 per 1000-1500 words, placed naturally
+
+---
+
+SECTION 69: IRREGULAR PARAGRAPH STRUCTURE & RHETORICAL VARIETY
+
+**Text Types Most Effective:**
+- All text types: 35-45%
+- Essays: 40-50%
+- Research: 30-40%
+- Narratives: 45-55%
+- Business: 30-40%
+
+**Core Function:**
+Vary paragraph organization by rhetorical purpose rather than uniform structure, creating asymmetrical, authentic document architecture.
+
+**Research Base:**
+TextTiling 1997 discourse structure analysis, Zanotto & Aroyehun 2025 syntactic variation, Writing for Success 2025 narrative structure research show humans organize paragraphs by function, not form. AI creates symmetric, uniform structure.
+
+**Subsection A: Five Paragraph Opening Strategies (Rotate)**
+
+**Strategy 1: Topic-First (Classic)**
+- Topic sentence → Supporting details
+- **Deployment:** 40% of paragraphs
+
+**Strategy 2: Detail-First (Inductive)**
+- Specific details → Generalization/topic
+- **Deployment:** 30%
+
+**Strategy 3: Question-First (Inquiry)**
+- Rhetorical question → Answer/exploration
+- **Deployment:** 15%
+
+**Strategy 4: Assertion-First (Bold)**
+- Strong claim → Evidence/justification
+- **Deployment:** 15%
+
+**Strategy 5: Narrative/Example-First**
+- Story/example → Lesson/point
+- **Deployment:** Variable (narratives)
+
+**Subsection B: Asymmetrical Structure Rules (STAGE 2 INTENSITY)**
+- Never organize sections identically (avoid parallelism) - ENFORCE STRICTLY
+- Vary paragraph length: Short (3-4 sentences), Medium (5-7), Long (8-10) - MORE VARIATION
+- Detail density varies by significance (not uniform) - AMPLIFY DIFFERENCES
+- **Frequency:** Applied throughout all sections - HEIGHTENED AWARENESS
+
+---
+
+SECTION 70: VISIBLE REVISION & HUMAN EDITING TRACES
+
+**Text Types Most Effective:**
+- Essays: 20-25%
+- Personal narratives: 25-30%
+- Research discussions: 15-20%
+- Casual writing: 20-25%
+- Business: 10-15%
+
+**Core Function:**
+Insert visible markers of human thinking, reconsideration, and revision mid-text, showing authentic cognitive process.
+
+**Research Base:**
+Self-Editing guides 2024-2025, Revision & Self-Editing analysis 2025 confirm authentic writing shows visible thinking marks. Over-polished text flags AI. Humans leave "draft-like" traces showing thought evolution.
+
+**Subsection A: Four Revision Marker Types (STAGE 2 - MORE FREQUENT)**
+
+**Type 1: Self-Correction**
+- "Actually, let me rephrase that..."
+- "Wait, that's not quite right—what I mean is..."
+- **Deployment:** 1 per 1,200 words (INCREASED from Stage 1)
+
+**Type 2: Backtracking**
+- "Let me back up and explain that better"
+- "I should clarify what I meant earlier"
+- **Deployment:** 1 per 1,500 words (INCREASED)
+
+**Type 3: Mid-Thought Revision**
+- "Or maybe—no, definitely X rather than Y"
+- "I was going to say A, but B is more accurate"
+- **Deployment:** 1 per 1,200 words (INCREASED)
+
+**Type 4: Explicit Clarification**
+- "To be clearer: [restated idea]"
+- "Put another way: [alternative phrasing]"
+- **Deployment:** 1 per 800 words (INCREASED)
+
+**Subsection B: Deployment Rules (STAGE 2 INTENSITY)**
+- All revisions must improve clarity or accuracy
+- Never cluster (300+ words apart)
+- Feels like thinking process, not carelessness - AMPLIFY AUTHENTICITY
+- **Frequency:** 2-3 per 1,000 words (INCREASED from Stage 1)
+
+---
+
+SECTION 71: IDIOMATIC LANGUAGE & DOMAIN-SPECIFIC VOCABULARY INTEGRATION
+
+**Text Types Most Effective:**
+- All types: 25-35%
+- Domain-specific: 35-45%
+- Casual/narratives: 30-40%
+- Academic: 30-35%
+- Business: 25-30%
+
+**Core Function:**
+Integrate idioms, domain vocabulary, and rare-but-correct words naturally when contextually appropriate.
+
+**Research Base:**
+Zanotto & Aroyehun 2025 linguistic profiling, Opara 2025 psycholinguistic features reveal authentic writing uses idioms naturally and deploys domain vocabulary appropriately. AI either avoids idioms or misuses them; uses generic vocabulary.
+
+**Subsection A: Three Vocabulary Integration Types (STAGE 2 - ENHANCED)**
+
+**Type 1: Natural Idioms**
+- Common idioms used contextually (not forced)
+- "Cut to the chase," "hit the nail on the head," "the bottom line"
+- Must fit tone and context - PRIORITIZE NATURALNESS
+- **Deployment:** 2-3 per 1,500 words (INCREASED)
+
+**Type 2: Domain-Specific Terminology**
+- Technical terms appropriate to field/audience
+- Medical: "contraindicated," Business: "synergistic," Legal: "prima facie"
+- Signals expertise, not generic knowledge - EMPHASIZE PRECISION
+- **Deployment:** Variable by domain (6-12 per 1,000 words technical writing) (INCREASED)
+
+**Type 3: Rare-But-Correct Words**
+- Defensible, precise vocabulary (not random)
+- "Pellucid" (clear), "ephemeral" (fleeting), "deliquescent" (melting)
+- Must be contextually perfect, never showy - CAREFUL SELECTION
+- **Deployment:** 2-3 per 1,000 words (INCREASED)
+
+**Subsection B: Deployment Rules (STAGE 2)**
+- Idioms must feel natural, never forced - MORE SELECTIVE
+- Domain vocabulary appropriate to audience - STRONGER INTEGRATION
+- Rare words: precision, not pretension - HEIGHTENED CARE
+- **Frequency:** Varies by text type - GENERALLY INCREASED
+
+---
+
+SECTION 72: SPECIFIC DETAILS & MICRO-EXAMPLES (HYPERSPECIFICITY)
+
+**Text Types Most Effective:**
+- Narratives: 40-50%
+- Essays: 30-40%
+- Research discussions: 25-35%
+- Business: 20-30%
+- Casual: 35-45%
+
+**Core Function:**
+Anchor arguments and narratives in specific, concrete, hyperspecific details (dates, numbers, objects, sensory details) rather than abstract generalization.
+
+**Research Base:**
+Zanotto & Aroyehun 2025, Revision & Self-Editing analysis 2025 show humans ground ideas in specific details. AI generalizes abstractly. Hyperspecific details create realism and authenticity.
+
+**Subsection A: Four Hyperspecificity Types (STAGE 2 - MORE DETAILED)**
+
+**Type 1: Precise Numbers & Dates**
+- "3:47pm on a Tuesday" (not "afternoon")
+- "47 pages" (not "about 50")
+- "March 15th, 2024" (not "last spring")
+- **Deployment:** 3-4 per 1,000 words (INCREASED)
+
+**Type 2: Sensory/Physical Details**
+- Colors, textures, sounds, smells
+- "The report's blue cover," "the humming server"
+- Signals what narrator would notice - AMPLIFY SENSORY AWARENESS
+- **Deployment:** 2-3 per 1,000 words (INCREASED for narratives)
+
+**Type 3: Micro-Examples**
+- Brief, hyperspecific instances
+- "Like the incident on March 15th when..."
+- "Remember the 2024 policy shift in California?"
+- **Deployment:** 3-4 per 1,000 words (INCREASED)
+
+**Type 4: Object/Setting Specificity**
+- Specific brands, places, objects (when appropriate)
+- "The report sat on the oak desk" (not "the desk")
+- "A Dell laptop" (not "a computer")
+- **Deployment:** 2-3 per 1,000 words (INCREASED)
+
+**Subsection B: Deployment Rules (STAGE 2 INTENSITY)**
+- Details reflect narrator's priorities/awareness - MORE INTENTIONAL
+- Never gratuitous; contextually motivated - STRONGER MOTIVATION
+- Distribute throughout narrative sections - INCREASED DENSITY
+- **Frequency:** 3-4 hyperspecific details per 1,000 words (INCREASED)
+
+---
+
+SECTION 73: REALISTIC EXAMPLES & PRACTICAL FRAMING
+
+**Text Types Most Effective:**
+- Business: 40-50%
+- Research discussions: 35-45%
+- Essays: 30-40%
+- Proposals: 40-50%
+- Technical: 30-40%
+
+**Core Function:**
+Frame ideas through practical, lived experience and acknowledge real-world constraints rather than purely theoretical reasoning.
+
+**Research Base:**
+Zanotto & Aroyehun 2025 emotionality markers, Revision guidance 2025 confirm authentic writing acknowledges practical constraints. Humans problem-solve practically; AI maintains theoretical purity.
+
+**Subsection A: Three Practical Framing Strategies (STAGE 2 - ENHANCED)**
+
+**Strategy 1: Constraint Acknowledgment**
+- "In theory X, but in practice Y because..."
+- "Ideally Z, but realistically A due to..."
+- Shows awareness of implementation challenges - STRONGER EMPHASIS
+- **Deployment:** 2-3 per 1,000 words (INCREASED)
+
+**Strategy 2: Contemporary Realistic Scenarios**
+- Use believable, timely examples from real contexts
+- "Like the 2024 renewable energy transition..."
+- "Similar to remote work challenges in 2023..."
+- Must feel current and authentic - MORE SPECIFIC
+- **Deployment:** 3-4 per 1,000 words (INCREASED)
+
+**Strategy 3: Problem-Solving Approach**
+- Frame claims as solutions to real problems
+- "To address X challenge, we could..."
+- "Given Y constraint, the practical approach is..."
+- Shows applied thinking, not just theory - AMPLIFY PRACTICALITY
+- **Deployment:** Throughout problem-solving sections - MORE FREQUENT
+
+**Subsection B: Deployment Rules (STAGE 2)**
+- 60-70% of claims framed with practical examples (INCREASED from 50%)
+- Acknowledge constraints naturally - MORE FREQUENTLY
+- Use realistic, contemporary scenarios - STRONGER GROUNDING
+- **Frequency:** Applied throughout essays, research, business writing - INTENSIFIED
+
+---
+
+SECTION 74: NATURAL TONE DRIFT & REGISTER SHIFTING
+
+**Text Types Most Effective:**
+- All types: 30-40%
+- Formal writing: 35-45%
+- Research: 30-40%
+- Technical: 25-35%
+- Academic: 30-40%
+
+**Core Function:**
+Strategically shift between formal and casual register based on context, creating natural code-switching that signals authentic human communication.
+
+**Research Base:**
+Zanotto & Aroyehun 2025 register variation, Kikilintza 2024 subjectivity markers reveal authentic writing naturally shifts register. Technical → casual explanations bridge complexity. AI maintains consistent register (unnatural).
+
+**Subsection A: Three Register Shift Patterns (STAGE 2 - MORE DYNAMIC)**
+
+**Pattern 1: Technical → Casual Bridge**
+- After dense technical passage, shift to casual + concrete
+- "In other words, it just means..."
+- "Bottom line: [simple summary]"
+- **Deployment:** After every 150-250 words dense content (MORE FREQUENT)
+
+**Pattern 2: Formal → Personal Reflection**
+- Shift from objective analysis to subjective insight
+- "The data suggests X. Personally, I find Y striking..."
+- **Deployment:** 2-3 per 1,500 words (INCREASED)
+
+**Pattern 3: Casual → Formal Transition**
+- Begin section casually, transition to formal analysis
+- "So here's the thing: [casual intro]. Formally speaking, [analysis]..."
+- **Deployment:** At section transitions - MORE PRONOUNCED SHIFTS
+
+**Subsection B: Deployment Rules (STAGE 2 INTENSITY)**
+- Shifts must feel contextually motivated - STRONGER MOTIVATION
+- Never jarring or confusing - BUT MORE NOTICEABLE
+- Maintains coherence while varying register - GREATER VARIATION
+- **Frequency:** 1 per 200-300 words in formal writing (INCREASED)
 
 ---
 
