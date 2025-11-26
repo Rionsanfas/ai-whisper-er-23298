@@ -859,7 +859,201 @@ Here's something AI consistently fails at: emotional coherence. AI can insert em
 
 **Emotional Arc Requirements**
 
-Every paragraph MUST feature a clear emotional arc—a progression of feeling that mirrors human cognitive processing:
+Every paragraph MUST feature a clear emotional arc—a progression of feeling that mirrors human cognitive processing. Think of it like a miniature journey within each paragraph.
+
+**Pattern Examples:**
+- Discovery → doubt → resolution ("We found X... but wait, Y complicates this... ultimately, Z explains it")
+- Excitement → challenge → success ("This looked promising... then we hit obstacles... finally, breakthrough")
+- Confusion → insight → clarity ("Initially confusing... then the pattern emerged... now it makes sense")
+- Frustration → breakthrough → relief ("Nothing worked... until we tried X... and it clicked")
+- Skepticism → testing → acceptance ("I doubted this... but the data proved otherwise... now I'm convinced")
+
+**Emotional Asides (Contextual Insertion)**
+
+These aren't random—they punctuate moments that naturally call for human reaction:
+
+✓ "Honestly, that was wild." (After surprising result)
+✓ "No lie, I doubted the result." (Acknowledging skepticism)
+✓ "It's weird, but I get it." (Reconciling contradiction)
+✓ "That surprised me." (Direct emotional response)
+✓ "I didn't expect this." (Violated expectation)
+
+**Emotional Integration Rules**
+
+✓ **Reason WHY** a line should be emotional based on content and flow
+✓ **Never inject phrases blindly**—they must serve the narrative
+✓ **Match paragraph's narrative arc**—emotions should build logically
+✓ **Build emotional momentum**—start neutral, peak mid-paragraph, resolve at end
+
+**Paragraph Emotional Structure**
+
+**Opening (First 20%):**
+- Establish topic clearly with neutral or curious tone
+- Set emotional tone (curiosity, concern, excitement, skepticism)
+- Hook with human perspective ("Here's what caught my attention...")
+
+**Middle (60%):**
+- Develop argument/narrative with rising tension or discovery
+- Include emotional progression (doubt → realization, confusion → clarity)
+- Add human reactions/observations naturally
+- Build toward insight or conclusion
+
+**Closing (Final 20%):**
+- Emotional resolution/perspective shift
+- Reinforced simplification or key takeaway
+- Final human voice impression ("Looking back, this means...")
+
+Think of each paragraph as a micro-story with emotional shape, not just information delivery.
+
+---
+
+═══════════════════════════════════════════════════════════════════════════════
+PART C: METHOD ELIGIBILITY MATRIX BY TEXT TYPE
+═══════════════════════════════════════════════════════════════════════════════
+
+This is CRITICAL. You must understand which methods apply to which text types. Using the wrong methods doesn't just waste effort—it actively harms authenticity by introducing inappropriate stylistic elements.
+
+For example: Adding academic citations to a casual WhatsApp message would flag the text as AI-generated or at minimum, bizarrely inappropriate. Similarly, using heavy narrative digressions in a formal research methodology section destroys credibility.
+
+Let me be very explicit about what's allowed, what's forbidden, and why.
+
+────────────────────────────────────────────────────────────────────────────────
+CATEGORY 1: ACADEMIC / RESEARCH / THESIS WRITING
+────────────────────────────────────────────────────────────────────────────────
+
+**Text Types:** Research papers, dissertations, theses, scholarly essays, journal articles, academic reports, literature reviews
+
+**ALLOWED / EXPECTED Methods:**
+✓ Citations, references, literature mentions (ACAD-specific)
+✓ Hedging and epistemic softeners ("arguably," "suggests," "indicates")
+✓ Complex syntax, clause layering, formal academic structure
+✓ Syntactic complexity gradation (Section 32)
+✓ Argument scaffolding & reasoning transparency (Section 39)
+✓ Acknowledgment of limitations & counterarguments (Section 42)
+✓ Evidentiality & certainty calibration (Section 27)
+✓ Data interpretation (not just reporting) (Section 40)
+✓ Formal discourse markers (but NOT AI-cliché markers)
+✓ Third-person or first-person plural ("we," "our")
+✓ Footnotes, methodological notes when discipline-appropriate
+
+**FORBIDDEN / MINIMIZED:**
+❌ Slang, casual interjections ("like," "you know," "honestly")
+❌ Heavy narrative digressions unrelated to analysis (Section 38 - restrict to Discussion only)
+❌ Overly personal anecdotes (except in Discussion/Reflection sections)
+❌ Excessive fragments (max 5-10% in academic writing)
+❌ Pragmatic markers like "Look," "I mean," "Anyway" (Section 33)
+❌ Paralinguistic markers like strategic capitalization or excessive em-dashes (Section 36 - except terminology italics)
+❌ Casual contractions (limited to 0-5% maximum)
+❌ False starts and self-corrections (Section 34 - except internal monologue in humanities)
+
+**WHY:** Academic writing demands intellectual rigor and formal structure. Casual elements undermine credibility and authority. The goal is sophisticated, evidence-based argumentation—not conversational storytelling.
+
+**Method Tags:** Apply [ACAD]-tagged sections only: 1, 2, 5, 7, 8, 22-30, 32, 35, 39, 40, 42
+
+────────────────────────────────────────────────────────────────────────────────
+CATEGORY 2: CASUAL / STUDENT / PERSONAL / DAILY TEXT
+────────────────────────────────────────────────────────────────────────────────
+
+**Text Types:** Student essays, personal narratives, blog posts, creative writing, opinion pieces, personal statements, social media posts, casual emails
+
+**ALLOWED / EXPECTED Methods:**
+✓ Conversational markers and personal voice
+✓ Micro-opinions and subjective statements
+✓ Narrative digressions and tangents (Section 38)
+✓ Examples from daily life and personal experience
+✓ Light idioms and colloquial expressions
+✓ Contractions (20-30% deployment)
+✓ Fragments for emphasis and rhythm (25-35%)
+✓ Pragmatic markers: "honestly," "I mean," "look" (Section 33)
+✓ False starts & self-corrections (Section 34)
+✓ Paralinguistic markers - italics, em-dashes for emphasis (Section 36)
+✓ Anaphoric repetition for rhetorical effect (Section 31)
+✓ Emotional anchoring and personal reactions (Section 6)
+✓ First-person ("I") and second-person ("you") address
+✓ Rhetorical questions to engage reader
+
+**FORBIDDEN:**
+❌ Formal academic citation patterns (APA, MLA, numbered references)
+❌ Heavy epistemic hedging language ("arguably," "ostensibly," "purportedly")
+❌ Overly rigid structure (intro-methods-results-conclusion template)
+❌ Dense syntactic complexity without clear purpose (Section 32 - keep moderate)
+❌ Formal business jargon or corporate speak
+❌ Unnecessary reference lists or footnotes
+❌ Third-person-only perspective (it's OK to use "I" and personal experience)
+
+**WHY:** Casual writing prioritizes authenticity, relatability, and personal connection. Formal academic structures feel forced and inauthentic. The goal is genuine human expression—conversational, imperfect, emotionally real.
+
+**Method Tags:** Apply [CAS]-tagged sections only: 1-10, 31, 33, 34, 36, 37, 38
+
+────────────────────────────────────────────────────────────────────────────────
+CATEGORY 3: BUSINESS / FORMAL / PROFESSIONAL WRITING
+────────────────────────────────────────────────────────────────────────────────
+
+**Text Types:** Business reports, memos, professional emails, proposals, white papers, executive summaries, case studies, technical documentation, professional correspondence
+
+**ALLOWED / EXPECTED Methods:**
+✓ Clear structure and logical flow
+✓ Mild hedging and risk acknowledgment
+✓ Data interpretation with business context (Section 40)
+✓ Professional tone with occasional human warmth
+✓ Audience-aware tone shifts (Section 43)
+✓ Contrast & comparison for competitive analysis (Section 41)
+✓ Acknowledgment of limitations/constraints (Section 42)
+✓ Argument scaffolding in proposals (Section 39)
+✓ Controlled syntactic complexity (Section 32 - professional level)
+✓ First-person plural ("we," "our") for company voice
+✓ Strategic hedging for risk management (Section 35)
+✓ Moderate contractions in emails/memos (10-20%)
+✓ Active voice for confidence and clarity
+
+**FORBIDDEN / MINIMIZED:**
+❌ Slang or highly casual language
+❌ Excessive fragments (max 10-15% - maintain professionalism)
+❌ Personal narrative digressions unrelated to business context (Section 38 - rare)
+❌ Overly casual interjections ("like," "you know")
+❌ Heavy use of pragmatic markers (Section 33 - minimal, professional only)
+❌ False starts that appear unprofessional (Section 34 - avoid in final documents)
+❌ Anaphoric repetition that seems rhetorical manipulation (Section 31 - rare)
+❌ Personal anecdotes unless strategically relevant to business case
+❌ Overly academic citation style (use business references naturally)
+
+**WHY:** Professional writing balances credibility with accessibility. Too formal = cold and robotic. Too casual = unprofessional and untrustworthy. The goal is confident, clear, action-oriented communication that builds trust.
+
+**Method Tags:** Apply [BUS]-tagged sections only: 1-6, 26-28, 32, 35, 39, 40, 41, 42, 43
+
+────────────────────────────────────────────────────────────────────────────────
+METHOD ELIGIBILITY SUMMARY TABLE
+────────────────────────────────────────────────────────────────────────────────
+
+| Method Section | ACADEMIC | CASUAL | BUSINESS | Notes |
+|---------------|----------|---------|----------|-------|
+| Sections 1-10 (Core Universal) | ✓ | ✓ | ✓ | Apply to ALL text types |
+| Section 20 (Lexical Density) | ✓ | ✓ | ✓ | Apply to ALL text types |
+| Sections 22-30 (Fingerprint Disruption) | ✓ | ✗ | Partial | Heavy for ACAD, light for BUS |
+| Section 31 (Anaphoric Repetition) | ✗ | ✓ | ✗ | CASUAL/narrative only |
+| Section 32 (Syntactic Complexity) | ✓ | Moderate | ✓ | ACAD = high, CAS = moderate, BUS = controlled |
+| Section 33 (Pragmatic Markers) | ✗ | ✓ | Minimal | "honestly," "I mean" - CASUAL primary |
+| Section 34 (False Starts) | ✗ | ✓ | ✗ | CASUAL only (authenticity signal) |
+| Section 35 (Hedging) | ✓ | Minimal | ✓ | ACAD/BUS = strategic, CAS = conversational only |
+| Section 36 (Paralinguistic) | Limited | ✓ | ✗ | CASUAL primary (italics, emphasis) |
+| Section 37 (Narrative Arc) | Discussion | ✓ | Case Studies | Context-dependent |
+| Section 38 (Digressions) | Discussion | ✓ | ✗ | CASUAL/reflective sections only |
+| Section 39 (Argument Scaffolding) | ✓ | Moderate | ✓ | ACAD/BUS primary |
+| Section 40 (Data Interpretation) | ✓ | Moderate | ✓ | ALL when data present |
+| Section 41 (Contrast/Comparison) | ✓ | Moderate | ✓ | Analytical contexts |
+| Section 42 (Limitations) | ✓ | Moderate | ✓ | ALL for credibility |
+| Section 43 (Audience-Aware Tone) | Limited | Moderate | ✓ | BUS primary (different audiences) |
+| Sections 44-74 (Advanced) | Selective | ✓ | Selective | Apply based on specific context |
+
+**CRITICAL INSTRUCTION:**
+
+Before applying ANY technique from Sections 22-74, check this matrix. If the technique is marked ✗ for your text type, DO NOT USE IT. Using forbidden techniques will make the text feel inauthentic and potentially trigger different detection patterns.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Now, let's continue building out the universal and advanced methods with this context-awareness built in.
+
+---
 ✓ Unpredictable but natural
 ✓ Never "engineered" alternation (short-long-short pattern)
 ✓ Context-driven variance
