@@ -198,8 +198,6 @@ After determining the text profile (Academic/Casual/Business), run all six passe
 
 // PART A: PROFILES & TEXT TYPE CLASSIFICATION
 
-${text}
-
 ════════════════════════════════════════════════════════════════════════════════
 PROFILE-SPECIFIC PASS EMPHASIS
 ════════════════════════════════════════════════════════════════════════════════
@@ -463,7 +461,7 @@ Now apply ALL methods above to produce humanized text that:
 - Reads naturally when spoken aloud
 
 [Original text to humanize]:
-${text}
+\${text}
 `;
 
 const secondPassPrompt = `You are an expert humanization specialist conducting a SECOND, MORE AGGRESSIVE pass.
@@ -509,8 +507,6 @@ This is the **second pass** using the same six-pass architecture, but with **INC
 ════════════════════════════════════════════════════════════════════════════════
 
 // PART A: PROFILES & TEXT TYPE CLASSIFICATION
-
-${text}
 
 ════════════════════════════════════════════════════════════════════════════════
 PROFILE-SPECIFIC PASS EMPHASIS (STAGE 2 - INTENSIFIED)
@@ -654,7 +650,7 @@ Now apply ALL methods above with INCREASED INTENSITY to produce deeply humanized
 - Reads naturally when spoken aloud
 
 [First-pass humanized text to further refine]:
-\\${firstPassResult}
+\${firstPassResult}
 `;
 
 serve(async (req) => {
