@@ -81,7 +81,60 @@ const HumanizerTool = () => {
 
       if (error) {
         console.error('Error humanizing text:', error);
-        toast.error(error.message || "Failed to humanize text. Please try again.");
+        
+        // Try to parse the error context which may contain the response body
+        let errorMessage = "Failed to humanize text. Please try again.";
+        let quotaInfo = null;
+        
+        // Check if error has context with response data
+        if (error.context) {
+          try {
+            const contextData = typeof error.context === 'string' 
+              ? JSON.parse(error.context) 
+              : error.context;
+            
+            if (contextData.error) {
+              errorMessage = contextData.error;
+            }
+            if (contextData.quota) {
+              quotaInfo = contextData.quota;
+            }
+          } catch (e) {
+            console.error('Could not parse error context:', e);
+          }
+        }
+        
+        // Also check the error message itself
+        if (error.message) {
+          if (error.message.includes("quota") || error.message.includes("Monthly")) {
+            errorMessage = error.message;
+          } else {
+            errorMessage = error.message;
+          }
+        }
+        
+        // Display enhanced quota message if available
+        if (quotaInfo) {
+          errorMessage = `Monthly quota exceeded! You've used ${quotaInfo.used}/${quotaInfo.limit} requests. Your ${quotaInfo.tier} tier quota will reset next month.`;
+        } else if (errorMessage.includes("quota") || errorMessage.includes("Monthly")) {
+          errorMessage = "You've reached your monthly limit (30/30 requests used). Your quota will reset next month.";
+        }
+        
+        toast.error(errorMessage);
+        setIsProcessing(false);
+        return;
+      }
+      
+      // Also check if the response contains an error in the data
+      if (data && data.error) {
+        let errorMessage = data.error;
+        
+        // Enhanced quota error message
+        if (data.quota) {
+          errorMessage = `Monthly quota exceeded! You've used ${data.quota.used}/${data.quota.limit} requests. Your ${data.quota.tier} tier quota will reset next month.`;
+        }
+        
+        toast.error(errorMessage);
         setIsProcessing(false);
         return;
       }
