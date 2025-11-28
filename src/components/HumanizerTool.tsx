@@ -72,54 +72,27 @@ const HumanizerTool = () => {
         ? examples.map(ex => ex.content).join('\n\n---\n\n')
         : '';
 
-      // Make direct fetch call to get proper error body with quota details
-      const authHeader = (await supabase.auth.getSession()).data.session?.access_token;
-      
-      const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/humanize-text`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authHeader}`,
-            'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-          },
-          body: JSON.stringify({
-            text: inputText,
-            examples: examplesText
-          })
+      const { data, error } = await supabase.functions.invoke('humanize-text', {
+        body: { 
+          text: inputText,
+          examples: examplesText
         }
-      );
+      });
 
-      // Parse response
-      const responseData = await response.json();
-
-      // Handle non-2xx responses (including 429 quota exceeded)
-      if (!response.ok) {
-        console.error('Error response:', responseData);
-        
-        let errorMessage = responseData.error || "Failed to humanize text. Please try again.";
-        
-        // Enhanced quota error message
-        if (responseData.quota) {
-          errorMessage = `🚫 Monthly Quota Exceeded!\n\nYou've used ${responseData.quota.used}/${responseData.quota.limit} requests on the ${responseData.quota.tier} tier.\n\nYour quota will reset next month.`;
-        } else if (errorMessage.includes("quota") || errorMessage.includes("Monthly")) {
-          errorMessage = "🚫 Monthly quota exceeded! You've used all 30 free requests. Your quota will reset next month.";
-        }
-        
-        toast.error(errorMessage, { duration: 8000 });
+      if (error) {
+        console.error('Error humanizing text:', error);
+        toast.error(error.message || "Failed to humanize text. Please try again.");
         setIsProcessing(false);
         return;
       }
 
-      // Success - update UI
-      setOutputText(responseData.humanizedText);
-      setDetection(responseData.detection || null);
+      setOutputText(data.humanizedText);
+      setDetection(data.detection || null);
       setIsProcessing(false);
       toast.success("Text humanized successfully!");
     } catch (error) {
       console.error('Error:', error);
-      toast.error("An unexpected error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
       setIsProcessing(false);
     }
   };
