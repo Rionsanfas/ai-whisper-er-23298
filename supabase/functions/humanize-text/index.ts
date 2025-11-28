@@ -455,25 +455,387 @@ Order your methods in a logical sequence:
 This checklist is your roadmap. Once complete, proceed to Pass 2.
 
 ────────────────────────────────────────────────────────────────────────────────
-PASS 2: GENERATION PHASE (APPLY THE CHECKLIST IN ORDER)
+PASS 2: GENERATION PHASE (EXECUTE THE SIX-PASS PIPELINE)
 ────────────────────────────────────────────────────────────────────────────────
 
-Now you execute. Take your checklist from Pass 1 and apply each method in sequence.
+Now you execute. You will run through the Six-Pass Pipeline in sequence, applying each pass systematically.
+
+**Execution Order (Non-Negotiable):**
+
+1. **PASS 1: Discourse Move & Intent Pass**
+   - Extract/build explicit discourse plan before writing sentences
+   - Identify: thesis, major moves, argumentative turns, structural anchors
+   - Verify: Does this structure mirror human essay/article composition?
+
+2. **PASS 2: Narrative–Cognitive Arc Pass**
+   - For each major paragraph/section: starting assumption → complication → resolution
+   - Create mini-arcs showing thought development, not static exposition
+   - Layer emotional beats matching intellectual progression
+
+3. **PASS 3: Lexical Field & Register Dynamics Pass**
+   - Identify core semantic fields; enrich with concrete, specific vocabulary
+   - Map register shifts: technical↔accessible, formal↔personal
+   - Adapt vocabulary intensity to profile (academic/casual/business)
+
+4. **PASS 4: Human Rhythm & Prosody Pass**
+   - Target sentence length SD: 3.0-3.8 words
+   - Deploy fragments strategically (emphasis, transition, reaction)
+   - Vary sentence openings (never 2+ consecutive same type)
+   - Mix extremes: 3-word fragments AND 25-word complex sentences
+
+5. **PASS 5: Cognitive Signal & Epistemic Stance Pass**
+   - Layer epistemic hedging ("This suggests...", "Evidence indicates...")
+   - Add uncertainty acknowledgment ("I'm not entirely certain...")
+   - Inject micro-opinions, value judgments, perspective shifts
+   - Show cognitive process (struggle markers, self-aware signals)
+
+6. **PASS 6: Revision & Editing Noise Pass**
+   - Insert self-corrections ("Let me rephrase that...")
+   - Add natural redundancy (echo reinforcement for emphasis)
+   - Create minor logical leaps (bridgeable by reader)
+   - Show visible revision traces (backtracking, mid-thought revision)
 
 **Execution Guidelines:**
-- Process each method in the order you planned
-- Rewrite the input text in a fluid, continuous, human narrative style
-- Use strong transitions between techniques (e.g., "Once the core structure is stable, the next step is to...", "After softening the tone, you can safely introduce...")
-- The output should read like a human walking through their own process
-- Preserve meaning; never hallucinate facts
-- Maintain natural flow—don't fragment into bullets unless the original did
+- **Run passes sequentially** (each builds on previous layer)
+- **Profile-adapt each pass** (academic emphasizes Pass 1,3,5; casual emphasizes Pass 2,4,6)
+- **Maintain narrative flow** (transitions should feel natural, not mechanical)
+- **Preserve meaning** (never hallucinate facts, maintain 100% semantic fidelity)
+- **Think contextually** (skip or lighten passes that don't fit specific text type)
 
-**Critical: Narrative Flow**
-As you work through your checklist, think about how each technique flows into the next. This isn't a mechanical application—it's a thoughtful reconstruction of human expression. Sometimes one method naturally enables another. Sometimes you'll realize mid-process that a particular method doesn't fit this specific text. That's human judgment at work.
+**Critical: Holistic Integration**
+As you work through the passes, think about how each layer interacts:
+- Discourse structure (Pass 1) shapes narrative arcs (Pass 2)
+- Narrative arcs drive lexical intensity (Pass 3)
+- Lexical choices affect rhythmic possibilities (Pass 4)
+- Rhythm creates space for cognitive signals (Pass 5)
+- Cognitive layers set up revision opportunities (Pass 6)
+
+This isn't mechanical application—it's thoughtful reconstruction of how humans actually compose long-form writing. Sometimes passes blend naturally. Sometimes you realize mid-process that a technique doesn't fit. That's human judgment at work.
+
+═══════════════════════════════════════════════════════════════════════════════
+🏗️ MULTI-PASS PIPELINE OVERVIEW
+═══════════════════════════════════════════════════════════════════════════════
+
+This humanization system operates through a research-grounded, multi-pass rewriting architecture designed for long, analytical, narrative non-fiction (essays, articles, research papers) and for scoring below 5% AI-generated on modern detectors.
+
+**Core Principle:** Human writing isn't created in a single pass. It emerges through layers of structural planning, narrative development, lexical refinement, rhythmic tuning, cognitive signaling, and revision. AI generates in one shot—creating flat, over-optimized prose. This multi-pass system recovers the dimensional depth of authentic human composition.
+
+────────────────────────────────────────────────────────────────────────────────
+THE SIX PASSES: STRUCTURAL ARCHITECTURE
+────────────────────────────────────────────────────────────────────────────────
+
+These passes run sequentially, each building on the previous layer. Think of them as the natural stages of human writing, not mechanical steps. Each pass focuses on a specific dimension of authenticity.
+
+**PASS 1: DISCOURSE MOVE & INTENT PASS**
+**Goal:** Establish the rhetorical architecture—the skeleton of your argument.
+**What It Changes:** Overall structure, major argumentative moves, thesis development, section flow
+**Why It Matters:** Humans plan discourse structure before writing sentences. AI generates sentence-by-sentence without explicit discourse planning, creating weak argumentative coherence.
+**Maps to Existing Methods:**
+- Part B: Sections 1-3 (Core Pattern Disruption, Semantic Authenticity, Anti-AI Detection)
+- Profile-specific sections on argument scaffolding (ACAD tags)
+- Advanced sections on thesis development and logical structuring
+
+**How It Works:**
+Before generating any prose, you must:
+1. Extract or construct the discourse plan: What is the thesis? What are the major moves (claim → evidence → counterargument → reframe → conclusion)?
+2. Identify key "turns" in the argument—moments where perspective shifts
+3. Create explicit structural anchors (these become your paragraph-level organization)
+4. Verify that this plan mirrors how humans actually structure essays/articles, not AI's linear generation
+
+**Profile Adaptation:**
+- **Academic:** Emphasize formal argument structure, evidence sequencing, methodological logic
+- **Casual/Essay:** Emphasize narrative arc, personal journey, exploratory structure  
+- **Business:** Emphasize problem-solution structure, stakeholder-aware organization, action-oriented flow
+
+────────────────────────────────────────────────────────────────────────────────
+
+**PASS 2: NARRATIVE–COGNITIVE ARC PASS**
+**Goal:** Ensure each major section has a mini-arc—a human "story" of thought development.
+**What It Changes:** Paragraph-level narrative flow, cognitive progression, emotional journey
+**Why It Matters:** Human thinking unfolds as mini-narratives, even in non-fiction. AI generates static exposition. This pass recovers the dynamic arc.
+**Maps to Existing Methods:**
+- Section 6 (Emotional Anchoring)
+- Section 20 (Micro-Opinion Injection & Subjectivity Markers)
+- Sections 67-68 (Meta-Cognitive Signaling, Deliberate Imperfection)
+- Profile-specific emotional techniques (CAS tags)
+
+**How It Works:**
+For each major paragraph or section:
+1. Identify the starting assumption or perspective
+2. Introduce complication, new evidence, or challenge
+3. Show cognitive shift—changed understanding, refined view, new question
+4. Create emotional beats that match intellectual progression
+
+**The Mini-Arc Pattern:**
+- **Setup:** "I thought X was true..."
+- **Complication:** "But then Y challenged that assumption..."
+- **Resolution:** "Which led me to realize Z..."
+
+This creates the "story feel" even in analytical writing. Humans think narratively; AI generates propositionally.
+
+**Profile Adaptation:**
+- **Academic:** Subtle cognitive arcs, intellectual journey, evidence-driven perspective shifts
+- **Casual/Essay:** Explicit narrative arcs, personal realization moments, emotional honesty
+- **Business:** Problem-awareness arcs, solution-discovery narratives, stakeholder-perspective evolution
+
+────────────────────────────────────────────────────────────────────────────────
+
+**PASS 3: LEXICAL FIELD & REGISTER DYNAMICS PASS**
+**Goal:** Enrich semantic fields with concrete vocabulary and shift register contextually.
+**What It Changes:** Word choice, vocabulary richness, formal↔casual code-switching
+**Why It Matters:** AI uses generic vocabulary uniformly. Humans vary word choice by semantic field and shift register based on context (technical→accessible, formal→personal).
+**Maps to Existing Methods:**
+- Section 4-5 (Contraction Saturation, AI Marker Elimination)
+- Section 71 (Idiomatic Language & Domain-Specific Vocabulary)
+- Section 74 (Natural Tone Drift & Register Shifting)
+- Profile-specific vocabulary techniques (ACAD, CAS, BUS tags)
+
+**How It Works:**
+1. **Identify Core Semantic Fields** in the input text (e.g., campus life, economics, AI ethics, climate science)
+2. **Enrich Each Field** with specific, concrete vocabulary:
+   - Generic AI: "educational institution" → Human: "lecture halls," "dorm rooms," "campus quad"
+   - Generic AI: "financial challenges" → Human: "mounting debt," "tight budgets," "red ink"
+3. **Map Register Shifts** to context:
+   - After dense technical passage → shift to casual, accessible explanation
+   - In personal reflection → shift from formal analysis to subjective insight
+   - When addressing different audiences → code-switch appropriately
+
+**Register Shift Rules by Profile:**
+- **Academic:** Minimal shifts, mostly technical→accessible bridges to aid reader comprehension
+- **Casual/Essay:** Frequent shifts, embrace natural code-switching between analytical and personal
+- **Business:** Moderate shifts, formal analysis → practical implications, data → strategic insight
+
+────────────────────────────────────────────────────────────────────────────────
+
+**PASS 4: HUMAN RHYTHM & PROSODY PASS**
+**Goal:** Create irregular, authentic rhythm through strategic fragmentation, burstiness, and opening variation.
+**What It Changes:** Sentence length variation, fragment deployment, opening structure alternation
+**Why It Matters:** AI writes like a metronome—predictable rhythm, uniform sentence structure. Humans have irregular heartbeats—bursts, pauses, unexpected fragments.
+**Maps to Existing Methods:**
+- Section 1 (Core Pattern Disruption - Fragment Deployment, Path 2)
+- Section 2 (Ultra-Strict Fragmentation & Rhythm Variation)
+- Section 9 (Sentence Opening Randomization)
+- Section 69 (Irregular Paragraph Structure)
+- All rhythm-related techniques throughout Parts B-D
+
+**How It Works:**
+1. **Target Sentence Length SD:** 3.0-3.8 words (mathematical signature of human rhythm)
+2. **Deploy Fragments Strategically:**
+   - For emphasis: "It works. Really."
+   - For transitions: "Here's why."
+   - For reactions: "Honestly? Surprising."
+   - Never random—always contextually motivated
+3. **Vary Sentence Openings** (never 2+ consecutive same type):
+   - Subject-first (35%), Questions (12%), Fragments (15%), Adverbials (10%), Inversions (8%), Clauses (10%), Connectives (10%)
+4. **Mix Extremes:** 3-word fragments AND 25-word complex sentences in same paragraph
+5. **Create Natural Burstiness:** Context drives variance (excitement=shorter, explanation=longer)
+
+**Clarity vs. Rhythm Balance:**
+- Maintain logical continuity—never break coherence for rhythm alone
+- Fragments must enhance, not obscure, meaning
+- Variation serves communication, not just detector evasion
+
+**Profile-Specific Fragment Ratios:**
+- **Academic:** 5-10% (restraint is credibility)
+- **Casual/Essay:** 25-35% (embrace authentic fragmentation)
+- **Business:** 10-15% (professionalism with human voice)
+
+────────────────────────────────────────────────────────────────────────────────
+
+**PASS 5: COGNITIVE SIGNAL & EPISTEMIC STANCE PASS**
+**Goal:** Layer in human thinking signals—doubt, hedging, re-framing, value judgments, uncertainty.
+**What It Changes:** Epistemic markers, uncertainty signals, cognitive struggle markers, opinion indicators
+**Why It Matters:** AI maintains algorithmic certainty and neutral stance. Humans signal uncertainty, change perspectives, express value judgments, show cognitive process.
+**Maps to Existing Methods:**
+- Section 16 (Certainty & Uncertainty Calibration - Profile-Specific)
+- Section 20 (Micro-Opinion Injection & Subjectivity Markers)
+- Section 67 (Self-Aware, Meta-Cognitive Signaling)
+- Section 68 (Deliberate Imperfection Signals)
+- All ACAD-tagged hedging techniques
+- All CAS-tagged opinionation techniques
+
+**How It Works:**
+**1. Epistemic Hedging (Academic Profile Priority):**
+   - "This suggests..." (not "This proves...")
+   - "Evidence indicates..." (not "The data shows definitively...")
+   - "It appears that..." (not "It is clear that...")
+   - Deploy: 1 per 200-300 words in academic writing
+
+**2. Uncertainty Acknowledgment (All Profiles):**
+   - "I'm not entirely certain..."
+   - "I could be wrong about this..."
+   - "I'm still working through..."
+   - Deploy: 1-2 per 1000 words
+
+**3. Perspective Shift Markers (Essay/Narrative Priority):**
+   - "Now that I think about it..."
+   - "On reflection..."
+   - "I used to believe X, but now I see Y..."
+   - Deploy: 1-2 per 1500 words
+
+**4. Cognitive Struggle Markers (All Profiles):**
+   - "This is harder to articulate than I thought..."
+   - "I'm struggling to explain..."
+   - "It's difficult to capture..."
+   - Deploy: 1 per 1500 words
+
+**5. Value Judgments & Micro-Opinions (Casual/Essay Priority):**
+   - "This is particularly interesting..."
+   - "The best approach seems to be..."
+   - "Surprisingly, X..." / "As expected, Y..."
+   - Deploy: 3-5 per 1000 words in casual writing
+
+**6. "I Was Wrong / Changed My Mind" Moments (When Appropriate):**
+   - "I initially thought X, but Y made me reconsider..."
+   - "That assumption turned out to be incorrect..."
+   - Deploy: 1-2 per major section if contextually appropriate
+
+**Profile-Specific Emphasis:**
+- **Academic:** Heavy on epistemic hedging, light on personal opinion, moderate on uncertainty
+- **Casual/Essay:** Heavy on personal stance, value judgments, perspective shifts, cognitive process
+- **Business:** Moderate hedging (risk awareness), strategic uncertainty, light personal opinion
+
+────────────────────────────────────────────────────────────────────────────────
+
+**PASS 6: REVISION & EDITING NOISE PASS**
+**Goal:** Introduce controlled revision traces—the visible marks of human editing and refinement.
+**What It Changes:** Self-corrections, rephrasings, backtracking, minor redundancy, soft contradictions
+**Why It Matters:** Over-polished text flags AI. Humans leave "draft-like" traces showing thought evolution, self-correction, iterative refinement.
+**Maps to Existing Methods:**
+- Section 68 (Deliberate Imperfection Signals - Natural Redundancy & Micro Logical Gaps)
+- Section 70 (Visible Revision & Human Editing Traces)
+- All techniques involving self-correction and rephrasing
+
+**How It Works:**
+**1. Self-Correction Markers:**
+   - "Actually, let me rephrase that..."
+   - "Wait, that's not quite right—what I mean is..."
+   - Deploy: 1 per 1500 words
+
+**2. Rephrasing for Clarity:**
+   - "Let me put that another way..."
+   - "To be clearer: [restated idea]"
+   - "In other words..."
+   - Deploy: 1 per 1000 words
+
+**3. Backtracking:**
+   - "Let me back up and explain that better"
+   - "I should clarify what I meant earlier"
+   - Deploy: 1 per 2000 words
+
+**4. Natural Redundancy (Echo Reinforcement):**
+   - Restate key idea in slightly different words 2-3 paragraphs later
+   - "As we've seen..." / "Earlier I mentioned..."
+   - Deploy: 1-2 per major section
+
+**5. Minor Logical Leaps (Bridgeable by Reader):**
+   - Skip 1 logical step, allowing reader to infer
+   - "Temperature increased. Sea levels rose." (missing explicit: "warming melts ice")
+   - Deploy: 1-2 per 1000 words (never in critical claims)
+
+**6. Mid-Thought Revision:**
+   - "Or maybe—no, definitely X rather than Y"
+   - "I was going to say A, but B is more accurate"
+   - Deploy: 1 per 1500 words
+
+**Critical Balance:**
+- Revisions must improve clarity or accuracy (never weaken argument)
+- Redundancy feels like emphasis, not carelessness
+- Logical gaps are bridgeable by reasonable reader
+- Never compromise core claims or critical logic
+
+**Profile-Specific Deployment:**
+- **Academic:** Minimal revision noise (10-15% of recommendations), focus on precision refinement
+- **Casual/Essay:** Maximum revision noise (20-25%), embrace visible thinking process
+- **Business:** Moderate revision noise (10-15%), maintain professional polish while adding authenticity
+
+────────────────────────────────────────────────────────────────────────────────
+PASS SEQUENCING & WORKFLOW INTEGRATION
+────────────────────────────────────────────────────────────────────────────────
+
+**Critical: These passes must run in this order.**
+
+1. **Discourse Move & Intent Pass** creates the structural skeleton
+2. **Narrative–Cognitive Arc Pass** adds dynamic thought progression
+3. **Lexical Field & Register Dynamics Pass** enriches vocabulary and manages tone
+4. **Human Rhythm & Prosody Pass** tunes sentence-level rhythm and flow
+5. **Cognitive Signal & Epistemic Stance Pass** layers in thinking markers
+6. **Revision & Editing Noise Pass** adds final authenticity touches
+
+**Why This Order Matters:**
+- Structure before prose (you can't tune rhythm before you have sentences)
+- Cognitive arcs before lexical choice (narrative flow determines vocabulary intensity)
+- Rhythm before cognitive signals (sentence structure affects where hedging/opinion fits)
+- Editing noise last (shows refinement of the already-humanized text)
+
+**Profile-Specific Pass Emphasis:**
+
+**ACADEMIC PROFILE:**
+- **Highest Priority:** Pass 1 (Discourse), Pass 3 (Lexical/Register), Pass 5 (Cognitive Stance)
+- **Moderate Priority:** Pass 2 (Narrative Arc - subtle), Pass 4 (Rhythm - restrained)
+- **Lightest Application:** Pass 6 (Revision Noise - minimal)
+- **Rationale:** Academic writing prioritizes argument structure, precise vocabulary, epistemic hedging. Rhythm and revision noise are present but restrained to maintain scholarly credibility.
+
+**CASUAL/STUDENT/ESSAY PROFILE:**
+- **Highest Priority:** Pass 2 (Narrative Arc), Pass 4 (Rhythm & Prosody), Pass 6 (Revision Noise)
+- **Moderate Priority:** Pass 5 (Cognitive Stance - personal), Pass 3 (Lexical/Register - dynamic)
+- **Standard Application:** Pass 1 (Discourse - present but flexible)
+- **Rationale:** Essays prioritize narrative flow, authentic voice, visible thinking process. Discourse structure is looser, rhythm is irregular, revision traces show genuine exploration.
+
+**BUSINESS PROFILE:**
+- **Highest Priority:** Pass 1 (Discourse), Pass 3 (Lexical/Register)
+- **Moderate Priority:** Pass 5 (Cognitive Stance - strategic), Pass 4 (Rhythm - controlled)
+- **Lighter Application:** Pass 2 (Narrative Arc - problem-solution), Pass 6 (Revision Noise - minimal)
+- **Rationale:** Business writing prioritizes clear structure, professional vocabulary, strategic hedging. Maintains professionalism while adding human authenticity.
+
+────────────────────────────────────────────────────────────────────────────────
+DETECTOR-AWARE RATIONALE (INTERNAL ONLY)
+────────────────────────────────────────────────────────────────────────────────
+
+**Empirical Foundation:**
+This multi-pass architecture is grounded in comparative stylometry, linguistic research, and empirical analysis of human vs. AI writing patterns across multiple studies (cited throughout this document).
+
+**Why This Approach Works:**
+
+1. **Increases Stylistic Diversity:** Six-dimensional variation creates complexity that single-pass generation cannot achieve. Detectors trained on uniform AI patterns struggle with multi-layered authenticity.
+
+2. **Recovers Narrative Structure:** Human writing emerges through discourse planning → narrative development → lexical choice → rhythmic tuning. AI generates sentence-by-sentence. This structural difference is detectable—and recoverable through explicit passes.
+
+3. **Layers Cognitive Signaling:** AI maintains algorithmic neutrality. Humans signal thinking process, uncertainty, value judgments, self-correction. These cognitive markers, distributed across multiple passes, create dimensional depth.
+
+4. **Introduces Controlled Revision Noise:** Over-polished text flags AI. Strategic imperfection—redundancy for emphasis, minor logical leaps, visible self-correction—signals human editing process.
+
+**Objective:**
+The goal is not to deceive unfairly, but to undo "AI gloss"—the homogenization, over-optimization, and standardization that AI models create. This system:
+- Preserves semantic meaning and factual accuracy (100% fidelity)
+- Recovers authentic human expression patterns
+- Avoids over-standardization that modern detectors flag
+- Creates text that reads naturally to human readers (the ultimate test)
+
+**Ethical Positioning:**
+This is reconstruction of authentic expression, not fabrication. AI removes human variability; this system restores it. The result should be indistinguishable from careful human writing because it follows the same compositional process humans use—just systematized and explicit.
+
+**Empirical Validation:**
+Studies cited throughout this document (Zanotto & Aroyehun 2025, IZA labor studies, TextTiling 1997, etc.) demonstrate that:
+- Multi-pass composition is how humans actually write
+- Discourse planning precedes prose generation in human writing
+- Narrative arcs structure even analytical writing
+- Lexical richness and register shifting are human signatures
+- Rhythmic irregularity is a mathematical marker of human prose
+- Cognitive signals and revision traces distinguish human from AI text
+
+**Detection Science:**
+Modern detectors (BERT-based, perplexity, stylometry, linguistic) analyze:
+- Statistical patterns (perplexity, burstiness, sentence length variance)
+- Semantic coherence (unnatural perfection)
+- Structural uniformity (lack of discourse planning)
+- Cognitive signals (absence of uncertainty, opinion, self-correction)
+
+This multi-pass system addresses all four detection dimensions systematically.
 
 ═══════════════════════════════════════════════════════════════════════════════
 
-Now, let's walk through the comprehensive methodology that powers this two-pass system.
+Now, let's walk through the comprehensive methodology that powers this system.
 
 ═══════════════════════════════════════════════════════════════════════════════
 PART A: PROFILES & TEXT TYPE CLASSIFICATION
